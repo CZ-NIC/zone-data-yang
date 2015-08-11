@@ -1,0 +1,112 @@
+module dns-zones {
+
+  namespace "http://www.nic.cz/ns/yang/dns-zones";
+
+  prefix "dnsz";
+
+  import ietf-inet-types {
+    prefix "inet";
+  }
+
+  import iana-dns-rr-types {
+    prefix "ianadns";
+  }
+
+  organization
+    "CZ.NIC, z. s. p. o.";
+
+  contact
+    "Editor:   Ladislav Lhotka
+               <mailto:lhotka@nic.cz>";
+
+  description
+    "This module provides a framework for DNS zone configuration.";
+
+  revision 2015-08-11 {
+    description
+      "Initial revision.";
+  }
+
+  /* Typedefs */
+
+  typedef positive-int32 {
+    type int32 {
+      range "1..max";
+    }
+  }
+
+  /* Groupings */
+
+  grouping entry-id {
+    description
+      "This grouping defines a leaf that is intended for use as a
+       list key.";
+    leaf id {
+      type string;
+      description
+        "Opaque ID of a list entry.";
+    }
+  }
+
+  grouping rdata {
+    description
+      "This grouping defines RDATA that are common to all RR
+       types.";
+    leaf domain-name {
+      type inet:domain-name;
+    }
+    leaf type {
+      type identityref {
+        base ianadns:dns-rrtype;
+      }
+    }
+    leaf class {
+      type ianadns:dns-rr-class;
+    }
+    leaf ttl {
+      type positive-int32;
+    }
+    leaf rdlength {
+      type uint16;
+    }
+  }
+
+  grouping dns-rr {
+    description
+      "This grouping defines a base schema for a list of DNS Resource
+       Records.";
+    list resource-record {
+      key "id";
+      description
+        "DNS Resource Record.";
+      uses entry-id;
+      uses rdata;
+    }
+  }
+
+  /* Configuration data */
+
+  container dns-zones {
+    description
+      "Container for DNS zones.";
+    list dns-zone {
+      key "domain-name";
+      description
+        "Data for a DNS zone.";
+      leaf domain-name {
+        type inet:domain-name;
+        description
+          "Zone name.";
+      }
+      uses dns-rr;
+      list rrset {
+        key "id";
+        description
+          "RRSet";
+        uses entry-id;
+        uses rdata;
+        uses dns-rr;
+      }
+    }
+  }
+}

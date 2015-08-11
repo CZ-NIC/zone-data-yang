@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<module name="dns-zones"
+        xmlns="urn:ietf:params:xml:ns:yang:yin:1"
+        xmlns:tsig="http://www.nic.cz/ns/yang/dns-zones"
+        xmlns:h="http://www.w3.org/1999/xhtml">
+  <namespace uri="http://www.nic.cz/ns/yang/dns-zones"/>
+  <prefix value="dnsz"/>
+  <import module="ietf-inet-types">
+    <prefix value="inet"/>
+  </import>
+  <import module="iana-dns-rr-types">
+    <prefix value="ianadns"/>
+  </import>
+  <organization>
+    <text>CZ.NIC, z. s. p. o.</text>
+  </organization>
+  <contact>
+    <text>
+      <h:p>
+        Editor:   Ladislav Lhotka<h:br/>
+                  &lt;mailto:lhotka@nic.cz&gt;
+      </h:p>
+    </text>
+  </contact>
+  <description>
+    <text>
+      <h:p>This module provides a framework for DNS zone configuration.</h:p>
+    </text>
+  </description>
+  <revision date="2015-08-11">
+    <description>
+      <text>Initial revision.</text>
+    </description>
+  </revision>
+
+  <!-- Typedefs -->
+
+  <typedef name="positive-int32">
+    <type name="int32">
+      <range value="1..max"/>
+    </type>
+  </typedef>
+  
+  <!-- Groupings -->
+
+  <grouping name="entry-id">
+    <description>
+      <text>
+	This grouping defines a leaf that is intended for use as a
+	list key.
+      </text>
+    </description>
+    <leaf name="id">
+      <description>
+	<text>
+	  Opaque ID of a list entry.
+	</text>
+      </description>
+      <type name="string"/>
+    </leaf>
+  </grouping>
+
+  <grouping name="rdata">
+    <description>
+      <text>
+	<h:p>This grouping defines RDATA that are common to all RR
+	types.</h:p>
+      </text>
+    </description>
+    <leaf name="domain-name">
+      <type name="inet:domain-name"/>
+    </leaf>
+    <leaf name="type">
+      <type name="identityref">
+	<base name="ianadns:dns-rrtype"/>
+      </type>
+    </leaf>
+    <leaf name="class">
+      <type name="ianadns:dns-rr-class"/>
+    </leaf>
+    <leaf name="ttl">
+      <type name="positive-int32"/>
+    </leaf>
+    <leaf name="rdlength">
+      <type name="uint16"/>
+    </leaf>
+  </grouping>
+  
+  <grouping name="dns-rr">
+    <description>
+      <text>
+	<h:p>This grouping defines a base schema for a list of DNS
+	Resource Records.</h:p>
+      </text>
+    </description>
+    <list name="resource-record">
+      <key value="id"/>
+      <description>
+	<text>
+	  DNS Resource Record.
+	</text>
+      </description>
+      <uses name="entry-id"/>
+      <uses name="rdata"/>
+    </list>
+  </grouping>
+
+  <!-- Configuration data -->
+
+  <container name="dns-zones">
+    <description>
+      <text>
+	Container for DNS zones.
+      </text>
+    </description>
+    <list name="dns-zone">
+      <key value="domain-name"/>
+      <description>
+	<text>
+	  Data for a DNS zone.
+	</text>
+      </description>
+      <leaf name="domain-name">
+	<description>
+	  <text>
+	    Zone name.
+	  </text>
+	</description>
+	<type name="inet:domain-name"/>
+      </leaf>
+      <uses name="dns-rr"/>
+      <list name="rrset">
+	<key value="id"/>
+	<description>
+	  <text>RRSet</text>
+	</description>
+	<uses name="entry-id"/>
+	<uses name="rdata"/>
+	<uses name="dns-rr"/>
+      </list>
+    </list>
+  </container>
+  
+</module>

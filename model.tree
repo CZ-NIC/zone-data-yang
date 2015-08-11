@@ -1,0 +1,25 @@
+module: dns-zones
+   +--rw dns-zones
+      +--rw dns-zone* [domain-name]
+         +--rw domain-name        inet:domain-name
+         +--rw resource-record* [id]
+         |  +--rw id             string
+         |  +--rw domain-name?   inet:domain-name
+         |  +--rw type?          identityref
+         |  +--rw class?         ianadns:dns-rr-class
+         |  +--rw ttl?           positive-int32
+         |  +--rw rdlength?      uint16
+         +--rw rrset* [id]
+            +--rw id                 string
+            +--rw domain-name?       inet:domain-name
+            +--rw type?              identityref
+            +--rw class?             ianadns:dns-rr-class
+            +--rw ttl?               positive-int32
+            +--rw rdlength?          uint16
+            +--rw resource-record* [id]
+               +--rw id             string
+               +--rw domain-name?   inet:domain-name
+               +--rw type?          identityref
+               +--rw class?         ianadns:dns-rr-class
+               +--rw ttl?           positive-int32
+               +--rw rdlength?      uint16
