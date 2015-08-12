@@ -8,8 +8,8 @@ module dns-zones {
     prefix "inet";
   }
 
-  import dns-zone-types {
-    prefix "dnszt";
+  import dns-types {
+    prefix "dnst";
   }
 
   organization
@@ -57,11 +57,11 @@ module dns-zones {
     }
     leaf type {
       type identityref {
-        base dnszt:rr-type;
+        base dnst:rr-type;
       }
     }
     leaf class {
-      type dnszt:rr-class;
+      type dnst:class;
     }
     leaf ttl {
       type positive-int32;

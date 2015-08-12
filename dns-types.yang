@@ -1,8 +1,8 @@
-module dns-zone-types {
+module dns-types {
 
-  namespace "http://www.nic.cz/ns/yang/dns-zone-types";
+  namespace "http://www.nic.cz/ns/yang/dns-types";
 
-  prefix "dnszt";
+  prefix "dnst";
 
   organization
     "CZ.NIC, z. s. p. o.";
@@ -16,14 +16,16 @@ module dns-zone-types {
      zones.";
 
   reference
-    "RFC 6195: Domain Name System (DNS) IANA Considerations.";
+    "- RFC 6195: Domain Name System (DNS) IANA Considerations.
+
+     - RFC 1035: Domain Names - Implementation and Specification.";
 
   revision 2015-08-11 {
     description
       "Initial revision.";
   }
 
-  typedef rr-class {
+  typedef class {
     type enumeration {
       enum IN {
         value "1";
@@ -68,8 +70,21 @@ module dns-zone-types {
       "DNS RR classes.";
   }
 
-  identity rr-type {
+  identity query-type {
     description
-      "Base identity from which DNS RR types are derived.";
+      "Base identity from which DNS query types are derived.";
+  }
+
+  identity rr-type {
+    base dnst:query-type;
+    description
+      "Base identity from which resource record types are derived.";
+  }
+
+  identity q-only-type {
+    base dnst:query-type;
+    description
+      "Base identity from which additional query-only types are
+       derived.";
   }
 }

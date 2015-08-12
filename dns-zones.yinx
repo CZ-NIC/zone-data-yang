@@ -8,8 +8,8 @@
   <import module="ietf-inet-types">
     <prefix value="inet"/>
   </import>
-  <import module="dns-zone-types">
-    <prefix value="dnszt"/>
+  <import module="dns-types">
+    <prefix value="dnst"/>
   </import>
   <organization>
     <text>CZ.NIC, z. s. p. o.</text>
@@ -72,11 +72,11 @@
     </leaf>
     <leaf name="type">
       <type name="identityref">
-	<base name="dnszt:rr-type"/>
+	<base name="dnst:rr-type"/>
       </type>
     </leaf>
     <leaf name="class">
-      <type name="dnszt:class"/>
+      <type name="dnst:class"/>
     </leaf>
     <leaf name="ttl">
       <type name="positive-int32"/>
