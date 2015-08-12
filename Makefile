@@ -1,4 +1,4 @@
-MODULES = iana-dns-rr-types dns-zones
+MODULES = dns-zone-types dns-zones
 EXAMPLE_BASE = example
 EXAMPLE_TYPE = data
 baty = $(EXAMPLE_BASE)-$(EXAMPLE_TYPE)

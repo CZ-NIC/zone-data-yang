@@ -8,8 +8,8 @@ module dns-zones {
     prefix "inet";
   }
 
-  import iana-dns-rr-types {
-    prefix "ianadns";
+  import dns-zone-types {
+    prefix "dnszt";
   }
 
   organization
@@ -57,11 +57,11 @@ module dns-zones {
     }
     leaf type {
       type identityref {
-        base ianadns:dns-rrtype;
+        base dnszt:rr-type;
       }
     }
     leaf class {
-      type ianadns:dns-rr-class;
+      type dnszt:rr-class;
     }
     leaf ttl {
       type positive-int32;
@@ -86,10 +86,10 @@ module dns-zones {
 
   /* Configuration data */
 
-  container dns-zones {
+  container zones {
     description
       "Container for DNS zones.";
-    list dns-zone {
+    list zone {
       key "domain-name";
       description
         "Data for a DNS zone.";

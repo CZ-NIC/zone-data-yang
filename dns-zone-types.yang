@@ -1,8 +1,8 @@
-module iana-dns-rr-types {
+module dns-zone-types {
 
-  namespace "http://www.nic.cz/ns/yang/iana-dns-rr-types";
+  namespace "http://www.nic.cz/ns/yang/dns-zone-types";
 
-  prefix "ianadns";
+  prefix "dnszt";
 
   organization
     "CZ.NIC, z. s. p. o.";
@@ -13,7 +13,7 @@ module iana-dns-rr-types {
 
   description
     "This module provides several data types that are used in DNS
-     Resource Records.";
+     zones.";
 
   reference
     "RFC 6195: Domain Name System (DNS) IANA Considerations.";
@@ -23,7 +23,7 @@ module iana-dns-rr-types {
       "Initial revision.";
   }
 
-  typedef dns-rr-class {
+  typedef rr-class {
     type enumeration {
       enum IN {
         value "1";
@@ -68,7 +68,7 @@ module iana-dns-rr-types {
       "DNS RR classes.";
   }
 
-  identity dns-rrtype {
+  identity rr-type {
     description
       "Base identity from which DNS RR types are derived.";
   }

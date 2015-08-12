@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<module name="iana-dns-rr-types"
+<module name="dns-zone-types"
         xmlns="urn:ietf:params:xml:ns:yang:yin:1"
-        xmlns:tsig="http://www.nic.cz/ns/yang/iana-dns-rr-types"
+        xmlns:tsig="http://www.nic.cz/ns/yang/dns-zone-types"
         xmlns:h="http://www.w3.org/1999/xhtml">
-  <namespace uri="http://www.nic.cz/ns/yang/iana-dns-rr-types"/>
-  <prefix value="ianadns"/>
+  <namespace uri="http://www.nic.cz/ns/yang/dns-zone-types"/>
+  <prefix value="dnszt"/>
   <organization>
     <text>CZ.NIC, z. s. p. o.</text>
   </organization>
@@ -19,7 +19,7 @@
   <description>
     <text>
       <h:p>This module provides several data types that are used in
-      DNS Resource Records.</h:p>
+      DNS zones.</h:p>
     </text>
   </description>
   <reference>
@@ -33,7 +33,7 @@
     </description>
   </revision>
 
-  <typedef name="dns-rr-class">
+  <typedef name="rr-class">
     <description>
       <text>DNS RR classes.</text>
     </description>
@@ -95,7 +95,7 @@
     </type>
   </typedef>
 
-  <identity name="dns-rrtype">
+  <identity name="rr-type">
     <description>
       <text>
 	Base identity from which DNS RR types are derived.
