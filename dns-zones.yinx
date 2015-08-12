@@ -76,7 +76,7 @@
       </type>
     </leaf>
     <leaf name="class">
-      <type name="dnszt:rr-class"/>
+      <type name="dnszt:class"/>
     </leaf>
     <leaf name="ttl">
       <type name="positive-int32"/>

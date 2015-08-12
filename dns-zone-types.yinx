@@ -24,7 +24,10 @@
   </description>
   <reference>
     <text>
-      <h:p>RFC 6195: Domain Name System (DNS) IANA Considerations.</h:p>
+      <h:ul>
+	<h:li>RFC 6195: Domain Name System (DNS) IANA Considerations.</h:li>
+	<h:li>RFC 1035: Domain Names - Implementation and Specification.</h:li>
+      </h:ul>
     </text>
   </reference>
   <revision date="2015-08-11">
@@ -33,7 +36,7 @@
     </description>
   </revision>
 
-  <typedef name="rr-class">
+  <typedef name="class">
     <description>
       <text>DNS RR classes.</text>
     </description>
@@ -95,10 +98,29 @@
     </type>
   </typedef>
 
-  <identity name="rr-type">
+  <identity name="query-type">
     <description>
       <text>
-	Base identity from which DNS RR types are derived.
+	Base identity from which DNS query types are derived.
+      </text>
+    </description>
+  </identity>
+
+  <identity name="rr-type">
+    <base name="dnszt:type"/>
+    <description>
+      <text>
+	Base identity from which resource record types are derived.
+      </text>
+    </description>
+  </identity>
+
+  <identity name="q-only-type">
+    <base name="dnszt:type"/>
+    <description>
+      <text>
+	Base identity from which additional query-only types are
+	derived.
       </text>
     </description>
   </identity>
