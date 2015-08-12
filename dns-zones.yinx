@@ -8,8 +8,8 @@
   <import module="ietf-inet-types">
     <prefix value="inet"/>
   </import>
-  <import module="dns-types">
-    <prefix value="dnst"/>
+  <import module="iana-dns-parameters">
+    <prefix value="ianadns"/>
   </import>
   <organization>
     <text>CZ.NIC, z. s. p. o.</text>
@@ -72,11 +72,11 @@
     </leaf>
     <leaf name="type">
       <type name="identityref">
-	<base name="dnst:rr-type"/>
+	<base name="ianadns:data-rrtype"/>
       </type>
     </leaf>
     <leaf name="class">
-      <type name="dnst:class"/>
+      <type name="ianadns:class"/>
     </leaf>
     <leaf name="ttl">
       <type name="positive-int32"/>

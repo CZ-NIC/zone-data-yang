@@ -1,0 +1,871 @@
+module iana-dns-parameters {
+
+  namespace "http://www.nic.cz/ns/yang/iana-dns-parameters";
+
+  prefix "ianadns";
+
+  organization
+    "CZ.NIC, z. s. p. o.";
+
+  contact
+    "Editor:   Ladislav Lhotka
+               <mailto:lhotka@nic.cz>";
+
+  description
+    "This module provides several data types that are used in DNS
+     zones.";
+
+  reference
+    "IANA: Domain Name System (DNS) Parameters.
+     http://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml";
+
+  revision 2015-08-11 {
+    description
+      "Initial revision.";
+  }
+
+  typedef class {
+    type enumeration {
+      enum IN {
+        value "1";
+        description
+          "Internet";
+      }
+      enum CH {
+        value "3";
+        description
+          "Chaos";
+      }
+      enum HS {
+        value "4";
+        description
+          "Hesiod";
+      }
+      enum NONE {
+        value "254";
+        description
+          "QCLASS NONE - only meaningful in queries";
+        reference
+          "RFC 2136: Dynamic Updates in the Domain Name System (DNS
+           UPDATE)";
+      }
+      enum ANY {
+        value "255";
+        description
+          "QCLASS * (ANY) - only meaningful in queries";
+        reference
+          "RFC 1035: Domain Names - Implementation and
+           Specification";
+      }
+    }
+    description
+      "DNS RR classes.";
+  }
+
+  identity rrtype {
+    description
+      "Base identity from which DNS RRTYPEs are derived.";
+  }
+
+  identity data-rrtype {
+    base ianadns:rrtype;
+    description
+      "Base identity from which data RRTYPEs are derived. These
+       RRTYPEs are use for storing zone data.";
+  }
+
+  identity q-meta-rrtype {
+    base ianadns:rrtype;
+    description
+      "Base identity from which special RRTYPEs are derived:
+
+       - QTYPEs – used only in queries.
+
+       - Meta-TYPEs – designate transient data associated with a
+         particular DNS message and, in some cases, can also be used
+         in queries.";
+  }
+
+  identity A {
+    base ianadns:data-rrtype;
+    description
+      "A host address.
+
+       Value of this RR is 1.";
+    reference
+      "RFC 1035";
+  }
+
+  identity NS {
+    base ianadns:data-rrtype;
+    description
+      "An authoritative name server.
+
+       Value of this RR is 2.";
+    reference
+      "RFC 1035";
+  }
+
+  identity MD {
+    base ianadns:data-rrtype;
+    status "obsolete";
+    description
+      "A mail destination (obsolete – use MX).
+
+       Value of this RR is 3.";
+    reference
+      "RFC 1035";
+  }
+
+  identity MF {
+    base ianadns:data-rrtype;
+    status "obsolete";
+    description
+      "A mail forwarder (obsolete – use MX).
+
+       Value of this RR is 4.";
+    reference
+      "RFC 1035";
+  }
+
+  identity CNAME {
+    base ianadns:data-rrtype;
+    description
+      "The canonical name for an alias.
+
+       Value of this RR is 5.";
+    reference
+      "RFC 1035";
+  }
+
+  identity SOA {
+    base ianadns:data-rrtype;
+    description
+      "Marks the start of a zone of authority.
+
+       Value of this RR is 6.";
+    reference
+      "RFC 1035";
+  }
+
+  identity MB {
+    base ianadns:data-rrtype;
+    description
+      "A mailbox domain name (experimental).
+
+       Value of this RR is 7.";
+    reference
+      "RFC 1035";
+  }
+
+  identity MG {
+    base ianadns:data-rrtype;
+    description
+      "A mail group member (experimental).
+
+       Value of this RR is 8.";
+    reference
+      "RFC 1035";
+  }
+
+  identity MR {
+    base ianadns:data-rrtype;
+    description
+      "A mail rename domain name (experimental).
+
+       Value of this RR is 9.";
+    reference
+      "RFC 1035";
+  }
+
+  identity NULL {
+    base ianadns:data-rrtype;
+    description
+      "A null RR (experimental).
+
+       Value of this RR is 10.";
+    reference
+      "RFC 1035";
+  }
+
+  identity WKS {
+    base ianadns:data-rrtype;
+    description
+      "A well known service description.
+
+       Value of this RR is 11.";
+    reference
+      "RFC 1035";
+  }
+
+  identity PTR {
+    base ianadns:data-rrtype;
+    description
+      "A domain name pointer.
+
+       Value of this RR is 12.";
+    reference
+      "RFC 1035";
+  }
+
+  identity HINFO {
+    base ianadns:data-rrtype;
+    description
+      "Host information.
+
+       Value of this RR is 13.";
+    reference
+      "RFC 1035";
+  }
+
+  identity MINFO {
+    base ianadns:data-rrtype;
+    description
+      "Mailbox or mail list information.
+
+       Value of this RR is 14.";
+    reference
+      "RFC 1035";
+  }
+
+  identity MX {
+    base ianadns:data-rrtype;
+    description
+      "Mail exchange.
+
+       Value of this RR is 15.";
+    reference
+      "RFC 1035";
+  }
+
+  identity TXT {
+    base ianadns:data-rrtype;
+    description
+      "Text strings.
+
+       Value of this RR is 16.";
+    reference
+      "RFC 1035";
+  }
+
+  identity RP {
+    base ianadns:data-rrtype;
+    description
+      "Responsible Person.
+
+       Value of this RR is 17.";
+    reference
+      "RFC 1183";
+  }
+
+  identity AFSDB {
+    base ianadns:data-rrtype;
+    description
+      "Afs Data Base location.
+
+       Value of this RR is 18.";
+    reference
+      "RFC 1183, RFC 5864";
+  }
+
+  identity X25 {
+    base ianadns:data-rrtype;
+    description
+      "X.25 PSDN address.
+
+       Value of this RR is 19.";
+    reference
+      "RFC 1183";
+  }
+
+  identity ISDN {
+    base ianadns:data-rrtype;
+    description
+      "Isdn address.
+
+       Value of this RR is 20.";
+    reference
+      "RFC 1183";
+  }
+
+  identity RT {
+    base ianadns:data-rrtype;
+    description
+      "Route Through.
+
+       Value of this RR is 21.";
+    reference
+      "RFC 1183";
+  }
+
+  identity NSAP {
+    base ianadns:data-rrtype;
+    description
+      "Nsap address, NSAP style A record.
+
+       Value of this RR is 22.";
+    reference
+      "RFC 1706";
+  }
+
+  identity NSAP-PTR {
+    base ianadns:data-rrtype;
+    description
+      "Domain name pointer, NSAP style.
+
+       Value of this RR is 23.";
+    reference
+      "RFC 1348, RFC 1637, RFC 1706";
+  }
+
+  identity SIG {
+    base ianadns:data-rrtype;
+    description
+      "SEcurity signature.
+
+       Value of this RR is 24.";
+    reference
+      "RFC 4034, RFC 3755, RFC 2535, RFC 2536, RFC 2537, RFC 2931,
+       RFC 3110, RFC 3008";
+  }
+
+  identity KEY {
+    base ianadns:data-rrtype;
+    description
+      "SeCurity key.
+
+       Value of this RR is 25.";
+    reference
+      "RFC 4034, RFC 3755, RFC 2535, RFC 2536, RFC 2537, RFC 2539,
+       RFC 3008, RFC 3110";
+  }
+
+  identity PX {
+    base ianadns:data-rrtype;
+    description
+      "X.400 mail mapping information.
+
+       Value of this RR is 26.";
+    reference
+      "RFC 2163";
+  }
+
+  identity GPOS {
+    base ianadns:data-rrtype;
+    description
+      "Geographical Position.
+
+       Value of this RR is 27.";
+    reference
+      "RFC 1712";
+  }
+
+  identity AAAA {
+    base ianadns:data-rrtype;
+    description
+      "IPv6 Address.
+
+       Value of this RR is 28.";
+    reference
+      "RFC 3596";
+  }
+
+  identity LOC {
+    base ianadns:data-rrtype;
+    description
+      "Location Information.
+
+       Value of this RR is 29.";
+    reference
+      "RFC 1876";
+  }
+
+  identity NXT {
+    base ianadns:data-rrtype;
+    status "obsolete";
+    description
+      "Next Domain (obsolete).
+
+       Value of this RR is 30.";
+    reference
+      "RFC 3755, RFC 2535";
+  }
+
+  identity EID {
+    base ianadns:data-rrtype;
+    description
+      "Endpoint Identifier.
+
+       Value of this RR is 31.";
+  }
+
+  identity NIMLOC {
+    base ianadns:data-rrtype;
+    description
+      "Nimrod Locator.
+
+       Value of this RR is 32.";
+  }
+
+  identity SRV {
+    base ianadns:data-rrtype;
+    description
+      "Server Selection.
+
+       Value of this RR is 33.";
+    reference
+      "RFC 2782";
+  }
+
+  identity ATMA {
+    base ianadns:data-rrtype;
+    description
+      "ATM Address.
+
+       Value of this RR is 34.";
+  }
+
+  identity NAPTR {
+    base ianadns:data-rrtype;
+    description
+      "Naming Authority Pointer.
+
+       Value of this RR is 35.";
+    reference
+      "RFC 2915, RFC 2168, RFC 3403";
+  }
+
+  identity KX {
+    base ianadns:data-rrtype;
+    description
+      "Key Exchanger.
+
+       Value of this RR is 36.";
+    reference
+      "RFC 2230";
+  }
+
+  identity CERT {
+    base ianadns:data-rrtype;
+    description
+      "CERT.
+
+       Value of this RR is 37.";
+    reference
+      "RFC 4398";
+  }
+
+  identity A6 {
+    base ianadns:data-rrtype;
+    status "obsolete";
+    description
+      "A6 (obsolete – use AAAA).
+
+       Value of this RR is 38.";
+    reference
+      "RFC 3226, RFC 2874, RFC 6563";
+  }
+
+  identity DNAME {
+    base ianadns:data-rrtype;
+    description
+      "DNAME.
+
+       Value of this RR is 39.";
+    reference
+      "RFC 6672";
+  }
+
+  identity SINK {
+    base ianadns:data-rrtype;
+    description
+      "SINK.
+
+       Value of this RR is 40.";
+  }
+
+  identity OPT {
+    base ianadns:q-meta-rrtype;
+    description
+      "OPT.
+
+       Value of this RR is 41.";
+    reference
+      "RFC 6891, RFC 3225";
+  }
+
+  identity APL {
+    base ianadns:data-rrtype;
+    description
+      "APL.
+
+       Value of this RR is 42.";
+    reference
+      "RFC 3123";
+  }
+
+  identity DS {
+    base ianadns:data-rrtype;
+    description
+      "Delegation Signer.
+
+       Value of this RR is 43.";
+    reference
+      "RFC 4034, RFC 3658";
+  }
+
+  identity SSHFP {
+    base ianadns:data-rrtype;
+    description
+      "SSH Key Fingerprint.
+
+       Value of this RR is 44.";
+    reference
+      "RFC 4255";
+  }
+
+  identity IPSECKEY {
+    base ianadns:data-rrtype;
+    description
+      "IPSec key.
+
+       Value of this RR is 45.";
+    reference
+      "RFC 4025";
+  }
+
+  identity RRSIG {
+    base ianadns:data-rrtype;
+    description
+      "RR signature.
+
+       Value of this RR is 46.";
+    reference
+      "RFC 4034, RFC 3755";
+  }
+
+  identity NSEC {
+    base ianadns:data-rrtype;
+    description
+      "NSEC.
+
+       Value of this RR is 47.";
+    reference
+      "RFC 4034, RFC 3755";
+  }
+
+  identity DNSKEY {
+    base ianadns:data-rrtype;
+    description
+      "DNSKEY.
+
+       Value of this RR is 48.";
+    reference
+      "RFC 4034, RFC 3755";
+  }
+
+  identity DHCID {
+    base ianadns:data-rrtype;
+    description
+      "DHCID.
+
+       Value of this RR is 49.";
+    reference
+      "RFC 4701";
+  }
+
+  identity NSEC3 {
+    base ianadns:data-rrtype;
+    description
+      "NSEC3.
+
+       Value of this RR is 50.";
+    reference
+      "RFC 5155";
+  }
+
+  identity NSEC3PARAM {
+    base ianadns:data-rrtype;
+    description
+      "NSEC3PARAM.
+
+       Value of this RR is 51.";
+    reference
+      "RFC 5155";
+  }
+
+  identity TLSA {
+    base ianadns:data-rrtype;
+    description
+      "TLSA.
+
+       Value of this RR is 52.";
+    reference
+      "RFC 6698";
+  }
+
+  identity HIP {
+    base ianadns:data-rrtype;
+    description
+      "Host Identity Protocol.
+
+       Value of this RR is 55.";
+    reference
+      "RFC 5205";
+  }
+
+  identity NINFO {
+    base ianadns:data-rrtype;
+    description
+      "NINFO.
+
+       Value of this RR is 56.";
+  }
+
+  identity RKEY {
+    base ianadns:data-rrtype;
+    description
+      "RKEY.
+
+       Value of this RR is 57.";
+  }
+
+  identity TALINK {
+    base ianadns:data-rrtype;
+    description
+      "Trust Anchor LINK.
+
+       Value of this RR is 58.";
+  }
+
+  identity CDS {
+    base ianadns:data-rrtype;
+    description
+      "Child DS.
+
+       Value of this RR is 59.";
+    reference
+      "RFC 7344";
+  }
+
+  identity CDNSKEY {
+    base ianadns:data-rrtype;
+    description
+      "DNSKEY(s) the Child wants reflected in DS.
+
+       Value of this RR is 60.";
+    reference
+      "RFC 7344";
+  }
+
+  identity OPENPGPKEY {
+    base ianadns:data-rrtype;
+    description
+      "OpenPGP Key.
+
+       Value of this RR is 61.";
+  }
+
+  identity CSYNC {
+    base ianadns:data-rrtype;
+    description
+      "Child-To-Parent Synchronization.
+
+       Value of this RR is 62.";
+    reference
+      "RFC 7477";
+  }
+
+  identity SPF {
+    base ianadns:data-rrtype;
+    description
+      "Value of this RR is 99.";
+    reference
+      "RFC 7208";
+  }
+
+  identity UINFO {
+    base ianadns:data-rrtype;
+    description
+      "Value of this RR is 100.";
+  }
+
+  identity UID {
+    base ianadns:data-rrtype;
+    description
+      "Value of this RR is 101.";
+  }
+
+  identity GID {
+    base ianadns:data-rrtype;
+    description
+      "Value of this RR is 102.";
+  }
+
+  identity UNSPEC {
+    base ianadns:data-rrtype;
+    description
+      "Value of this RR is 103.";
+  }
+
+  identity NID {
+    base ianadns:data-rrtype;
+    description
+      "Value of this RR is 104.";
+    reference
+      "RFC 6742";
+  }
+
+  identity L32 {
+    base ianadns:data-rrtype;
+    description
+      "Value of this RR is 105.";
+    reference
+      "RFC 6742";
+  }
+
+  identity L64 {
+    base ianadns:data-rrtype;
+    description
+      "Value of this RR is 106.";
+    reference
+      "RFC 6742";
+  }
+
+  identity LP {
+    base ianadns:data-rrtype;
+    description
+      "Value of this RR is 107.";
+    reference
+      "RFC 6742";
+  }
+
+  identity EUI48 {
+    base ianadns:data-rrtype;
+    description
+      "An EUI-48 address.
+
+       Value of this RR is 108.";
+    reference
+      "RFC 7043";
+  }
+
+  identity EUI64 {
+    base ianadns:data-rrtype;
+    description
+      "An EUI-64 address.
+
+       Value of this RR is 109.";
+    reference
+      "RFC 7043";
+  }
+
+  identity TKEY {
+    base ianadns:q-meta-rrtype;
+    description
+      "Transaction Key.
+
+       Value of this RR is 249.";
+    reference
+      "RFC 2930";
+  }
+
+  identity TSIG {
+    base ianadns:q-meta-rrtype;
+    description
+      "Transaction Signature.
+
+       Value of this RR is 250.";
+    reference
+      "RFC 2845";
+  }
+
+  identity IXFR {
+    base ianadns:q-meta-rrtype;
+    description
+      "Incremental transfer.
+
+       Value of this RR is 251.";
+    reference
+      "RFC 1995";
+  }
+
+  identity AXFR {
+    base ianadns:q-meta-rrtype;
+    description
+      "Transfer of an entire zone.
+
+       Value of this RR is 252.";
+    reference
+      "RFC 1035, RFC 5936";
+  }
+
+  identity MAILB {
+    base ianadns:q-meta-rrtype;
+    description
+      "Mailbox-related RRs (MB, MG or MR).
+
+       Value of this RR is 253.";
+    reference
+      "RFC 1035";
+  }
+
+  identity MAILA {
+    base ianadns:q-meta-rrtype;
+    status "obsolete";
+    description
+      "Mail agent RRs (obsolete – see MX).
+
+       Value of this RR is 254.";
+    reference
+      "RFC 1035";
+  }
+
+  identity ANY {
+    base ianadns:q-meta-rrtype;
+    description
+      "A request for all records the server/cache has available.
+
+       Value of this RR is 255.";
+    reference
+      "RFC 1035, RFC 6895";
+  }
+
+  identity URI {
+    base ianadns:data-rrtype;
+    description
+      "URI.
+
+       Value of this RR is 256.";
+    reference
+      "RFC 7553";
+  }
+
+  identity CAA {
+    base ianadns:data-rrtype;
+    description
+      "Certification Authority Restriction.
+
+       Value of this RR is 257.";
+    reference
+      "RFC 6844";
+  }
+
+  identity TA {
+    base ianadns:data-rrtype;
+    description
+      "DNSSEC Trust Authorities.
+
+       Value of this RR is 32768.";
+  }
+
+  identity DLV {
+    base ianadns:data-rrtype;
+    description
+      "DNSSEC Lookaside Validation.
+
+       Value of this RR is 32769.";
+    reference
+      "RFC 4431";
+  }
+}

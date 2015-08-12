@@ -1,0 +1,1146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<module name="iana-dns-parameters"
+        xmlns="urn:ietf:params:xml:ns:yang:yin:1"
+        xmlns:tsig="http://www.nic.cz/ns/yang/iana-dns-parameters"
+        xmlns:h="http://www.w3.org/1999/xhtml">
+  <namespace uri="http://www.nic.cz/ns/yang/iana-dns-parameters"/>
+  <prefix value="ianadns"/>
+  <organization>
+    <text>CZ.NIC, z. s. p. o.</text>
+  </organization>
+  <contact>
+    <text>
+      <h:p>
+        Editor:   Ladislav Lhotka<h:br/>
+                  &lt;mailto:lhotka@nic.cz&gt;
+      </h:p>
+    </text>
+  </contact>
+  <description>
+    <text>
+      <h:p>This module provides several data types that are used in
+      DNS zones.</h:p>
+    </text>
+  </description>
+  <reference>
+    <text>
+      <h:p>IANA: Domain Name System (DNS) Parameters.<h:br/>
+      http://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml</h:p>
+    </text>
+  </reference>
+  <revision date="2015-08-11">
+    <description>
+      <text>Initial revision.</text>
+    </description>
+  </revision>
+
+  <typedef name="class">
+    <description>
+      <text>DNS RR classes.</text>
+    </description>
+    <type name="enumeration">
+      <enum name="IN">
+	<value value="1"/>
+	<description>
+	  <text>Internet</text>
+	</description>
+      </enum>
+      <enum name="CH">
+	<value value="3"/>
+	<description>
+	  <text>Chaos</text>
+	</description>
+      </enum>
+      <enum name="HS">
+	<value value="4"/>
+	<description>
+	  <text>Hesiod</text>
+	</description>
+      </enum>
+      <enum name="NONE">
+	<value value="254"/>
+	<description>
+	  <text>QCLASS NONE - only meaningful in queries</text>
+	</description>
+	<reference>
+	  <text>
+	    RFC 2136: Dynamic Updates in the Domain Name System (DNS
+	    UPDATE)
+	  </text>
+	</reference>
+      </enum>
+      <enum name="ANY">
+	<value value="255"/>
+	<description>
+	  <text>QCLASS * (ANY) - only meaningful in queries</text>
+	</description>
+	<reference>
+	  <text>
+	    RFC 1035: Domain Names - Implementation and Specification
+	  </text>
+	</reference>
+      </enum>
+    </type>
+  </typedef>
+
+  <identity name="rrtype">
+    <description>
+      <text>
+	Base identity from which DNS RRTYPEs are derived.
+      </text>
+    </description>
+  </identity>
+
+  <identity name="data-rrtype">
+    <base name="ianadns:rrtype"/>
+    <description>
+      <text>
+	Base identity from which data RRTYPEs are derived. These
+	RRTYPEs are use for storing zone data.
+      </text>
+    </description>
+  </identity>
+
+  <identity name="q-meta-rrtype">
+    <base name="ianadns:rrtype"/>
+    <description>
+      <text>
+	<h:p>Base identity from which special RRTYPEs are
+	derived:</h:p>
+	<h:ul>
+	  <h:li>QTYPEs – used only in queries.</h:li>
+	  <h:li>Meta-TYPEs – designate transient data associated with
+	  a particular DNS message and, in some cases, can also be
+	  used in queries.</h:li>
+	</h:ul>
+      </text>
+    </description>
+  </identity>
+
+  <identity name="A">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>A host address.</h:p>
+        <h:p>Value of this RR is 1.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 1035</text>
+    </reference>
+  </identity>
+
+  <identity name="NS">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>An authoritative name server.</h:p>
+        <h:p>Value of this RR is 2.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 1035</text>
+    </reference>
+  </identity>
+
+  <identity name="MD">
+    <base name="ianadns:data-rrtype"/>
+    <status value="obsolete"/>
+    <description>
+      <text>
+        <h:p>A mail destination (obsolete – use MX).</h:p>
+        <h:p>Value of this RR is 3.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 1035</text>
+    </reference>
+  </identity>
+
+  <identity name="MF">
+    <base name="ianadns:data-rrtype"/>
+    <status value="obsolete"/>
+    <description>
+      <text>
+        <h:p>A mail forwarder (obsolete – use MX).</h:p>
+        <h:p>Value of this RR is 4.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 1035</text>
+    </reference>
+  </identity>
+
+  <identity name="CNAME">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>The canonical name for an alias.</h:p>
+        <h:p>Value of this RR is 5.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 1035</text>
+    </reference>
+  </identity>
+
+  <identity name="SOA">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>Marks the start of a zone of authority.</h:p>
+        <h:p>Value of this RR is 6.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 1035</text>
+    </reference>
+  </identity>
+
+  <identity name="MB">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>A mailbox domain name (experimental).</h:p>
+        <h:p>Value of this RR is 7.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 1035</text>
+    </reference>
+  </identity>
+
+  <identity name="MG">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>A mail group member (experimental).</h:p>
+        <h:p>Value of this RR is 8.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 1035</text>
+    </reference>
+  </identity>
+
+  <identity name="MR">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>A mail rename domain name (experimental).</h:p>
+        <h:p>Value of this RR is 9.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 1035</text>
+    </reference>
+  </identity>
+
+  <identity name="NULL">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>A null RR (experimental).</h:p>
+        <h:p>Value of this RR is 10.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 1035</text>
+    </reference>
+  </identity>
+
+  <identity name="WKS">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>A well known service description.</h:p>
+        <h:p>Value of this RR is 11.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 1035</text>
+    </reference>
+  </identity>
+
+  <identity name="PTR">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>A domain name pointer.</h:p>
+        <h:p>Value of this RR is 12.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 1035</text>
+    </reference>
+  </identity>
+
+  <identity name="HINFO">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>Host information.</h:p>
+        <h:p>Value of this RR is 13.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 1035</text>
+    </reference>
+  </identity>
+
+  <identity name="MINFO">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>Mailbox or mail list information.</h:p>
+        <h:p>Value of this RR is 14.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 1035</text>
+    </reference>
+  </identity>
+
+  <identity name="MX">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>Mail exchange.</h:p>
+        <h:p>Value of this RR is 15.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 1035</text>
+    </reference>
+  </identity>
+
+  <identity name="TXT">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>Text strings.</h:p>
+        <h:p>Value of this RR is 16.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 1035</text>
+    </reference>
+  </identity>
+
+  <identity name="RP">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>Responsible Person.</h:p>
+        <h:p>Value of this RR is 17.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 1183</text>
+    </reference>
+  </identity>
+
+  <identity name="AFSDB">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>Afs Data Base location.</h:p>
+        <h:p>Value of this RR is 18.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 1183, RFC 5864</text>
+    </reference>
+  </identity>
+
+  <identity name="X25">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>X.25 PSDN address.</h:p>
+        <h:p>Value of this RR is 19.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 1183</text>
+    </reference>
+  </identity>
+
+  <identity name="ISDN">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>Isdn address.</h:p>
+        <h:p>Value of this RR is 20.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 1183</text>
+    </reference>
+  </identity>
+
+  <identity name="RT">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>Route Through.</h:p>
+        <h:p>Value of this RR is 21.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 1183</text>
+    </reference>
+  </identity>
+
+  <identity name="NSAP">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>Nsap address, NSAP style A record.</h:p>
+        <h:p>Value of this RR is 22.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 1706</text>
+    </reference>
+  </identity>
+
+  <identity name="NSAP-PTR">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>Domain name pointer, NSAP style.</h:p>
+        <h:p>Value of this RR is 23.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 1348, RFC 1637, RFC 1706</text>
+    </reference>
+  </identity>
+
+  <identity name="SIG">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>SEcurity signature.</h:p>
+        <h:p>Value of this RR is 24.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 4034, RFC 3755, RFC 2535, RFC 2536, RFC 2537, RFC 2931, RFC 3110, RFC 3008</text>
+    </reference>
+  </identity>
+
+  <identity name="KEY">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>SeCurity key.</h:p>
+        <h:p>Value of this RR is 25.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 4034, RFC 3755, RFC 2535, RFC 2536, RFC 2537, RFC 2539, RFC 3008, RFC 3110</text>
+    </reference>
+  </identity>
+
+  <identity name="PX">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>X.400 mail mapping information.</h:p>
+        <h:p>Value of this RR is 26.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 2163</text>
+    </reference>
+  </identity>
+
+  <identity name="GPOS">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>Geographical Position.</h:p>
+        <h:p>Value of this RR is 27.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 1712</text>
+    </reference>
+  </identity>
+
+  <identity name="AAAA">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>IPv6 Address.</h:p>
+        <h:p>Value of this RR is 28.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 3596</text>
+    </reference>
+  </identity>
+
+  <identity name="LOC">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>Location Information.</h:p>
+        <h:p>Value of this RR is 29.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 1876</text>
+    </reference>
+  </identity>
+
+  <identity name="NXT">
+    <base name="ianadns:data-rrtype"/>
+    <status value="obsolete"/>
+    <description>
+      <text>
+        <h:p>Next Domain (obsolete).</h:p>
+        <h:p>Value of this RR is 30.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 3755, RFC 2535</text>
+    </reference>
+  </identity>
+
+  <identity name="EID">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>Endpoint Identifier.</h:p>
+        <h:p>Value of this RR is 31.</h:p>
+      </text>
+    </description>
+  </identity>
+
+  <identity name="NIMLOC">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>Nimrod Locator.</h:p>
+        <h:p>Value of this RR is 32.</h:p>
+      </text>
+    </description>
+  </identity>
+
+  <identity name="SRV">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>Server Selection.</h:p>
+        <h:p>Value of this RR is 33.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 2782</text>
+    </reference>
+  </identity>
+
+  <identity name="ATMA">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>ATM Address.</h:p>
+        <h:p>Value of this RR is 34.</h:p>
+      </text>
+    </description>
+  </identity>
+
+  <identity name="NAPTR">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>Naming Authority Pointer.</h:p>
+        <h:p>Value of this RR is 35.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 2915, RFC 2168, RFC 3403</text>
+    </reference>
+  </identity>
+
+  <identity name="KX">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>Key Exchanger.</h:p>
+        <h:p>Value of this RR is 36.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 2230</text>
+    </reference>
+  </identity>
+
+  <identity name="CERT">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>CERT.</h:p>
+        <h:p>Value of this RR is 37.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 4398</text>
+    </reference>
+  </identity>
+
+  <identity name="A6">
+    <base name="ianadns:data-rrtype"/>
+    <status value="obsolete"/>
+    <description>
+      <text>
+        <h:p>A6 (obsolete – use AAAA).</h:p>
+        <h:p>Value of this RR is 38.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 3226, RFC 2874, RFC 6563</text>
+    </reference>
+  </identity>
+
+  <identity name="DNAME">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>DNAME.</h:p>
+        <h:p>Value of this RR is 39.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 6672</text>
+    </reference>
+  </identity>
+
+  <identity name="SINK">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>SINK.</h:p>
+        <h:p>Value of this RR is 40.</h:p>
+      </text>
+    </description>
+  </identity>
+
+  <identity name="OPT">
+    <base name="ianadns:q-meta-rrtype"/>
+    <description>
+      <text>
+        <h:p>OPT.</h:p>
+        <h:p>Value of this RR is 41.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 6891, RFC 3225</text>
+    </reference>
+  </identity>
+
+  <identity name="APL">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>APL.</h:p>
+        <h:p>Value of this RR is 42.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 3123</text>
+    </reference>
+  </identity>
+
+  <identity name="DS">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>Delegation Signer.</h:p>
+        <h:p>Value of this RR is 43.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 4034, RFC 3658</text>
+    </reference>
+  </identity>
+
+  <identity name="SSHFP">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>SSH Key Fingerprint.</h:p>
+        <h:p>Value of this RR is 44.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 4255</text>
+    </reference>
+  </identity>
+
+  <identity name="IPSECKEY">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>IPSec key.</h:p>
+        <h:p>Value of this RR is 45.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 4025</text>
+    </reference>
+  </identity>
+
+  <identity name="RRSIG">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>RR signature.</h:p>
+        <h:p>Value of this RR is 46.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 4034, RFC 3755</text>
+    </reference>
+  </identity>
+
+  <identity name="NSEC">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>NSEC.</h:p>
+        <h:p>Value of this RR is 47.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 4034, RFC 3755</text>
+    </reference>
+  </identity>
+
+  <identity name="DNSKEY">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>DNSKEY.</h:p>
+        <h:p>Value of this RR is 48.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 4034, RFC 3755</text>
+    </reference>
+  </identity>
+
+  <identity name="DHCID">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>DHCID.</h:p>
+        <h:p>Value of this RR is 49.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 4701</text>
+    </reference>
+  </identity>
+
+  <identity name="NSEC3">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>NSEC3.</h:p>
+        <h:p>Value of this RR is 50.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 5155</text>
+    </reference>
+  </identity>
+
+  <identity name="NSEC3PARAM">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>NSEC3PARAM.</h:p>
+        <h:p>Value of this RR is 51.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 5155</text>
+    </reference>
+  </identity>
+
+  <identity name="TLSA">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>TLSA.</h:p>
+        <h:p>Value of this RR is 52.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 6698</text>
+    </reference>
+  </identity>
+
+  <identity name="HIP">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>Host Identity Protocol.</h:p>
+        <h:p>Value of this RR is 55.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 5205</text>
+    </reference>
+  </identity>
+
+  <identity name="NINFO">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>NINFO.</h:p>
+        <h:p>Value of this RR is 56.</h:p>
+      </text>
+    </description>
+  </identity>
+
+  <identity name="RKEY">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>RKEY.</h:p>
+        <h:p>Value of this RR is 57.</h:p>
+      </text>
+    </description>
+  </identity>
+
+  <identity name="TALINK">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>Trust Anchor LINK.</h:p>
+        <h:p>Value of this RR is 58.</h:p>
+      </text>
+    </description>
+  </identity>
+
+  <identity name="CDS">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>Child DS.</h:p>
+        <h:p>Value of this RR is 59.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 7344</text>
+    </reference>
+  </identity>
+
+  <identity name="CDNSKEY">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>DNSKEY(s) the Child wants reflected in DS.</h:p>
+        <h:p>Value of this RR is 60.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 7344</text>
+    </reference>
+  </identity>
+
+  <identity name="OPENPGPKEY">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>OpenPGP Key.</h:p>
+        <h:p>Value of this RR is 61.</h:p>
+      </text>
+    </description>
+  </identity>
+
+  <identity name="CSYNC">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>Child-To-Parent Synchronization.</h:p>
+        <h:p>Value of this RR is 62.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 7477</text>
+    </reference>
+  </identity>
+
+  <identity name="SPF">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>Value of this RR is 99.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 7208</text>
+    </reference>
+  </identity>
+
+  <identity name="UINFO">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>Value of this RR is 100.</h:p>
+      </text>
+    </description>
+  </identity>
+
+  <identity name="UID">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>Value of this RR is 101.</h:p>
+      </text>
+    </description>
+  </identity>
+
+  <identity name="GID">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>Value of this RR is 102.</h:p>
+      </text>
+    </description>
+  </identity>
+
+  <identity name="UNSPEC">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>Value of this RR is 103.</h:p>
+      </text>
+    </description>
+  </identity>
+
+  <identity name="NID">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>Value of this RR is 104.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 6742</text>
+    </reference>
+  </identity>
+
+  <identity name="L32">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>Value of this RR is 105.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 6742</text>
+    </reference>
+  </identity>
+
+  <identity name="L64">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>Value of this RR is 106.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 6742</text>
+    </reference>
+  </identity>
+
+  <identity name="LP">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>Value of this RR is 107.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 6742</text>
+    </reference>
+  </identity>
+
+  <identity name="EUI48">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>An EUI-48 address.</h:p>
+        <h:p>Value of this RR is 108.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 7043</text>
+    </reference>
+  </identity>
+
+  <identity name="EUI64">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>An EUI-64 address.</h:p>
+        <h:p>Value of this RR is 109.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 7043</text>
+    </reference>
+  </identity>
+
+  <identity name="TKEY">
+    <base name="ianadns:q-meta-rrtype"/>
+    <description>
+      <text>
+        <h:p>Transaction Key.</h:p>
+        <h:p>Value of this RR is 249.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 2930</text>
+    </reference>
+  </identity>
+
+  <identity name="TSIG">
+    <base name="ianadns:q-meta-rrtype"/>
+    <description>
+      <text>
+        <h:p>Transaction Signature.</h:p>
+        <h:p>Value of this RR is 250.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 2845</text>
+    </reference>
+  </identity>
+
+  <identity name="IXFR">
+    <base name="ianadns:q-meta-rrtype"/>
+    <description>
+      <text>
+        <h:p>Incremental transfer.</h:p>
+        <h:p>Value of this RR is 251.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 1995</text>
+    </reference>
+  </identity>
+
+  <identity name="AXFR">
+    <base name="ianadns:q-meta-rrtype"/>
+    <description>
+      <text>
+        <h:p>Transfer of an entire zone.</h:p>
+        <h:p>Value of this RR is 252.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 1035, RFC 5936</text>
+    </reference>
+  </identity>
+
+  <identity name="MAILB">
+    <base name="ianadns:q-meta-rrtype"/>
+    <description>
+      <text>
+        <h:p>Mailbox-related RRs (MB, MG or MR).</h:p>
+        <h:p>Value of this RR is 253.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 1035</text>
+    </reference>
+  </identity>
+
+  <identity name="MAILA">
+    <base name="ianadns:q-meta-rrtype"/>
+    <status value="obsolete"/>
+    <description>
+      <text>
+        <h:p>Mail agent RRs (obsolete – see MX).</h:p>
+        <h:p>Value of this RR is 254.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 1035</text>
+    </reference>
+  </identity>
+
+  <identity name="ANY">
+    <base name="ianadns:q-meta-rrtype"/>
+    <description>
+      <text>
+        <h:p>A request for all records the server/cache has
+        available.</h:p>
+        <h:p>Value of this RR is 255.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 1035, RFC 6895</text>
+    </reference>
+  </identity>
+
+  <identity name="URI">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>URI.</h:p>
+        <h:p>Value of this RR is 256.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 7553</text>
+    </reference>
+  </identity>
+
+  <identity name="CAA">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>Certification Authority Restriction.</h:p>
+        <h:p>Value of this RR is 257.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 6844</text>
+    </reference>
+  </identity>
+
+  <identity name="TA">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>DNSSEC Trust Authorities.</h:p>
+        <h:p>Value of this RR is 32768.</h:p>
+      </text>
+    </description>
+  </identity>
+
+  <identity name="DLV">
+    <base name="ianadns:data-rrtype"/>
+    <description>
+      <text>
+        <h:p>DNSSEC Lookaside Validation.</h:p>
+        <h:p>Value of this RR is 32769.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>RFC 4431</text>
+    </reference>
+  </identity>
+
+  <!-- TODO: remaining IANA parameters -->
+  
+</module>

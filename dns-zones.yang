@@ -8,8 +8,8 @@ module dns-zones {
     prefix "inet";
   }
 
-  import dns-types {
-    prefix "dnst";
+  import iana-dns-parameters {
+    prefix "ianadns";
   }
 
   organization
@@ -57,11 +57,11 @@ module dns-zones {
     }
     leaf type {
       type identityref {
-        base dnst:rr-type;
+        base ianadns:data-rrtype;
       }
     }
     leaf class {
-      type dnst:class;
+      type ianadns:class;
     }
     leaf ttl {
       type positive-int32;

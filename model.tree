@@ -6,20 +6,20 @@ module: dns-zones
          |  +--rw id             string
          |  +--rw domain-name?   inet:domain-name
          |  +--rw type?          identityref
-         |  +--rw class?         dnst:class
+         |  +--rw class?         ianadns:class
          |  +--rw ttl?           positive-int32
          |  +--rw rdlength?      uint16
          +--rw rrset* [id]
             +--rw id                 string
             +--rw domain-name?       inet:domain-name
             +--rw type?              identityref
-            +--rw class?             dnst:class
+            +--rw class?             ianadns:class
             +--rw ttl?               positive-int32
             +--rw rdlength?          uint16
             +--rw resource-record* [id]
                +--rw id             string
                +--rw domain-name?   inet:domain-name
                +--rw type?          identityref
-               +--rw class?         dnst:class
+               +--rw class?         ianadns:class
                +--rw ttl?           positive-int32
                +--rw rdlength?      uint16
