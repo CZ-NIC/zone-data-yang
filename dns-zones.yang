@@ -37,6 +37,16 @@ module dns-zones {
 
   /* Groupings */
 
+  grouping description {
+    description
+      "This grouping defines a reusable description (comment).";
+    leaf description {
+      type string;
+      description
+        "Description of the parent item.";
+    }
+  }
+
   grouping entry-id {
     description
       "This grouping defines a leaf that is intended for use as a
@@ -48,64 +58,58 @@ module dns-zones {
     }
   }
 
-  grouping rdata {
-    description
-      "This grouping defines RDATA that are common to all RR
-       types.";
-    leaf domain-name {
-      type inet:domain-name;
-    }
-    leaf type {
-      type identityref {
-        base ianadns:data-rrtype;
-      }
-    }
-    leaf class {
-      type ianadns:class;
-    }
-    leaf ttl {
-      type positive-int32;
-    }
-    leaf rdlength {
-      type uint16;
-    }
-  }
-
-  grouping dns-rr {
-    description
-      "This grouping defines a base schema for a list of DNS Resource
-       Records.";
-    list resource-record {
-      key "id";
-      description
-        "DNS Resource Record.";
-      uses entry-id;
-      uses rdata;
-    }
-  }
-
   /* Configuration data */
 
   container zones {
     description
       "Container for DNS zones.";
     list zone {
-      key "domain-name";
+      key "name";
       description
         "Data for a DNS zone.";
-      leaf domain-name {
+      leaf name {
         type inet:domain-name;
         description
           "Zone name.";
       }
-      uses dns-rr;
+      uses description;
+      leaf class {
+        type ianadns:class;
+        default "IN";
+        description
+          "RR Class";
+      }
       list rrset {
-        key "id";
+        key "owner type";
+        min-elements "1";
         description
           "RRSet";
-        uses entry-id;
-        uses rdata;
-        uses dns-rr;
+        leaf owner {
+          type inet:domain-name;
+          description
+            "Owner of the RRSet (domain name) relative to the name of
+             the parent zone – i.e. the absolute domain name is
+             obtained by appending ../../name.";
+        }
+        leaf type {
+          type identityref {
+            base ianadns:data-rrtype;
+          }
+          description
+            "RR type";
+        }
+        uses description;
+        leaf ttl {
+          type positive-int32;
+          mandatory "true";
+          description
+            "TTL of all records in the RRSet.";
+        }
+        list rdata {
+          key "id";
+          uses entry-id;
+          uses description;
+        }
       }
     }
   }

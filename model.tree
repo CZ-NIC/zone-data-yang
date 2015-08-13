@@ -1,25 +1,14 @@
 module: dns-zones
    +--rw zones
-      +--rw zone* [domain-name]
-         +--rw domain-name        inet:domain-name
-         +--rw resource-record* [id]
-         |  +--rw id             string
-         |  +--rw domain-name?   inet:domain-name
-         |  +--rw type?          identityref
-         |  +--rw class?         ianadns:class
-         |  +--rw ttl?           positive-int32
-         |  +--rw rdlength?      uint16
-         +--rw rrset* [id]
-            +--rw id                 string
-            +--rw domain-name?       inet:domain-name
-            +--rw type?              identityref
-            +--rw class?             ianadns:class
-            +--rw ttl?               positive-int32
-            +--rw rdlength?          uint16
-            +--rw resource-record* [id]
+      +--rw zone* [name]
+         +--rw name           inet:domain-name
+         +--rw description?   string
+         +--rw class?         ianadns:class
+         +--rw rrset* [owner type]
+            +--rw owner          inet:domain-name
+            +--rw type           identityref
+            +--rw description?   string
+            +--rw ttl            positive-int32
+            +--rw rdata* [id]
                +--rw id             string
-               +--rw domain-name?   inet:domain-name
-               +--rw type?          identityref
-               +--rw class?         ianadns:class
-               +--rw ttl?           positive-int32
-               +--rw rdlength?      uint16
+               +--rw description?   string

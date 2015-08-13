@@ -43,6 +43,22 @@
   
   <!-- Groupings -->
 
+  <grouping name="description">
+    <description>
+      <text>
+	This grouping defines a reusable description (comment).
+      </text>
+    </description>
+    <leaf name="description">
+      <type name="string"/>
+      <description>
+	<text>
+	  Description of the parent item.
+	</text>
+      </description>
+    </leaf>
+  </grouping>
+  
   <grouping name="entry-id">
     <description>
       <text>
@@ -60,51 +76,6 @@
     </leaf>
   </grouping>
 
-  <grouping name="rdata">
-    <description>
-      <text>
-	<h:p>This grouping defines RDATA that are common to all RR
-	types.</h:p>
-      </text>
-    </description>
-    <leaf name="domain-name">
-      <type name="inet:domain-name"/>
-    </leaf>
-    <leaf name="type">
-      <type name="identityref">
-	<base name="ianadns:data-rrtype"/>
-      </type>
-    </leaf>
-    <leaf name="class">
-      <type name="ianadns:class"/>
-    </leaf>
-    <leaf name="ttl">
-      <type name="positive-int32"/>
-    </leaf>
-    <leaf name="rdlength">
-      <type name="uint16"/>
-    </leaf>
-  </grouping>
-  
-  <grouping name="dns-rr">
-    <description>
-      <text>
-	<h:p>This grouping defines a base schema for a list of DNS
-	Resource Records.</h:p>
-      </text>
-    </description>
-    <list name="resource-record">
-      <key value="id"/>
-      <description>
-	<text>
-	  DNS Resource Record.
-	</text>
-      </description>
-      <uses name="entry-id"/>
-      <uses name="rdata"/>
-    </list>
-  </grouping>
-
   <!-- Configuration data -->
 
   <container name="zones">
@@ -114,13 +85,13 @@
       </text>
     </description>
     <list name="zone">
-      <key value="domain-name"/>
+      <key value="name"/>
       <description>
 	<text>
 	  Data for a DNS zone.
 	</text>
       </description>
-      <leaf name="domain-name">
+      <leaf name="name">
 	<description>
 	  <text>
 	    Zone name.
@@ -128,15 +99,53 @@
 	</description>
 	<type name="inet:domain-name"/>
       </leaf>
-      <uses name="dns-rr"/>
+      <uses name="description"/>
+      <leaf name="class">
+	<type name="ianadns:class"/>
+	<default value="IN"/>
+	<description>
+	  <text>RR Class</text>
+	</description>
+      </leaf>
       <list name="rrset">
-	<key value="id"/>
+	<key value="owner type"/>
+	<min-elements value="1"/>
 	<description>
 	  <text>RRSet</text>
 	</description>
-	<uses name="entry-id"/>
-	<uses name="rdata"/>
-	<uses name="dns-rr"/>
+	<leaf name="owner">
+	  <type name="inet:domain-name"/>
+	  <description>
+	    <text>
+	      Owner of the RRSet (domain name) relative to the
+	      name of the parent zone – i.e. the absolute domain name
+	      is obtained by appending ../../name.
+	    </text>
+	  </description>
+	</leaf>
+	<leaf name="type">
+	  <type name="identityref">
+	    <base name="ianadns:data-rrtype"/>
+	  </type>
+	  <description>
+	    <text>RR type</text>
+	  </description>
+	</leaf>
+	<uses name="description"/>
+	<leaf name="ttl">
+	  <type name="positive-int32"/>
+	  <mandatory value="true"/>
+	  <description>
+	    <text>
+	      TTL of all records in the RRSet.
+	    </text>
+	  </description>
+	</leaf>
+	<list name="rdata">
+	  <key value="id"/>
+	  <uses name="entry-id"/>
+	  <uses name="description"/>
+	</list>
       </list>
     </list>
   </container>
