@@ -8,7 +8,50 @@ module: dns-zones
             +--rw owner          inet:domain-name
             +--rw type           identityref
             +--rw description?   string
-            +--rw ttl            positive-int32
+            +--rw ttl            time-interval
             +--rw rdata* [id]
                +--rw id             string
                +--rw description?   string
+               +--rw a!
+               |  +--rw address    inet:ipv4-address-no-zone
+               +--rw cname!
+               |  +--rw cname    inet:domain-name
+               +--rw hinfo!
+               |  +--rw cpu    ascii-string
+               |  +--rw os     ascii-string
+               +--rw mb!
+               |  +--rw madname    inet:domain-name
+               +--rw md!
+               |  +--rw madname    inet:domain-name
+               +--rw mf!
+               |  +--rw madname    inet:domain-name
+               +--rw mg!
+               |  +--rw mgmname    inet:domain-name
+               +--rw minfo!
+               |  +--rw rmailbx    inet:domain-name
+               |  +--rw emailbx    inet:domain-name
+               +--rw mr!
+               |  +--rw newname    inet:domain-name
+               +--rw mx!
+               |  +--rw preference    uint16
+               |  +--rw exchange      inet:domain-name
+               +--rw ns!
+               |  +--rw nsdname    inet:domain-name
+               +--rw null!
+               |  +--rw data    binary
+               +--rw ptr!
+               |  +--rw ptrdname    inet:domain-name
+               +--rw soa!
+               |  +--rw mname      inet:domain-name
+               |  +--rw rname      inet:domain-name
+               |  +--rw serial     yang:counter32
+               |  +--rw refresh    time-interval
+               |  +--rw retry      time-interval
+               |  +--rw expire     time-interval
+               |  +--rw minimum    time-interval
+               +--rw txt!
+               |  +--rw txt-data    ascii-string
+               +--rw wks!
+                  +--rw address     inet:ipv4-address-no-zone
+                  +--rw protocol    uint8
+                  +--rw bitmap      binary

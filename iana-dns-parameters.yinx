@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <module name="iana-dns-parameters"
         xmlns="urn:ietf:params:xml:ns:yang:yin:1"
-        xmlns:tsig="http://www.nic.cz/ns/yang/iana-dns-parameters"
+        xmlns:ianadns="http://www.nic.cz/ns/yang/iana-dns-parameters"
         xmlns:h="http://www.w3.org/1999/xhtml">
   <namespace uri="http://www.nic.cz/ns/yang/iana-dns-parameters"/>
   <prefix value="ianadns"/>
