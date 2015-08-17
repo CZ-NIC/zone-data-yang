@@ -1,6 +1,6 @@
 MODULES = iana-dns-parameters dns-zones
 EXAMPLE_BASE = example
-EXAMPLE_TYPE = data
+EXAMPLE_TYPE = config
 baty = $(EXAMPLE_BASE)-$(EXAMPLE_TYPE)
 EXAMPLE_INST = $(baty).xml
 PYANG_OPTS =
