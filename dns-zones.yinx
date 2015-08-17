@@ -117,7 +117,7 @@
 	  Data for a DNS zone.
 	</text>
       </description>
-      <must condition="count(rrset[type='SOA']/rdata) = 1">
+      <must condition="count(rrset[type='ianadns:SOA']/rdata) = 1">
 	<description>
 	  <text>
 	    Each zone must have exactly one SOA RR.
@@ -181,18 +181,6 @@
 	</leaf>
 	<list name="rdata">
 	  <key value="id"/>
-	  <must condition="count(*) &gt; 0">
-	    <description>
-	      <text>
-		Container with RDATA must be present.
-	      </text>
-	    </description>
-	    <error-message>
-	      <value>
-		Missing RDATA
-	      </value>
-	    </error-message>
-	  </must>
 	  <uses name="entry-id"/>
 	  <uses name="description"/>
 	</list>

@@ -83,7 +83,7 @@ module dns-zones {
     description
       "Container for DNS zones.";
     list zone {
-      must "count(rrset[type='SOA']/rdata) = 1" {
+      must "count(rrset[type='ianadns:SOA']/rdata) = 1" {
         error-message "Exactly one SOA RR must be present.";
         description
           "Each zone must have exactly one SOA RR.";
@@ -130,11 +130,6 @@ module dns-zones {
             "TTL of all records in the RRSet.";
         }
         list rdata {
-          must "count(*) > 0" {
-            error-message "Missing RDATA";
-            description
-              "Container with RDATA must be present.";
-          }
           key "id";
           uses entry-id;
           uses description;
