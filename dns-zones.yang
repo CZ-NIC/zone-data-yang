@@ -147,376 +147,310 @@ module dns-zones {
 
   augment "/zones/zone/rrset/rdata" {
     when "../type = 'ianadns:A'";
-    container a {
-      presence "A RDATA";
+    description
+      "RDATA content for 'A' Resource Record.";
+    reference
+      "RFC 1035: Domain Names - Implementation and Specification.";
+    leaf address {
+      type inet:ipv4-address-no-zone;
+      mandatory "true";
       description
-        "RDATA content for 'A' Resource Record.";
-      reference
-        "RFC 1035: Domain Names - Implementation and
-         Specification.";
-      leaf address {
-        type inet:ipv4-address-no-zone;
-        mandatory "true";
-        description
-          "IPv4 address.";
-      }
+        "IPv4 address.";
     }
   }
 
   augment "/zones/zone/rrset/rdata" {
     when "../type = 'ianadns:CNAME'";
-    container cname {
-      presence "CNAME RDATA";
+    description
+      "RDATA content for 'CNAME' Resource Record.";
+    reference
+      "RFC 1035: Domain Names - Implementation and Specification.";
+    leaf cname {
+      type inet:domain-name;
+      mandatory "true";
       description
-        "RDATA content for 'CNAME' Resource Record.";
-      reference
-        "RFC 1035: Domain Names - Implementation and
-         Specification.";
-      leaf cname {
-        type inet:domain-name;
-        mandatory "true";
-        description
-          "Canonical or primary name for the owner.";
-      }
+        "Canonical or primary name for the owner.";
     }
   }
 
   augment "/zones/zone/rrset/rdata" {
     when "../type = 'ianadns:HINFO'";
-    container hinfo {
-      presence "HINFO RDATA";
+    description
+      "RDATA content for 'HINFO' Resource Record.";
+    reference
+      "RFC 1035: Domain Names - Implementation and Specification.";
+    leaf cpu {
+      type ascii-string;
+      mandatory "true";
       description
-        "RDATA content for 'HINFO' Resource Record.";
-      reference
-        "RFC 1035: Domain Names - Implementation and
-         Specification.";
-      leaf cpu {
-        type ascii-string;
-        mandatory "true";
-        description
-          "CPU type.";
-      }
-      leaf os {
-        type ascii-string;
-        mandatory "true";
-        description
-          "Operating system type.";
-      }
+        "CPU type.";
+    }
+    leaf os {
+      type ascii-string;
+      mandatory "true";
+      description
+        "Operating system type.";
     }
   }
 
   augment "/zones/zone/rrset/rdata" {
     when "../type = 'ianadns:MB'";
-    container mb {
-      presence "MB RDATA";
+    description
+      "RDATA content for 'MB' Resource Record.";
+    reference
+      "RFC 1035: Domain Names - Implementation and Specification.";
+    leaf mb-madname {
+      type inet:domain-name;
+      mandatory "true";
       description
-        "RDATA content for 'MB' Resource Record.";
-      reference
-        "RFC 1035: Domain Names - Implementation and
-         Specification.";
-      leaf madname {
-        type inet:domain-name;
-        mandatory "true";
-        description
-          "Host which has the specified mailbox.";
-      }
+        "Host which has the specified mailbox.";
     }
   }
 
   augment "/zones/zone/rrset/rdata" {
     when "../type = 'ianadns:MD'";
-    container md {
-      presence "MD RDATA";
+    description
+      "RDATA content for 'MD' Resource Record (obsolete, use MX).";
+    reference
+      "RFC 1035: Domain Names - Implementation and Specification.";
+    leaf md-madname {
+      type inet:domain-name;
+      mandatory "true";
       description
-        "RDATA content for 'MD' Resource Record (obsolete, use
-         MX).";
-      reference
-        "RFC 1035: Domain Names - Implementation and
-         Specification.";
-      leaf madname {
-        type inet:domain-name;
-        mandatory "true";
-        description
-          "Host which has a mail agent for the domain which should be
-           able to deliver mail for the domain.";
-      }
+        "Host which has a mail agent for the domain which should be
+         able to deliver mail for the domain.";
     }
   }
 
   augment "/zones/zone/rrset/rdata" {
     when "../type = 'ianadns:MF'";
-    container mf {
-      presence "MF RDATA";
+    description
+      "RDATA content for 'MF' Resource Record (obsolete, use MX).";
+    reference
+      "RFC 1035: Domain Names - Implementation and Specification.";
+    leaf mf-madname {
+      type inet:domain-name;
+      mandatory "true";
       description
-        "RDATA content for 'MF' Resource Record (obsolete, use
-         MX).";
-      reference
-        "RFC 1035: Domain Names - Implementation and
-         Specification.";
-      leaf madname {
-        type inet:domain-name;
-        mandatory "true";
-        description
-          "Host which has a mail agent for the domain which will
-           accept mail for forwarding to the domain.";
-      }
+        "Host which has a mail agent for the domain which will accept
+         mail for forwarding to the domain.";
     }
   }
 
   augment "/zones/zone/rrset/rdata" {
     when "../type = 'ianadns:MG'";
-    container mg {
-      presence "MG RDATA";
+    description
+      "RDATA content for 'MG' Resource Record.";
+    reference
+      "RFC 1035: Domain Names - Implementation and Specification.";
+    leaf mgmname {
+      type inet:domain-name;
+      mandatory "true";
       description
-        "RDATA content for 'MG' Resource Record.";
-      reference
-        "RFC 1035: Domain Names - Implementation and
-         Specification.";
-      leaf mgmname {
-        type inet:domain-name;
-        mandatory "true";
-        description
-          "Mailbox which is a member of the mail group specified by
-           the domain name.";
-      }
+        "Mailbox which is a member of the mail group specified by the
+         domain name.";
     }
   }
 
   augment "/zones/zone/rrset/rdata" {
     when "../type = 'ianadns:MINFO'";
-    container minfo {
-      presence "MINFO RDATA";
+    description
+      "RDATA content for 'MINFO' Resource Record.";
+    reference
+      "RFC 1035: Domain Names - Implementation and Specification.";
+    leaf rmailbx {
+      type inet:domain-name;
+      mandatory "true";
       description
-        "RDATA content for 'MINFO' Resource Record.";
-      reference
-        "RFC 1035: Domain Names - Implementation and
-         Specification.";
-      leaf rmailbx {
-        type inet:domain-name;
-        mandatory "true";
-        description
-          "Mailbox which is responsible for the mailing list or
-           mailbox.";
-      }
-      leaf emailbx {
-        type inet:domain-name;
-        mandatory "true";
-        description
-          "Mailbox which is to receive error messages related to the
-           mailing list or mailbox specified by the owner of the
-           MINFO RR.";
-      }
+        "Mailbox which is responsible for the mailing list or
+         mailbox.";
+    }
+    leaf emailbx {
+      type inet:domain-name;
+      mandatory "true";
+      description
+        "Mailbox which is to receive error messages related to the
+         mailing list or mailbox specified by the owner of the MINFO
+         RR.";
     }
   }
 
   augment "/zones/zone/rrset/rdata" {
     when "../type = 'ianadns:MR'";
-    container mr {
-      presence "MR RDATA";
+    description
+      "RDATA content for 'MR' Resource Record.";
+    reference
+      "RFC 1035: Domain Names - Implementation and Specification.";
+    leaf newname {
+      type inet:domain-name;
+      mandatory "true";
       description
-        "RDATA content for 'MR' Resource Record.";
-      reference
-        "RFC 1035: Domain Names - Implementation and
-         Specification.";
-      leaf newname {
-        type inet:domain-name;
-        mandatory "true";
-        description
-          "Mailbox which is the proper rename of the specified
-           mailbox.";
-      }
+        "Mailbox which is the proper rename of the specified
+         mailbox.";
     }
   }
 
   augment "/zones/zone/rrset/rdata" {
     when "../type = 'ianadns:MX'";
-    container mx {
-      presence "MX RDATA";
+    description
+      "RDATA content for 'MX' Resource Record.";
+    reference
+      "RFC 1035: Domain Names - Implementation and Specification.";
+    leaf preference {
+      type uint16;
+      mandatory "true";
       description
-        "RDATA content for 'MX' Resource Record.";
-      reference
-        "RFC 1035: Domain Names - Implementation and
-         Specification.";
-      leaf preference {
-        type uint16;
-        mandatory "true";
-        description
-          "Preference given to this RR among others at the same
-           owner. Lower values are preferred.";
-      }
-      leaf exchange {
-        type inet:domain-name;
-        mandatory "true";
-        description
-          "Host willing to act as a mail exchange for the owner
-           name.";
-      }
+        "Preference given to this RR among others at the same owner.
+         Lower values are preferred.";
+    }
+    leaf exchange {
+      type inet:domain-name;
+      mandatory "true";
+      description
+        "Host willing to act as a mail exchange for the owner
+         name.";
     }
   }
 
   augment "/zones/zone/rrset/rdata" {
     when "../type = 'ianadns:NS'";
-    container ns {
-      presence "NS RDATA";
+    description
+      "RDATA content for 'NS' Resource Record.";
+    reference
+      "RFC 1035: Domain Names - Implementation and Specification.";
+    leaf nsdname {
+      type inet:domain-name;
+      mandatory "true";
       description
-        "RDATA content for 'NS' Resource Record.";
-      reference
-        "RFC 1035: Domain Names - Implementation and
-         Specification.";
-      leaf nsdname {
-        type inet:domain-name;
-        mandatory "true";
-        description
-          "Host which should be authoritative for the specified
-           domain.";
-      }
+        "Host which should be authoritative for the specified
+         domain.";
     }
   }
 
   augment "/zones/zone/rrset/rdata" {
     when "../type = 'ianadns:NULL'";
-    container null {
-      presence "NULL RDATA";
-      description
-        "RDATA content for 'NULL' Resource Record.";
-      reference
-        "RFC 1035: Domain Names - Implementation and
-         Specification.";
-      leaf data {
-        type binary {
-          length "0..65535";
-        }
-        mandatory "true";
-        description
-          "Arbitrary data.";
+    description
+      "RDATA content for 'NULL' Resource Record.";
+    reference
+      "RFC 1035: Domain Names - Implementation and Specification.";
+    leaf data {
+      type binary {
+        length "0..65535";
       }
+      mandatory "true";
+      description
+        "Arbitrary data.";
     }
   }
 
   augment "/zones/zone/rrset/rdata" {
     when "../type = 'ianadns:PTR'";
-    container ptr {
-      presence "PTR RDATA";
+    description
+      "RDATA content for 'PTR' Resource Record.";
+    reference
+      "RFC 1035: Domain Names - Implementation and Specification.";
+    leaf ptrdname {
+      type inet:domain-name;
+      mandatory "true";
       description
-        "RDATA content for 'PTR' Resource Record.";
-      reference
-        "RFC 1035: Domain Names - Implementation and
-         Specification.";
-      leaf ptrdname {
-        type inet:domain-name;
-        mandatory "true";
-        description
-          "A pointer to some location in the domain name space.";
-      }
+        "A pointer to some location in the domain name space.";
     }
   }
 
   augment "/zones/zone/rrset/rdata" {
     when "../type = 'ianadns:SOA'";
-    container soa {
-      presence "SOA RDATA";
+    description
+      "RDATA content for 'SOA' Resource Record.";
+    reference
+      "RFC 1035: Domain Names - Implementation and Specification.";
+    leaf mname {
+      type inet:domain-name;
+      mandatory "true";
       description
-        "RDATA content for 'SOA' Resource Record.";
-      reference
-        "RFC 1035: Domain Names - Implementation and
-         Specification.";
-      leaf mname {
-        type inet:domain-name;
-        mandatory "true";
-        description
-          "Name server that was the original or primary source of
-           data for this zone.";
-      }
-      leaf rname {
-        type inet:domain-name;
-        mandatory "true";
-        description
-          "Mailbox of the person responsible for this zone.";
-      }
-      leaf serial {
-        type yang:counter32;
-        mandatory "true";
-        description
-          "Version number of the original copy of the zone.";
-      }
-      leaf refresh {
-        type time-interval;
-        mandatory "true";
-        description
-          "Time interval that should elapse before the zone should be
-           refreshed.";
-      }
-      leaf retry {
-        type time-interval;
-        mandatory "true";
-        description
-          "Time interval that should elapse before a failed refresh
-           should be retried.";
-      }
-      leaf expire {
-        type time-interval;
-        mandatory "true";
-        description
-          "Upper limit on the time interval that can elapse before
-           the zone is no longer authoritative.";
-      }
-      leaf minimum {
-        type time-interval;
-        mandatory "true";
-        description
-          "Minimum TTL that should be exported with any RR from this
-           zone.";
-      }
+        "Name server that was the original or primary source of data
+         for this zone.";
+    }
+    leaf rname {
+      type inet:domain-name;
+      mandatory "true";
+      description
+        "Mailbox of the person responsible for this zone.";
+    }
+    leaf serial {
+      type yang:counter32;
+      mandatory "true";
+      description
+        "Version number of the original copy of the zone.";
+    }
+    leaf refresh {
+      type time-interval;
+      mandatory "true";
+      description
+        "Time interval that should elapse before the zone should be
+         refreshed.";
+    }
+    leaf retry {
+      type time-interval;
+      mandatory "true";
+      description
+        "Time interval that should elapse before a failed refresh
+         should be retried.";
+    }
+    leaf expire {
+      type time-interval;
+      mandatory "true";
+      description
+        "Upper limit on the time interval that can elapse before the
+         zone is no longer authoritative.";
+    }
+    leaf minimum {
+      type time-interval;
+      mandatory "true";
+      description
+        "Minimum TTL that should be exported with any RR from this
+         zone.";
     }
   }
 
   augment "/zones/zone/rrset/rdata" {
     when "../type = 'ianadns:TXT'";
-    container txt {
-      presence "TXT RDATA";
+    description
+      "RDATA content for 'TXT' Resource Record.";
+    reference
+      "RFC 1035: Domain Names - Implementation and Specification.";
+    leaf txt-data {
+      type ascii-string;
+      mandatory "true";
       description
-        "RDATA content for 'TXT' Resource Record.";
-      reference
-        "RFC 1035: Domain Names - Implementation and
-         Specification.";
-      leaf txt-data {
-        type ascii-string;
-        mandatory "true";
-        description
-          "Descriptive text whose semantics depends on the domain
-           where it is found.";
-      }
+        "Descriptive text whose semantics depends on the domain where
+         it is found.";
     }
   }
 
   augment "/zones/zone/rrset/rdata" {
     when "../type = 'ianadns:WKS'";
-    container wks {
-      presence "WKS RDATA";
+    description
+      "RDATA content for 'WKS' Resource Record.";
+    reference
+      "RFC 1035: Domain Names - Implementation and Specification.";
+    leaf wks-address {
+      type inet:ipv4-address-no-zone;
+      mandatory "true";
       description
-        "RDATA content for 'WKS' Resource Record.";
-      reference
-        "RFC 1035: Domain Names - Implementation and
-         Specification.";
-      leaf address {
-        type inet:ipv4-address-no-zone;
-        mandatory "true";
-        description
-          "IPv4 address.";
-      }
-      leaf protocol {
-        type uint8;
-        mandatory "true";
-        description
-          "IP protocol number.";
-      }
-      leaf bitmap {
-        type binary;
-        mandatory "true";
-        description
-          "A variable length bitmap that has one bit per port of the
-           specified protocol.";
-      }
+        "IPv4 address.";
+    }
+    leaf protocol {
+      type uint8;
+      mandatory "true";
+      description
+        "IP protocol number.";
+    }
+    leaf bitmap {
+      type binary;
+      mandatory "true";
+      description
+        "A variable length bitmap that has one bit per port of the
+         specified protocol.";
     }
   }
 }
