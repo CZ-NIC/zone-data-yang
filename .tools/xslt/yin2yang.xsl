@@ -256,6 +256,16 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 	<xsl:with-param name="level" select="count(ancestor::*)-1"/>
       </xsl:call-template>
     </xsl:variable>
+    <xsl:variable name="tdel">
+      <xsl:choose>
+	<xsl:when test="../processing-instruction('delim')">
+	  <xsl:value-of select="../processing-instruction('delim')"/>
+	</xsl:when>
+	<xsl:otherwise>
+	  <xsl:value-of select="$token-delim"/>
+	</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
     <xsl:variable name="txt">
       <xsl:call-template name="escape-text">
 	<xsl:with-param name="text" select="normalize-space(.)"/>
@@ -291,9 +301,9 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 	    </xsl:call-template>
 	    <xsl:value-of select="concat('+ ',$qchar)"/>
 	  </xsl:with-param>
-	  <xsl:with-param name="wdelim" select="$token-delim"/>
+	  <xsl:with-param name="wdelim" select="$tdel"/>
 	  <xsl:with-param name="break"
-			  select="concat($token-delim,$qchar,'&#xA;')"/>
+			  select="concat($tdel,$qchar,'&#xA;')"/>
 	  <xsl:with-param name="at-start" select="true()"/>
 	</xsl:call-template>
       </xsl:otherwise>
