@@ -37,6 +37,15 @@ module dns-zones {
 
   /* Typedefs */
 
+  typedef domain-name {
+    type string {
+      length "1..253";
+      pattern "((\\*\\.)?(([a-zA-Z0-9_]([a-zA-Z0-9\\-/_]){0,61})"
+            + "?[a-zA-Z0-9]\\.)*([a-zA-Z0-9_]([a-zA-Z0-9\\-_])"
+            + "{0,61})?[a-zA-Z0-9]\\.?)|\\.";
+    }
+  }
+
   typedef ascii-string {
     type string {
       pattern "\\p{IsBasicLatin}*";
@@ -92,7 +101,7 @@ module dns-zones {
       description
         "Data for a DNS zone.";
       leaf name {
-        type inet:domain-name;
+        type domain-name;
         description
           "Zone name.";
       }
@@ -109,7 +118,7 @@ module dns-zones {
         description
           "RRSet";
         leaf owner {
-          type inet:domain-name;
+          type domain-name;
           description
             "Owner of the RRSet (domain name) relative to the name of
              the parent zone – i.e. the absolute domain name is
@@ -161,7 +170,7 @@ module dns-zones {
     reference
       "RFC 1035: Domain Names - Implementation and Specification.";
     leaf cname {
-      type inet:domain-name;
+      type domain-name;
       mandatory "true";
       description
         "Canonical or primary name for the owner.";
@@ -195,7 +204,7 @@ module dns-zones {
     reference
       "RFC 1035: Domain Names - Implementation and Specification.";
     leaf mb-madname {
-      type inet:domain-name;
+      type domain-name;
       mandatory "true";
       description
         "Host which has the specified mailbox.";
@@ -209,7 +218,7 @@ module dns-zones {
     reference
       "RFC 1035: Domain Names - Implementation and Specification.";
     leaf md-madname {
-      type inet:domain-name;
+      type domain-name;
       mandatory "true";
       description
         "Host which has a mail agent for the domain which should be
@@ -224,7 +233,7 @@ module dns-zones {
     reference
       "RFC 1035: Domain Names - Implementation and Specification.";
     leaf mf-madname {
-      type inet:domain-name;
+      type domain-name;
       mandatory "true";
       description
         "Host which has a mail agent for the domain which will accept
@@ -239,7 +248,7 @@ module dns-zones {
     reference
       "RFC 1035: Domain Names - Implementation and Specification.";
     leaf mgmname {
-      type inet:domain-name;
+      type domain-name;
       mandatory "true";
       description
         "Mailbox which is a member of the mail group specified by the
@@ -254,14 +263,14 @@ module dns-zones {
     reference
       "RFC 1035: Domain Names - Implementation and Specification.";
     leaf rmailbx {
-      type inet:domain-name;
+      type domain-name;
       mandatory "true";
       description
         "Mailbox which is responsible for the mailing list or
          mailbox.";
     }
     leaf emailbx {
-      type inet:domain-name;
+      type domain-name;
       mandatory "true";
       description
         "Mailbox which is to receive error messages related to the
@@ -277,7 +286,7 @@ module dns-zones {
     reference
       "RFC 1035: Domain Names - Implementation and Specification.";
     leaf newname {
-      type inet:domain-name;
+      type domain-name;
       mandatory "true";
       description
         "Mailbox which is the proper rename of the specified
@@ -299,7 +308,7 @@ module dns-zones {
          Lower values are preferred.";
     }
     leaf exchange {
-      type inet:domain-name;
+      type domain-name;
       mandatory "true";
       description
         "Host willing to act as a mail exchange for the owner
@@ -314,7 +323,7 @@ module dns-zones {
     reference
       "RFC 1035: Domain Names - Implementation and Specification.";
     leaf nsdname {
-      type inet:domain-name;
+      type domain-name;
       mandatory "true";
       description
         "Host which should be authoritative for the specified
@@ -345,7 +354,7 @@ module dns-zones {
     reference
       "RFC 1035: Domain Names - Implementation and Specification.";
     leaf ptrdname {
-      type inet:domain-name;
+      type domain-name;
       mandatory "true";
       description
         "A pointer to some location in the domain name space.";
@@ -359,14 +368,14 @@ module dns-zones {
     reference
       "RFC 1035: Domain Names - Implementation and Specification.";
     leaf mname {
-      type inet:domain-name;
+      type domain-name;
       mandatory "true";
       description
         "Name server that was the original or primary source of data
          for this zone.";
     }
     leaf rname {
-      type inet:domain-name;
+      type domain-name;
       mandatory "true";
       description
         "Mailbox of the person responsible for this zone.";

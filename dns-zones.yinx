@@ -44,6 +44,14 @@
 
   <!-- Typedefs -->
 
+  <typedef name="domain-name">
+    <type name="string">
+      <pattern
+	  value="((\*\.)?(([a-zA-Z0-9_]([a-zA-Z0-9\-/_]){0,61})?[a-zA-Z0-9]\.)*([a-zA-Z0-9_]([a-zA-Z0-9\-_]){0,61})?[a-zA-Z0-9]\.?)|\."><?delim )?></pattern>
+      <length value="1..253"/>
+    </type>
+  </typedef>
+
   <typedef name="ascii-string">
     <description>
       <text>
@@ -135,7 +143,7 @@
 	    Zone name.
 	  </text>
 	</description>
-	<type name="inet:domain-name"/>
+	<type name="domain-name"/>
       </leaf>
       <uses name="description"/>
       <leaf name="class">
@@ -152,7 +160,7 @@
 	  <text>RRSet</text>
 	</description>
 	<leaf name="owner">
-	  <type name="inet:domain-name"/>
+	  <type name="domain-name"/>
 	  <description>
 	    <text>
 	      Owner of the RRSet (domain name) relative to the
@@ -226,7 +234,7 @@
       </text>
     </reference>
     <leaf name="cname">
-      <type name="inet:domain-name"/>
+      <type name="domain-name"/>
       <mandatory value="true"/>
       <description>
 	<text>
@@ -281,7 +289,7 @@
       </text>
     </reference>
     <leaf name="mb-madname">
-      <type name="inet:domain-name"/>
+      <type name="domain-name"/>
       <mandatory value="true"/>
       <description>
 	<text>
@@ -304,7 +312,7 @@
       </text>
     </reference>
     <leaf name="md-madname">
-      <type name="inet:domain-name"/>
+      <type name="domain-name"/>
       <mandatory value="true"/>
       <description>
 	<text>
@@ -328,7 +336,7 @@
       </text>
     </reference>
     <leaf name="mf-madname">
-      <type name="inet:domain-name"/>
+      <type name="domain-name"/>
       <mandatory value="true"/>
       <description>
 	<text>
@@ -352,7 +360,7 @@
       </text>
     </reference>
     <leaf name="mgmname">
-      <type name="inet:domain-name"/>
+      <type name="domain-name"/>
       <mandatory value="true"/>
       <description>
 	<text>
@@ -376,7 +384,7 @@
       </text>
     </reference>
     <leaf name="rmailbx">
-      <type name="inet:domain-name"/>
+      <type name="domain-name"/>
       <mandatory value="true"/>
       <description>
 	<text>
@@ -386,7 +394,7 @@
       </description>
     </leaf>
     <leaf name="emailbx">
-      <type name="inet:domain-name"/>
+      <type name="domain-name"/>
       <mandatory value="true"/>
       <description>
 	<text>
@@ -411,7 +419,7 @@
       </text>
     </reference>
     <leaf name="newname">
-      <type name="inet:domain-name"/>
+      <type name="domain-name"/>
       <mandatory value="true"/>
       <description>
 	<text>
@@ -445,7 +453,7 @@
       </description>
     </leaf>
     <leaf name="exchange">
-      <type name="inet:domain-name"/>
+      <type name="domain-name"/>
       <mandatory value="true"/>
       <description>
 	<text>
@@ -468,7 +476,7 @@
       </text>
     </reference>
     <leaf name="nsdname">
-      <type name="inet:domain-name"/>
+      <type name="domain-name"/>
       <mandatory value="true"/>
       <description>
 	<text>
@@ -516,7 +524,7 @@
       </text>
     </reference>
     <leaf name="ptrdname">
-      <type name="inet:domain-name"/>
+      <type name="domain-name"/>
       <mandatory value="true"/>
       <description>
 	<text>
@@ -539,7 +547,7 @@
       </text>
     </reference>
     <leaf name="mname">
-      <type name="inet:domain-name"/>
+      <type name="domain-name"/>
       <mandatory value="true"/>
       <description>
 	<text>
@@ -549,7 +557,7 @@
       </description>
     </leaf>
     <leaf name="rname">
-      <type name="inet:domain-name"/>
+      <type name="domain-name"/>
       <mandatory value="true"/>
       <description>
 	<text>

@@ -1,11 +1,11 @@
 module: dns-zones
    +--rw zones
       +--rw zone* [name]
-         +--rw name           inet:domain-name
+         +--rw name           domain-name
          +--rw description?   string
          +--rw class?         ianadns:class
          +--rw rrset* [owner type]
-            +--rw owner          inet:domain-name
+            +--rw owner          domain-name
             +--rw type           identityref
             +--rw description?   string
             +--rw ttl            time-interval
@@ -13,23 +13,23 @@ module: dns-zones
                +--rw id             string
                +--rw description?   string
                +--rw address        inet:ipv4-address-no-zone
-               +--rw cname          inet:domain-name
+               +--rw cname          domain-name
                +--rw cpu            ascii-string
                +--rw os             ascii-string
-               +--rw mb-madname     inet:domain-name
-               +--rw md-madname     inet:domain-name
-               +--rw mf-madname     inet:domain-name
-               +--rw mgmname        inet:domain-name
-               +--rw rmailbx        inet:domain-name
-               +--rw emailbx        inet:domain-name
-               +--rw newname        inet:domain-name
+               +--rw mb-madname     domain-name
+               +--rw md-madname     domain-name
+               +--rw mf-madname     domain-name
+               +--rw mgmname        domain-name
+               +--rw rmailbx        domain-name
+               +--rw emailbx        domain-name
+               +--rw newname        domain-name
                +--rw preference     uint16
-               +--rw exchange       inet:domain-name
-               +--rw nsdname        inet:domain-name
+               +--rw exchange       domain-name
+               +--rw nsdname        domain-name
                +--rw data           binary
-               +--rw ptrdname       inet:domain-name
-               +--rw mname          inet:domain-name
-               +--rw rname          inet:domain-name
+               +--rw ptrdname       domain-name
+               +--rw mname          domain-name
+               +--rw rname          domain-name
                +--rw serial         yang:counter32
                +--rw refresh        time-interval
                +--rw retry          time-interval
