@@ -152,6 +152,7 @@ module dns-zones {
   augment "/zones/zone/rrset/rdata" {
     when "../type = 'ianadns:A'";
     container a {
+      presence "A RDATA";
       description
         "RDATA content for 'A' Resource Record.";
       reference
@@ -169,6 +170,7 @@ module dns-zones {
   augment "/zones/zone/rrset/rdata" {
     when "../type = 'ianadns:CNAME'";
     container cname {
+      presence "CNAME RDATA";
       description
         "RDATA content for 'CNAME' Resource Record.";
       reference
@@ -186,6 +188,7 @@ module dns-zones {
   augment "/zones/zone/rrset/rdata" {
     when "../type = 'ianadns:HINFO'";
     container hinfo {
+      presence "HINFO RDATA";
       description
         "RDATA content for 'HINFO' Resource Record.";
       reference
@@ -209,6 +212,7 @@ module dns-zones {
   augment "/zones/zone/rrset/rdata" {
     when "../type = 'ianadns:MB'";
     container mb {
+      presence "MB RDATA";
       description
         "RDATA content for 'MB' Resource Record.";
       reference
@@ -226,6 +230,7 @@ module dns-zones {
   augment "/zones/zone/rrset/rdata" {
     when "../type = 'ianadns:MD'";
     container md {
+      presence "MD RDATA";
       description
         "RDATA content for 'MD' Resource Record (obsolete, use
          MX).";
@@ -245,6 +250,7 @@ module dns-zones {
   augment "/zones/zone/rrset/rdata" {
     when "../type = 'ianadns:MF'";
     container mf {
+      presence "MF RDATA";
       description
         "RDATA content for 'MF' Resource Record (obsolete, use
          MX).";
@@ -264,6 +270,7 @@ module dns-zones {
   augment "/zones/zone/rrset/rdata" {
     when "../type = 'ianadns:MG'";
     container mg {
+      presence "MG RDATA";
       description
         "RDATA content for 'MG' Resource Record.";
       reference
@@ -282,6 +289,7 @@ module dns-zones {
   augment "/zones/zone/rrset/rdata" {
     when "../type = 'ianadns:MINFO'";
     container minfo {
+      presence "MINFO RDATA";
       description
         "RDATA content for 'MINFO' Resource Record.";
       reference
@@ -308,6 +316,7 @@ module dns-zones {
   augment "/zones/zone/rrset/rdata" {
     when "../type = 'ianadns:MR'";
     container mr {
+      presence "MR RDATA";
       description
         "RDATA content for 'MR' Resource Record.";
       reference
@@ -326,6 +335,7 @@ module dns-zones {
   augment "/zones/zone/rrset/rdata" {
     when "../type = 'ianadns:MX'";
     container mx {
+      presence "MX RDATA";
       description
         "RDATA content for 'MX' Resource Record.";
       reference
@@ -351,6 +361,7 @@ module dns-zones {
   augment "/zones/zone/rrset/rdata" {
     when "../type = 'ianadns:NS'";
     container ns {
+      presence "NS RDATA";
       description
         "RDATA content for 'NS' Resource Record.";
       reference
@@ -369,6 +380,7 @@ module dns-zones {
   augment "/zones/zone/rrset/rdata" {
     when "../type = 'ianadns:NULL'";
     container null {
+      presence "NULL RDATA";
       description
         "RDATA content for 'NULL' Resource Record.";
       reference
@@ -388,6 +400,7 @@ module dns-zones {
   augment "/zones/zone/rrset/rdata" {
     when "../type = 'ianadns:PTR'";
     container ptr {
+      presence "PTR RDATA";
       description
         "RDATA content for 'PTR' Resource Record.";
       reference
@@ -405,6 +418,7 @@ module dns-zones {
   augment "/zones/zone/rrset/rdata" {
     when "../type = 'ianadns:SOA'";
     container soa {
+      presence "SOA RDATA";
       description
         "RDATA content for 'SOA' Resource Record.";
       reference
@@ -463,6 +477,7 @@ module dns-zones {
   augment "/zones/zone/rrset/rdata" {
     when "../type = 'ianadns:TXT'";
     container txt {
+      presence "TXT RDATA";
       description
         "RDATA content for 'TXT' Resource Record.";
       reference
@@ -481,6 +496,7 @@ module dns-zones {
   augment "/zones/zone/rrset/rdata" {
     when "../type = 'ianadns:WKS'";
     container wks {
+      presence "WKS RDATA";
       description
         "RDATA content for 'WKS' Resource Record.";
       reference
@@ -504,6 +520,25 @@ module dns-zones {
         description
           "A variable length bitmap that has one bit per port of the
            specified protocol.";
+      }
+    }
+  }
+
+  /* RFC 3596 */
+
+  augment "/zones/zone/rrset/rdata" {
+    when "../type = 'ianadns:AAAA'";
+    container aaaa {
+      presence "AAAA RDATA";
+      description
+        "RDATA content for 'AAAA' Resource Record.";
+      reference
+        "RFC 3596: DNS Extensions to Support IP Version 6";
+      leaf address {
+        type inet:ipv6-address-no-zone;
+        mandatory "true";
+        description
+          "IPv6 address.";
       }
     }
   }

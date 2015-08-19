@@ -14,13 +14,15 @@
 	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
-	  <mname>ns1</mname>
-	  <rname>bugs.x.w.example</rname>
-	  <serial>1081539377</serial>
-	  <refresh>3600</refresh>
-	  <retry>300</retry>
-	  <expire>3600000</expire>
-	  <minimum>3600</minimum>
+	  <soa>
+	    <mname>ns1</mname>
+	    <rname>bugs.x.w.example</rname>
+	    <serial>1081539377</serial>
+	    <refresh>3600</refresh>
+	    <retry>300</retry>
+	    <expire>3600000</expire>
+	    <minimum>3600</minimum>
+	  </soa>
 	</rdata>
       </rrset>
       <rrset>
@@ -29,11 +31,15 @@
 	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
-	  <nsdname>ns1.example</nsdname>
+	  <ns>
+	    <nsdname>ns1.example</nsdname>
+	  </ns>
 	</rdata>
 	<rdata>
 	  <id>2</id>
-	  <nsdname>ns2.example</nsdname>
+	  <ns>
+	    <nsdname>ns2.example</nsdname>
+	  </ns>
 	</rdata>
       </rrset>
       <rrset>
@@ -42,8 +48,10 @@
 	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
-	  <preference>1</preference>
-	  <exchange>xx.example</exchange>
+	  <mx>
+	    <preference>1</preference>
+	    <exchange>xx.example</exchange>
+	  </mx>
 	</rdata>
       </rrset>
       <rrset>
@@ -52,7 +60,9 @@
 	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
-	  <address>192.0.2.5</address>
+	  <a>
+	    <address>192.0.2.5</address>
+	  </a>
 	</rdata>
       </rrset>
       <rrset>
@@ -61,7 +71,9 @@
 	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
-	  <address>192.0.2.6</address>
+	  <a>
+	    <address>192.0.2.6</address>
+	  </a>
 	</rdata>
       </rrset>
       <rrset>
@@ -70,7 +82,9 @@
 	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
-	  <address>192.0.2.7</address>
+	  <a>
+	    <address>192.0.2.7</address>
+	  </a>
 	</rdata>
       </rrset>
       <rrset>
@@ -79,7 +93,9 @@
 	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
-	  <address>192.0.2.8</address>
+	  <a>
+	    <address>192.0.2.8</address>
+	  </a>
 	</rdata>
       </rrset>
       <rrset>
@@ -88,11 +104,15 @@
 	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
-	  <nsdname>ns1.a.example</nsdname>
+	  <ns>
+	    <nsdname>ns1.a.example</nsdname>
+	  </ns>
 	</rdata>
 	<rdata>
 	  <id>2</id>
-	  <nsdname>ns2.a.example</nsdname>
+	  <ns>
+	    <nsdname>ns2.a.example</nsdname>
+	  </ns>
 	</rdata>
       </rrset>
       <rrset>
@@ -101,7 +121,9 @@
 	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
-	  <address>192.0.2.11</address>
+	  <a>
+	    <address>192.0.2.11</address>
+	  </a>
 	</rdata>
       </rrset>
       <rrset>
@@ -110,7 +132,9 @@
 	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
-	  <address>192.0.2.9</address>
+	  <a>
+	    <address>192.0.2.9</address>
+	  </a>
 	</rdata>
       </rrset>
       <rrset>
@@ -119,8 +143,21 @@
 	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
-	  <cpu>KLH-10</cpu>
-	  <os>ITS</os>
+	  <hinfo>
+	    <cpu>KLH-10</cpu>
+	    <os>ITS</os>
+	  </hinfo>
+	</rdata>
+      </rrset>
+      <rrset>
+	<owner>ai.example</owner>
+	<type>ianadns:AAAA</type>
+	<ttl>3600</ttl>
+	<rdata>
+	  <id>1</id>
+	  <aaaa>
+	    <address>2001:db8::f00:baa9</address>
+	  </aaaa>
 	</rdata>
       </rrset>
       <rrset>
@@ -129,11 +166,15 @@
 	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
-	  <nsdname>ns1.b.example</nsdname>
+	  <ns>
+	    <nsdname>ns1.b.example</nsdname>
+	  </ns>
 	</rdata>
 	<rdata>
 	  <id>2</id>
-	  <nsdname>ns2.b.example</nsdname>
+	  <ns>
+	    <nsdname>ns2.b.example</nsdname>
+	  </ns>
 	</rdata>
       </rrset>
       <rrset>
@@ -142,7 +183,9 @@
 	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
-	  <address>192.0.2.1</address>
+	  <a>
+	    <address>192.0.2.1</address>
+	  </a>
 	</rdata>
       </rrset>
       <rrset>
@@ -151,7 +194,9 @@
 	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
-	  <address>192.0.2.2</address>
+	  <a>
+	    <address>192.0.2.2</address>
+	  </a>
 	</rdata>
       </rrset>
       <rrset>
@@ -160,8 +205,10 @@
 	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
-	  <preference>1</preference>
-	  <exchange>ai.example</exchange>
+	  <mx>
+	    <preference>1</preference>
+	    <exchange>ai.example</exchange>
+	  </mx>
 	</rdata>
       </rrset>
       <rrset>
@@ -170,8 +217,10 @@
 	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
-	  <preference>1</preference>
-	  <exchange>xx.example</exchange>
+	  <mx>
+	    <preference>1</preference>
+	    <exchange>xx.example</exchange>
+	  </mx>
 	</rdata>
       </rrset>
       <rrset>
@@ -180,7 +229,9 @@
 	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
-	  <address>192.0.2.10</address>
+	  <a>
+	    <address>192.0.2.10</address>
+	  </a>
 	</rdata>
       </rrset>
       <rrset>
@@ -189,8 +240,10 @@
 	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
-	  <cpu>KLH-10</cpu>
-	  <os>TOPS-20</os>
+	  <hinfo>
+	    <cpu>KLH-10</cpu>
+	    <os>TOPS-20</os>
+	  </hinfo>
 	</rdata>
       </rrset>
       <rrset>
@@ -199,8 +252,10 @@
 	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
-	  <preference>1</preference>
-	  <exchange>xx.example</exchange>
+	  <mx>
+	    <preference>1</preference>
+	    <exchange>xx.example</exchange>
+	  </mx>
 	</rdata>
       </rrset>
       <rrset>
@@ -209,7 +264,9 @@
 	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
-	  <cname>example</cname>
+	  <cname>
+	    <cname>example</cname>
+	  </cname>
 	  <description>Wildcard expansion leading to apex</description>
 	</rdata>
       </rrset>
@@ -219,7 +276,9 @@
 	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
-	  <cname>nxdomain.example</cname>
+	  <cname>
+	    <cname>nxdomain.example</cname>
+	  </cname>
 	  <description>Wildcard expansion leading to nonexistent name.</description>
 	</rdata>
       </rrset>

@@ -12,36 +12,36 @@ module: dns-zones
             +--rw rdata* [id]
                +--rw id             string
                +--rw description?   string
-               +--rw a
+               +--rw a!
                |  +--rw address    inet:ipv4-address-no-zone
-               +--rw cname
+               +--rw cname!
                |  +--rw cname    domain-name
-               +--rw hinfo
+               +--rw hinfo!
                |  +--rw cpu    ascii-string
                |  +--rw os     ascii-string
-               +--rw mb
+               +--rw mb!
                |  +--rw mb-madname    domain-name
-               +--rw md
+               +--rw md!
                |  +--rw md-madname    domain-name
-               +--rw mf
+               +--rw mf!
                |  +--rw mf-madname    domain-name
-               +--rw mg
+               +--rw mg!
                |  +--rw mgmname    domain-name
-               +--rw minfo
+               +--rw minfo!
                |  +--rw rmailbx    domain-name
                |  +--rw emailbx    domain-name
-               +--rw mr
+               +--rw mr!
                |  +--rw newname    domain-name
-               +--rw mx
+               +--rw mx!
                |  +--rw preference    uint16
                |  +--rw exchange      domain-name
-               +--rw ns
+               +--rw ns!
                |  +--rw nsdname    domain-name
-               +--rw null
+               +--rw null!
                |  +--rw data    binary
-               +--rw ptr
+               +--rw ptr!
                |  +--rw ptrdname    domain-name
-               +--rw soa
+               +--rw soa!
                |  +--rw mname      domain-name
                |  +--rw rname      domain-name
                |  +--rw serial     yang:counter32
@@ -49,9 +49,11 @@ module: dns-zones
                |  +--rw retry      time-interval
                |  +--rw expire     time-interval
                |  +--rw minimum    time-interval
-               +--rw txt
+               +--rw txt!
                |  +--rw txt-data    ascii-string
-               +--rw wks
-                  +--rw wks-address    inet:ipv4-address-no-zone
-                  +--rw protocol       uint8
-                  +--rw bitmap         binary
+               +--rw wks!
+               |  +--rw wks-address    inet:ipv4-address-no-zone
+               |  +--rw protocol       uint8
+               |  +--rw bitmap         binary
+               +--rw aaaa!
+                  +--rw address    inet:ipv6-address-no-zone

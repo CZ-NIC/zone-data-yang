@@ -203,6 +203,7 @@
   <augment target-node="/zones/zone/rrset/rdata">
     <when condition="../type = 'ianadns:A'"/>
     <container name="a">
+      <presence value="A RDATA"/>
       <description>
 	<text>
 	  RDATA content for 'A' Resource Record.
@@ -228,6 +229,7 @@
   <augment target-node="/zones/zone/rrset/rdata">
     <when condition="../type = 'ianadns:CNAME'"/>
     <container name="cname">
+      <presence value="CNAME RDATA"/>
       <description>
 	<text>
 	  RDATA content for 'CNAME' Resource Record.
@@ -253,6 +255,7 @@
   <augment target-node="/zones/zone/rrset/rdata">
     <when condition="../type = 'ianadns:HINFO'"/>
     <container name="hinfo">
+      <presence value="HINFO RDATA"/>
       <description>
 	<text>
 	  RDATA content for 'HINFO' Resource Record.
@@ -287,6 +290,7 @@
   <augment target-node="/zones/zone/rrset/rdata">
     <when condition="../type = 'ianadns:MB'"/>
     <container name="mb">
+      <presence value="MB RDATA"/>
       <description>
 	<text>
 	  RDATA content for 'MB' Resource Record.
@@ -312,6 +316,7 @@
   <augment target-node="/zones/zone/rrset/rdata">
     <when condition="../type = 'ianadns:MD'"/>
     <container name="md">
+      <presence value="MD RDATA"/>
       <description>
 	<text>
 	  RDATA content for 'MD' Resource Record (obsolete, use MX).
@@ -338,6 +343,7 @@
   <augment target-node="/zones/zone/rrset/rdata">
     <when condition="../type = 'ianadns:MF'"/>
     <container name="mf">
+      <presence value="MF RDATA"/>
       <description>
 	<text>
 	  RDATA content for 'MF' Resource Record (obsolete, use MX).
@@ -364,6 +370,7 @@
   <augment target-node="/zones/zone/rrset/rdata">
     <when condition="../type = 'ianadns:MG'"/>
     <container name="mg">
+      <presence value="MG RDATA"/>
       <description>
 	<text>
 	  RDATA content for 'MG' Resource Record.
@@ -390,6 +397,7 @@
   <augment target-node="/zones/zone/rrset/rdata">
     <when condition="../type = 'ianadns:MINFO'"/>
     <container name="minfo">
+      <presence value="MINFO RDATA"/>
       <description>
 	<text>
 	  RDATA content for 'MINFO' Resource Record.
@@ -427,6 +435,7 @@
   <augment target-node="/zones/zone/rrset/rdata">
     <when condition="../type = 'ianadns:MR'"/>
     <container name="mr">
+      <presence value="MR RDATA"/>
       <description>
 	<text>
 	  RDATA content for 'MR' Resource Record.
@@ -453,6 +462,7 @@
   <augment target-node="/zones/zone/rrset/rdata">
     <when condition="../type = 'ianadns:MX'"/>
     <container name="mx">
+      <presence value="MX RDATA"/>
       <description>
 	<text>
 	  RDATA content for 'MX' Resource Record.
@@ -488,6 +498,7 @@
   <augment target-node="/zones/zone/rrset/rdata">
     <when condition="../type = 'ianadns:NS'"/>
     <container name="ns">
+      <presence value="NS RDATA"/>
       <description>
 	<text>
 	  RDATA content for 'NS' Resource Record.
@@ -513,6 +524,7 @@
   <augment target-node="/zones/zone/rrset/rdata">
     <when condition="../type = 'ianadns:NULL'"/>
     <container name="null">
+      <presence value="NULL RDATA"/>
       <description>
 	<text>
 	  RDATA content for 'NULL' Resource Record.
@@ -540,6 +552,7 @@
   <augment target-node="/zones/zone/rrset/rdata">
     <when condition="../type = 'ianadns:PTR'"/>
     <container name="ptr">
+      <presence value="PTR RDATA"/>
       <description>
 	<text>
 	  RDATA content for 'PTR' Resource Record.
@@ -565,6 +578,7 @@
   <augment target-node="/zones/zone/rrset/rdata">
     <when condition="../type = 'ianadns:SOA'"/>
     <container name="soa">
+      <presence value="SOA RDATA"/>
       <description>
 	<text>
 	  RDATA content for 'SOA' Resource Record.
@@ -648,6 +662,7 @@
   <augment target-node="/zones/zone/rrset/rdata">
     <when condition="../type = 'ianadns:TXT'"/>
     <container name="txt">
+      <presence value="TXT RDATA"/>
       <description>
 	<text>
 	  RDATA content for 'TXT' Resource Record.
@@ -674,6 +689,7 @@
   <augment target-node="/zones/zone/rrset/rdata">
     <when condition="../type = 'ianadns:WKS'"/>
     <container name="wks">
+      <presence value="WKS RDATA"/>
       <description>
 	<text>
 	  RDATA content for 'WKS' Resource Record.
@@ -716,5 +732,31 @@
   </augment>
 
   <!-- RFC 3596 -->
-  
+
+  <augment target-node="/zones/zone/rrset/rdata">
+    <when condition="../type = 'ianadns:AAAA'"/>
+    <container name="aaaa">
+      <presence value="AAAA RDATA"/>
+      <description>
+	<text>
+	  RDATA content for 'AAAA' Resource Record.
+	</text>
+      </description>
+      <reference>
+	<text>
+	  RFC 3596: DNS Extensions to Support IP Version 6
+	</text>
+      </reference>
+      <leaf name="address">
+	<type name="inet:ipv6-address-no-zone"/>
+	<mandatory value="true"/>
+	<description>
+	  <text>
+	    IPv6 address.
+	  </text>
+	</description>
+      </leaf>
+    </container>
+  </augment>
+
 </module>
