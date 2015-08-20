@@ -30,6 +30,9 @@
 	<h:li>IANA: Domain Name System Security (DNSSEC) Algorithm
 	Numbers.<h:br/>
 	http://www.iana.org/assignments/dns-sec-alg-numbers/dns-sec-alg-numbers.xhtml</h:li>
+	<h:li>IANA: Delegation Signer (DS) Resource Record (RR) Type
+	Digest Algorithms<h:br/>
+	http://www.iana.org/assignments/ds-rr-types/ds-rr-types.xhtml#ds-rr-types-1</h:li>
       </h:ul>
     </text>
   </reference>
@@ -168,6 +171,71 @@
 	  <text>ECDSA Curve P-384 with SHA-384</text>
 	</description>
 	<value value="14"/>
+      </enum>
+    </type>
+  </typedef>
+
+  <typedef name="digest-algorithm">
+    <description>
+      <text>
+	Delegation Signer (DS) RR type digest algorithms.
+      </text>
+    </description>
+    <type name="enumeration">
+      <enum name="SHA-1">
+	<value value="1"/>
+	<description>
+	  <text>
+	    SHA-1 digest algorithm. Mandatory to support.
+	  </text>
+	</description>
+	<reference>
+	  <text>
+	    RFC 4034: Resource Records for the DNS Security Extensions
+	  </text>
+	</reference>
+      </enum>
+      <enum name="SHA-256">
+	<value value="2"/>
+	<description>
+	  <text>
+	    SHA-256 digest algorithm. Mandatory to support.
+	  </text>
+	</description>
+	<reference>
+	  <text>
+	    RFC 4509: Use of SHA-256 in DNSSEC Delegation Signer (DS)
+	    Resource Records (RRs)
+	  </text>
+	</reference>
+      </enum>
+      <enum name="GOST-R-34.11-94">
+	<value value="3"/>
+	<description>
+	  <text>
+	    GOST R 34.11-94 digest algorithm. Optional to implement.
+	  </text>
+	</description>
+	<reference>
+	  <text>
+	    RFC 5933: Use of GOST Signature Algorithms in DNSKEY and
+	    RRSIG Resource Records for DNSSEC
+	  </text>
+	</reference>
+      </enum>
+      <enum name="SHA-384">
+	<value value="4"/>
+	<description>
+	  <text>
+	    SHA-384 digest algorithm. Optional to support.
+	  </text>
+	</description>
+	<reference>
+	  <text>
+	    RFC 6605: Elliptic Curve Digital Signature Algorithm (DSA)
+	    for DNSSEC
+	  </text>
+	</reference>
       </enum>
     </type>
   </typedef>
