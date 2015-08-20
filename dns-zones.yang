@@ -86,6 +86,19 @@ module dns-zones {
     }
   }
 
+  grouping key-tag-field {
+    description
+      "This grouping defines the 'key-tag' field that is used in
+       RRSIG and DS resource records.";
+    leaf key-tag {
+      type uint16;
+      mandatory "true";
+      description
+        "The Key Tag field contains the key tag value of the DNSKEY
+         RR that validates this signature, in network byte order.";
+    }
+  }
+
   /* Configuration data */
 
   container zones {
@@ -539,6 +552,245 @@ module dns-zones {
         mandatory "true";
         description
           "IPv6 address.";
+      }
+    }
+  }
+
+  /* RFC 4034 */
+
+  augment "/zones/zone/rrset/rdata" {
+    when "../type = 'ianadns:DNSKEY'";
+    container dnskey {
+      presence "DNSKEY RDATA";
+      description
+        "RDATA content for 'DNSKEY' Resource Record.";
+      reference
+        "RFC 4034: Resource Records for the DNS Security
+         Extensions";
+      leaf flags {
+        type bits {
+          bit zone-key {
+            position "7";
+            description
+              "Zone Key flag.
+
+               If this flag has value 1, then the DNSKEY record holds
+               a DNS zone key. If bit 7 has value 0, then the DNSKEY
+               record holds some other type of DNS public key and
+               MUST NOT be used to verify RRSIGs that cover
+               RRsets.";
+          }
+          bit secure-entry-point {
+            position "15";
+            description
+              "Secure Entry Point flag.
+
+               If bit 15 has value 1, then the DNSKEY record holds a
+               key intended for use as a secure entry point.";
+            reference
+              "RFC 3757: Domain Name System KEY (DNSKEY) Resource
+               Record (RR) Secure Entry Point (SEP) Flag";
+          }
+        }
+        must "not(contains(., 'zone-key')) or ../../owner = "
+           + "../../../name" {
+          error-message
+            "For Zone Key, owner name must be the zone name.";
+          description
+            "For a Zone Key, the DNSKEY RR's owner name MUST be the
+             name of a zone.";
+        }
+        must "contains(., 'zone-key') or not(contains(., "
+           + "'secure-entry-point'))" {
+          error-message
+            "'secure-entry-point' is set but 'zone-key' isn't";
+          description
+            "Secure Entry Point flag needs Zone Key flag.";
+        }
+        mandatory "true";
+        description
+          "DNSKEY RR flags.";
+      }
+      leaf protocol {
+        type uint8 {
+          range "3";
+        }
+        default "3";
+        description
+          "Protocol field. It's value MUST be 3.";
+      }
+      leaf algorithm {
+        type ianadns:dnssec-algorithm;
+        mandatory "true";
+        description
+          "This field identifies the public key's cryptographic
+           algorithm and determines the format of the 'public-key'
+           field.";
+      }
+      leaf public-key {
+        type binary;
+        mandatory "true";
+        description
+          "This field contains public key material. Its format
+           depends on the algorithm.";
+      }
+    }
+  }
+
+  augment "/zones/zone/rrset/rdata" {
+    when "../type = 'ianadns:RRSIG'";
+    container rrsig {
+      presence "RRSIG RDATA";
+      description
+        "RDATA content for 'RRSIG' Resource Record.";
+      reference
+        "RFC 4034: Resource Records for the DNS Security
+         Extensions";
+      leaf type-covered {
+        type identityref {
+          base ianadns:data-rrtype;
+        }
+        mandatory "true";
+        description
+          "This field identifies the type of the RRset that is
+           covered by this RRSIG record.";
+      }
+      leaf algorithm {
+        type ianadns:dnssec-algorithm;
+        mandatory "true";
+        description
+          "This field identifies the cryptographic algorithm used to
+           create the signature.";
+      }
+      leaf labels {
+        type uint8 {
+          range "1..127";
+        }
+        mandatory "true";
+        description
+          "This field specifies the number of labels in the original
+           RRSIG RR owner name.";
+        reference
+          "RFC 4035: Protocol Modifications for the DNS Security
+           Extensions";
+      }
+      leaf original-ttl {
+        type leafref {
+          path "../../../../rrset[owner=current()/../../../"
+             + "owner][type=current()/../type-covered]/ttl";
+        }
+        description
+          "This field specifies the TTL of the covered RRset as it
+           appears in the authoritative zone.";
+      }
+      leaf signature-expiration {
+        type yang:date-and-time;
+        mandatory "true";
+        description
+          "This field specifies the end of a validity period for the
+           signature. The RRSIG record MUST NOT be used for
+           authentication after the expiration date and time.";
+      }
+      leaf signature-inception {
+        type yang:date-and-time;
+        mandatory "true";
+        description
+          "This field specifies the start of a validity period for
+           the signature. The RRSIG record MUST NOT be used for
+           authentication prior the inception date and time.
+
+           This date MUST precede the date specified in
+           'signature-expiration'.";
+      }
+      uses key-tag-field;
+      leaf signer-name {
+        type domain-name;
+        must ". = ../../../../name" {
+          error-message "Signer's name invalid";
+          description
+            "The Signer's Name field MUST contain the name of the
+             zone of the covered RRset.";
+        }
+        description
+          "This field identifies the owner name of the DNSKEY RR that
+           a validator is supposed to use to validate this
+           signature.";
+      }
+      leaf signature {
+        type binary;
+        mandatory "true";
+        description
+          "This field contains the cryptographic signature that
+           covers the RRSIG RDATA (excluding the Signature field) and
+           the RRset specified by the RRSIG owner name, RRSIG class,
+           and RRSIG Type Covered field.
+
+           The format of this field depends on the algorithm in
+           use.";
+      }
+    }
+  }
+
+  augment "/zones/zone/rrset/rdata" {
+    when "../type = 'ianadns:NSEC'";
+    container nsec {
+      presence "NSEC RDATA";
+      description
+        "RDATA content for 'NSEC' Resource Record.";
+      reference
+        "RFC 4034: Resource Records for the DNS Security
+         Extensions";
+      leaf next-domain-name {
+        type domain-name;
+        mandatory "true";
+        description
+          "This field contains the next owner name (in the canonical
+           ordering of the zone) that has authoritative data or
+           contains a delegation point NS RRset.";
+      }
+      leaf-list rrset-types {
+        type identityref {
+          base ianadns:data-rrtype;
+        }
+        min-elements "1";
+        description
+          "This leaf-list represents the Type Bit Maps field. It
+           identifies the RRset types that exist at the NSEC RR's
+           owner name.";
+      }
+    }
+  }
+
+  augment "/zones/zone/rrset/rdata" {
+    when "../type = 'ianadns:DS'";
+    container ds {
+      presence "DS RDATA";
+      description
+        "RDATA content for 'DS' Resource Record.";
+      reference
+        "RFC 4034: Resource Records for the DNS Security
+         Extensions";
+      uses key-tag-field;
+      leaf algorithm {
+        type ianadns:dnssec-algorithm;
+        mandatory "true";
+        description
+          "This field specifies the algorithm of the DNSKEY RR
+           referred to by the DS record.";
+      }
+      leaf digest-type {
+        type ianadns:digest-algorithm;
+        mandatory "true";
+        description
+          "This field identifies the algorithm used to construct the
+           digest of the DNSKEY RR.";
+      }
+      leaf digest {
+        type yang:hex-string;
+        mandatory "true";
+        description
+          "This field contains a digest of the DNSKEY RR to which the
+           DS RR refers.";
       }
     }
   }

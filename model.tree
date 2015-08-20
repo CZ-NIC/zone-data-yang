@@ -56,4 +56,27 @@ module: dns-zones
                |  +--rw protocol       uint8
                |  +--rw bitmap         binary
                +--rw aaaa!
-                  +--rw address    inet:ipv6-address-no-zone
+               |  +--rw address    inet:ipv6-address-no-zone
+               +--rw dnskey!
+               |  +--rw flags         bits
+               |  +--rw protocol?     uint8
+               |  +--rw algorithm     ianadns:dnssec-algorithm
+               |  +--rw public-key    binary
+               +--rw rrsig!
+               |  +--rw type-covered            identityref
+               |  +--rw algorithm               ianadns:dnssec-algorithm
+               |  +--rw labels                  uint8
+               |  +--rw original-ttl?           -> ../../../../rrset[owner=current()/../../../owner][type=current()/../type-covered]/ttl
+               |  +--rw signature-expiration    yang:date-and-time
+               |  +--rw signature-inception     yang:date-and-time
+               |  +--rw key-tag                 uint16
+               |  +--rw signer-name?            domain-name
+               |  +--rw signature               binary
+               +--rw nsec!
+               |  +--rw next-domain-name    domain-name
+               |  +--rw rrset-types*        identityref
+               +--rw ds!
+                  +--rw key-tag        uint16
+                  +--rw algorithm      ianadns:dnssec-algorithm
+                  +--rw digest-type    ianadns:digest-algorithm
+                  +--rw digest         yang:hex-string
