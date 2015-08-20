@@ -116,6 +116,20 @@
 	</rdata>
       </rrset>
       <rrset>
+	<owner>a.example</owner>
+	<type>ianadns:DS</type>
+	<ttl>3600</ttl>
+	<rdata>
+	  <id>1</id>
+	  <ds>
+	    <key-tag>57855</key-tag>
+	    <algorithm>RSASHA1</algorithm>
+	    <digest-type>SHA-1</digest-type>
+	    <digest>B6DCD485719ADCA18E5F3D48A2331627FDD3636B</digest>
+	  </ds>
+	</rdata>
+      </rrset>
+      <rrset>
 	<owner>*.a.example</owner>
 	<type>ianadns:A</type>
 	<ttl>3600</ttl>
@@ -244,6 +258,17 @@
 	    <cpu>KLH-10</cpu>
 	    <os>TOPS-20</os>
 	  </hinfo>
+	</rdata>
+      </rrset>
+      <rrset>
+	<owner>xx.example</owner>
+	<type>ianadns:AAAA</type>
+	<ttl>3600</ttl>
+	<rdata>
+	  <id>1</id>
+	  <aaaa>
+	    <address>2001:db8::f00:baaa</address>
+	  </aaaa>
 	</rdata>
       </rrset>
       <rrset>

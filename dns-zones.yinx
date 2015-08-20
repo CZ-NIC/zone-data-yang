@@ -63,6 +63,12 @@
     </type>
   </typedef>
 
+  <typedef name="hex-digits">
+    <type name="string">
+      <pattern value="[0-9A-Fa-f]+"/>
+    </type>
+  </typedef>
+
   <typedef name="time-interval">
     <type name="uint32">
       <range value="1..max"/>
@@ -1098,7 +1104,7 @@
 	</description>
       </leaf>
       <leaf name="digest">
-	<type name="yang:hex-string"/>
+	<type name="hex-digits"/>
 	<mandatory value="true"/>
 	<description>
 	  <text>

@@ -54,6 +54,12 @@ module dns-zones {
       "A string consisting of ASCII characters (U+0000 to U+007F).";
   }
 
+  typedef hex-digits {
+    type string {
+      pattern "[0-9A-Fa-f]+";
+    }
+  }
+
   typedef time-interval {
     type uint32 {
       range "1..max";
@@ -786,7 +792,7 @@ module dns-zones {
            digest of the DNSKEY RR.";
       }
       leaf digest {
-        type yang:hex-string;
+        type hex-digits;
         mandatory "true";
         description
           "This field contains a digest of the DNSKEY RR to which the

@@ -79,4 +79,4 @@ module: dns-zones
                   +--rw key-tag        uint16
                   +--rw algorithm      ianadns:dnssec-algorithm
                   +--rw digest-type    ianadns:digest-algorithm
-                  +--rw digest         yang:hex-string
+                  +--rw digest         hex-digits
