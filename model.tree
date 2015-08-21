@@ -74,7 +74,7 @@ module: dns-zones
                |  +--rw signature               binary
                +--rw nsec!
                |  +--rw next-domain-name    domain-name
-               |  +--rw rrset-types*        identityref
+               |  +--rw rrset-type*         identityref
                +--rw ds!
                   +--rw key-tag        uint16
                   +--rw algorithm      ianadns:dnssec-algorithm

@@ -159,6 +159,7 @@ module dns-zones {
         }
         list rdata {
           key "id";
+          min-elements "1";
           uses entry-id;
           uses description;
         }
@@ -598,10 +599,10 @@ module dns-zones {
                Record (RR) Secure Entry Point (SEP) Flag";
           }
         }
-        must "not(contains(., 'zone-key')) or ../../owner = "
-           + "../../../name" {
+        must "not(contains(., 'zone-key')) or ../../../owner = "
+           + "../../../../name" {
           error-message
-            "For Zone Key, owner name must be the zone name.";
+            "For a Zone Key, owner name must be the zone name.";
           description
             "For a Zone Key, the DNSKEY RR's owner name MUST be the
              name of a zone.";
@@ -634,7 +635,9 @@ module dns-zones {
            field.";
       }
       leaf public-key {
-        type binary;
+        type binary {
+          length "1..max";
+        }
         mandatory "true";
         description
           "This field contains public key material. Its format
@@ -723,7 +726,9 @@ module dns-zones {
            signature.";
       }
       leaf signature {
-        type binary;
+        type binary {
+          length "1..max";
+        }
         mandatory "true";
         description
           "This field contains the cryptographic signature that
@@ -754,15 +759,15 @@ module dns-zones {
            ordering of the zone) that has authoritative data or
            contains a delegation point NS RRset.";
       }
-      leaf-list rrset-types {
+      leaf-list rrset-type {
         type identityref {
           base ianadns:data-rrtype;
         }
         min-elements "1";
         description
-          "This leaf-list represents the Type Bit Maps field. It
-           identifies the RRset types that exist at the NSEC RR's
-           owner name.";
+          "This leaf-list represents the Type Bit Maps field. Its
+           entries identify the RRset types that exist at the NSEC
+           RR's owner name.";
       }
     }
   }

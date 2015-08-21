@@ -213,6 +213,7 @@
 	</leaf>
 	<list name="rdata">
 	  <key value="id"/>
+	  <min-elements value="1"/>
 	  <uses name="entry-id"/>
 	  <uses name="description"/>
 	</list>
@@ -834,7 +835,7 @@
 	</type>
 	<mandatory value="true"/>
 	<must condition="not(contains(., 'zone-key')) or
-			 ../../owner = ../../../name">
+			 ../../../owner = ../../../../name">
 	  <description>
 	    <text>
 	      For a Zone Key, the DNSKEY RR's owner name MUST be the
@@ -843,7 +844,7 @@
 	  </description>
 	  <error-message>
 	    <value>
-	       For Zone Key, owner name must be the zone name.
+	       For a Zone Key, owner name must be the zone name.
 	    </value>
 	  </error-message>
 	</must>
@@ -887,7 +888,9 @@
 	</description>
       </leaf>
       <leaf name="public-key">
-	<type name="binary"/>
+	<type name="binary">
+	  <length value="1..max"/>
+	</type>
 	<mandatory value="true"/>
 	<description>
 	  <text>
@@ -1011,7 +1014,9 @@
 	</description>
       </leaf>
       <leaf name="signature">
-	<type name="binary"/>
+	<type name="binary">
+	  <length value="1..max"/>
+	</type>
 	<mandatory value="true"/>
 	<description>
 	  <text>
@@ -1052,16 +1057,16 @@
 	  </text>
 	</description>
       </leaf>
-      <leaf-list name="rrset-types">
+      <leaf-list name="rrset-type">
 	<type name="identityref">
 	  <base name="ianadns:data-rrtype"/>
 	</type>
 	<min-elements value="1"/>
 	<description>
 	  <text>
-	    This leaf-list represents the Type Bit Maps field. It
-	    identifies the RRset types that exist at the NSEC RR's
-	    owner name.
+	    This leaf-list represents the Type Bit Maps field. Its
+	    entries identify the RRset types that exist at the NSEC
+	    RR's owner name.
 	  </text>
 	</description>
       </leaf-list>
