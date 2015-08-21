@@ -13,7 +13,7 @@
 
   <xsl:template match="yin:augment">
     <xsl:apply-templates select="yin:when"/>
-    <xsl:apply-templates select="yin:leaf"/>
+    <xsl:apply-templates select="yin:container/yin:leaf"/>
     <xsl:text>&#xA;</xsl:text>
   </xsl:template>
 
