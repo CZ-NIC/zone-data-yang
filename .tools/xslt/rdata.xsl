@@ -12,21 +12,31 @@
   </xsl:template>
 
   <xsl:template match="yin:augment">
-    <xsl:apply-templates select="yin:when"/>
-    <xsl:apply-templates select="yin:container/yin:leaf"/>
+    <xsl:apply-templates select="yin:container"/>
     <xsl:text>&#xA;</xsl:text>
   </xsl:template>
 
-  <xsl:template match="yin:when">
-    <xsl:value-of
-	select='concat(substring-before(substring-after(@condition, ":"), "&apos;"), "&#x9;")'/>
+  <xsl:template match="yin:container">
+    <xsl:value-of select="concat(@name, '&#x9;')"/>
+    <xsl:apply-templates select="yin:leaf|yin:uses|yin:leaf-list"/>
   </xsl:template>
-
-  <xsl:template match="yin:leaf">
+  
+  <xsl:template match="yin:leaf|yin:leaf-list">
     <xsl:value-of select="@name"/>
     <xsl:if test="position() != last()">
       <xsl:text> </xsl:text>
     </xsl:if>
+  </xsl:template>
+
+  <xsl:template match="yin:uses">
+    <xsl:apply-templates select="//yin:grouping[@name=current()/@name]"/>
+    <xsl:if test="position() != last()">
+      <xsl:text> </xsl:text>
+    </xsl:if>
+  </xsl:template>
+
+  <xsl:template match="yin:grouping">
+    <xsl:apply-templates select="yin:leaf|yin:uses|yin:leaf-list"/>
   </xsl:template>
   
 </xsl:stylesheet>
