@@ -236,562 +236,516 @@ module dns-zones {
           choice rdata-content {
             mandatory "true";
             description
-              "Each case of this choice defines the content of a
-               single RR type wrapped in a container whose name is
-               the RR type (in lowercase).
+              "Each (shorthand) case of this choice defines the
+               content of a single RR type wrapped in a container
+               whose name is the RR type (in lowercase).
 
                The SOA RR id defined separately.
 
                New RR types defined in other modules shall augment
                the 'rdata-content' choice.";
             /* RFC 1035 */
-            case A {
-              when "../type = 'ianadns:A'";
-              container a {
+            container a {
+              must "../../type = 'ianadns:A'";
+              description
+                "RDATA content for 'A' Resource Record.";
+              reference
+                "RFC 1035: Domain Names - Implementation and
+                 Specification.";
+              leaf address {
+                type inet:ipv4-address-no-zone;
+                mandatory "true";
                 description
-                  "RDATA content for 'A' Resource Record.";
-                reference
-                  "RFC 1035: Domain Names - Implementation and
-                   Specification.";
-                leaf address {
-                  type inet:ipv4-address-no-zone;
-                  mandatory "true";
-                  description
-                    "IPv4 address.";
-                }
+                  "IPv4 address.";
               }
             }
-            case CNAME {
-              when "../type = 'ianadns:CNAME'";
-              container cname {
+            container cname {
+              must "../../type = 'ianadns:CNAME'";
+              description
+                "RDATA content for 'CNAME' Resource Record.";
+              reference
+                "RFC 1035: Domain Names - Implementation and
+                 Specification.";
+              leaf cname {
+                type domain-name;
+                mandatory "true";
                 description
-                  "RDATA content for 'CNAME' Resource Record.";
-                reference
-                  "RFC 1035: Domain Names - Implementation and
-                   Specification.";
-                leaf cname {
-                  type domain-name;
-                  mandatory "true";
-                  description
-                    "Canonical or primary name for the owner.";
-                }
+                  "Canonical or primary name for the owner.";
               }
             }
-            case HINFO {
-              when "../type = 'ianadns:HINFO'";
-              container hinfo {
+            container hinfo {
+              must "../../type = 'ianadns:HINFO'";
+              description
+                "RDATA content for 'HINFO' Resource Record.";
+              reference
+                "RFC 1035: Domain Names - Implementation and
+                 Specification.";
+              leaf cpu {
+                type ascii-string;
+                mandatory "true";
                 description
-                  "RDATA content for 'HINFO' Resource Record.";
-                reference
-                  "RFC 1035: Domain Names - Implementation and
-                   Specification.";
-                leaf cpu {
-                  type ascii-string;
-                  mandatory "true";
-                  description
-                    "CPU type.";
-                }
-                leaf os {
-                  type ascii-string;
-                  mandatory "true";
-                  description
-                    "Operating system type.";
-                }
+                  "CPU type.";
+              }
+              leaf os {
+                type ascii-string;
+                mandatory "true";
+                description
+                  "Operating system type.";
               }
             }
-            case MB {
-              when "../type = 'ianadns:MB'";
-              container mb {
+            container mb {
+              must "../../type = 'ianadns:MB'";
+              description
+                "RDATA content for 'MB' Resource Record.";
+              reference
+                "RFC 1035: Domain Names - Implementation and
+                 Specification.";
+              leaf madname {
+                type domain-name;
+                mandatory "true";
                 description
-                  "RDATA content for 'MB' Resource Record.";
-                reference
-                  "RFC 1035: Domain Names - Implementation and
-                   Specification.";
-                leaf madname {
-                  type domain-name;
-                  mandatory "true";
-                  description
-                    "Host which has the specified mailbox.";
-                }
+                  "Host which has the specified mailbox.";
               }
             }
-            case MD {
-              when "../type = 'ianadns:MD'";
-              container md {
+            container md {
+              must "../../type = 'ianadns:MD'";
+              description
+                "RDATA content for 'MD' Resource Record (obsolete,
+                 use MX).";
+              reference
+                "RFC 1035: Domain Names - Implementation and
+                 Specification.";
+              leaf madname {
+                type domain-name;
+                mandatory "true";
                 description
-                  "RDATA content for 'MD' Resource Record (obsolete,
-                   use MX).";
-                reference
-                  "RFC 1035: Domain Names - Implementation and
-                   Specification.";
-                leaf madname {
-                  type domain-name;
-                  mandatory "true";
-                  description
-                    "Host which has a mail agent for the domain which
-                     should be able to deliver mail for the
-                     domain.";
-                }
+                  "Host which has a mail agent for the domain which
+                   should be able to deliver mail for the domain.";
               }
             }
-            case MF {
-              when "../type = 'ianadns:MF'";
-              container mf {
+            container mf {
+              must "../../type = 'ianadns:MF'";
+              description
+                "RDATA content for 'MF' Resource Record (obsolete,
+                 use MX).";
+              reference
+                "RFC 1035: Domain Names - Implementation and
+                 Specification.";
+              leaf madname {
+                type domain-name;
+                mandatory "true";
                 description
-                  "RDATA content for 'MF' Resource Record (obsolete,
-                   use MX).";
-                reference
-                  "RFC 1035: Domain Names - Implementation and
-                   Specification.";
-                leaf madname {
-                  type domain-name;
-                  mandatory "true";
-                  description
-                    "Host which has a mail agent for the domain which
-                     will accept mail for forwarding to the
-                     domain.";
-                }
+                  "Host which has a mail agent for the domain which
+                   will accept mail for forwarding to the domain.";
               }
             }
-            case MG {
-              when "../type = 'ianadns:MG'";
-              container mg {
+            container mg {
+              must "../../type = 'ianadns:MG'";
+              description
+                "RDATA content for 'MG' Resource Record.";
+              reference
+                "RFC 1035: Domain Names - Implementation and
+                 Specification.";
+              leaf mgmname {
+                type domain-name;
+                mandatory "true";
                 description
-                  "RDATA content for 'MG' Resource Record.";
-                reference
-                  "RFC 1035: Domain Names - Implementation and
-                   Specification.";
-                leaf mgmname {
-                  type domain-name;
-                  mandatory "true";
-                  description
-                    "Mailbox which is a member of the mail group
-                     specified by the domain name.";
-                }
+                  "Mailbox which is a member of the mail group
+                   specified by the domain name.";
               }
             }
-            case MINFO {
-              when "../type = 'ianadns:MINFO'";
-              container minfo {
+            container minfo {
+              must "../../type = 'ianadns:MINFO'";
+              description
+                "RDATA content for 'MINFO' Resource Record.";
+              reference
+                "RFC 1035: Domain Names - Implementation and
+                 Specification.";
+              leaf rmailbx {
+                type domain-name;
+                mandatory "true";
                 description
-                  "RDATA content for 'MINFO' Resource Record.";
-                reference
-                  "RFC 1035: Domain Names - Implementation and
-                   Specification.";
-                leaf rmailbx {
-                  type domain-name;
-                  mandatory "true";
-                  description
-                    "Mailbox which is responsible for the mailing
-                     list or mailbox.";
-                }
-                leaf emailbx {
-                  type domain-name;
-                  mandatory "true";
-                  description
-                    "Mailbox which is to receive error messages
-                     related to the mailing list or mailbox specified
-                     by the owner of the MINFO RR.";
-                }
+                  "Mailbox which is responsible for the mailing list
+                   or mailbox.";
+              }
+              leaf emailbx {
+                type domain-name;
+                mandatory "true";
+                description
+                  "Mailbox which is to receive error messages related
+                   to the mailing list or mailbox specified by the
+                   owner of the MINFO RR.";
               }
             }
-            case MR {
-              when "../type = 'ianadns:MR'";
-              container mr {
+            container mr {
+              must "../../type = 'ianadns:MR'";
+              description
+                "RDATA content for 'MR' Resource Record.";
+              reference
+                "RFC 1035: Domain Names - Implementation and
+                 Specification.";
+              leaf newname {
+                type domain-name;
+                mandatory "true";
                 description
-                  "RDATA content for 'MR' Resource Record.";
-                reference
-                  "RFC 1035: Domain Names - Implementation and
-                   Specification.";
-                leaf newname {
-                  type domain-name;
-                  mandatory "true";
-                  description
-                    "Mailbox which is the proper rename of the
-                     specified mailbox.";
-                }
+                  "Mailbox which is the proper rename of the
+                   specified mailbox.";
               }
             }
-            case MX {
-              when "../type = 'ianadns:MX'";
-              container mx {
+            container mx {
+              must "../../type = 'ianadns:MX'";
+              description
+                "RDATA content for 'MX' Resource Record.";
+              reference
+                "RFC 1035: Domain Names - Implementation and
+                 Specification.";
+              leaf preference {
+                type uint16;
+                mandatory "true";
                 description
-                  "RDATA content for 'MX' Resource Record.";
-                reference
-                  "RFC 1035: Domain Names - Implementation and
-                   Specification.";
-                leaf preference {
-                  type uint16;
-                  mandatory "true";
-                  description
-                    "Preference given to this RR among others at the
-                     same owner. Lower values are preferred.";
-                }
-                leaf exchange {
-                  type domain-name;
-                  mandatory "true";
-                  description
-                    "Host willing to act as a mail exchange for the
-                     owner name.";
-                }
+                  "Preference given to this RR among others at the
+                   same owner. Lower values are preferred.";
+              }
+              leaf exchange {
+                type domain-name;
+                mandatory "true";
+                description
+                  "Host willing to act as a mail exchange for the
+                   owner name.";
               }
             }
-            case NS {
-              when "../type = 'ianadns:NS'";
-              container ns {
+            container ns {
+              must "../../type = 'ianadns:NS'";
+              description
+                "RDATA content for 'NS' Resource Record.";
+              reference
+                "RFC 1035: Domain Names - Implementation and
+                 Specification.";
+              leaf nsdname {
+                type domain-name;
+                mandatory "true";
                 description
-                  "RDATA content for 'NS' Resource Record.";
-                reference
-                  "RFC 1035: Domain Names - Implementation and
-                   Specification.";
-                leaf nsdname {
-                  type domain-name;
-                  mandatory "true";
-                  description
-                    "Host which should be authoritative for the
-                     specified domain.";
-                }
+                  "Host which should be authoritative for the
+                   specified domain.";
               }
             }
-            case NULL {
-              when "../type = 'ianadns:NULL'";
-              container null {
-                description
-                  "RDATA content for 'NULL' Resource Record.";
-                reference
-                  "RFC 1035: Domain Names - Implementation and
-                   Specification.";
-                leaf data {
-                  type binary {
-                    length "0..65535";
-                  }
-                  mandatory "true";
-                  description
-                    "Arbitrary data.";
+            container null {
+              must "../../type = 'ianadns:NULL'";
+              description
+                "RDATA content for 'NULL' Resource Record.";
+              reference
+                "RFC 1035: Domain Names - Implementation and
+                 Specification.";
+              leaf data {
+                type binary {
+                  length "0..65535";
                 }
+                mandatory "true";
+                description
+                  "Arbitrary data.";
               }
             }
-            case PTR {
-              when "../type = 'ianadns:PTR'";
-              container ptr {
+            container ptr {
+              must "../../type = 'ianadns:PTR'";
+              description
+                "RDATA content for 'PTR' Resource Record.";
+              reference
+                "RFC 1035: Domain Names - Implementation and
+                 Specification.";
+              leaf ptrdname {
+                type domain-name;
+                mandatory "true";
                 description
-                  "RDATA content for 'PTR' Resource Record.";
-                reference
-                  "RFC 1035: Domain Names - Implementation and
-                   Specification.";
-                leaf ptrdname {
-                  type domain-name;
-                  mandatory "true";
-                  description
-                    "A pointer to some location in the domain name
-                     space.";
-                }
+                  "A pointer to some location in the domain name
+                   space.";
               }
             }
-            case TXT {
-              when "../type = 'ianadns:TXT'";
-              container txt {
+            container txt {
+              must "../../type = 'ianadns:TXT'";
+              description
+                "RDATA content for 'TXT' Resource Record.";
+              reference
+                "RFC 1035: Domain Names - Implementation and
+                 Specification.";
+              leaf txt-data {
+                type ascii-string;
+                mandatory "true";
                 description
-                  "RDATA content for 'TXT' Resource Record.";
-                reference
-                  "RFC 1035: Domain Names - Implementation and
-                   Specification.";
-                leaf txt-data {
-                  type ascii-string;
-                  mandatory "true";
-                  description
-                    "Descriptive text whose semantics depends on the
-                     domain where it is found.";
-                }
+                  "Descriptive text whose semantics depends on the
+                   domain where it is found.";
               }
             }
-            case WKS {
-              when "../type = 'ianadns:WKS'";
-              container wks {
+            container wks {
+              must "../../type = 'ianadns:WKS'";
+              description
+                "RDATA content for 'WKS' Resource Record.";
+              reference
+                "RFC 1035: Domain Names - Implementation and
+                 Specification.";
+              leaf address {
+                type inet:ipv4-address-no-zone;
+                mandatory "true";
                 description
-                  "RDATA content for 'WKS' Resource Record.";
-                reference
-                  "RFC 1035: Domain Names - Implementation and
-                   Specification.";
-                leaf address {
-                  type inet:ipv4-address-no-zone;
-                  mandatory "true";
-                  description
-                    "IPv4 address.";
-                }
-                leaf protocol {
-                  type uint8;
-                  mandatory "true";
-                  description
-                    "IP protocol number.";
-                }
-                leaf bitmap {
-                  type binary;
-                  mandatory "true";
-                  description
-                    "A variable length bitmap that has one bit per
-                     port of the specified protocol.";
-                }
+                  "IPv4 address.";
+              }
+              leaf protocol {
+                type uint8;
+                mandatory "true";
+                description
+                  "IP protocol number.";
+              }
+              leaf bitmap {
+                type binary;
+                mandatory "true";
+                description
+                  "A variable length bitmap that has one bit per port
+                   of the specified protocol.";
               }
             }
             /* RFC 3596 */
-            case AAAA {
-              when "../type = 'ianadns:AAAA'";
-              container aaaa {
+            container aaaa {
+              must "../../type = 'ianadns:AAAA'";
+              description
+                "RDATA content for 'AAAA' Resource Record.";
+              reference
+                "RFC 3596: DNS Extensions to Support IP Version 6";
+              leaf address {
+                type inet:ipv6-address-no-zone;
+                mandatory "true";
                 description
-                  "RDATA content for 'AAAA' Resource Record.";
-                reference
-                  "RFC 3596: DNS Extensions to Support IP Version
-                   6";
-                leaf address {
-                  type inet:ipv6-address-no-zone;
-                  mandatory "true";
-                  description
-                    "IPv6 address.";
-                }
+                  "IPv6 address.";
               }
             }
             /* RFC 4034 */
-            case DNSKEY {
-              when "../type = 'ianadns:DNSKEY'";
-              container dnskey {
+            container dnskey {
+              must "../../type = 'ianadns:DNSKEY'";
+              description
+                "RDATA content for 'DNSKEY' Resource Record.";
+              reference
+                "RFC 4034: Resource Records for the DNS Security
+                 Extensions";
+              leaf flags {
+                type bits {
+                  bit zone-key {
+                    position "7";
+                    description
+                      "Zone Key flag.
+
+                       If this flag has value 1, then the DNSKEY
+                       record holds a DNS zone key. If bit 7 has
+                       value 0, then the DNSKEY record holds some
+                       other type of DNS public key and MUST NOT be
+                       used to verify RRSIGs that cover RRsets.";
+                  }
+                  bit secure-entry-point {
+                    position "15";
+                    description
+                      "Secure Entry Point flag.
+
+                       If bit 15 has value 1, then the DNSKEY record
+                       holds a key intended for use as a secure entry
+                       point.";
+                    reference
+                      "RFC 3757: Domain Name System KEY (DNSKEY)
+                       Resource Record (RR) Secure Entry Point (SEP)
+                       Flag";
+                  }
+                }
+                must "not(contains(., 'zone-key')) or "
+                   + "../../../owner = ../../../../name" {
+                  error-message "For a Zone Key, owner name must be "
+                              + "the zone name.";
+                  description
+                    "For a Zone Key, the DNSKEY RR's owner name MUST
+                     be the name of a zone.";
+                }
+                must "contains(., 'zone-key') or not(contains(., "
+                   + "'secure-entry-point'))" {
+                  error-message "'secure-entry-point' is set but "
+                              + "'zone-key' isn't";
+                  description
+                    "Secure Entry Point flag needs Zone Key flag.";
+                }
+                mandatory "true";
                 description
-                  "RDATA content for 'DNSKEY' Resource Record.";
-                reference
-                  "RFC 4034: Resource Records for the DNS Security
-                   Extensions";
-                leaf flags {
-                  type bits {
-                    bit zone-key {
-                      position "7";
-                      description
-                        "Zone Key flag.
-
-                         If this flag has value 1, then the DNSKEY
-                         record holds a DNS zone key. If bit 7 has
-                         value 0, then the DNSKEY record holds some
-                         other type of DNS public key and MUST NOT be
-                         used to verify RRSIGs that cover RRsets.";
-                    }
-                    bit secure-entry-point {
-                      position "15";
-                      description
-                        "Secure Entry Point flag.
-
-                         If bit 15 has value 1, then the DNSKEY
-                         record holds a key intended for use as a
-                         secure entry point.";
-                      reference
-                        "RFC 3757: Domain Name System KEY (DNSKEY)
-                         Resource Record (RR) Secure Entry Point
-                         (SEP) Flag";
-                    }
-                  }
-                  must "not(contains(., 'zone-key')) or "
-                     + "../../../owner = ../../../../name" {
-                    error-message "For a Zone Key, owner name must "
-                                + "be the zone name.";
-                    description
-                      "For a Zone Key, the DNSKEY RR's owner name
-                       MUST be the name of a zone.";
-                  }
-                  must "contains(., 'zone-key') or not(contains(., "
-                     + "'secure-entry-point'))" {
-                    error-message "'secure-entry-point' is set but "
-                                + "'zone-key' isn't";
-                    description
-                      "Secure Entry Point flag needs Zone Key
-                       flag.";
-                  }
-                  mandatory "true";
-                  description
-                    "DNSKEY RR flags.";
+                  "DNSKEY RR flags.";
+              }
+              leaf protocol {
+                type uint8 {
+                  range "3";
                 }
-                leaf protocol {
-                  type uint8 {
-                    range "3";
-                  }
-                  default "3";
-                  description
-                    "Protocol field. It's value MUST be 3.";
+                default "3";
+                description
+                  "Protocol field. It's value MUST be 3.";
+              }
+              leaf algorithm {
+                type ianadns:dnssec-algorithm;
+                mandatory "true";
+                description
+                  "This field identifies the public key's
+                   cryptographic algorithm and determines the format
+                   of the 'public-key' field.";
+              }
+              leaf public-key {
+                type binary {
+                  length "1..max";
                 }
-                leaf algorithm {
-                  type ianadns:dnssec-algorithm;
-                  mandatory "true";
-                  description
-                    "This field identifies the public key's
-                     cryptographic algorithm and determines the
-                     format of the 'public-key' field.";
-                }
-                leaf public-key {
-                  type binary {
-                    length "1..max";
-                  }
-                  mandatory "true";
-                  description
-                    "This field contains public key material. Its
-                     format depends on the algorithm.";
-                }
+                mandatory "true";
+                description
+                  "This field contains public key material. Its
+                   format depends on the algorithm.";
               }
             }
-            case RRSIG {
-              when "../type = 'ianadns:RRSIG'";
-              container rrsig {
+            container rrsig {
+              must "../../type = 'ianadns:RRSIG'";
+              description
+                "RDATA content for 'RRSIG' Resource Record.";
+              reference
+                "RFC 4034: Resource Records for the DNS Security
+                 Extensions";
+              leaf type-covered {
+                type identityref {
+                  base ianadns:data-rrtype;
+                }
+                mandatory "true";
                 description
-                  "RDATA content for 'RRSIG' Resource Record.";
+                  "This field identifies the type of the RRset that
+                   is covered by this RRSIG record.";
+              }
+              leaf algorithm {
+                type ianadns:dnssec-algorithm;
+                mandatory "true";
+                description
+                  "This field identifies the cryptographic algorithm
+                   used to create the signature.";
+              }
+              leaf labels {
+                type uint8 {
+                  range "1..127";
+                }
+                mandatory "true";
+                description
+                  "This field specifies the number of labels in the
+                   original RRSIG RR owner name.";
                 reference
-                  "RFC 4034: Resource Records for the DNS Security
-                   Extensions";
-                leaf type-covered {
-                  type identityref {
-                    base ianadns:data-rrtype;
-                  }
-                  mandatory "true";
-                  description
-                    "This field identifies the type of the RRset that
-                     is covered by this RRSIG record.";
+                  "RFC 4035: Protocol Modifications for the DNS
+                   Security Extensions";
+              }
+              leaf original-ttl {
+                type leafref {
+                  path "../../../../rrset[owner=current()/../../../"
+                     + "owner][type=current()/../type-covered]/ttl";
                 }
-                leaf algorithm {
-                  type ianadns:dnssec-algorithm;
-                  mandatory "true";
-                  description
-                    "This field identifies the cryptographic
-                     algorithm used to create the signature.";
-                }
-                leaf labels {
-                  type uint8 {
-                    range "1..127";
-                  }
-                  mandatory "true";
-                  description
-                    "This field specifies the number of labels in the
-                     original RRSIG RR owner name.";
-                  reference
-                    "RFC 4035: Protocol Modifications for the DNS
-                     Security Extensions";
-                }
-                leaf original-ttl {
-                  type leafref {
-                    path "../../../../rrset[owner=current()/../../"
-                       + "../owner][type=current()/../type-covered]/"
-                       + "ttl";
-                  }
-                  description
-                    "This field specifies the TTL of the covered
-                     RRset as it appears in the authoritative
-                     zone.";
-                }
-                leaf signature-expiration {
-                  type yang:date-and-time;
-                  mandatory "true";
-                  description
-                    "This field specifies the end of a validity
-                     period for the signature. The RRSIG record MUST
-                     NOT be used for authentication after the
-                     expiration date and time.";
-                }
-                leaf signature-inception {
-                  type yang:date-and-time;
-                  mandatory "true";
-                  description
-                    "This field specifies the start of a validity
-                     period for the signature. The RRSIG record MUST
-                     NOT be used for authentication prior the
-                     inception date and time.
+                description
+                  "This field specifies the TTL of the covered RRset
+                   as it appears in the authoritative zone.";
+              }
+              leaf signature-expiration {
+                type yang:date-and-time;
+                mandatory "true";
+                description
+                  "This field specifies the end of a validity period
+                   for the signature. The RRSIG record MUST NOT be
+                   used for authentication after the expiration date
+                   and time.";
+              }
+              leaf signature-inception {
+                type yang:date-and-time;
+                mandatory "true";
+                description
+                  "This field specifies the start of a validity
+                   period for the signature. The RRSIG record MUST
+                   NOT be used for authentication prior the inception
+                   date and time.
 
-                     This date MUST precede the date specified in
-                     'signature-expiration'.";
-                }
-                uses key-tag-field;
-                leaf signer-name {
-                  type domain-name;
-                  must ". = ../../../../name" {
-                    error-message "Signer's name invalid";
-                    description
-                      "The Signer's Name field MUST contain the name
-                       of the zone of the covered RRset.";
-                  }
+                   This date MUST precede the date specified in
+                   'signature-expiration'.";
+              }
+              uses key-tag-field;
+              leaf signer-name {
+                type domain-name;
+                must ". = ../../../../name" {
+                  error-message "Signer's name invalid";
                   description
-                    "This field identifies the owner name of the
-                     DNSKEY RR that a validator is supposed to use to
-                     validate this signature.";
+                    "The Signer's Name field MUST contain the name of
+                     the zone of the covered RRset.";
                 }
-                leaf signature {
-                  type binary {
-                    length "1..max";
-                  }
-                  mandatory "true";
-                  description
-                    "This field contains the cryptographic signature
-                     that covers the RRSIG RDATA (excluding the
-                     Signature field) and the RRset specified by the
-                     RRSIG owner name, RRSIG class, and RRSIG Type
-                     Covered field.
+                description
+                  "This field identifies the owner name of the DNSKEY
+                   RR that a validator is supposed to use to validate
+                   this signature.";
+              }
+              leaf signature {
+                type binary {
+                  length "1..max";
+                }
+                mandatory "true";
+                description
+                  "This field contains the cryptographic signature
+                   that covers the RRSIG RDATA (excluding the
+                   Signature field) and the RRset specified by the
+                   RRSIG owner name, RRSIG class, and RRSIG Type
+                   Covered field.
 
-                     The format of this field depends on the
-                     algorithm in use.";
-                }
+                   The format of this field depends on the algorithm
+                   in use.";
               }
             }
-            case NSEC {
-              when "../type = 'ianadns:NSEC'";
-              container nsec {
+            container nsec {
+              must "../../type = 'ianadns:NSEC'";
+              description
+                "RDATA content for 'NSEC' Resource Record.";
+              reference
+                "RFC 4034: Resource Records for the DNS Security
+                 Extensions";
+              leaf next-domain-name {
+                type domain-name;
+                mandatory "true";
                 description
-                  "RDATA content for 'NSEC' Resource Record.";
-                reference
-                  "RFC 4034: Resource Records for the DNS Security
-                   Extensions";
-                leaf next-domain-name {
-                  type domain-name;
-                  mandatory "true";
-                  description
-                    "This field contains the next owner name (in the
-                     canonical ordering of the zone) that has
-                     authoritative data or contains a delegation
-                     point NS RRset.";
+                  "This field contains the next owner name (in the
+                   canonical ordering of the zone) that has
+                   authoritative data or contains a delegation point
+                   NS RRset.";
+              }
+              leaf-list rrset-type {
+                type identityref {
+                  base ianadns:data-rrtype;
                 }
-                leaf-list rrset-type {
-                  type identityref {
-                    base ianadns:data-rrtype;
-                  }
-                  min-elements "1";
-                  description
-                    "This leaf-list represents the Type Bit Maps
-                     field. Its entries identify the RRset types that
-                     exist at the NSEC RR's owner name.";
-                }
+                min-elements "1";
+                description
+                  "This leaf-list represents the Type Bit Maps field.
+                   Its entries identify the RRset types that exist at
+                   the NSEC RR's owner name.";
               }
             }
-            case DS {
-              when "../type = 'ianadns:DS'";
-              container ds {
+            container ds {
+              must "../../type = 'ianadns:DS'";
+              description
+                "RDATA content for 'DS' Resource Record.";
+              reference
+                "RFC 4034: Resource Records for the DNS Security
+                 Extensions";
+              uses key-tag-field;
+              leaf algorithm {
+                type ianadns:dnssec-algorithm;
+                mandatory "true";
                 description
-                  "RDATA content for 'DS' Resource Record.";
-                reference
-                  "RFC 4034: Resource Records for the DNS Security
-                   Extensions";
-                uses key-tag-field;
-                leaf algorithm {
-                  type ianadns:dnssec-algorithm;
-                  mandatory "true";
-                  description
-                    "This field specifies the algorithm of the DNSKEY
-                     RR referred to by the DS record.";
-                }
-                leaf digest-type {
-                  type ianadns:digest-algorithm;
-                  mandatory "true";
-                  description
-                    "This field identifies the algorithm used to
-                     construct the digest of the DNSKEY RR.";
-                }
-                leaf digest {
-                  type hex-digits;
-                  mandatory "true";
-                  description
-                    "This field contains a digest of the DNSKEY RR to
-                     which the DS RR refers.";
-                }
+                  "This field specifies the algorithm of the DNSKEY
+                   RR referred to by the DS record.";
+              }
+              leaf digest-type {
+                type ianadns:digest-algorithm;
+                mandatory "true";
+                description
+                  "This field identifies the algorithm used to
+                   construct the digest of the DNSKEY RR.";
+              }
+              leaf digest {
+                type hex-digits;
+                mandatory "true";
+                description
+                  "This field contains a digest of the DNSKEY RR to
+                   which the DS RR refers.";
               }
             }
           }

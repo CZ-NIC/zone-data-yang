@@ -323,9 +323,9 @@
 	    <mandatory value="true"/>
 	    <description>
 	      <text>
-		<h:p>Each case of this choice defines the content of a
-		single RR type wrapped in a container whose name is
-		the RR type (in lowercase).</h:p>
+		<h:p>Each (shorthand) case of this choice defines the
+		content of a single RR type wrapped in a container
+		whose name is the RR type (in lowercase).</h:p>
 		<h:p>The SOA RR id defined separately.</h:p>
 		<h:p>New RR types defined in other modules shall
 		augment the 'rdata-content' choice.</h:p>
@@ -334,828 +334,788 @@
 
 	    <!-- RFC 1035 -->
 
-	    <case name="A">
-	      <when condition="../type = 'ianadns:A'"/>
-	      <container name="a">
+	    <container name="a">
+	      <must condition="../../type = 'ianadns:A'"/>
+	      <description>
+		<text>
+		  RDATA content for 'A' Resource Record.
+		</text>
+	      </description>
+	      <reference>
+		<text>
+		  RFC 1035: Domain Names - Implementation and
+		  Specification.
+		</text>
+	      </reference>
+	      <leaf name="address">
+		<type name="inet:ipv4-address-no-zone"/>
+		<mandatory value="true"/>
 		<description>
 		  <text>
-		    RDATA content for 'A' Resource Record.
+		    IPv4 address.
 		  </text>
 		</description>
-		<reference>
-		  <text>
-		    RFC 1035: Domain Names - Implementation and
-		    Specification.
-		  </text>
-		</reference>
-		<leaf name="address">
-		  <type name="inet:ipv4-address-no-zone"/>
-		  <mandatory value="true"/>
-		  <description>
-		    <text>
-		      IPv4 address.
-		    </text>
-		  </description>
-		</leaf>
-	      </container>
-	    </case>
+	      </leaf>
+	    </container>
 
-	    <case name="CNAME">
-	      <when condition="../type = 'ianadns:CNAME'"/>
-	      <container name="cname">
+	    <container name="cname">
+	      <must condition="../../type = 'ianadns:CNAME'"/>
+	      <description>
+		<text>
+		  RDATA content for 'CNAME' Resource Record.
+		</text>
+	      </description>
+	      <reference>
+		<text>
+		  RFC 1035: Domain Names - Implementation and
+		  Specification.
+		</text>
+	      </reference>
+	      <leaf name="cname">
+		<type name="domain-name"/>
+		<mandatory value="true"/>
 		<description>
 		  <text>
-		    RDATA content for 'CNAME' Resource Record.
+		    Canonical or primary name for the owner.
 		  </text>
 		</description>
-		<reference>
-		  <text>
-		    RFC 1035: Domain Names - Implementation and
-		    Specification.
-		  </text>
-		</reference>
-		<leaf name="cname">
-		  <type name="domain-name"/>
-		  <mandatory value="true"/>
-		  <description>
-		    <text>
-		      Canonical or primary name for the owner.
-		    </text>
-		  </description>
-		</leaf>
-	      </container>
-	    </case>
+	      </leaf>
+	    </container>
 
-	    <case name="HINFO">
-	      <when condition="../type = 'ianadns:HINFO'"/>
-	      <container name="hinfo">
+	    <container name="hinfo">
+	      <must condition="../../type = 'ianadns:HINFO'"/>
+	      <description>
+		<text>
+		  RDATA content for 'HINFO' Resource Record.
+		</text>
+	      </description>
+	      <reference>
+		<text>
+		  RFC 1035: Domain Names - Implementation and
+		  Specification.
+		</text>
+	      </reference>
+	      <leaf name="cpu">
+		<type name="ascii-string"/>
+		<mandatory value="true"/>
 		<description>
 		  <text>
-		    RDATA content for 'HINFO' Resource Record.
+		    CPU type.
 		  </text>
 		</description>
-		<reference>
+	      </leaf>
+	      <leaf name="os">
+		<type name="ascii-string"/>
+		<mandatory value="true"/>
+		<description>
 		  <text>
-		    RFC 1035: Domain Names - Implementation and
-		    Specification.
+		    Operating system type.
 		  </text>
-		</reference>
-		<leaf name="cpu">
-		  <type name="ascii-string"/>
-		  <mandatory value="true"/>
-		  <description>
-		    <text>
-		      CPU type.
-		    </text>
-		  </description>
-		</leaf>
-		<leaf name="os">
-		  <type name="ascii-string"/>
-		  <mandatory value="true"/>
-		  <description>
-		    <text>
-		      Operating system type.
-		    </text>
-		  </description>
-		</leaf>
-	      </container>
-	    </case>
+		</description>
+	      </leaf>
+	    </container>
 
-	    <case name="MB">
-	      <when condition="../type = 'ianadns:MB'"/>
-	      <container name="mb">
+	    <container name="mb">
+	      <must condition="../../type = 'ianadns:MB'"/>
+	      <description>
+		<text>
+		  RDATA content for 'MB' Resource Record.
+		</text>
+	      </description>
+	      <reference>
+		<text>
+		  RFC 1035: Domain Names - Implementation and
+		  Specification.
+		</text>
+	      </reference>
+	      <leaf name="madname">
+		<type name="domain-name"/>
+		<mandatory value="true"/>
 		<description>
 		  <text>
-		    RDATA content for 'MB' Resource Record.
+		    Host which has the specified mailbox.
 		  </text>
 		</description>
-		<reference>
-		  <text>
-		    RFC 1035: Domain Names - Implementation and
-		    Specification.
-		  </text>
-		</reference>
-		<leaf name="madname">
-		  <type name="domain-name"/>
-		  <mandatory value="true"/>
-		  <description>
-		    <text>
-		      Host which has the specified mailbox.
-		    </text>
-		  </description>
-		</leaf>
-	      </container>
-	    </case>
+	      </leaf>
+	    </container>
 
-	    <case name="MD">
-	      <when condition="../type = 'ianadns:MD'"/>
-	      <container name="md">
+	    <container name="md">
+	      <must condition="../../type = 'ianadns:MD'"/>
+	      <description>
+		<text>
+		  RDATA content for 'MD' Resource Record (obsolete,
+		  use MX).
+		</text>
+	      </description>
+	      <reference>
+		<text>
+		  RFC 1035: Domain Names - Implementation and
+		  Specification.
+		</text>
+	      </reference>
+	      <leaf name="madname">
+		<type name="domain-name"/>
+		<mandatory value="true"/>
 		<description>
 		  <text>
-		    RDATA content for 'MD' Resource Record (obsolete,
-		    use MX).
+		    Host which has a mail agent for the domain which
+		    should be able to deliver mail for the domain.
 		  </text>
 		</description>
-		<reference>
-		  <text>
-		    RFC 1035: Domain Names - Implementation and
-		    Specification.
-		  </text>
-		</reference>
-		<leaf name="madname">
-		  <type name="domain-name"/>
-		  <mandatory value="true"/>
-		  <description>
-		    <text>
-		      Host which has a mail agent for the domain which
-		      should be able to deliver mail for the domain.
-		    </text>
-		  </description>
-		</leaf>
-	      </container>
-	    </case>
+	      </leaf>
+	    </container>
 
-	    <case name="MF">
-	      <when condition="../type = 'ianadns:MF'"/>
-	      <container name="mf">
+	    <container name="mf">
+	      <must condition="../../type = 'ianadns:MF'"/>
+	      <description>
+		<text>
+		  RDATA content for 'MF' Resource Record (obsolete,
+		  use MX).
+		</text>
+	      </description>
+	      <reference>
+		<text>
+		  RFC 1035: Domain Names - Implementation and
+		  Specification.
+		</text>
+	      </reference>
+	      <leaf name="madname">
+		<type name="domain-name"/>
+		<mandatory value="true"/>
 		<description>
 		  <text>
-		    RDATA content for 'MF' Resource Record (obsolete,
-		    use MX).
+		    Host which has a mail agent for the domain which
+		    will accept mail for forwarding to the domain.
 		  </text>
 		</description>
-		<reference>
-		  <text>
-		    RFC 1035: Domain Names - Implementation and
-		    Specification.
-		  </text>
-		</reference>
-		<leaf name="madname">
-		  <type name="domain-name"/>
-		  <mandatory value="true"/>
-		  <description>
-		    <text>
-		      Host which has a mail agent for the domain which
-		      will accept mail for forwarding to the domain.
-		    </text>
-		  </description>
-		</leaf>
-	      </container>
-	    </case>
+	      </leaf>
+	    </container>
 
-	    <case name="MG">
-	      <when condition="../type = 'ianadns:MG'"/>
-	      <container name="mg">
+	    <container name="mg">
+	      <must condition="../../type = 'ianadns:MG'"/>
+	      <description>
+		<text>
+		  RDATA content for 'MG' Resource Record.
+		</text>
+	      </description>
+	      <reference>
+		<text>
+		  RFC 1035: Domain Names - Implementation and
+		  Specification.
+		</text>
+	      </reference>
+	      <leaf name="mgmname">
+		<type name="domain-name"/>
+		<mandatory value="true"/>
 		<description>
 		  <text>
-		    RDATA content for 'MG' Resource Record.
+		    Mailbox which is a member of the mail group
+		    specified by the domain name.
 		  </text>
 		</description>
-		<reference>
-		  <text>
-		    RFC 1035: Domain Names - Implementation and
-		    Specification.
-		  </text>
-		</reference>
-		<leaf name="mgmname">
-		  <type name="domain-name"/>
-		  <mandatory value="true"/>
-		  <description>
-		    <text>
-		      Mailbox which is a member of the mail group
-		      specified by the domain name.
-		    </text>
-		  </description>
-		</leaf>
-	      </container>
-	    </case>
+	      </leaf>
+	    </container>
 
-	    <case name="MINFO">
-	      <when condition="../type = 'ianadns:MINFO'"/>
-	      <container name="minfo">
+	    <container name="minfo">
+	      <must condition="../../type = 'ianadns:MINFO'"/>
+	      <description>
+		<text>
+		  RDATA content for 'MINFO' Resource Record.
+		</text>
+	      </description>
+	      <reference>
+		<text>
+		  RFC 1035: Domain Names - Implementation and
+		  Specification.
+		</text>
+	      </reference>
+	      <leaf name="rmailbx">
+		<type name="domain-name"/>
+		<mandatory value="true"/>
 		<description>
 		  <text>
-		    RDATA content for 'MINFO' Resource Record.
+		    Mailbox which is responsible for the mailing list
+		    or mailbox.
 		  </text>
 		</description>
-		<reference>
+	      </leaf>
+	      <leaf name="emailbx">
+		<type name="domain-name"/>
+		<mandatory value="true"/>
+		<description>
 		  <text>
-		    RFC 1035: Domain Names - Implementation and
-		    Specification.
+		    Mailbox which is to receive error messages related
+		    to the mailing list or mailbox specified by the
+		    owner of the MINFO RR.
 		  </text>
-		</reference>
-		<leaf name="rmailbx">
-		  <type name="domain-name"/>
-		  <mandatory value="true"/>
-		  <description>
-		    <text>
-		      Mailbox which is responsible for the mailing
-		      list or mailbox.
-		    </text>
-		  </description>
-		</leaf>
-		<leaf name="emailbx">
-		  <type name="domain-name"/>
-		  <mandatory value="true"/>
-		  <description>
-		    <text>
-		      Mailbox which is to receive error messages
-		      related to the mailing list or mailbox specified
-		      by the owner of the MINFO RR.
-		    </text>
-		  </description>
-		</leaf>
-	      </container>
-	    </case>
+		</description>
+	      </leaf>
+	    </container>
 
-	    <case name="MR">
-	      <when condition="../type = 'ianadns:MR'"/>
-	      <container name="mr">
+	    <container name="mr">
+	      <must condition="../../type = 'ianadns:MR'"/>
+	      <description>
+		<text>
+		  RDATA content for 'MR' Resource Record.
+		</text>
+	      </description>
+	      <reference>
+		<text>
+		  RFC 1035: Domain Names - Implementation and
+		  Specification.
+		</text>
+	      </reference>
+	      <leaf name="newname">
+		<type name="domain-name"/>
+		<mandatory value="true"/>
 		<description>
 		  <text>
-		    RDATA content for 'MR' Resource Record.
+		    Mailbox which is the proper rename of the
+		    specified mailbox.
 		  </text>
 		</description>
-		<reference>
-		  <text>
-		    RFC 1035: Domain Names - Implementation and
-		    Specification.
-		  </text>
-		</reference>
-		<leaf name="newname">
-		  <type name="domain-name"/>
-		  <mandatory value="true"/>
-		  <description>
-		    <text>
-		      Mailbox which is the proper rename of the
-		      specified mailbox.
-		    </text>
-		  </description>
-		</leaf>
-	      </container>
-	    </case>
+	      </leaf>
+	    </container>
 
-	    <case name="MX">
-	      <when condition="../type = 'ianadns:MX'"/>
-	      <container name="mx">
+	    <container name="mx">
+	      <must condition="../../type = 'ianadns:MX'"/>
+	      <description>
+		<text>
+		  RDATA content for 'MX' Resource Record.
+		</text>
+	      </description>
+	      <reference>
+		<text>
+		  RFC 1035: Domain Names - Implementation and
+		  Specification.
+		</text>
+	      </reference>
+	      <leaf name="preference">
+		<type name="uint16"/>
+		<mandatory value="true"/>
 		<description>
 		  <text>
-		    RDATA content for 'MX' Resource Record.
+		    Preference given to this RR among others at the
+		    same owner. Lower values are preferred.
 		  </text>
 		</description>
-		<reference>
+	      </leaf>
+	      <leaf name="exchange">
+		<type name="domain-name"/>
+		<mandatory value="true"/>
+		<description>
 		  <text>
-		    RFC 1035: Domain Names - Implementation and
-		    Specification.
+		    Host willing to act as a mail exchange for the
+		    owner name.
 		  </text>
-		</reference>
-		<leaf name="preference">
-		  <type name="uint16"/>
-		  <mandatory value="true"/>
-		  <description>
-		    <text>
-		      Preference given to this RR among others at the
-		      same owner. Lower values are preferred.
-		    </text>
-		  </description>
-		</leaf>
-		<leaf name="exchange">
-		  <type name="domain-name"/>
-		  <mandatory value="true"/>
-		  <description>
-		    <text>
-		      Host willing to act as a mail exchange for the
-		      owner name.
-		    </text>
-		  </description>
-		</leaf>
-	      </container>
-	    </case>
+		</description>
+	      </leaf>
+	    </container>
 
-	    <case name="NS">
-	      <when condition="../type = 'ianadns:NS'"/>
-	      <container name="ns">
+	    <container name="ns">
+	      <must condition="../../type = 'ianadns:NS'"/>
+	      <description>
+		<text>
+		  RDATA content for 'NS' Resource Record.
+		</text>
+	      </description>
+	      <reference>
+		<text>
+		  RFC 1035: Domain Names - Implementation and
+		  Specification.
+		</text>
+	      </reference>
+	      <leaf name="nsdname">
+		<type name="domain-name"/>
+		<mandatory value="true"/>
 		<description>
 		  <text>
-		    RDATA content for 'NS' Resource Record.
+		    Host which should be authoritative for the
+		    specified domain.
 		  </text>
 		</description>
-		<reference>
-		  <text>
-		    RFC 1035: Domain Names - Implementation and
-		    Specification.
-		  </text>
-		</reference>
-		<leaf name="nsdname">
-		  <type name="domain-name"/>
-		  <mandatory value="true"/>
-		  <description>
-		    <text>
-		      Host which should be authoritative for the
-		      specified domain.
-		    </text>
-		  </description>
-		</leaf>
-	      </container>
-	    </case>
+	      </leaf>
+	    </container>
 
-	    <case name="NULL">
-	      <when condition="../type = 'ianadns:NULL'"/>
-	      <container name="null">
+	    <container name="null">
+	      <must condition="../../type = 'ianadns:NULL'"/>
+	      <description>
+		<text>
+		  RDATA content for 'NULL' Resource Record.
+		</text>
+	      </description>
+	      <reference>
+		<text>
+		  RFC 1035: Domain Names - Implementation and
+		  Specification.
+		</text>
+	      </reference>
+	      <leaf name="data">
+		<type name="binary">
+		  <length value="0..65535"/>
+		</type>
+		<mandatory value="true"/>
 		<description>
 		  <text>
-		    RDATA content for 'NULL' Resource Record.
+		    Arbitrary data.
 		  </text>
 		</description>
-		<reference>
-		  <text>
-		    RFC 1035: Domain Names - Implementation and
-		    Specification.
-		  </text>
-		</reference>
-		<leaf name="data">
-		  <type name="binary">
-		    <length value="0..65535"/>
-		  </type>
-		  <mandatory value="true"/>
-		  <description>
-		    <text>
-		      Arbitrary data.
-		    </text>
-		  </description>
-		</leaf>
-	      </container>
-	    </case>
+	      </leaf>
+	    </container>
 
-	    <case name="PTR">
-	      <when condition="../type = 'ianadns:PTR'"/>
-	      <container name="ptr">
+	    <container name="ptr">
+	      <must condition="../../type = 'ianadns:PTR'"/>
+	      <description>
+		<text>
+		  RDATA content for 'PTR' Resource Record.
+		</text>
+	      </description>
+	      <reference>
+		<text>
+		  RFC 1035: Domain Names - Implementation and
+		  Specification.
+		</text>
+	      </reference>
+	      <leaf name="ptrdname">
+		<type name="domain-name"/>
+		<mandatory value="true"/>
 		<description>
 		  <text>
-		    RDATA content for 'PTR' Resource Record.
+		    A pointer to some location in the domain name
+		    space.
 		  </text>
 		</description>
-		<reference>
-		  <text>
-		    RFC 1035: Domain Names - Implementation and
-		    Specification.
-		  </text>
-		</reference>
-		<leaf name="ptrdname">
-		  <type name="domain-name"/>
-		  <mandatory value="true"/>
-		  <description>
-		    <text>
-		      A pointer to some location in the domain name
-		      space.
-		    </text>
-		  </description>
-		</leaf>
-	      </container>
-	    </case>
+	      </leaf>
+	    </container>
 
-	    <case name="TXT">
-	      <when condition="../type = 'ianadns:TXT'"/>
-	      <container name="txt">
+	    <container name="txt">
+	      <must condition="../../type = 'ianadns:TXT'"/>
+	      <description>
+		<text>
+		  RDATA content for 'TXT' Resource Record.
+		</text>
+	      </description>
+	      <reference>
+		<text>
+		  RFC 1035: Domain Names - Implementation and
+		  Specification.
+		</text>
+	      </reference>
+	      <leaf name="txt-data">
+		<type name="ascii-string"/>
+		<mandatory value="true"/>
 		<description>
 		  <text>
-		    RDATA content for 'TXT' Resource Record.
+		    Descriptive text whose semantics depends on the
+		    domain where it is found.
 		  </text>
 		</description>
-		<reference>
-		  <text>
-		    RFC 1035: Domain Names - Implementation and
-		    Specification.
-		  </text>
-		</reference>
-		<leaf name="txt-data">
-		  <type name="ascii-string"/>
-		  <mandatory value="true"/>
-		  <description>
-		    <text>
-		      Descriptive text whose semantics depends on the
-		      domain where it is found.
-		    </text>
-		  </description>
-		</leaf>
-	      </container>
-	    </case>
+	      </leaf>
+	    </container>
 
-	    <case name="WKS">
-	      <when condition="../type = 'ianadns:WKS'"/>
-	      <container name="wks">
+	    <container name="wks">
+	      <must condition="../../type = 'ianadns:WKS'"/>
+	      <description>
+		<text>
+		  RDATA content for 'WKS' Resource Record.
+		</text>
+	      </description>
+	      <reference>
+		<text>
+		  RFC 1035: Domain Names - Implementation and
+		  Specification.
+		</text>
+	      </reference>
+	      <leaf name="address">
+		<type name="inet:ipv4-address-no-zone"/>
+		<mandatory value="true"/>
 		<description>
 		  <text>
-		    RDATA content for 'WKS' Resource Record.
+		    IPv4 address.
 		  </text>
 		</description>
-		<reference>
+	      </leaf>
+	      <leaf name="protocol">
+		<type name="uint8"/>
+		<mandatory value="true"/>
+		<description>
 		  <text>
-		    RFC 1035: Domain Names - Implementation and
-		    Specification.
+		    IP protocol number.
 		  </text>
-		</reference>
-		<leaf name="address">
-		  <type name="inet:ipv4-address-no-zone"/>
-		  <mandatory value="true"/>
-		  <description>
-		    <text>
-		      IPv4 address.
-		    </text>
-		  </description>
-		</leaf>
-		<leaf name="protocol">
-		  <type name="uint8"/>
-		  <mandatory value="true"/>
-		  <description>
-		    <text>
-		      IP protocol number.
-		    </text>
-		  </description>
-		</leaf>
-		<leaf name="bitmap">
-		  <type name="binary"/>
-		  <mandatory value="true"/>
-		  <description>
-		    <text>
-		      A variable length bitmap that has one bit per
-		      port of the specified protocol.
-		    </text>
-		  </description>
-		</leaf>
-	      </container>
-	    </case>
+		</description>
+	      </leaf>
+	      <leaf name="bitmap">
+		<type name="binary"/>
+		<mandatory value="true"/>
+		<description>
+		  <text>
+		    A variable length bitmap that has one bit per port
+		    of the specified protocol.
+		  </text>
+		</description>
+	      </leaf>
+	    </container>
 
 	    <!-- RFC 3596 -->
 
-	    <case name="AAAA">
-	      <when condition="../type = 'ianadns:AAAA'"/>
-	      <container name="aaaa">
+	    <container name="aaaa">
+	      <must condition="../../type = 'ianadns:AAAA'"/>
+	      <description>
+		<text>
+		  RDATA content for 'AAAA' Resource Record.
+		</text>
+	      </description>
+	      <reference>
+		<text>
+		  RFC 3596: DNS Extensions to Support IP Version 6
+		</text>
+	      </reference>
+	      <leaf name="address">
+		<type name="inet:ipv6-address-no-zone"/>
+		<mandatory value="true"/>
 		<description>
 		  <text>
-		    RDATA content for 'AAAA' Resource Record.
+		    IPv6 address.
 		  </text>
 		</description>
-		<reference>
-		  <text>
-		    RFC 3596: DNS Extensions to Support IP Version 6
-		  </text>
-		</reference>
-		<leaf name="address">
-		  <type name="inet:ipv6-address-no-zone"/>
-		  <mandatory value="true"/>
-		  <description>
-		    <text>
-		      IPv6 address.
-		    </text>
-		  </description>
-		</leaf>
-	      </container>
-	    </case>
+	      </leaf>
+	    </container>
 
 	    <!-- RFC 4034 -->
 
-	    <case name="DNSKEY">
-	      <when condition="../type = 'ianadns:DNSKEY'"/>
-	      <container name="dnskey">
-		<description>
-		  <text>
-		    RDATA content for 'DNSKEY' Resource Record.
-		  </text>
-		</description>
-		<reference>
-		  <text>
-		    RFC 4034: Resource Records for the DNS Security
-		    Extensions
-		  </text>
-		</reference>
-		<leaf name="flags">
-		  <type name="bits">
-		    <bit name="zone-key">
-		      <position value="7"/>
-		      <description>
-			<text>
-			  <h:p>Zone Key flag.</h:p>
-			  <h:p>If this flag has value 1, then the
-			  DNSKEY record holds a DNS zone key. If bit 7
-			  has value 0, then the DNSKEY record holds
-			  some other type of DNS public key and MUST
-			  NOT be used to verify RRSIGs that cover
-			  RRsets.</h:p>
-			</text>
-		      </description>
-		    </bit>
-		    <bit name="secure-entry-point">
-		      <position value="15"/>
-		      <description>
-			<text>
-			  <h:p>Secure Entry Point flag.</h:p>
-			  <h:p>If bit 15 has value 1, then the DNSKEY
-			  record holds a key intended for use as a
-			  secure entry point.</h:p>
-			</text>
-		      </description>
-		      <reference>
-			<text>
-			  RFC 3757: Domain Name System KEY (DNSKEY)
-			  Resource Record (RR) Secure Entry Point
-			  (SEP) Flag
-			</text>
-		      </reference>
-		    </bit>
-		  </type>
-		  <mandatory value="true"/>
-		  <must condition="not(contains(., 'zone-key')) or
-				   ../../../owner = ../../../../name">
+	    <container name="dnskey">
+	      <must condition="../../type = 'ianadns:DNSKEY'"/>
+	      <description>
+		<text>
+		  RDATA content for 'DNSKEY' Resource Record.
+		</text>
+	      </description>
+	      <reference>
+		<text>
+		  RFC 4034: Resource Records for the DNS Security
+		  Extensions
+		</text>
+	      </reference>
+	      <leaf name="flags">
+		<type name="bits">
+		  <bit name="zone-key">
+		    <position value="7"/>
 		    <description>
 		      <text>
-			For a Zone Key, the DNSKEY RR's owner name
-			MUST be the name of a zone.
+			<h:p>Zone Key flag.</h:p>
+			<h:p>If this flag has value 1, then the
+			DNSKEY record holds a DNS zone key. If bit 7
+			has value 0, then the DNSKEY record holds
+			some other type of DNS public key and MUST
+			NOT be used to verify RRSIGs that cover
+			RRsets.</h:p>
 		      </text>
 		    </description>
-		    <error-message>
-		      <value>
-			For a Zone Key, owner name must be the zone name.
-		      </value>
-		    </error-message>
-		  </must>
-		  <must condition="contains(., 'zone-key') or
-				   not(contains(., 'secure-entry-point'))">
+		  </bit>
+		  <bit name="secure-entry-point">
+		    <position value="15"/>
 		    <description>
 		      <text>
-			Secure Entry Point flag needs Zone Key flag.
+			<h:p>Secure Entry Point flag.</h:p>
+			<h:p>If bit 15 has value 1, then the DNSKEY
+			record holds a key intended for use as a
+			secure entry point.</h:p>
 		      </text>
 		    </description>
-		    <error-message>
-		      <value>
-			'secure-entry-point' is set but 'zone-key' isn't
-		      </value>
-		    </error-message>
-		  </must>
-		  <description>
-		    <text>DNSKEY RR flags.</text>
-		  </description>
-		</leaf>
-		<leaf name="protocol">
-		  <type name="uint8">
-		    <range value="3"/>
-		  </type>
-		  <default value="3"/>
-		  <description>
-		    <text>
-		      Protocol field. It's value MUST be 3.
-		    </text>
-		  </description>
-		</leaf>
-		<leaf name="algorithm">
-		  <type name="ianadns:dnssec-algorithm"/>
-		  <mandatory value="true"/>
-		  <description>
-		    <text>
-		      This field identifies the public key's
-		      cryptographic algorithm and determines the
-		      format of the 'public-key' field.
-		    </text>
-		  </description>
-		</leaf>
-		<leaf name="public-key">
-		  <type name="binary">
-		    <length value="1..max"/>
-		  </type>
-		  <mandatory value="true"/>
-		  <description>
-		    <text>
-		      This field contains public key material. Its
-		      format depends on the algorithm.
-		    </text>
-		  </description>
-		</leaf>
-	      </container>
-	    </case>
-
-	    <case name="RRSIG">
-	      <when condition="../type = 'ianadns:RRSIG'"/>
-	      <container name="rrsig">
-		<description>
-		  <text>
-		    RDATA content for 'RRSIG' Resource Record.
-		  </text>
-		</description>
-		<reference>
-		  <text>
-		    RFC 4034: Resource Records for the DNS Security
-		    Extensions
-		  </text>
-		</reference>
-		<leaf name="type-covered">
-		  <type name="identityref">
-		    <base name="ianadns:data-rrtype"/>
-		  </type>
-		  <mandatory value="true"/>
-		  <description>
-		    <text>
-		      This field identifies the type of the RRset that
-		      is covered by this RRSIG record.
-		    </text>
-		  </description>
-		</leaf>
-		<leaf name="algorithm">
-		  <type name="ianadns:dnssec-algorithm"/>
-		  <mandatory value="true"/>
-		  <description>
-		    <text>
-		      This field identifies the cryptographic
-		      algorithm used to create the signature.
-		    </text>
-		  </description>
-		</leaf>
-		<leaf name="labels">
-		  <type name="uint8">
-		    <range value="1..127"/>
-		  </type>
-		  <mandatory value="true"/>
-		  <description>
-		    <text>
-		      This field specifies the number of labels in the
-		      original RRSIG RR owner name.
-		    </text>
-		  </description>
-		  <reference>
-		    <text>
-		      RFC 4035: Protocol Modifications for the DNS
-		      Security Extensions
-		    </text>
-		  </reference>
-		</leaf>
-		<leaf name="original-ttl">
-		  <type name="leafref">
-		    <path
-			value="../../../../rrset[owner=current()/../../../owner][type=current()/../type-covered]/ttl"/>
-		  </type>
-		  <description>
-		    <text>
-		      This field specifies the TTL of the covered
-		      RRset as it appears in the authoritative zone.
-		    </text>
-		  </description>
-		</leaf>
-		<leaf name="signature-expiration">
-		  <type name="yang:date-and-time"/>
-		  <mandatory value="true"/>
-		  <description>
-		    <text>
-		      This field specifies the end of a validity
-		      period for the signature. The RRSIG record MUST
-		      NOT be used for authentication after the
-		      expiration date and time.
-		    </text>
-		  </description>
-		</leaf>
-		<leaf name="signature-inception">
-		  <type name="yang:date-and-time"/>
-		  <mandatory value="true"/>
-		  <description>
-		    <text>
-		      <h:p>This field specifies the start of a
-		      validity period for the signature. The RRSIG
-		      record MUST NOT be used for authentication prior
-		      the inception date and time.</h:p>
-		      <h:p>This date MUST precede the date specified in
-		      'signature-expiration'.</h:p>
-		    </text>
-		  </description>
-		</leaf>
-		<uses name="key-tag-field"/>
-		<leaf name="signer-name">
-		  <type name="domain-name"/>
-		  <must condition=". = ../../../../name">
-		    <description>
+		    <reference>
 		      <text>
-			The Signer's Name field MUST contain the name
-			of the zone of the covered RRset.
+			RFC 3757: Domain Name System KEY (DNSKEY)
+			Resource Record (RR) Secure Entry Point (SEP)
+			Flag
 		      </text>
-		    </description>
-		    <error-message>
-		      <value>Signer's name invalid</value>
-		    </error-message>
-		  </must>
+		    </reference>
+		  </bit>
+		</type>
+		<mandatory value="true"/>
+		<must condition="not(contains(., 'zone-key')) or
+				 ../../../owner = ../../../../name">
 		  <description>
 		    <text>
-		      This field identifies the owner name of the
-		      DNSKEY RR that a validator is supposed to use to
-		      validate this signature.
+		      For a Zone Key, the DNSKEY RR's owner name MUST
+		      be the name of a zone.
 		    </text>
 		  </description>
-		</leaf>
-		<leaf name="signature">
-		  <type name="binary">
-		    <length value="1..max"/>
-		  </type>
-		  <mandatory value="true"/>
+		  <error-message>
+		    <value>
+		      For a Zone Key, owner name must be the zone name.
+		    </value>
+		  </error-message>
+		</must>
+		<must condition="contains(., 'zone-key') or
+				 not(contains(., 'secure-entry-point'))">
 		  <description>
 		    <text>
-		      <h:p>This field contains the cryptographic
-		      signature that covers the RRSIG RDATA (excluding
-		      the Signature field) and the RRset specified by
-		      the RRSIG owner name, RRSIG class, and RRSIG
-		      Type Covered field.</h:p>
-		      <h:p>The format of this field depends on the algorithm in
-		      use.</h:p>
+		      Secure Entry Point flag needs Zone Key flag.
 		    </text>
 		  </description>
-		</leaf>
-	      </container>
-	    </case>
-
-	    <case name="NSEC">
-	      <when condition="../type = 'ianadns:NSEC'"/>
-	      <container name="nsec">
+		  <error-message>
+		    <value>
+		      'secure-entry-point' is set but 'zone-key' isn't
+		    </value>
+		  </error-message>
+		</must>
+		<description>
+		  <text>DNSKEY RR flags.</text>
+		</description>
+	      </leaf>
+	      <leaf name="protocol">
+		<type name="uint8">
+		  <range value="3"/>
+		</type>
+		<default value="3"/>
 		<description>
 		  <text>
-		    RDATA content for 'NSEC' Resource Record.
+		    Protocol field. It's value MUST be 3.
+		  </text>
+		</description>
+	      </leaf>
+	      <leaf name="algorithm">
+		<type name="ianadns:dnssec-algorithm"/>
+		<mandatory value="true"/>
+		<description>
+		  <text>
+		    This field identifies the public key's
+		    cryptographic algorithm and determines the format
+		    of the 'public-key' field.
+		  </text>
+		</description>
+	      </leaf>
+	      <leaf name="public-key">
+		<type name="binary">
+		  <length value="1..max"/>
+		</type>
+		<mandatory value="true"/>
+		<description>
+		  <text>
+		    This field contains public key material. Its
+		    format depends on the algorithm.
+		  </text>
+		</description>
+	      </leaf>
+	    </container>
+
+	    <container name="rrsig">
+	      <must condition="../../type = 'ianadns:RRSIG'"/>
+	      <description>
+		<text>
+		  RDATA content for 'RRSIG' Resource Record.
+		</text>
+	      </description>
+	      <reference>
+		<text>
+		  RFC 4034: Resource Records for the DNS Security
+		  Extensions
+		</text>
+	      </reference>
+	      <leaf name="type-covered">
+		<type name="identityref">
+		  <base name="ianadns:data-rrtype"/>
+		</type>
+		<mandatory value="true"/>
+		<description>
+		  <text>
+		    This field identifies the type of the RRset that
+		    is covered by this RRSIG record.
+		  </text>
+		</description>
+	      </leaf>
+	      <leaf name="algorithm">
+		<type name="ianadns:dnssec-algorithm"/>
+		<mandatory value="true"/>
+		<description>
+		  <text>
+		    This field identifies the cryptographic algorithm
+		    used to create the signature.
+		  </text>
+		</description>
+	      </leaf>
+	      <leaf name="labels">
+		<type name="uint8">
+		  <range value="1..127"/>
+		</type>
+		<mandatory value="true"/>
+		<description>
+		  <text>
+		    This field specifies the number of labels in the
+		    original RRSIG RR owner name.
 		  </text>
 		</description>
 		<reference>
 		  <text>
-		    RFC 4034: Resource Records for the DNS Security
-		    Extensions
+		    RFC 4035: Protocol Modifications for the DNS
+		    Security Extensions
 		  </text>
 		</reference>
-		<leaf name="next-domain-name">
-		  <type name="domain-name"/>
-		  <mandatory value="true"/>
-		  <description>
-		    <text>
-		      This field contains the next owner name (in the
-		      canonical ordering of the zone) that has
-		      authoritative data or contains a delegation
-		      point NS RRset.
-		    </text>
-		  </description>
-		</leaf>
-		<leaf-list name="rrset-type">
-		  <type name="identityref">
-		    <base name="ianadns:data-rrtype"/>
-		  </type>
-		  <min-elements value="1"/>
-		  <description>
-		    <text>
-		      This leaf-list represents the Type Bit Maps
-		      field. Its entries identify the RRset types that
-		      exist at the NSEC RR's owner name.
-		    </text>
-		  </description>
-		</leaf-list>
-	      </container>
-	    </case>
-
-	    <case name="DS">
-	      <when condition="../type = 'ianadns:DS'"/>
-	      <container name="ds">
+	      </leaf>
+	      <leaf name="original-ttl">
+		<type name="leafref">
+		  <path
+		      value="../../../../rrset[owner=current()/../../../owner][type=current()/../type-covered]/ttl"/>
+		</type>
 		<description>
 		  <text>
-		    RDATA content for 'DS' Resource Record.
+		    This field specifies the TTL of the covered RRset
+		    as it appears in the authoritative zone.
 		  </text>
 		</description>
-		<reference>
+	      </leaf>
+	      <leaf name="signature-expiration">
+		<type name="yang:date-and-time"/>
+		<mandatory value="true"/>
+		<description>
 		  <text>
-		    RFC 4034: Resource Records for the DNS Security
-		    Extensions
+		    This field specifies the end of a validity period
+		    for the signature. The RRSIG record MUST NOT be
+		    used for authentication after the expiration date
+		    and time.
 		  </text>
-		</reference>
-		<uses name="key-tag-field"/>
-		<leaf name="algorithm">
-		  <type name="ianadns:dnssec-algorithm"/>
-		  <mandatory value="true"/>
+		</description>
+	      </leaf>
+	      <leaf name="signature-inception">
+		<type name="yang:date-and-time"/>
+		<mandatory value="true"/>
+		<description>
+		  <text>
+		    <h:p>This field specifies the start of a validity
+		    period for the signature. The RRSIG record MUST
+		    NOT be used for authentication prior the inception
+		    date and time.</h:p>
+		    <h:p>This date MUST precede the date specified in
+		    'signature-expiration'.</h:p>
+		  </text>
+		</description>
+	      </leaf>
+	      <uses name="key-tag-field"/>
+	      <leaf name="signer-name">
+		<type name="domain-name"/>
+		<must condition=". = ../../../../name">
 		  <description>
 		    <text>
-		      This field specifies the algorithm of the DNSKEY
-		      RR referred to by the DS record.
+		      The Signer's Name field MUST contain the name of
+		      the zone of the covered RRset.
 		    </text>
 		  </description>
-		</leaf>
-		<leaf name="digest-type">
-		  <type name="ianadns:digest-algorithm"/>
-		  <mandatory value="true"/>
-		  <description>
-		    <text>
-		      This field identifies the algorithm used to
-		      construct the digest of the DNSKEY RR.
-		    </text>
-		  </description>
-		</leaf>
-		<leaf name="digest">
-		  <type name="hex-digits"/>
-		  <mandatory value="true"/>
-		  <description>
-		    <text>
-		      This field contains a digest of the DNSKEY RR to
-		      which the DS RR refers.
-		    </text>
-		  </description>
-		</leaf>
-	      </container>
-	    </case>
+		  <error-message>
+		    <value>Signer's name invalid</value>
+		  </error-message>
+		</must>
+		<description>
+		  <text>
+		    This field identifies the owner name of the DNSKEY
+		    RR that a validator is supposed to use to validate
+		    this signature.
+		  </text>
+		</description>
+	      </leaf>
+	      <leaf name="signature">
+		<type name="binary">
+		  <length value="1..max"/>
+		</type>
+		<mandatory value="true"/>
+		<description>
+		  <text>
+		    <h:p>This field contains the cryptographic
+		    signature that covers the RRSIG RDATA (excluding
+		    the Signature field) and the RRset specified by
+		    the RRSIG owner name, RRSIG class, and RRSIG Type
+		    Covered field.</h:p>
+		    <h:p>The format of this field depends on the algorithm in
+		    use.</h:p>
+		  </text>
+		</description>
+	      </leaf>
+	    </container>
+
+	    <container name="nsec">
+	      <must condition="../../type = 'ianadns:NSEC'"/>
+	      <description>
+		<text>
+		  RDATA content for 'NSEC' Resource Record.
+		</text>
+	      </description>
+	      <reference>
+		<text>
+		  RFC 4034: Resource Records for the DNS Security
+		  Extensions
+		</text>
+	      </reference>
+	      <leaf name="next-domain-name">
+		<type name="domain-name"/>
+		<mandatory value="true"/>
+		<description>
+		  <text>
+		    This field contains the next owner name (in the
+		    canonical ordering of the zone) that has
+		    authoritative data or contains a delegation point
+		    NS RRset.
+		  </text>
+		</description>
+	      </leaf>
+	      <leaf-list name="rrset-type">
+		<type name="identityref">
+		  <base name="ianadns:data-rrtype"/>
+		</type>
+		<min-elements value="1"/>
+		<description>
+		  <text>
+		    This leaf-list represents the Type Bit Maps
+		    field. Its entries identify the RRset types that
+		    exist at the NSEC RR's owner name.
+		  </text>
+		</description>
+	      </leaf-list>
+	    </container>
+
+	    <container name="ds">
+	      <must condition="../../type = 'ianadns:DS'"/>
+	      <description>
+		<text>
+		  RDATA content for 'DS' Resource Record.
+		</text>
+	      </description>
+	      <reference>
+		<text>
+		  RFC 4034: Resource Records for the DNS Security
+		  Extensions
+		</text>
+	      </reference>
+	      <uses name="key-tag-field"/>
+	      <leaf name="algorithm">
+		<type name="ianadns:dnssec-algorithm"/>
+		<mandatory value="true"/>
+		<description>
+		  <text>
+		    This field specifies the algorithm of the DNSKEY
+		    RR referred to by the DS record.
+		  </text>
+		</description>
+	      </leaf>
+	      <leaf name="digest-type">
+		<type name="ianadns:digest-algorithm"/>
+		<mandatory value="true"/>
+		<description>
+		  <text>
+		    This field identifies the algorithm used to
+		    construct the digest of the DNSKEY RR.
+		  </text>
+		</description>
+	      </leaf>
+	      <leaf name="digest">
+		<type name="hex-digits"/>
+		<mandatory value="true"/>
+		<description>
+		  <text>
+		    This field contains a digest of the DNSKEY RR to
+		    which the DS RR refers.
+		  </text>
+		</description>
+	      </leaf>
+	    </container>
 	  </choice>
 	</list>
       </list>
