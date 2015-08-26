@@ -8,10 +8,10 @@
   
   <xsl:template match="yin:module">
     <xsl:value-of select="concat('# ', @name, '&#xA;&#xA;')"/>
-    <xsl:apply-templates select=".//yin:augment"/>
+    <xsl:apply-templates select=".//yin:choice[@name='rdata-content']"/>
   </xsl:template>
 
-  <xsl:template match="yin:augment">
+  <xsl:template match="yin:choice">
     <xsl:apply-templates select="yin:container"/>
     <xsl:text>&#xA;</xsl:text>
   </xsl:template>
@@ -19,6 +19,7 @@
   <xsl:template match="yin:container">
     <xsl:value-of select="concat(@name, '&#x9;')"/>
     <xsl:apply-templates select="yin:leaf|yin:uses|yin:leaf-list"/>
+    <xsl:text>&#xA;</xsl:text>
   </xsl:template>
   
   <xsl:template match="yin:leaf|yin:leaf-list">
