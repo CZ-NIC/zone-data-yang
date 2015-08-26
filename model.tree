@@ -5,7 +5,7 @@ module: dns-zones
          +--rw description?   string
          +--rw class?         ianadns:class
          +--rw default-ttl    time-interval
-         +--rw soa
+         +--rw SOA
          |  +--rw ttl?       time-interval
          |  +--rw mname      domain-name
          |  +--rw rname      domain-name
@@ -23,67 +23,67 @@ module: dns-zones
                +--rw id             string
                +--rw description?   string
                +--rw (rdata-content)
-                  +--:(a)
-                  |  +--rw a
+                  +--:(A)
+                  |  +--rw A
                   |     +--rw address    inet:ipv4-address-no-zone
-                  +--:(cname)
-                  |  +--rw cname
+                  +--:(CNAME)
+                  |  +--rw CNAME
                   |     +--rw cname    domain-name
-                  +--:(hinfo)
-                  |  +--rw hinfo
+                  +--:(HINFO)
+                  |  +--rw HINFO
                   |     +--rw cpu    ascii-string
                   |     +--rw os     ascii-string
-                  +--:(mb)
-                  |  +--rw mb
+                  +--:(MB)
+                  |  +--rw MB
                   |     +--rw madname    domain-name
-                  +--:(md)
-                  |  +--rw md
+                  +--:(MD)
+                  |  +--rw MD
                   |     +--rw madname    domain-name
-                  +--:(mf)
-                  |  +--rw mf
+                  +--:(MF)
+                  |  +--rw MF
                   |     +--rw madname    domain-name
-                  +--:(mg)
-                  |  +--rw mg
+                  +--:(MG)
+                  |  +--rw MG
                   |     +--rw mgmname    domain-name
-                  +--:(minfo)
-                  |  +--rw minfo
+                  +--:(MINFO)
+                  |  +--rw MINFO
                   |     +--rw rmailbx    domain-name
                   |     +--rw emailbx    domain-name
-                  +--:(mr)
-                  |  +--rw mr
+                  +--:(MR)
+                  |  +--rw MR
                   |     +--rw newname    domain-name
-                  +--:(mx)
-                  |  +--rw mx
+                  +--:(MX)
+                  |  +--rw MX
                   |     +--rw preference    uint16
                   |     +--rw exchange      domain-name
-                  +--:(ns)
-                  |  +--rw ns
+                  +--:(NS)
+                  |  +--rw NS
                   |     +--rw nsdname    domain-name
-                  +--:(null)
-                  |  +--rw null
+                  +--:(NULL)
+                  |  +--rw NULL
                   |     +--rw data    binary
-                  +--:(ptr)
-                  |  +--rw ptr
+                  +--:(PTR)
+                  |  +--rw PTR
                   |     +--rw ptrdname    domain-name
-                  +--:(txt)
-                  |  +--rw txt
+                  +--:(TXT)
+                  |  +--rw TXT
                   |     +--rw txt-data    ascii-string
-                  +--:(wks)
-                  |  +--rw wks
+                  +--:(WKS)
+                  |  +--rw WKS
                   |     +--rw address     inet:ipv4-address-no-zone
                   |     +--rw protocol    uint8
                   |     +--rw bitmap      binary
-                  +--:(aaaa)
-                  |  +--rw aaaa
+                  +--:(AAAA)
+                  |  +--rw AAAA
                   |     +--rw address    inet:ipv6-address-no-zone
-                  +--:(dnskey)
-                  |  +--rw dnskey
+                  +--:(DNSKEY)
+                  |  +--rw DNSKEY
                   |     +--rw flags         bits
                   |     +--rw protocol?     uint8
                   |     +--rw algorithm     ianadns:dnssec-algorithm
                   |     +--rw public-key    binary
-                  +--:(rrsig)
-                  |  +--rw rrsig
+                  +--:(RRSIG)
+                  |  +--rw RRSIG
                   |     +--rw type-covered            identityref
                   |     +--rw algorithm               ianadns:dnssec-algorithm
                   |     +--rw labels                  uint8
@@ -93,12 +93,12 @@ module: dns-zones
                   |     +--rw key-tag                 uint16
                   |     +--rw signer-name?            domain-name
                   |     +--rw signature               binary
-                  +--:(nsec)
-                  |  +--rw nsec
+                  +--:(NSEC)
+                  |  +--rw NSEC
                   |     +--rw next-domain-name    domain-name
                   |     +--rw rrset-type*         identityref
-                  +--:(ds)
-                     +--rw ds
+                  +--:(DS)
+                     +--rw DS
                         +--rw key-tag        uint16
                         +--rw algorithm      ianadns:dnssec-algorithm
                         +--rw digest-type    ianadns:digest-algorithm

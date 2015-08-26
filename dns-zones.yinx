@@ -207,7 +207,7 @@
 	  </text>
 	</description>
       </leaf>
-      <container name="soa">
+      <container name="SOA">
 	<description>
 	  <text>
 	    SOA RR for the zone.
@@ -334,7 +334,7 @@
 
 	    <!-- RFC 1035 -->
 
-	    <container name="a">
+	    <container name="A">
 	      <must condition="../../type = 'ianadns:A'"/>
 	      <description>
 		<text>
@@ -358,7 +358,7 @@
 	      </leaf>
 	    </container>
 
-	    <container name="cname">
+	    <container name="CNAME">
 	      <must condition="../../type = 'ianadns:CNAME'"/>
 	      <description>
 		<text>
@@ -382,7 +382,7 @@
 	      </leaf>
 	    </container>
 
-	    <container name="hinfo">
+	    <container name="HINFO">
 	      <must condition="../../type = 'ianadns:HINFO'"/>
 	      <description>
 		<text>
@@ -415,7 +415,7 @@
 	      </leaf>
 	    </container>
 
-	    <container name="mb">
+	    <container name="MB">
 	      <must condition="../../type = 'ianadns:MB'"/>
 	      <description>
 		<text>
@@ -439,7 +439,7 @@
 	      </leaf>
 	    </container>
 
-	    <container name="md">
+	    <container name="MD">
 	      <must condition="../../type = 'ianadns:MD'"/>
 	      <description>
 		<text>
@@ -465,7 +465,7 @@
 	      </leaf>
 	    </container>
 
-	    <container name="mf">
+	    <container name="MF">
 	      <must condition="../../type = 'ianadns:MF'"/>
 	      <description>
 		<text>
@@ -491,7 +491,7 @@
 	      </leaf>
 	    </container>
 
-	    <container name="mg">
+	    <container name="MG">
 	      <must condition="../../type = 'ianadns:MG'"/>
 	      <description>
 		<text>
@@ -516,7 +516,7 @@
 	      </leaf>
 	    </container>
 
-	    <container name="minfo">
+	    <container name="MINFO">
 	      <must condition="../../type = 'ianadns:MINFO'"/>
 	      <description>
 		<text>
@@ -552,7 +552,7 @@
 	      </leaf>
 	    </container>
 
-	    <container name="mr">
+	    <container name="MR">
 	      <must condition="../../type = 'ianadns:MR'"/>
 	      <description>
 		<text>
@@ -577,7 +577,7 @@
 	      </leaf>
 	    </container>
 
-	    <container name="mx">
+	    <container name="MX">
 	      <must condition="../../type = 'ianadns:MX'"/>
 	      <description>
 		<text>
@@ -612,7 +612,7 @@
 	      </leaf>
 	    </container>
 
-	    <container name="ns">
+	    <container name="NS">
 	      <must condition="../../type = 'ianadns:NS'"/>
 	      <description>
 		<text>
@@ -637,7 +637,7 @@
 	      </leaf>
 	    </container>
 
-	    <container name="null">
+	    <container name="NULL">
 	      <must condition="../../type = 'ianadns:NULL'"/>
 	      <description>
 		<text>
@@ -663,7 +663,7 @@
 	      </leaf>
 	    </container>
 
-	    <container name="ptr">
+	    <container name="PTR">
 	      <must condition="../../type = 'ianadns:PTR'"/>
 	      <description>
 		<text>
@@ -688,7 +688,7 @@
 	      </leaf>
 	    </container>
 
-	    <container name="txt">
+	    <container name="TXT">
 	      <must condition="../../type = 'ianadns:TXT'"/>
 	      <description>
 		<text>
@@ -713,7 +713,7 @@
 	      </leaf>
 	    </container>
 
-	    <container name="wks">
+	    <container name="WKS">
 	      <must condition="../../type = 'ianadns:WKS'"/>
 	      <description>
 		<text>
@@ -758,7 +758,7 @@
 
 	    <!-- RFC 3596 -->
 
-	    <container name="aaaa">
+	    <container name="AAAA">
 	      <must condition="../../type = 'ianadns:AAAA'"/>
 	      <description>
 		<text>
@@ -783,7 +783,7 @@
 
 	    <!-- RFC 4034 -->
 
-	    <container name="dnskey">
+	    <container name="DNSKEY">
 	      <must condition="../../type = 'ianadns:DNSKEY'"/>
 	      <description>
 		<text>
@@ -899,7 +899,7 @@
 	      </leaf>
 	    </container>
 
-	    <container name="rrsig">
+	    <container name="RRSIG">
 	      <must condition="../../type = 'ianadns:RRSIG'"/>
 	      <description>
 		<text>
@@ -1031,7 +1031,7 @@
 	      </leaf>
 	    </container>
 
-	    <container name="nsec">
+	    <container name="NSEC">
 	      <must condition="../../type = 'ianadns:NSEC'"/>
 	      <description>
 		<text>
@@ -1071,7 +1071,7 @@
 	      </leaf-list>
 	    </container>
 
-	    <container name="ds">
+	    <container name="DS">
 	      <must condition="../../type = 'ianadns:DS'"/>
 	      <description>
 		<text>

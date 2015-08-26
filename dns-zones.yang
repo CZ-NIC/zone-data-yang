@@ -152,7 +152,7 @@ module dns-zones {
         description
           "Default TTL for the entire zone.";
       }
-      container soa {
+      container SOA {
         description
           "SOA RR for the zone.";
         uses ttl-field;
@@ -245,7 +245,7 @@ module dns-zones {
                New RR types defined in other modules shall augment
                the 'rdata-content' choice.";
             /* RFC 1035 */
-            container a {
+            container A {
               must "../../type = 'ianadns:A'";
               description
                 "RDATA content for 'A' Resource Record.";
@@ -259,7 +259,7 @@ module dns-zones {
                   "IPv4 address.";
               }
             }
-            container cname {
+            container CNAME {
               must "../../type = 'ianadns:CNAME'";
               description
                 "RDATA content for 'CNAME' Resource Record.";
@@ -273,7 +273,7 @@ module dns-zones {
                   "Canonical or primary name for the owner.";
               }
             }
-            container hinfo {
+            container HINFO {
               must "../../type = 'ianadns:HINFO'";
               description
                 "RDATA content for 'HINFO' Resource Record.";
@@ -293,7 +293,7 @@ module dns-zones {
                   "Operating system type.";
               }
             }
-            container mb {
+            container MB {
               must "../../type = 'ianadns:MB'";
               description
                 "RDATA content for 'MB' Resource Record.";
@@ -307,7 +307,7 @@ module dns-zones {
                   "Host which has the specified mailbox.";
               }
             }
-            container md {
+            container MD {
               must "../../type = 'ianadns:MD'";
               description
                 "RDATA content for 'MD' Resource Record (obsolete,
@@ -323,7 +323,7 @@ module dns-zones {
                    should be able to deliver mail for the domain.";
               }
             }
-            container mf {
+            container MF {
               must "../../type = 'ianadns:MF'";
               description
                 "RDATA content for 'MF' Resource Record (obsolete,
@@ -339,7 +339,7 @@ module dns-zones {
                    will accept mail for forwarding to the domain.";
               }
             }
-            container mg {
+            container MG {
               must "../../type = 'ianadns:MG'";
               description
                 "RDATA content for 'MG' Resource Record.";
@@ -354,7 +354,7 @@ module dns-zones {
                    specified by the domain name.";
               }
             }
-            container minfo {
+            container MINFO {
               must "../../type = 'ianadns:MINFO'";
               description
                 "RDATA content for 'MINFO' Resource Record.";
@@ -377,7 +377,7 @@ module dns-zones {
                    owner of the MINFO RR.";
               }
             }
-            container mr {
+            container MR {
               must "../../type = 'ianadns:MR'";
               description
                 "RDATA content for 'MR' Resource Record.";
@@ -392,7 +392,7 @@ module dns-zones {
                    specified mailbox.";
               }
             }
-            container mx {
+            container MX {
               must "../../type = 'ianadns:MX'";
               description
                 "RDATA content for 'MX' Resource Record.";
@@ -414,7 +414,7 @@ module dns-zones {
                    owner name.";
               }
             }
-            container ns {
+            container NS {
               must "../../type = 'ianadns:NS'";
               description
                 "RDATA content for 'NS' Resource Record.";
@@ -429,7 +429,7 @@ module dns-zones {
                    specified domain.";
               }
             }
-            container null {
+            container NULL {
               must "../../type = 'ianadns:NULL'";
               description
                 "RDATA content for 'NULL' Resource Record.";
@@ -445,7 +445,7 @@ module dns-zones {
                   "Arbitrary data.";
               }
             }
-            container ptr {
+            container PTR {
               must "../../type = 'ianadns:PTR'";
               description
                 "RDATA content for 'PTR' Resource Record.";
@@ -460,7 +460,7 @@ module dns-zones {
                    space.";
               }
             }
-            container txt {
+            container TXT {
               must "../../type = 'ianadns:TXT'";
               description
                 "RDATA content for 'TXT' Resource Record.";
@@ -475,7 +475,7 @@ module dns-zones {
                    domain where it is found.";
               }
             }
-            container wks {
+            container WKS {
               must "../../type = 'ianadns:WKS'";
               description
                 "RDATA content for 'WKS' Resource Record.";
@@ -503,7 +503,7 @@ module dns-zones {
               }
             }
             /* RFC 3596 */
-            container aaaa {
+            container AAAA {
               must "../../type = 'ianadns:AAAA'";
               description
                 "RDATA content for 'AAAA' Resource Record.";
@@ -517,7 +517,7 @@ module dns-zones {
               }
             }
             /* RFC 4034 */
-            container dnskey {
+            container DNSKEY {
               must "../../type = 'ianadns:DNSKEY'";
               description
                 "RDATA content for 'DNSKEY' Resource Record.";
@@ -596,7 +596,7 @@ module dns-zones {
                    format depends on the algorithm.";
               }
             }
-            container rrsig {
+            container RRSIG {
               must "../../type = 'ianadns:RRSIG'";
               description
                 "RDATA content for 'RRSIG' Resource Record.";
@@ -691,7 +691,7 @@ module dns-zones {
                    in use.";
               }
             }
-            container nsec {
+            container NSEC {
               must "../../type = 'ianadns:NSEC'";
               description
                 "RDATA content for 'NSEC' Resource Record.";
@@ -718,7 +718,7 @@ module dns-zones {
                    the NSEC RR's owner name.";
               }
             }
-            container ds {
+            container DS {
               must "../../type = 'ianadns:DS'";
               description
                 "RDATA content for 'DS' Resource Record.";

@@ -9,7 +9,7 @@
 	This zone comes from RFC 4035.
       </description>
       <default-ttl>3600</default-ttl>
-      <soa>
+      <SOA>
 	<mname>ns1.example</mname>
 	<rname>bugs.x.w.example</rname>
 	<serial>1081539377</serial>
@@ -17,13 +17,13 @@
 	<retry>300</retry>
 	<expire>3600000</expire>
 	<minimum>3600</minimum>
-      </soa>
+      </SOA>
       <rrset>
 	<owner>example</owner>
 	<type>ianadns:RRSIG</type>
 	<rdata>
 	  <id>1</id>
-	  <rrsig>
+	  <RRSIG>
 	    <type-covered>ianadns:SOA</type-covered>
 	    <algorithm>RSASHA1</algorithm>
 	    <labels>1</labels>
@@ -34,11 +34,11 @@
 	    <signature>eUi219ENFoSmkCstQZ0D/eYNg3amKIdX8HvW1q
 HwM2rSv9Q7XaCI2NBy ki0poLwEuabZf8SHm2Kqh7EA35UFKYkEhEwtN/292ROuHVkZRCUzM3lD 9PT1
 NPkleqT3JcjiBRy3BCTirnGX5qQXK9qKW08fIawvNhwexI3e5hjS QUU=</signature>
-	  </rrsig>
+	  </RRSIG>
 	</rdata>
 	<rdata>
 	  <id>2</id>
-	  <rrsig>
+	  <RRSIG>
 	    <type-covered>ianadns:NS</type-covered>
 	    <algorithm>RSASHA1</algorithm>
 	    <labels>1</labels>
@@ -48,11 +48,11 @@ NPkleqT3JcjiBRy3BCTirnGX5qQXK9qKW08fIawvNhwexI3e5hjS QUU=</signature>
 	    <signature>XRYbz0NL/bcF4uOH+puXe5hSJgmG9wX+sWz7ksi
 3Vl4HO5InUkyltxkn CdWw0M8cfpM8FM30inACCOOfBUEbyFL7TWUjfTwk3jKDX+7gm5FkItNE 2ZMLK
 0QnyjWQOiE5G15+cvV31eQHBRFpYLrQBIeGiL+V9aDYafTLV+Yt 0e0=</signature>
-	  </rrsig>
+	  </RRSIG>
 	</rdata>
 	<rdata>
 	  <id>3</id>
-	  <rrsig>
+	  <RRSIG>
 	    <type-covered>ianadns:MX</type-covered>
 	    <algorithm>RSASHA1</algorithm>
 	    <labels>1</labels>
@@ -60,11 +60,11 @@ NPkleqT3JcjiBRy3BCTirnGX5qQXK9qKW08fIawvNhwexI3e5hjS QUU=</signature>
 	    <signature-inception>2014-09-08T11:59:12Z</signature-inception>
 	    <key-tag>35721</key-tag>
 	    <signature>ejvossk9ErTnwuBQ0bcfwRXOvXeIJ419x/AphtwAJMtsj01kASdszAi1 Rzlo1CSca18Z6nq0XZQ1KeDjLg07WEWS1WU8l30RAKgWawlCjjJeeOTy r0GJ2IYhtbFDm9BB3u6EUmrD5/1/1NBchvWATMCo4FfspGNwZ7BgiUB3 ne4=</signature>
-	  </rrsig>
+	  </RRSIG>
 	</rdata>
 	<rdata>
 	  <id>4</id>
-	  <rrsig>
+	  <RRSIG>
 	    <type-covered>ianadns:NSEC</type-covered>
 	    <algorithm>RSASHA1</algorithm>
 	    <labels>1</labels>
@@ -74,11 +74,11 @@ NPkleqT3JcjiBRy3BCTirnGX5qQXK9qKW08fIawvNhwexI3e5hjS QUU=</signature>
 	    <signature>X20KQj2os3I3fMWGXLoNccWhbP53v95PwHrKZ
 JPCf0KawwAMsGNXfKfT 9mDLGi4AJMImmJJfufSI/Za1clHQ5n5t2Ru5w0W4QAPkpBaWuQSU/5WU IV5
 4lCVtBBgTMuf3zpMnRgda2Q/o1XoFvN3+5eFvk0Qgs3m4OxBIfeJu Z7c=</signature>
-	  </rrsig>
+	  </RRSIG>
 	</rdata>
 	<rdata>
 	  <id>5</id>
-	  <rrsig>
+	  <RRSIG>
 	    <type-covered>ianadns:DNSKEY</type-covered>
 	    <algorithm>RSASHA1</algorithm>
 	    <labels>1</labels>
@@ -88,11 +88,11 @@ JPCf0KawwAMsGNXfKfT 9mDLGi4AJMImmJJfufSI/Za1clHQ5n5t2Ru5w0W4QAPkpBaWuQSU/5WU IV5
 	    <signature>zft/jYjZDK2eq6twehtmp6W3UgZQBVhDjDa
 uBwGG6jimkZ00PwAL4Eh5 1ZM/nGnw8CPt6YxXK32FGoLy9VQTOgFUfp0myZiRggH1At7RSBusDyOA I
 /BaZhJ+X1hCG2wfvPfiD9irPHB11az+isrms4FmQrWsPkyF/A3ZJqcl DpM=</signature>
-	  </rrsig>
+	  </RRSIG>
 	</rdata>
 	<rdata>
 	  <id>6</id>
-	  <rrsig>
+	  <RRSIG>
 	    <type-covered>ianadns:DNSKEY</type-covered>
 	    <algorithm>RSASHA1</algorithm>
 	    <labels>1</labels>
@@ -100,7 +100,7 @@ uBwGG6jimkZ00PwAL4Eh5 1ZM/nGnw8CPt6YxXK32FGoLy9VQTOgFUfp0myZiRggH1At7RSBusDyOA I
 	    <signature-inception>2014-09-08T11:59:12Z</signature-inception>
 	    <key-tag>65014</key-tag>
 	    <signature>Sso2em1SJhXTZTVEnnfEZaK7VdSSbw7Ytd3cJuDEi7qVgbMJpNCZg1Of S2VIMlmf3sdzMrMOFbbXzdyAATHCmqBTqcMYEzSAH+mzc3hletbLM683 ChR3c8PJL1hUbHAGl3va8hK5jRsXaNlDjnOuyFQsiEBZU0lXFHyqvENR OBg7CJlDZeC8mdzaoTOLvklJFk6b8ktROYfjyaACVwFhQENIs1mxI12N YrjwDZV3ZHweDVfbh5qIjj855NwsDqJWahg0fBdbQA9B667KCIesuxp/ HstbKk7Ild193Ye5Rcqvtg5vesoOeQZducYtLLztr/hDLAWn9tEa0R2N /HzGSA==</signature>
-	  </rrsig>
+	  </RRSIG>
 	</rdata>
       </rrset>
       <rrset>
@@ -108,15 +108,15 @@ uBwGG6jimkZ00PwAL4Eh5 1ZM/nGnw8CPt6YxXK32FGoLy9VQTOgFUfp0myZiRggH1At7RSBusDyOA I
 	<type>ianadns:NS</type>
 	<rdata>
 	  <id>1</id>
-	  <ns>
+	  <NS>
 	    <nsdname>ns1.example</nsdname>
-	  </ns>
+	  </NS>
 	</rdata>
 	<rdata>
 	  <id>2</id>
-	  <ns>
+	  <NS>
 	    <nsdname>ns2.example</nsdname>
-	  </ns>
+	  </NS>
 	</rdata>
       </rrset>
       <rrset>
@@ -124,10 +124,10 @@ uBwGG6jimkZ00PwAL4Eh5 1ZM/nGnw8CPt6YxXK32FGoLy9VQTOgFUfp0myZiRggH1At7RSBusDyOA I
 	<type>ianadns:MX</type>
 	<rdata>
 	  <id>1</id>
-	  <mx>
+	  <MX>
 	    <preference>1</preference>
 	    <exchange>xx.example</exchange>
-	  </mx>
+	  </MX>
 	</rdata>
       </rrset>
       <rrset>
@@ -135,7 +135,7 @@ uBwGG6jimkZ00PwAL4Eh5 1ZM/nGnw8CPt6YxXK32FGoLy9VQTOgFUfp0myZiRggH1At7RSBusDyOA I
 	<type>ianadns:NSEC</type>
 	<rdata>
 	  <id>1</id>
-	  <nsec>
+	  <NSEC>
 	    <next-domain-name>a.example</next-domain-name>
 	    <rrset-type>ianadns:NS</rrset-type>
 	    <rrset-type>ianadns:SOA</rrset-type>
@@ -143,7 +143,7 @@ uBwGG6jimkZ00PwAL4Eh5 1ZM/nGnw8CPt6YxXK32FGoLy9VQTOgFUfp0myZiRggH1At7RSBusDyOA I
 	    <rrset-type>ianadns:RRSIG</rrset-type>
 	    <rrset-type>ianadns:NSEC</rrset-type>
 	    <rrset-type>ianadns:DNSKEY</rrset-type>
-	  </nsec>
+	  </NSEC>
 	</rdata>
       </rrset>
       <rrset>
@@ -151,18 +151,18 @@ uBwGG6jimkZ00PwAL4Eh5 1ZM/nGnw8CPt6YxXK32FGoLy9VQTOgFUfp0myZiRggH1At7RSBusDyOA I
 	<type>ianadns:DNSKEY</type>
 	<rdata>
 	  <id>1</id>
-	  <dnskey>
+	  <DNSKEY>
 	    <flags>zone-key</flags>
 	    <algorithm>RSASHA1</algorithm>
 	    <public-key>AwEAAdcU
 RIq28DnbSgdwnQjjX/9ihQAgPylq7HHnMjQOm59fGPMnsjy/ AkpcNxadAVGRycM7jZHloPyp7Tty/11
 J9wKDsLR86YChcYk9KXFKakdr EE1jchkL7KYL7g0bUTAIJSDLhsn6TyLILzgTX6Ru4mCceS4wLJ30LS
 i+ DR4cockH</public-key>
-	  </dnskey>
+	  </DNSKEY>
 	</rdata>
 	<rdata>
 	  <id>2</id>
-	  <dnskey>
+	  <DNSKEY>
 	    <flags>zone-key secure-entry-point</flags>
 	    <algorithm>RSASHA1</algorithm>
 	    <public-key>AwEAAeMN
@@ -171,7 +171,7 @@ J6DQ0SvHJEWEAN25tyvWmDdUj eDnevEpbQbkdaV+XQJ3SMWGf7OtzGo0BC4vO5ecw+zGteWT/UUbX9X
 kK 3vWOirLAF1s5kNEEnUt+kIbr50vz+qOfvWa+ldWHSt2T2Ds6fMVkdE84 gyb3mE0syQbEuSdgOO6V
 ko4qn9FtJ2Uz0L2i8vKb1chT+f7RISQhicTL X/RQgH0kV80UCBtn4CEgE6Cx5Yv+z50li0I4bNRI1BL
 BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
-	  </dnskey>
+	  </DNSKEY>
 	</rdata>
       </rrset>
       <rrset>
@@ -179,9 +179,9 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
 	<type>ianadns:A</type>
 	<rdata>
 	  <id>1</id>
-	  <a>
+	  <A>
 	    <address>192.0.2.11</address>
-	  </a>
+	  </A>
 	</rdata>
       </rrset>
       <rrset>
@@ -189,9 +189,9 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
 	<type>ianadns:A</type>
 	<rdata>
 	  <id>1</id>
-	  <a>
+	  <A>
 	    <address>192.0.2.5</address>
-	  </a>
+	  </A>
 	</rdata>
       </rrset>
       <rrset>
@@ -199,9 +199,9 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
 	<type>ianadns:A</type>
 	<rdata>
 	  <id>1</id>
-	  <a>
+	  <A>
 	    <address>192.0.2.6</address>
-	  </a>
+	  </A>
 	</rdata>
       </rrset>
       <rrset>
@@ -209,9 +209,9 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
 	<type>ianadns:A</type>
 	<rdata>
 	  <id>1</id>
-	  <a>
+	  <A>
 	    <address>192.0.2.7</address>
-	  </a>
+	  </A>
 	</rdata>
       </rrset>
       <rrset>
@@ -219,9 +219,9 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
 	<type>ianadns:A</type>
 	<rdata>
 	  <id>1</id>
-	  <a>
+	  <A>
 	    <address>192.0.2.8</address>
-	  </a>
+	  </A>
 	</rdata>
       </rrset>
       <rrset>
@@ -229,15 +229,15 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
 	<type>ianadns:NS</type>
 	<rdata>
 	  <id>1</id>
-	  <ns>
+	  <NS>
 	    <nsdname>ns1.b.example</nsdname>
-	  </ns>
+	  </NS>
 	</rdata>
 	<rdata>
 	  <id>2</id>
-	  <ns>
+	  <NS>
 	    <nsdname>ns2.b.example</nsdname>
-	  </ns>
+	  </NS>
 	</rdata>
       </rrset>
       <rrset>
@@ -245,12 +245,12 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
 	<type>ianadns:NSEC</type>
 	<rdata>
 	  <id>1</id>
-	  <nsec>
+	  <NSEC>
 	    <next-domain-name>ns1.example</next-domain-name>
 	    <rrset-type>ianadns:NS</rrset-type>
 	    <rrset-type>ianadns:RRSIG</rrset-type>
 	    <rrset-type>ianadns:NSEC</rrset-type>
-	  </nsec>
+	  </NSEC>
 	</rdata>
       </rrset>
       <rrset>
@@ -258,7 +258,7 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
 	<type>ianadns:RRSIG</type>
 	<rdata>
 	  <id>1</id>
-	  <rrsig>
+	  <RRSIG>
 	    <type-covered>ianadns:NSEC</type-covered>
 	    <algorithm>RSASHA1</algorithm>
 	    <labels>2</labels>
@@ -266,7 +266,7 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
 	    <signature-inception>2014-09-08T11:59:12Z</signature-inception>
 	    <key-tag>35721</key-tag>
 	    <signature>gXx+XR8khxgHGl4Zc5H2Fk+ekZQMFyb8qVGGztE+sGh6YD8ERZyBi6J/ GaL+PF7iDO9qJvrOHmULssCgiiTooWhnG8ezXt429ADB+8bsd9qjoyU1 cAcYL6zXHpYdf8LOTSetEaaoZISF0buD3UMOmErSZ+z5liN09V+woZqu 2K0=</signature>
-	  </rrsig>
+	  </RRSIG>
 	</rdata>
       </rrset>
       <rrset>
@@ -274,15 +274,15 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
 	<type>ianadns:NS</type>
 	<rdata>
 	  <id>1</id>
-	  <ns>
+	  <NS>
 	    <nsdname>ns1.a.example</nsdname>
-	  </ns>
+	  </NS>
 	</rdata>
 	<rdata>
 	  <id>2</id>
-	  <ns>
+	  <NS>
 	    <nsdname>ns2.a.example</nsdname>
-	  </ns>
+	  </NS>
 	</rdata>
       </rrset>
       <rrset>
@@ -290,12 +290,12 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
 	<type>ianadns:DS</type>
 	<rdata>
 	  <id>1</id>
-	  <ds>
+	  <DS>
 	    <key-tag>57855</key-tag>
 	    <algorithm>RSASHA1</algorithm>
 	    <digest-type>SHA-1</digest-type>
 	    <digest>B6DCD485719ADCA18E5F3D48A2331627FDD3636B</digest>
-	  </ds>
+	  </DS>
 	</rdata>
       </rrset>
       <rrset>
@@ -303,7 +303,7 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
 	<type>ianadns:RRSIG</type>
 	<rdata>
 	  <id>1</id>
-	  <rrsig>
+	  <RRSIG>
 	    <type-covered>ianadns:DS</type-covered>
 	    <algorithm>RSASHA1</algorithm>
 	    <labels>2</labels>
@@ -311,7 +311,7 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
 	    <signature-inception>2014-09-08T11:59:12Z</signature-inception>
 	    <key-tag>35721</key-tag>
 	    <signature>X5GpSOMM71nyseLAMDsZ0ClXiQknr4KNhnde+WYsSeQwSmHjxE7cyhrt KBrhRpaCTwjGn2ydmYteRWkeCGhatr19zqdHVbu0KCbX2RQ+dv2FUu2o aw4yzIGGPsw38BxwCECauLiPIAN9cx57QIIGNRxMsestpQf1xgdNrBPS p/s=</signature>
-	  </rrsig>
+	  </RRSIG>
 	</rdata>
       </rrset>
       <rrset>
@@ -319,9 +319,9 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
 	<type>ianadns:A</type>
 	<rdata>
 	  <id>1</id>
-	  <a>
+	  <A>
 	    <address>192.0.2.9</address>
-	  </a>
+	  </A>
 	</rdata>
       </rrset>
       <rrset>
@@ -329,10 +329,10 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
 	<type>ianadns:HINFO</type>
 	<rdata>
 	  <id>1</id>
-	  <hinfo>
+	  <HINFO>
 	    <cpu>KLH-10</cpu>
 	    <os>ITS</os>
-	  </hinfo>
+	  </HINFO>
 	</rdata>
       </rrset>
       <rrset>
@@ -340,9 +340,9 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
 	<type>ianadns:AAAA</type>
 	<rdata>
 	  <id>1</id>
-	  <aaaa>
+	  <AAAA>
 	    <address>2001:db8::f00:baa9</address>
-	  </aaaa>
+	  </AAAA>
 	</rdata>
       </rrset>
       <rrset>
@@ -350,9 +350,9 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
 	<type>ianadns:A</type>
 	<rdata>
 	  <id>1</id>
-	  <a>
+	  <A>
 	    <address>192.0.2.1</address>
-	  </a>
+	  </A>
 	</rdata>
       </rrset>
       <rrset>
@@ -360,9 +360,9 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
 	<type>ianadns:A</type>
 	<rdata>
 	  <id>1</id>
-	  <a>
+	  <A>
 	    <address>192.0.2.2</address>
-	  </a>
+	  </A>
 	</rdata>
       </rrset>
       <rrset>
@@ -370,10 +370,10 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
 	<type>ianadns:MX</type>
 	<rdata>
 	  <id>1</id>
-	  <mx>
+	  <MX>
 	    <preference>1</preference>
 	    <exchange>ai.example</exchange>
-	  </mx>
+	  </MX>
 	</rdata>
       </rrset>
       <rrset>
@@ -381,10 +381,10 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
 	<type>ianadns:MX</type>
 	<rdata>
 	  <id>1</id>
-	  <mx>
+	  <MX>
 	    <preference>1</preference>
 	    <exchange>xx.example</exchange>
-	  </mx>
+	  </MX>
 	</rdata>
       </rrset>
       <rrset>
@@ -392,9 +392,9 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
 	<type>ianadns:A</type>
 	<rdata>
 	  <id>1</id>
-	  <a>
+	  <A>
 	    <address>192.0.2.10</address>
-	  </a>
+	  </A>
 	</rdata>
       </rrset>
       <rrset>
@@ -402,10 +402,10 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
 	<type>ianadns:HINFO</type>
 	<rdata>
 	  <id>1</id>
-	  <hinfo>
+	  <HINFO>
 	    <cpu>KLH-10</cpu>
 	    <os>TOPS-20</os>
-	  </hinfo>
+	  </HINFO>
 	</rdata>
       </rrset>
       <rrset>
@@ -413,9 +413,9 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
 	<type>ianadns:AAAA</type>
 	<rdata>
 	  <id>1</id>
-	  <aaaa>
+	  <AAAA>
 	    <address>2001:db8::f00:baaa</address>
-	  </aaaa>
+	  </AAAA>
 	</rdata>
       </rrset>
       <rrset>
@@ -423,10 +423,10 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
 	<type>ianadns:MX</type>
 	<rdata>
 	  <id>1</id>
-	  <mx>
+	  <MX>
 	    <preference>1</preference>
 	    <exchange>xx.example</exchange>
-	  </mx>
+	  </MX>
 	</rdata>
       </rrset>
       <rrset>
@@ -434,9 +434,9 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
 	<type>ianadns:CNAME</type>
 	<rdata>
 	  <id>1</id>
-	  <cname>
+	  <CNAME>
 	    <cname>example</cname>
-	  </cname>
+	  </CNAME>
 	  <description>Wildcard expansion leading to apex</description>
 	</rdata>
       </rrset>
@@ -445,9 +445,9 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
 	<type>ianadns:CNAME</type>
 	<rdata>
 	  <id>1</id>
-	  <cname>
+	  <CNAME>
 	    <cname>nxdomain.example</cname>
-	  </cname>
+	  </CNAME>
 	  <description>Wildcard expansion leading to nonexistent name.</description>
 	</rdata>
       </rrset>
