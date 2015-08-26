@@ -159,9 +159,10 @@
       <type name="uint16"/>
       <mandatory value="true"/>
       <description>
-	<text>The Key Tag field contains the key tag value of the
-	DNSKEY RR that validates this signature, in network byte
-	order.</text>
+	<text>
+	  The Key Tag field contains the key tag value of the DNSKEY
+	  RR that validates this signature, in network byte order.
+	</text>
       </description>
     </leaf>
   </grouping>
@@ -218,8 +219,8 @@
 	  <mandatory value="true"/>
 	  <description>
 	    <text>
-	      Name server that was the original or primary source of data
-	      for this zone.
+	      Name server that was the original or primary source of
+	      data for this zone.
 	    </text>
 	  </description>
 	</leaf>
@@ -246,8 +247,8 @@
 	  <mandatory value="true"/>
 	  <description>
 	    <text>
-	      Time interval that should elapse before the zone should be
-	      refreshed.
+	      Time interval that should elapse before the zone should
+	      be refreshed.
 	    </text>
 	  </description>
 	</leaf>
@@ -266,8 +267,8 @@
 	  <mandatory value="true"/>
 	  <description>
 	    <text>
-	      Upper limit on the time interval that can elapse before the
-	      zone is no longer authoritative.
+	      Upper limit on the time interval that can elapse before
+	      the zone is no longer authoritative.
 	    </text>
 	  </description>
 	</leaf>
@@ -276,7 +277,8 @@
 	  <mandatory value="true"/>
 	  <description>
 	    <text>
-	      Minimum TTL that should be exported with any RR from this zone.
+	      Minimum TTL that should be exported with any RR from
+	      this zone.
 	    </text>
 	  </description>
 	</leaf>
@@ -342,7 +344,8 @@
 		</description>
 		<reference>
 		  <text>
-		    RFC 1035: Domain Names - Implementation and Specification.
+		    RFC 1035: Domain Names - Implementation and
+		    Specification.
 		  </text>
 		</reference>
 		<leaf name="address">
@@ -367,7 +370,8 @@
 		</description>
 		<reference>
 		  <text>
-		    RFC 1035: Domain Names - Implementation and Specification.
+		    RFC 1035: Domain Names - Implementation and
+		    Specification.
 		  </text>
 		</reference>
 		<leaf name="cname">
@@ -392,7 +396,8 @@
 		</description>
 		<reference>
 		  <text>
-		    RFC 1035: Domain Names - Implementation and Specification.
+		    RFC 1035: Domain Names - Implementation and
+		    Specification.
 		  </text>
 		</reference>
 		<leaf name="cpu">
@@ -426,10 +431,11 @@
 		</description>
 		<reference>
 		  <text>
-		    RFC 1035: Domain Names - Implementation and Specification.
+		    RFC 1035: Domain Names - Implementation and
+		    Specification.
 		  </text>
 		</reference>
-		<leaf name="mb-madname">
+		<leaf name="madname">
 		  <type name="domain-name"/>
 		  <mandatory value="true"/>
 		  <description>
@@ -446,21 +452,23 @@
 	      <container name="md">
 		<description>
 		  <text>
-		    RDATA content for 'MD' Resource Record (obsolete, use MX).
+		    RDATA content for 'MD' Resource Record (obsolete,
+		    use MX).
 		  </text>
 		</description>
 		<reference>
 		  <text>
-		    RFC 1035: Domain Names - Implementation and Specification.
+		    RFC 1035: Domain Names - Implementation and
+		    Specification.
 		  </text>
 		</reference>
-		<leaf name="md-madname">
+		<leaf name="madname">
 		  <type name="domain-name"/>
 		  <mandatory value="true"/>
 		  <description>
 		    <text>
-		      Host which has a mail agent for the domain which should be
-		      able to deliver mail for the domain.
+		      Host which has a mail agent for the domain which
+		      should be able to deliver mail for the domain.
 		    </text>
 		  </description>
 		</leaf>
@@ -472,21 +480,23 @@
 	      <container name="mf">
 		<description>
 		  <text>
-		    RDATA content for 'MF' Resource Record (obsolete, use MX).
+		    RDATA content for 'MF' Resource Record (obsolete,
+		    use MX).
 		  </text>
 		</description>
 		<reference>
 		  <text>
-		    RFC 1035: Domain Names - Implementation and Specification.
+		    RFC 1035: Domain Names - Implementation and
+		    Specification.
 		  </text>
 		</reference>
-		<leaf name="mf-madname">
+		<leaf name="madname">
 		  <type name="domain-name"/>
 		  <mandatory value="true"/>
 		  <description>
 		    <text>
-		      Host which has a mail agent for the domain which will accept
-		      mail for forwarding to the domain.
+		      Host which has a mail agent for the domain which
+		      will accept mail for forwarding to the domain.
 		    </text>
 		  </description>
 		</leaf>
@@ -503,7 +513,8 @@
 		</description>
 		<reference>
 		  <text>
-		    RFC 1035: Domain Names - Implementation and Specification.
+		    RFC 1035: Domain Names - Implementation and
+		    Specification.
 		  </text>
 		</reference>
 		<leaf name="mgmname">
@@ -511,8 +522,8 @@
 		  <mandatory value="true"/>
 		  <description>
 		    <text>
-		      Mailbox which is a member of the mail group specified by the
-		      domain name.
+		      Mailbox which is a member of the mail group
+		      specified by the domain name.
 		    </text>
 		  </description>
 		</leaf>
@@ -529,7 +540,8 @@
 		</description>
 		<reference>
 		  <text>
-		    RFC 1035: Domain Names - Implementation and Specification.
+		    RFC 1035: Domain Names - Implementation and
+		    Specification.
 		  </text>
 		</reference>
 		<leaf name="rmailbx">
@@ -537,8 +549,8 @@
 		  <mandatory value="true"/>
 		  <description>
 		    <text>
-		      Mailbox which is responsible for the mailing list or
-		      mailbox.
+		      Mailbox which is responsible for the mailing
+		      list or mailbox.
 		    </text>
 		  </description>
 		</leaf>
@@ -547,9 +559,9 @@
 		  <mandatory value="true"/>
 		  <description>
 		    <text>
-		      Mailbox which is to receive error messages related to the
-		      mailing list or mailbox specified by the owner of the MINFO
-		      RR.
+		      Mailbox which is to receive error messages
+		      related to the mailing list or mailbox specified
+		      by the owner of the MINFO RR.
 		    </text>
 		  </description>
 		</leaf>
@@ -566,7 +578,8 @@
 		</description>
 		<reference>
 		  <text>
-		    RFC 1035: Domain Names - Implementation and Specification.
+		    RFC 1035: Domain Names - Implementation and
+		    Specification.
 		  </text>
 		</reference>
 		<leaf name="newname">
@@ -574,8 +587,8 @@
 		  <mandatory value="true"/>
 		  <description>
 		    <text>
-		      Mailbox which is the proper rename of the specified
-		      mailbox.
+		      Mailbox which is the proper rename of the
+		      specified mailbox.
 		    </text>
 		  </description>
 		</leaf>
@@ -592,7 +605,8 @@
 		</description>
 		<reference>
 		  <text>
-		    RFC 1035: Domain Names - Implementation and Specification.
+		    RFC 1035: Domain Names - Implementation and
+		    Specification.
 		  </text>
 		</reference>
 		<leaf name="preference">
@@ -600,8 +614,8 @@
 		  <mandatory value="true"/>
 		  <description>
 		    <text>
-		      Preference given to this RR among others at the same
-		      owner. Lower values are preferred.
+		      Preference given to this RR among others at the
+		      same owner. Lower values are preferred.
 		    </text>
 		  </description>
 		</leaf>
@@ -610,7 +624,8 @@
 		  <mandatory value="true"/>
 		  <description>
 		    <text>
-		      Host willing to act as a mail exchange for the owner name.
+		      Host willing to act as a mail exchange for the
+		      owner name.
 		    </text>
 		  </description>
 		</leaf>
@@ -627,7 +642,8 @@
 		</description>
 		<reference>
 		  <text>
-		    RFC 1035: Domain Names - Implementation and Specification.
+		    RFC 1035: Domain Names - Implementation and
+		    Specification.
 		  </text>
 		</reference>
 		<leaf name="nsdname">
@@ -635,7 +651,8 @@
 		  <mandatory value="true"/>
 		  <description>
 		    <text>
-		      Host which should be authoritative for the specified domain.
+		      Host which should be authoritative for the
+		      specified domain.
 		    </text>
 		  </description>
 		</leaf>
@@ -652,7 +669,8 @@
 		</description>
 		<reference>
 		  <text>
-		    RFC 1035: Domain Names - Implementation and Specification.
+		    RFC 1035: Domain Names - Implementation and
+		    Specification.
 		  </text>
 		</reference>
 		<leaf name="data">
@@ -679,7 +697,8 @@
 		</description>
 		<reference>
 		  <text>
-		    RFC 1035: Domain Names - Implementation and Specification.
+		    RFC 1035: Domain Names - Implementation and
+		    Specification.
 		  </text>
 		</reference>
 		<leaf name="ptrdname">
@@ -687,7 +706,8 @@
 		  <mandatory value="true"/>
 		  <description>
 		    <text>
-		      A pointer to some location in the domain name space.
+		      A pointer to some location in the domain name
+		      space.
 		    </text>
 		  </description>
 		</leaf>
@@ -704,7 +724,8 @@
 		</description>
 		<reference>
 		  <text>
-		    RFC 1035: Domain Names - Implementation and Specification.
+		    RFC 1035: Domain Names - Implementation and
+		    Specification.
 		  </text>
 		</reference>
 		<leaf name="txt-data">
@@ -712,8 +733,8 @@
 		  <mandatory value="true"/>
 		  <description>
 		    <text>
-		      Descriptive text whose semantics depends on the domain where
-		      it is found.
+		      Descriptive text whose semantics depends on the
+		      domain where it is found.
 		    </text>
 		  </description>
 		</leaf>
@@ -730,10 +751,11 @@
 		</description>
 		<reference>
 		  <text>
-		    RFC 1035: Domain Names - Implementation and Specification.
+		    RFC 1035: Domain Names - Implementation and
+		    Specification.
 		  </text>
 		</reference>
-		<leaf name="wks-address">
+		<leaf name="address">
 		  <type name="inet:ipv4-address-no-zone"/>
 		  <mandatory value="true"/>
 		  <description>
@@ -756,8 +778,8 @@
 		  <mandatory value="true"/>
 		  <description>
 		    <text>
-		      A variable length bitmap that has one bit per port of the
-		      specified protocol.
+		      A variable length bitmap that has one bit per
+		      port of the specified protocol.
 		    </text>
 		  </description>
 		</leaf>
@@ -803,7 +825,8 @@
 		</description>
 		<reference>
 		  <text>
-		    RFC 4034: Resource Records for the DNS Security Extensions
+		    RFC 4034: Resource Records for the DNS Security
+		    Extensions
 		  </text>
 		</reference>
 		<leaf name="flags">
@@ -813,10 +836,11 @@
 		      <description>
 			<text>
 			  <h:p>Zone Key flag.</h:p>
-			  <h:p>If this flag has value 1, then the DNSKEY record
-			  holds a DNS zone key. If bit 7 has value 0, then the
-			  DNSKEY record holds some other type of DNS public key
-			  and MUST NOT be used to verify RRSIGs that cover
+			  <h:p>If this flag has value 1, then the
+			  DNSKEY record holds a DNS zone key. If bit 7
+			  has value 0, then the DNSKEY record holds
+			  some other type of DNS public key and MUST
+			  NOT be used to verify RRSIGs that cover
 			  RRsets.</h:p>
 			</text>
 		      </description>
@@ -826,15 +850,16 @@
 		      <description>
 			<text>
 			  <h:p>Secure Entry Point flag.</h:p>
-			  <h:p>If bit 15 has value 1, then the DNSKEY record
-			  holds a key intended for use as a secure entry
-			  point.</h:p>
+			  <h:p>If bit 15 has value 1, then the DNSKEY
+			  record holds a key intended for use as a
+			  secure entry point.</h:p>
 			</text>
 		      </description>
 		      <reference>
 			<text>
-			  RFC 3757: Domain Name System KEY (DNSKEY) Resource
-			  Record (RR) Secure Entry Point (SEP) Flag
+			  RFC 3757: Domain Name System KEY (DNSKEY)
+			  Resource Record (RR) Secure Entry Point
+			  (SEP) Flag
 			</text>
 		      </reference>
 		    </bit>
@@ -844,8 +869,8 @@
 				   ../../../owner = ../../../../name">
 		    <description>
 		      <text>
-			For a Zone Key, the DNSKEY RR's owner name MUST be the
-			name of a zone.
+			For a Zone Key, the DNSKEY RR's owner name
+			MUST be the name of a zone.
 		      </text>
 		    </description>
 		    <error-message>
@@ -887,9 +912,9 @@
 		  <mandatory value="true"/>
 		  <description>
 		    <text>
-		      This field identifies the public key's cryptographic
-		      algorithm and determines the format of the 'public-key'
-		      field.
+		      This field identifies the public key's
+		      cryptographic algorithm and determines the
+		      format of the 'public-key' field.
 		    </text>
 		  </description>
 		</leaf>
@@ -900,8 +925,8 @@
 		  <mandatory value="true"/>
 		  <description>
 		    <text>
-		      This field contains public key material. Its format
-		      depends on the algorithm.
+		      This field contains public key material. Its
+		      format depends on the algorithm.
 		    </text>
 		  </description>
 		</leaf>
@@ -918,7 +943,8 @@
 		</description>
 		<reference>
 		  <text>
-		    RFC 4034: Resource Records for the DNS Security Extensions
+		    RFC 4034: Resource Records for the DNS Security
+		    Extensions
 		  </text>
 		</reference>
 		<leaf name="type-covered">
@@ -928,8 +954,8 @@
 		  <mandatory value="true"/>
 		  <description>
 		    <text>
-		      This field identifies the type of the RRset that is
-		      covered by this RRSIG record.
+		      This field identifies the type of the RRset that
+		      is covered by this RRSIG record.
 		    </text>
 		  </description>
 		</leaf>
@@ -938,8 +964,8 @@
 		  <mandatory value="true"/>
 		  <description>
 		    <text>
-		      This field identifies the cryptographic algorithm used to
-		      create the signature.
+		      This field identifies the cryptographic
+		      algorithm used to create the signature.
 		    </text>
 		  </description>
 		</leaf>
@@ -950,14 +976,14 @@
 		  <mandatory value="true"/>
 		  <description>
 		    <text>
-		      This field specifies the number of labels in the original
-		      RRSIG RR owner name.
+		      This field specifies the number of labels in the
+		      original RRSIG RR owner name.
 		    </text>
 		  </description>
 		  <reference>
 		    <text>
-		      RFC 4035: Protocol Modifications for the DNS Security
-		      Extensions
+		      RFC 4035: Protocol Modifications for the DNS
+		      Security Extensions
 		    </text>
 		  </reference>
 		</leaf>
@@ -968,8 +994,8 @@
 		  </type>
 		  <description>
 		    <text>
-		      This field specifies the TTL of the covered RRset as it
-		      appears in the authoritative zone.
+		      This field specifies the TTL of the covered
+		      RRset as it appears in the authoritative zone.
 		    </text>
 		  </description>
 		</leaf>
@@ -978,9 +1004,10 @@
 		  <mandatory value="true"/>
 		  <description>
 		    <text>
-		      This field specifies the end of a validity period for the
-		      signature. The RRSIG record MUST NOT be used for
-		      authentication after the expiration date and time.
+		      This field specifies the end of a validity
+		      period for the signature. The RRSIG record MUST
+		      NOT be used for authentication after the
+		      expiration date and time.
 		    </text>
 		  </description>
 		</leaf>
@@ -989,9 +1016,10 @@
 		  <mandatory value="true"/>
 		  <description>
 		    <text>
-		      <h:p>This field specifies the start of a validity period
-		      for the signature. The RRSIG record MUST NOT be used for
-		      authentication prior the inception date and time.</h:p>
+		      <h:p>This field specifies the start of a
+		      validity period for the signature. The RRSIG
+		      record MUST NOT be used for authentication prior
+		      the inception date and time.</h:p>
 		      <h:p>This date MUST precede the date specified in
 		      'signature-expiration'.</h:p>
 		    </text>
@@ -1003,8 +1031,8 @@
 		  <must condition=". = ../../../../name">
 		    <description>
 		      <text>
-			The Signer's Name field MUST contain the name of the
-			zone of the covered RRset.
+			The Signer's Name field MUST contain the name
+			of the zone of the covered RRset.
 		      </text>
 		    </description>
 		    <error-message>
@@ -1013,8 +1041,9 @@
 		  </must>
 		  <description>
 		    <text>
-		      This field identifies the owner name of the DNSKEY RR that
-		      a validator is supposed to use to validate this signature.
+		      This field identifies the owner name of the
+		      DNSKEY RR that a validator is supposed to use to
+		      validate this signature.
 		    </text>
 		  </description>
 		</leaf>
@@ -1025,10 +1054,11 @@
 		  <mandatory value="true"/>
 		  <description>
 		    <text>
-		      <h:p>This field contains the cryptographic signature that
-		      covers the RRSIG RDATA (excluding the Signature field) and
-		      the RRset specified by the RRSIG owner name, RRSIG class,
-		      and RRSIG Type Covered field.</h:p>
+		      <h:p>This field contains the cryptographic
+		      signature that covers the RRSIG RDATA (excluding
+		      the Signature field) and the RRset specified by
+		      the RRSIG owner name, RRSIG class, and RRSIG
+		      Type Covered field.</h:p>
 		      <h:p>The format of this field depends on the algorithm in
 		      use.</h:p>
 		    </text>
@@ -1047,7 +1077,8 @@
 		</description>
 		<reference>
 		  <text>
-		    RFC 4034: Resource Records for the DNS Security Extensions
+		    RFC 4034: Resource Records for the DNS Security
+		    Extensions
 		  </text>
 		</reference>
 		<leaf name="next-domain-name">
@@ -1055,9 +1086,10 @@
 		  <mandatory value="true"/>
 		  <description>
 		    <text>
-		      This field contains the next owner name (in the canonical
-		      ordering of the zone) that has authoritative data or
-		      contains a delegation point NS RRset.
+		      This field contains the next owner name (in the
+		      canonical ordering of the zone) that has
+		      authoritative data or contains a delegation
+		      point NS RRset.
 		    </text>
 		  </description>
 		</leaf>
@@ -1068,9 +1100,9 @@
 		  <min-elements value="1"/>
 		  <description>
 		    <text>
-		      This leaf-list represents the Type Bit Maps field. Its
-		      entries identify the RRset types that exist at the NSEC
-		      RR's owner name.
+		      This leaf-list represents the Type Bit Maps
+		      field. Its entries identify the RRset types that
+		      exist at the NSEC RR's owner name.
 		    </text>
 		  </description>
 		</leaf-list>
@@ -1087,7 +1119,8 @@
 		</description>
 		<reference>
 		  <text>
-		    RFC 4034: Resource Records for the DNS Security Extensions
+		    RFC 4034: Resource Records for the DNS Security
+		    Extensions
 		  </text>
 		</reference>
 		<uses name="key-tag-field"/>
@@ -1096,8 +1129,8 @@
 		  <mandatory value="true"/>
 		  <description>
 		    <text>
-		      This field specifies the algorithm of the DNSKEY RR
-		      referred to by the DS record.
+		      This field specifies the algorithm of the DNSKEY
+		      RR referred to by the DS record.
 		    </text>
 		  </description>
 		</leaf>
@@ -1106,8 +1139,8 @@
 		  <mandatory value="true"/>
 		  <description>
 		    <text>
-		      This field identifies the algorithm used to construct the
-		      digest of the DNSKEY RR.
+		      This field identifies the algorithm used to
+		      construct the digest of the DNSKEY RR.
 		    </text>
 		  </description>
 		</leaf>
@@ -1116,8 +1149,8 @@
 		  <mandatory value="true"/>
 		  <description>
 		    <text>
-		      This field contains a digest of the DNSKEY RR to which the
-		      DS RR refers.
+		      This field contains a digest of the DNSKEY RR to
+		      which the DS RR refers.
 		    </text>
 		  </description>
 		</leaf>

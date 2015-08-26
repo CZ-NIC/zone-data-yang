@@ -307,7 +307,7 @@ module dns-zones {
                 reference
                   "RFC 1035: Domain Names - Implementation and
                    Specification.";
-                leaf mb-madname {
+                leaf madname {
                   type domain-name;
                   mandatory "true";
                   description
@@ -324,7 +324,7 @@ module dns-zones {
                 reference
                   "RFC 1035: Domain Names - Implementation and
                    Specification.";
-                leaf md-madname {
+                leaf madname {
                   type domain-name;
                   mandatory "true";
                   description
@@ -343,7 +343,7 @@ module dns-zones {
                 reference
                   "RFC 1035: Domain Names - Implementation and
                    Specification.";
-                leaf mf-madname {
+                leaf madname {
                   type domain-name;
                   mandatory "true";
                   description
@@ -513,7 +513,7 @@ module dns-zones {
                 reference
                   "RFC 1035: Domain Names - Implementation and
                    Specification.";
-                leaf wks-address {
+                leaf address {
                   type inet:ipv4-address-no-zone;
                   mandatory "true";
                   description

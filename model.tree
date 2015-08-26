@@ -35,13 +35,13 @@ module: dns-zones
                   |     +--rw os     ascii-string
                   +--:(MB)
                   |  +--rw mb
-                  |     +--rw mb-madname    domain-name
+                  |     +--rw madname    domain-name
                   +--:(MD)
                   |  +--rw md
-                  |     +--rw md-madname    domain-name
+                  |     +--rw madname    domain-name
                   +--:(MF)
                   |  +--rw mf
-                  |     +--rw mf-madname    domain-name
+                  |     +--rw madname    domain-name
                   +--:(MG)
                   |  +--rw mg
                   |     +--rw mgmname    domain-name
@@ -70,9 +70,9 @@ module: dns-zones
                   |     +--rw txt-data    ascii-string
                   +--:(WKS)
                   |  +--rw wks
-                  |     +--rw wks-address    inet:ipv4-address-no-zone
-                  |     +--rw protocol       uint8
-                  |     +--rw bitmap         binary
+                  |     +--rw address     inet:ipv4-address-no-zone
+                  |     +--rw protocol    uint8
+                  |     +--rw bitmap      binary
                   +--:(AAAA)
                   |  +--rw aaaa
                   |     +--rw address    inet:ipv6-address-no-zone

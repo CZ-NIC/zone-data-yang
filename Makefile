@@ -38,10 +38,10 @@ hello.xml: $(yams) hello-external.ent
 	  xsltproc --output $@ $(xslpars) $(xsldir)/yin2yang.xsl -
 
 $(schemas): hello.xml
-	yang2dsdl $(y2dopts) -L $<
+	@yang2dsdl $(y2dopts) -L $<
 
 %.rnc: %.rng
-	trang -I rng -O rnc $< $@
+	@trang -I rng -O rnc $< $@
 
 rnc: $(baty).rnc
 
@@ -55,15 +55,15 @@ model.xsl: hello.xml
 	@pyang -o $@ -f jsonxsl -L $<
 
 model.tree: hello.xml
-	pyang $(PYANG_OPTS) -f tree -o $@ -L $<
+	@pyang $(PYANG_OPTS) -f tree -o $@ -L $<
 
 example.zone: xslt/master.xsl $(EXAMPLE_INST)
 	@xsltproc --output $@ $^
 
 commit:	model.tree
-	git add model.tree $(yams)
-	git commit
+	@git add model.tree $(yams)
+	@git commit
 
 clean:
 	@rm -rf *.rng *.rnc *.sch *.dsrl hello.xml model.tree \
-	  knot.conf $(yams)
+	example.zone $(yams)
