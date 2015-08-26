@@ -1,5 +1,6 @@
 yang.ent
 hello.xml
+example.zone
 model.*
 !model.tree
 *.json

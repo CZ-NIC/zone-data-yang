@@ -11,11 +11,13 @@ xslpars =
 schemas = $(baty).rng $(baty).sch $(baty).dsrl
 y2dopts = -t $(EXAMPLE_TYPE) -b $(EXAMPLE_BASE)
 
-.PHONY: all clean commit json rnc validate yang
+.PHONY: all clean commit json master rnc validate yang
 
 all: $(yams)
 
 json: $(baty).json
+
+master: example.zone
 
 hello.xml: $(yams) hello-external.ent
 	@echo '<hello xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">' > $@
@@ -54,6 +56,9 @@ model.xsl: hello.xml
 
 model.tree: hello.xml
 	pyang $(PYANG_OPTS) -f tree -o $@ -L $<
+
+example.zone: xslt/master.xsl $(EXAMPLE_INST)
+	@xsltproc --output $@ $^
 
 commit:	model.tree
 	git add model.tree $(yams)

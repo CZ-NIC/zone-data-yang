@@ -4,79 +4,102 @@ module: dns-zones
          +--rw name           domain-name
          +--rw description?   string
          +--rw class?         ianadns:class
+         +--rw default-ttl    time-interval
+         +--rw soa
+         |  +--rw ttl?       time-interval
+         |  +--rw mname      domain-name
+         |  +--rw rname      domain-name
+         |  +--rw serial     yang:counter32
+         |  +--rw refresh    time-interval
+         |  +--rw retry      time-interval
+         |  +--rw expire     time-interval
+         |  +--rw minimum    time-interval
          +--rw rrset* [owner type]
             +--rw owner          domain-name
             +--rw type           identityref
+            +--rw ttl?           time-interval
             +--rw description?   string
-            +--rw ttl            time-interval
             +--rw rdata* [id]
                +--rw id             string
                +--rw description?   string
-               +--rw a!
-               |  +--rw address    inet:ipv4-address-no-zone
-               +--rw cname!
-               |  +--rw cname    domain-name
-               +--rw hinfo!
-               |  +--rw cpu    ascii-string
-               |  +--rw os     ascii-string
-               +--rw mb!
-               |  +--rw mb-madname    domain-name
-               +--rw md!
-               |  +--rw md-madname    domain-name
-               +--rw mf!
-               |  +--rw mf-madname    domain-name
-               +--rw mg!
-               |  +--rw mgmname    domain-name
-               +--rw minfo!
-               |  +--rw rmailbx    domain-name
-               |  +--rw emailbx    domain-name
-               +--rw mr!
-               |  +--rw newname    domain-name
-               +--rw mx!
-               |  +--rw preference    uint16
-               |  +--rw exchange      domain-name
-               +--rw ns!
-               |  +--rw nsdname    domain-name
-               +--rw null!
-               |  +--rw data    binary
-               +--rw ptr!
-               |  +--rw ptrdname    domain-name
-               +--rw soa!
-               |  +--rw mname      domain-name
-               |  +--rw rname      domain-name
-               |  +--rw serial     yang:counter32
-               |  +--rw refresh    time-interval
-               |  +--rw retry      time-interval
-               |  +--rw expire     time-interval
-               |  +--rw minimum    time-interval
-               +--rw txt!
-               |  +--rw txt-data    ascii-string
-               +--rw wks!
-               |  +--rw wks-address    inet:ipv4-address-no-zone
-               |  +--rw protocol       uint8
-               |  +--rw bitmap         binary
-               +--rw aaaa!
-               |  +--rw address    inet:ipv6-address-no-zone
-               +--rw dnskey!
-               |  +--rw flags         bits
-               |  +--rw protocol?     uint8
-               |  +--rw algorithm     ianadns:dnssec-algorithm
-               |  +--rw public-key    binary
-               +--rw rrsig!
-               |  +--rw type-covered            identityref
-               |  +--rw algorithm               ianadns:dnssec-algorithm
-               |  +--rw labels                  uint8
-               |  +--rw original-ttl?           -> ../../../../rrset[owner=current()/../../../owner][type=current()/../type-covered]/ttl
-               |  +--rw signature-expiration    yang:date-and-time
-               |  +--rw signature-inception     yang:date-and-time
-               |  +--rw key-tag                 uint16
-               |  +--rw signer-name?            domain-name
-               |  +--rw signature               binary
-               +--rw nsec!
-               |  +--rw next-domain-name    domain-name
-               |  +--rw rrset-type*         identityref
-               +--rw ds!
-                  +--rw key-tag        uint16
-                  +--rw algorithm      ianadns:dnssec-algorithm
-                  +--rw digest-type    ianadns:digest-algorithm
-                  +--rw digest         hex-digits
+               +--rw (rdata-content)
+                  +--:(A)
+                  |  +--rw a
+                  |     +--rw address    inet:ipv4-address-no-zone
+                  +--:(CNAME)
+                  |  +--rw cname
+                  |     +--rw cname    domain-name
+                  +--:(HINFO)
+                  |  +--rw hinfo
+                  |     +--rw cpu    ascii-string
+                  |     +--rw os     ascii-string
+                  +--:(MB)
+                  |  +--rw mb
+                  |     +--rw mb-madname    domain-name
+                  +--:(MD)
+                  |  +--rw md
+                  |     +--rw md-madname    domain-name
+                  +--:(MF)
+                  |  +--rw mf
+                  |     +--rw mf-madname    domain-name
+                  +--:(MG)
+                  |  +--rw mg
+                  |     +--rw mgmname    domain-name
+                  +--:(MINFO)
+                  |  +--rw minfo
+                  |     +--rw rmailbx    domain-name
+                  |     +--rw emailbx    domain-name
+                  +--:(MR)
+                  |  +--rw mr
+                  |     +--rw newname    domain-name
+                  +--:(MX)
+                  |  +--rw mx
+                  |     +--rw preference    uint16
+                  |     +--rw exchange      domain-name
+                  +--:(NS)
+                  |  +--rw ns
+                  |     +--rw nsdname    domain-name
+                  +--:(NULL)
+                  |  +--rw null
+                  |     +--rw data    binary
+                  +--:(PTR)
+                  |  +--rw ptr
+                  |     +--rw ptrdname    domain-name
+                  +--:(TXT)
+                  |  +--rw txt
+                  |     +--rw txt-data    ascii-string
+                  +--:(WKS)
+                  |  +--rw wks
+                  |     +--rw wks-address    inet:ipv4-address-no-zone
+                  |     +--rw protocol       uint8
+                  |     +--rw bitmap         binary
+                  +--:(AAAA)
+                  |  +--rw aaaa
+                  |     +--rw address    inet:ipv6-address-no-zone
+                  +--:(DNSKEY)
+                  |  +--rw dnskey
+                  |     +--rw flags         bits
+                  |     +--rw protocol?     uint8
+                  |     +--rw algorithm     ianadns:dnssec-algorithm
+                  |     +--rw public-key    binary
+                  +--:(RRSIG)
+                  |  +--rw rrsig
+                  |     +--rw type-covered            identityref
+                  |     +--rw algorithm               ianadns:dnssec-algorithm
+                  |     +--rw labels                  uint8
+                  |     +--rw original-ttl?           -> ../../../../rrset[owner=current()/../../../owner][type=current()/../type-covered]/ttl
+                  |     +--rw signature-expiration    yang:date-and-time
+                  |     +--rw signature-inception     yang:date-and-time
+                  |     +--rw key-tag                 uint16
+                  |     +--rw signer-name?            domain-name
+                  |     +--rw signature               binary
+                  +--:(NSEC)
+                  |  +--rw nsec
+                  |     +--rw next-domain-name    domain-name
+                  |     +--rw rrset-type*         identityref
+                  +--:(DS)
+                     +--rw ds
+                        +--rw key-tag        uint16
+                        +--rw algorithm      ianadns:dnssec-algorithm
+                        +--rw digest-type    ianadns:digest-algorithm
+                        +--rw digest         hex-digits

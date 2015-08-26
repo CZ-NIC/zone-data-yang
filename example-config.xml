@@ -8,27 +8,19 @@
       <description>
 	This zone comes from RFC 4035.
       </description>
-      <rrset>
-	<owner>example</owner>
-	<type>ianadns:SOA</type>
-	<ttl>3600</ttl>
-	<rdata>
-	  <id>1</id>
-	  <soa>
-	    <mname>ns1.example</mname>
-	    <rname>bugs.x.w.example</rname>
-	    <serial>1081539377</serial>
-	    <refresh>3600</refresh>
-	    <retry>300</retry>
-	    <expire>3600000</expire>
-	    <minimum>3600</minimum>
-	  </soa>
-	</rdata>
-      </rrset>
+      <default-ttl>3600</default-ttl>
+      <soa>
+	<mname>ns1.example</mname>
+	<rname>bugs.x.w.example</rname>
+	<serial>1081539377</serial>
+	<refresh>3600</refresh>
+	<retry>300</retry>
+	<expire>3600000</expire>
+	<minimum>3600</minimum>
+      </soa>
       <rrset>
 	<owner>example</owner>
 	<type>ianadns:RRSIG</type>
-	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
 	  <rrsig>
@@ -114,7 +106,6 @@ uBwGG6jimkZ00PwAL4Eh5 1ZM/nGnw8CPt6YxXK32FGoLy9VQTOgFUfp0myZiRggH1At7RSBusDyOA I
       <rrset>
 	<owner>example</owner>
 	<type>ianadns:NS</type>
-	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
 	  <ns>
@@ -131,7 +122,6 @@ uBwGG6jimkZ00PwAL4Eh5 1ZM/nGnw8CPt6YxXK32FGoLy9VQTOgFUfp0myZiRggH1At7RSBusDyOA I
       <rrset>
 	<owner>example</owner>
 	<type>ianadns:MX</type>
-	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
 	  <mx>
@@ -143,7 +133,6 @@ uBwGG6jimkZ00PwAL4Eh5 1ZM/nGnw8CPt6YxXK32FGoLy9VQTOgFUfp0myZiRggH1At7RSBusDyOA I
       <rrset>
 	<owner>example</owner>
 	<type>ianadns:NSEC</type>
-	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
 	  <nsec>
@@ -160,7 +149,6 @@ uBwGG6jimkZ00PwAL4Eh5 1ZM/nGnw8CPt6YxXK32FGoLy9VQTOgFUfp0myZiRggH1At7RSBusDyOA I
       <rrset>
 	<owner>example</owner>
 	<type>ianadns:DNSKEY</type>
-	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
 	  <dnskey>
@@ -189,7 +177,6 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
       <rrset>
 	<owner>*.a.example</owner>
 	<type>ianadns:A</type>
-	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
 	  <a>
@@ -200,7 +187,6 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
       <rrset>
 	<owner>ns1.a.example</owner>
 	<type>ianadns:A</type>
-	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
 	  <a>
@@ -211,7 +197,6 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
       <rrset>
 	<owner>ns2.a.example</owner>
 	<type>ianadns:A</type>
-	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
 	  <a>
@@ -222,7 +207,6 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
       <rrset>
 	<owner>ns1.b.example</owner>
 	<type>ianadns:A</type>
-	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
 	  <a>
@@ -233,7 +217,6 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
       <rrset>
 	<owner>ns2.b.example</owner>
 	<type>ianadns:A</type>
-	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
 	  <a>
@@ -244,7 +227,6 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
       <rrset>
 	<owner>b.example</owner>
 	<type>ianadns:NS</type>
-	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
 	  <ns>
@@ -261,7 +243,6 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
       <rrset>
 	<owner>b.example</owner>
 	<type>ianadns:NSEC</type>
-	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
 	  <nsec>
@@ -275,7 +256,6 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
       <rrset>
 	<owner>b.example</owner>
 	<type>ianadns:RRSIG</type>
-	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
 	  <rrsig>
@@ -292,7 +272,6 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
       <rrset>
 	<owner>a.example</owner>
 	<type>ianadns:NS</type>
-	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
 	  <ns>
@@ -309,7 +288,6 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
       <rrset>
 	<owner>a.example</owner>
 	<type>ianadns:DS</type>
-	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
 	  <ds>
@@ -323,7 +301,6 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
       <rrset>
 	<owner>a.example</owner>
 	<type>ianadns:RRSIG</type>
-	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
 	  <rrsig>
@@ -340,7 +317,6 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
       <rrset>
 	<owner>ai.example</owner>
 	<type>ianadns:A</type>
-	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
 	  <a>
@@ -351,7 +327,6 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
       <rrset>
 	<owner>ai.example</owner>
 	<type>ianadns:HINFO</type>
-	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
 	  <hinfo>
@@ -363,7 +338,6 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
       <rrset>
 	<owner>ai.example</owner>
 	<type>ianadns:AAAA</type>
-	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
 	  <aaaa>
@@ -374,7 +348,6 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
       <rrset>
 	<owner>ns1.example</owner>
 	<type>ianadns:A</type>
-	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
 	  <a>
@@ -385,7 +358,6 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
       <rrset>
 	<owner>ns2.example</owner>
 	<type>ianadns:A</type>
-	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
 	  <a>
@@ -396,7 +368,6 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
       <rrset>
 	<owner>*.w.example</owner>
 	<type>ianadns:MX</type>
-	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
 	  <mx>
@@ -408,7 +379,6 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
       <rrset>
 	<owner>x.y.w.example</owner>
 	<type>ianadns:MX</type>
-	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
 	  <mx>
@@ -420,7 +390,6 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
       <rrset>
 	<owner>xx.example</owner>
 	<type>ianadns:A</type>
-	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
 	  <a>
@@ -431,7 +400,6 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
       <rrset>
 	<owner>xx.example</owner>
 	<type>ianadns:HINFO</type>
-	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
 	  <hinfo>
@@ -443,7 +411,6 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
       <rrset>
 	<owner>xx.example</owner>
 	<type>ianadns:AAAA</type>
-	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
 	  <aaaa>
@@ -454,7 +421,6 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
       <rrset>
 	<owner>x.w.example</owner>
 	<type>ianadns:MX</type>
-	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
 	  <mx>
@@ -466,7 +432,6 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
       <rrset>
 	<owner>*.to-apex.example</owner>
 	<type>ianadns:CNAME</type>
-	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
 	  <cname>
@@ -478,7 +443,6 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
       <rrset>
 	<owner>*.to-nxdomain.example</owner>
 	<type>ianadns:CNAME</type>
-	<ttl>3600</ttl>
 	<rdata>
 	  <id>1</id>
 	  <cname>

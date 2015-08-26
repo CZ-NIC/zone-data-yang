@@ -92,6 +92,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </choose>
   </template>
 
+  <template name="value-or-default">
+    <param name="node"/>
+    <param name="dflt"/>
+    <choose>
+      <when test="$node">
+	<value-of select="$node"/>
+      </when>
+      <otherwise>
+	<value-of select="$dflt"/>
+      </otherwise>
+    </choose>
+  </template>
+
   <!-- Root template -->
 
   <template match="/">
@@ -119,8 +132,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <value-of select="$NL"/>
     <apply-templates select="dnsz:description"/>
     <value-of select="concat('$ORIGIN ', dnsz:name, '.', $NL)"/>
-    <apply-templates select="dnsz:rrset[dnsz:type='ianadns:SOA']"
-		     mode="SOA"/>
+    <value-of select="concat('$TTL ', dnsz:default-ttl, $NL)"/>
+    <apply-templates select="dnsz:soa"/>
     <value-of select="concat('; End of zone data.', $NL)"/>
   </template>
 
@@ -128,20 +141,20 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <value-of select="concat('; ', normalize-space(.), $NL)"/>
   </template>
 
-  <template match="dnsz:rrset" mode="SOA">
+  <template match="dnsz:soa">
     <call-template name="left-aligned">
       <with-param name="width" select="$owner-width"/>
-      <with-param name="text">
-	<call-template name="process-dname">
-	  <with-param name="dn" select="dnsz:owner"/>
-	</call-template>
-      </with-param>
+      <with-param name="text">@</with-param>
     </call-template>
     <call-template name="right-aligned">
       <with-param name="width" select="7"/>
       <with-param name="text" select="dnsz:ttl"/>
     </call-template>
-    <value-of select="concat(' ', ../dnsz:class,' ')"/>
+    <text> </text>
+    <call-template name="value-or-default">
+      <with-param name="node" select="../dnsz:class"/>
+      <with-param name="dflt">IN</with-param>
+    </call-template>
     <text> SOA </text>
     <value-of select="$NL"/>
   </template>
