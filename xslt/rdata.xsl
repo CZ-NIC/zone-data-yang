@@ -17,9 +17,9 @@
     <xsl:text> </xsl:text>
     <xsl:call-template name="rdata-field">
       <xsl:with-param name="data">
-	<xsl:call-template name="process-dname">
-	  <xsl:with-param name="dn" select="dnsz:cname"/>
-	</xsl:call-template>
+        <xsl:call-template name="process-dname">
+          <xsl:with-param name="dn" select="dnsz:cname"/>
+        </xsl:call-template>
       </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
@@ -38,41 +38,69 @@
   <xsl:template match="dnsz:MB">
     <xsl:text> </xsl:text>
     <xsl:call-template name="rdata-field">
-      <xsl:with-param name="data" select="dnsz:madname"/>
+      <xsl:with-param name="data">
+        <xsl:call-template name="process-dname">
+          <xsl:with-param name="dn" select="dnsz:madname"/>
+        </xsl:call-template>
+      </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
   <xsl:template match="dnsz:MD">
     <xsl:text> </xsl:text>
     <xsl:call-template name="rdata-field">
-      <xsl:with-param name="data" select="dnsz:madname"/>
+      <xsl:with-param name="data">
+        <xsl:call-template name="process-dname">
+          <xsl:with-param name="dn" select="dnsz:madname"/>
+        </xsl:call-template>
+      </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
   <xsl:template match="dnsz:MF">
     <xsl:text> </xsl:text>
     <xsl:call-template name="rdata-field">
-      <xsl:with-param name="data" select="dnsz:madname"/>
+      <xsl:with-param name="data">
+        <xsl:call-template name="process-dname">
+          <xsl:with-param name="dn" select="dnsz:madname"/>
+        </xsl:call-template>
+      </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
   <xsl:template match="dnsz:MG">
     <xsl:text> </xsl:text>
     <xsl:call-template name="rdata-field">
-      <xsl:with-param name="data" select="dnsz:mgmname"/>
+      <xsl:with-param name="data">
+        <xsl:call-template name="process-dname">
+          <xsl:with-param name="dn" select="dnsz:mgmname"/>
+        </xsl:call-template>
+      </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
   <xsl:template match="dnsz:MINFO">
     <xsl:text> </xsl:text>
     <xsl:call-template name="rdata-field">
-      <xsl:with-param name="data" select="dnsz:rmailbx"/>
+      <xsl:with-param name="data">
+        <xsl:call-template name="process-dname">
+          <xsl:with-param name="dn" select="dnsz:rmailbx"/>
+        </xsl:call-template>
+      </xsl:with-param>
     </xsl:call-template>
     <xsl:text> </xsl:text>
     <xsl:call-template name="rdata-field">
-      <xsl:with-param name="data" select="dnsz:emailbx"/>
+      <xsl:with-param name="data">
+        <xsl:call-template name="process-dname">
+          <xsl:with-param name="dn" select="dnsz:emailbx"/>
+        </xsl:call-template>
+      </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
   <xsl:template match="dnsz:MR">
     <xsl:text> </xsl:text>
     <xsl:call-template name="rdata-field">
-      <xsl:with-param name="data" select="dnsz:newname"/>
+      <xsl:with-param name="data">
+        <xsl:call-template name="process-dname">
+          <xsl:with-param name="dn" select="dnsz:newname"/>
+        </xsl:call-template>
+      </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
   <xsl:template match="dnsz:MX">
@@ -82,13 +110,21 @@
     </xsl:call-template>
     <xsl:text> </xsl:text>
     <xsl:call-template name="rdata-field">
-      <xsl:with-param name="data" select="dnsz:exchange"/>
+      <xsl:with-param name="data">
+        <xsl:call-template name="process-dname">
+          <xsl:with-param name="dn" select="dnsz:exchange"/>
+        </xsl:call-template>
+      </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
   <xsl:template match="dnsz:NS">
     <xsl:text> </xsl:text>
     <xsl:call-template name="rdata-field">
-      <xsl:with-param name="data" select="dnsz:nsdname"/>
+      <xsl:with-param name="data">
+        <xsl:call-template name="process-dname">
+          <xsl:with-param name="dn" select="dnsz:nsdname"/>
+        </xsl:call-template>
+      </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
   <xsl:template match="dnsz:NULL">
@@ -100,7 +136,11 @@
   <xsl:template match="dnsz:PTR">
     <xsl:text> </xsl:text>
     <xsl:call-template name="rdata-field">
-      <xsl:with-param name="data" select="dnsz:ptrdname"/>
+      <xsl:with-param name="data">
+        <xsl:call-template name="process-dname">
+          <xsl:with-param name="dn" select="dnsz:ptrdname"/>
+        </xsl:call-template>
+      </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
   <xsl:template match="dnsz:TXT">
@@ -174,7 +214,11 @@
     </xsl:call-template>
     <xsl:text> </xsl:text>
     <xsl:call-template name="rdata-field">
-      <xsl:with-param name="data" select="dnsz:signer-name"/>
+      <xsl:with-param name="data">
+        <xsl:call-template name="process-dname">
+          <xsl:with-param name="dn" select="dnsz:signer-name"/>
+        </xsl:call-template>
+      </xsl:with-param>
     </xsl:call-template>
     <xsl:text> </xsl:text>
     <xsl:call-template name="rdata-field">
@@ -184,7 +228,11 @@
   <xsl:template match="dnsz:NSEC">
     <xsl:text> </xsl:text>
     <xsl:call-template name="rdata-field">
-      <xsl:with-param name="data" select="dnsz:next-domain-name"/>
+      <xsl:with-param name="data">
+        <xsl:call-template name="process-dname">
+          <xsl:with-param name="dn" select="dnsz:next-domain-name"/>
+        </xsl:call-template>
+      </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
   <xsl:template match="dnsz:DS">
