@@ -48,6 +48,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
   <!-- New line -->
   <variable name="NL" select="'&#xA;'"/>
+  <variable name="SP" select="' '"/>
 
   <!-- Named templates -->
 
@@ -254,7 +255,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <apply-templates select="*[local-name() =
 			     substring-after(../../dnsz:type, ':')]"/>
     <apply-templates select="dnsz:description">
-      <with-param name="offset"> </with-param>
+      <with-param name="offset" select="$SP"/>
     </apply-templates>
     <value-of select="$NL"/>
   </template>
