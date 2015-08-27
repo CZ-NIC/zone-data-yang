@@ -29,6 +29,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   <output method="text"/>
   <strip-space elements="*"/>
 
+  <include href="rdata.xsl"/>
+
   <!-- Parameters & variables -->
 
   <!-- Select zone by name (if empty, first zone is used) -->
@@ -281,6 +283,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   </template>
 
   <template match="dnsz:*">
+    <text> NOT IMPLEMENTED</text>
   </template>
 
 </stylesheet>
