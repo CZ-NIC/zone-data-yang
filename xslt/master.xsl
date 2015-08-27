@@ -112,8 +112,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <param name="data"/>
     <choose>
       <when test="contains($data, '&quot;')">
-	<value-of select="concat(substring-before($data, '&quot;')
-			  , '\&quot;', substring-after($data, '&quot;'))"/>
+	<value-of select="concat(substring-before($data,'&quot;'), '\&quot;')"/>
+	<call-template name="escape-quotes">
+	  <with-param name="data" select="substring-after($data, '&quot;')"/>
+	</call-template>
       </when>
       <otherwise>
 	<value-of select="$data"/>
