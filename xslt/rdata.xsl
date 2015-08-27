@@ -1,5 +1,10 @@
 <?xml version="1.0"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:dnsz="http://www.nic.cz/ns/yang/dns-zones" xmlns="urn:ietf:params:xml:ns:yang:yin:1" version="1.0">
+<xsl:stylesheet
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:h="http://www.w3.org/1999/xhtml"
+    xmlns:dnsz="http://www.nic.cz/ns/yang/dns-zones"
+    xmlns="urn:ietf:params:xml:ns:yang:yin:1"
+    version="1.0">
   <xsl:output method="xml" encoding="utf-8"/>
   <xsl:strip-space elements="*"/>
   <xsl:template match="dnsz:A">
@@ -11,16 +16,22 @@
   <xsl:template match="dnsz:CNAME">
     <xsl:text> </xsl:text>
     <xsl:call-template name="rdata-field">
-      <xsl:with-param name="data" select="dnsz:cname"/>
+      <xsl:with-param name="data">
+	<xsl:call-template name="process-dname">
+	  <xsl:with-param name="dn" select="dnsz:cname"/>
+	</xsl:call-template>
+      </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
   <xsl:template match="dnsz:HINFO">
     <xsl:text> </xsl:text>
     <xsl:call-template name="rdata-field">
+      <xsl:with-param name="quoted" select="true()"/>
       <xsl:with-param name="data" select="dnsz:cpu"/>
     </xsl:call-template>
     <xsl:text> </xsl:text>
     <xsl:call-template name="rdata-field">
+      <xsl:with-param name="quoted" select="true()"/>
       <xsl:with-param name="data" select="dnsz:os"/>
     </xsl:call-template>
   </xsl:template>
