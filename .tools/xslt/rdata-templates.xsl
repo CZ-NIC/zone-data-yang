@@ -62,10 +62,27 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
     <xsl:element name="xsl:call-template">
       <xsl:attribute name="name">rdata-field</xsl:attribute>
       <xsl:element name="xsl:with-param">
+	<xsl:variable name="qn" select="concat('dnsz:', @name)"/>
 	<xsl:attribute name="name">data</xsl:attribute>
-	<xsl:attribute name="select">
-	  <xsl:value-of select="concat('dnsz:', @name)"/>
-	</xsl:attribute>
+	<xsl:choose>
+	  <xsl:when test="yin:type/@name = 'domain-name'">
+	    <xsl:element name="xsl:call-template">
+	      <xsl:attribute
+		  name="name">process-dname</xsl:attribute>
+	      <xsl:element name="xsl:with-param">
+		<xsl:attribute name="name">dn</xsl:attribute>
+		<xsl:attribute name="select">
+		  <xsl:value-of select="$qn"/>
+		</xsl:attribute>
+	      </xsl:element>
+	    </xsl:element>
+	  </xsl:when>
+	  <xsl:otherwise>
+	    <xsl:attribute name="select">
+	      <xsl:value-of select="$qn"/>
+	    </xsl:attribute>
+	  </xsl:otherwise>
+	</xsl:choose>
       </xsl:element>
     </xsl:element>
   </xsl:template>
