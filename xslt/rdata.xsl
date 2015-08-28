@@ -259,11 +259,19 @@
     </xsl:call-template>
     <xsl:text> </xsl:text>
     <xsl:call-template name="rdata-field">
-      <xsl:with-param name="data" select="dnsz:signature-expiration"/>
+      <xsl:with-param name="data">
+        <xsl:call-template name="utc-date-time">
+          <xsl:with-param name="iso" select="dnsz:signature-expiration"/>
+        </xsl:call-template>
+      </xsl:with-param>
     </xsl:call-template>
     <xsl:text> </xsl:text>
     <xsl:call-template name="rdata-field">
-      <xsl:with-param name="data" select="dnsz:signature-inception"/>
+      <xsl:with-param name="data">
+        <xsl:call-template name="utc-date-time">
+          <xsl:with-param name="iso" select="dnsz:signature-inception"/>
+        </xsl:call-template>
+      </xsl:with-param>
     </xsl:call-template>
     <xsl:text> </xsl:text>
     <xsl:call-template name="rdata-field">
