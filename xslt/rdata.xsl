@@ -207,7 +207,11 @@
     </xsl:call-template>
     <xsl:text> </xsl:text>
     <xsl:call-template name="rdata-field">
-      <xsl:with-param name="data" select="dnsz:algorithm"/>
+      <xsl:with-param name="data">
+        <xsl:call-template name="dnssec-algorithm">
+          <xsl:with-param name="enum" select="dnsz:algorithm"/>
+        </xsl:call-template>
+      </xsl:with-param>
     </xsl:call-template>
     <xsl:text> </xsl:text>
     <xsl:call-template name="rdata-field">
@@ -217,11 +221,19 @@
   <xsl:template match="dnsz:RRSIG">
     <xsl:text> </xsl:text>
     <xsl:call-template name="rdata-field">
-      <xsl:with-param name="data" select="dnsz:type-covered"/>
+      <xsl:with-param name="data">
+        <xsl:call-template name="data-rrtype">
+          <xsl:with-param name="identity" select="dnsz:type-covered"/>
+        </xsl:call-template>
+      </xsl:with-param>
     </xsl:call-template>
     <xsl:text> </xsl:text>
     <xsl:call-template name="rdata-field">
-      <xsl:with-param name="data" select="dnsz:algorithm"/>
+      <xsl:with-param name="data">
+        <xsl:call-template name="dnssec-algorithm">
+          <xsl:with-param name="enum" select="dnsz:algorithm"/>
+        </xsl:call-template>
+      </xsl:with-param>
     </xsl:call-template>
     <xsl:text> </xsl:text>
     <xsl:call-template name="rdata-field">
@@ -265,7 +277,11 @@
   <xsl:template match="dnsz:DS">
     <xsl:text> </xsl:text>
     <xsl:call-template name="rdata-field">
-      <xsl:with-param name="data" select="dnsz:algorithm"/>
+      <xsl:with-param name="data">
+        <xsl:call-template name="dnssec-algorithm">
+          <xsl:with-param name="enum" select="dnsz:algorithm"/>
+        </xsl:call-template>
+      </xsl:with-param>
     </xsl:call-template>
     <xsl:text> </xsl:text>
     <xsl:call-template name="rdata-field">
