@@ -88,8 +88,8 @@ module: dns-zones
                   |     +--rw algorithm               ianadns:dnssec-algorithm
                   |     +--rw labels                  uint8
                   |     +--rw original-ttl?           -> ../../../../rrset[owner=current()/../../../owner][type=current()/../type-covered]/ttl
-                  |     +--rw signature-expiration    yang:date-and-time
-                  |     +--rw signature-inception     yang:date-and-time
+                  |     +--rw signature-expiration    utc-date-time
+                  |     +--rw signature-inception     utc-date-time
                   |     +--rw key-tag                 uint16
                   |     +--rw signer-name?            domain-name
                   |     +--rw signature               binary

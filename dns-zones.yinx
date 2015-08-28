@@ -86,6 +86,17 @@
       </text>
     </description>
   </typedef>
+
+  <typedef name="utc-date-time">
+    <description>
+      <text>
+	UTC date and time.
+      </text>
+    </description>
+    <type name="yang:date-and-time">
+      <pattern value=".*Z"/>
+    </type>
+  </typedef>
   
   <!-- Groupings -->
 
@@ -965,26 +976,26 @@
 		</description>
 	      </leaf>
 	      <leaf name="signature-expiration">
-		<type name="yang:date-and-time"/>
+		<type name="utc-date-time"/>
 		<mandatory value="true"/>
 		<description>
 		  <text>
 		    This field specifies the end of a validity period
-		    for the signature. The RRSIG record MUST NOT be
-		    used for authentication after the expiration date
-		    and time.
+		    for the signature as UTC date and time. The RRSIG
+		    record MUST NOT be used for authentication after
+		    the expiration date and time.
 		  </text>
 		</description>
 	      </leaf>
 	      <leaf name="signature-inception">
-		<type name="yang:date-and-time"/>
+		<type name="utc-date-time"/>
 		<mandatory value="true"/>
 		<description>
 		  <text>
 		    <h:p>This field specifies the start of a validity
-		    period for the signature. The RRSIG record MUST
-		    NOT be used for authentication prior the inception
-		    date and time.</h:p>
+		    period for the signature as UTC date and time. The
+		    RRSIG record MUST NOT be used for authentication
+		    prior the inception date and time.</h:p>
 		    <h:p>This date MUST precede the date specified in
 		    'signature-expiration'.</h:p>
 		  </text>

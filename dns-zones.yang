@@ -72,6 +72,14 @@ module dns-zones {
       "32-bit time interval.";
   }
 
+  typedef utc-date-time {
+    type yang:date-and-time {
+      pattern ".*Z";
+    }
+    description
+      "UTC date and time.";
+  }
+
   /* Groupings */
 
   grouping description {
@@ -641,22 +649,22 @@ module dns-zones {
                    as it appears in the authoritative zone.";
               }
               leaf signature-expiration {
-                type yang:date-and-time;
+                type utc-date-time;
                 mandatory "true";
                 description
                   "This field specifies the end of a validity period
-                   for the signature. The RRSIG record MUST NOT be
-                   used for authentication after the expiration date
-                   and time.";
+                   for the signature as UTC date and time. The RRSIG
+                   record MUST NOT be used for authentication after
+                   the expiration date and time.";
               }
               leaf signature-inception {
-                type yang:date-and-time;
+                type utc-date-time;
                 mandatory "true";
                 description
                   "This field specifies the start of a validity
-                   period for the signature. The RRSIG record MUST
-                   NOT be used for authentication prior the inception
-                   date and time.
+                   period for the signature as UTC date and time. The
+                   RRSIG record MUST NOT be used for authentication
+                   prior the inception date and time.
 
                    This date MUST precede the date specified in
                    'signature-expiration'.";
