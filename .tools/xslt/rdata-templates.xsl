@@ -77,6 +77,31 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 	      </xsl:element>
 	    </xsl:element>
 	  </xsl:when>
+	  <xsl:when test="yin:type/@name = 'ianadns:dnssec-algorithm'">
+	    <xsl:element name="xsl:call-template">
+	      <xsl:attribute
+		  name="name">dnssec-algorithm</xsl:attribute>
+	      <xsl:element name="xsl:with-param">
+		<xsl:attribute name="name">enum</xsl:attribute>
+		<xsl:attribute name="select">
+		  <xsl:value-of select="$qn"/>
+		</xsl:attribute>
+	      </xsl:element>
+	    </xsl:element>
+	  </xsl:when>
+	  <xsl:when test="yin:type[@name='identityref']
+			  /yin:base/@name = 'ianadns:data-rrtype'">
+	    <xsl:element name="xsl:call-template">
+	      <xsl:attribute
+		  name="name">data-rrtype</xsl:attribute>
+	      <xsl:element name="xsl:with-param">
+		<xsl:attribute name="name">identity</xsl:attribute>
+		<xsl:attribute name="select">
+		  <xsl:value-of select="$qn"/>
+		</xsl:attribute>
+	      </xsl:element>
+	    </xsl:element>
+	  </xsl:when>
 	  <xsl:otherwise>
 	    <xsl:attribute name="select">
 	      <xsl:value-of select="$qn"/>
