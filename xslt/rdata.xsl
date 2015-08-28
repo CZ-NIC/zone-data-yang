@@ -32,6 +32,20 @@
     <xsl:value-of select="substring-after($identity, 'ianadns:')"/>
   </xsl:template>
 
+  <xsl:template name="utc-date-time">
+    <xsl:param name="iso"/>
+    <xsl:variable name="time" select="substring($iso, 12)"/>
+    <xsl:variable name="len" select="string-length($iso)"/>
+    <xsl:variable name="zero" select="substring($iso, $len , 1) = 'Z'"/>
+    <xsl:value-of select="substring($iso,1,4)"/>
+    <xsl:value-of select="substring($iso,6,2)"/>
+    <xsl:value-of select="substring($iso,9,2)"/>
+    <xsl:value-of select="substring($iso,12,2)"/>
+    <xsl:value-of select="substring($iso,15,2)"/>
+    <xsl:value-of select="format-number(substring-before(
+			  substring($iso,18), 'Z'), '00')"/>
+  </xsl:template>
+
   <!-- Matching templates -->
 
   <xsl:template match="dnsz:A">
