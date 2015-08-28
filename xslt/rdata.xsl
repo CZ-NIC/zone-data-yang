@@ -7,6 +7,33 @@
     version="1.0">
   <xsl:output method="xml" encoding="utf-8"/>
   <xsl:strip-space elements="*"/>
+
+  <!-- Named templates -->
+
+  <xsl:template name="dnssec-algorithm">
+    <xsl:param name="enum"/>
+    <xsl:choose>
+      <xsl:when test="$enum = 'RSAMD5'">1</xsl:when>
+      <xsl:when test="$enum = 'DH'">2</xsl:when>
+      <xsl:when test="$enum = 'DSA'">3</xsl:when>
+      <xsl:when test="$enum = 'RSASHA1'">5</xsl:when>
+      <xsl:when test="$enum = 'DSA-NSEC3-SHA1'">6</xsl:when>
+      <xsl:when test="$enum = 'RSASHA1-NSEC3-SHA1'">7</xsl:when>
+      <xsl:when test="$enum = 'RSASHA256'">8</xsl:when>
+      <xsl:when test="$enum = 'RSASHA512'">10</xsl:when>
+      <xsl:when test="$enum = 'ECC-GOST'">12</xsl:when>
+      <xsl:when test="$enum = 'ECDSAP256SHA256'">13</xsl:when>
+      <xsl:when test="$enum = 'ECDSAP384SHA384'">14</xsl:when>
+    </xsl:choose>
+  </xsl:template>
+
+  <xsl:template name="data-rrtype">
+    <xsl:param name="identity"/>
+    <xsl:value-of select="substring-after($identity, 'ianadns:')"/>
+  </xsl:template>
+
+  <!-- Matching templates -->
+
   <xsl:template match="dnsz:A">
     <xsl:text> </xsl:text>
     <xsl:call-template name="rdata-field">
