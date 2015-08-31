@@ -27,6 +27,16 @@
     </xsl:choose>
   </xsl:template>
 
+  <xsl:template name="digest-algorithm">
+    <xsl:param name="enum"/>
+    <xsl:choose>
+      <xsl:when test="$enum = 'SHA-1'">1</xsl:when>
+      <xsl:when test="$enum = 'SHA-256'">2</xsl:when>
+      <xsl:when test="$enum = 'GOST-R-34.11-94'">3</xsl:when>
+      <xsl:when test="$enum = 'SHA-384'">4</xsl:when>
+    </xsl:choose>
+  </xsl:template>
+
   <xsl:template name="data-rrtype">
     <xsl:param name="identity"/>
     <xsl:value-of select="substring-after($identity, 'ianadns:')"/>
