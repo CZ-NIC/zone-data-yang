@@ -54,7 +54,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
       <xsl:copy-of select="namespace::*"/>
       <xsl:attribute name="version">1.0</xsl:attribute>
       <xsl:element name="xsl:output">
-	<xsl:attribute name="method">xml</xsl:attribute>
+	<xsl:attribute name="method">text</xsl:attribute>
 	<xsl:attribute name="encoding">utf-8</xsl:attribute>
       </xsl:element>
       <xsl:element name="xsl:strip-space">
