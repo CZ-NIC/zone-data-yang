@@ -84,6 +84,12 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
     </xsl:element>
     <xsl:element name="xsl:call-template">
       <xsl:attribute name="name">rdata-field</xsl:attribute>
+      <xsl:if test="yin:type/@name = 'ascii-string'">
+	<xsl:element name="xsl:with-param">
+	  <xsl:attribute name="name">quoted</xsl:attribute>
+	  <xsl:attribute name="select">true()</xsl:attribute>
+	</xsl:element>
+      </xsl:if>
       <xsl:element name="xsl:with-param">
 	<xsl:variable name="qn" select="concat('dnsz:', @name)"/>
 	<xsl:attribute name="name">data</xsl:attribute>
@@ -105,6 +111,13 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 	  <xsl:when test="yin:type/@name = 'ianadns:dnssec-algorithm'">
 	    <xsl:call-template name="call-templ">
 	      <xsl:with-param name="tname">dnssec-algorithm</xsl:with-param>
+	      <xsl:with-param name="pname">enum</xsl:with-param>
+	      <xsl:with-param name="qname" select="$qn"/>
+	    </xsl:call-template>
+	  </xsl:when>
+	  <xsl:when test="yin:type/@name = 'ianadns:digest-algorithm'">
+	    <xsl:call-template name="call-templ">
+	      <xsl:with-param name="tname">digest-algorithm</xsl:with-param>
 	      <xsl:with-param name="pname">enum</xsl:with-param>
 	      <xsl:with-param name="qname" select="$qn"/>
 	    </xsl:call-template>
