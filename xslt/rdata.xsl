@@ -5,7 +5,7 @@
     xmlns:dnsz="http://www.nic.cz/ns/yang/dns-zones"
     xmlns="urn:ietf:params:xml:ns:yang:yin:1"
     version="1.0">
-  <xsl:output method="xml" encoding="utf-8"/>
+  <xsl:output method="text" encoding="utf-8"/>
   <xsl:strip-space elements="*"/>
 
   <!-- Named templates -->
@@ -197,6 +197,7 @@
   <xsl:template match="dnsz:TXT">
     <xsl:text> </xsl:text>
     <xsl:call-template name="rdata-field">
+      <xsl:with-param name="quoted" select="true()"/>
       <xsl:with-param name="data" select="dnsz:txt-data"/>
     </xsl:call-template>
   </xsl:template>
@@ -317,7 +318,11 @@
     </xsl:call-template>
     <xsl:text> </xsl:text>
     <xsl:call-template name="rdata-field">
-      <xsl:with-param name="data" select="dnsz:digest-type"/>
+      <xsl:with-param name="data">
+        <xsl:call-template name="digest-algorithm">
+          <xsl:with-param name="enum" select="dnsz:digest-type"/>
+        </xsl:call-template>
+      </xsl:with-param>
     </xsl:call-template>
     <xsl:text> </xsl:text>
     <xsl:call-template name="rdata-field">
