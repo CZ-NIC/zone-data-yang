@@ -150,6 +150,7 @@
     </xsl:call-template>
   </xsl:template>
   <xsl:template match="dnsz:DNSKEY">
+    <xsl:call-template name="open-block"/>
     <xsl:call-template name="inline-entry">
       <xsl:with-param name="data" select="dnsz:flags"/>
     </xsl:call-template>
@@ -163,9 +164,10 @@
         </xsl:call-template>
       </xsl:with-param>
     </xsl:call-template>
-    <xsl:call-template name="inline-entry">
+    <xsl:call-template name="chop-text">
       <xsl:with-param name="data" select="dnsz:public-key"/>
     </xsl:call-template>
+    <xsl:call-template name="close-block"/>
   </xsl:template>
   <xsl:template match="dnsz:RRSIG">
     <xsl:call-template name="inline-entry">
@@ -195,7 +197,7 @@
         </xsl:call-template>
       </xsl:with-param>
     </xsl:call-template>
-    <xsl:call-template name="inline-entry">
+    <xsl:call-template name="sep-line-entry">
       <xsl:with-param name="data">
         <xsl:call-template name="utc-date-time">
           <xsl:with-param name="iso" select="dnsz:signature-inception"/>

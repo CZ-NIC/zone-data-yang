@@ -96,6 +96,28 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </choose>
   </template>
 
+  <template name="chop-text">
+    <param name="length" select="30"/>
+    <param name="data"/>
+    <choose>
+      <when test="string-length($text) &lt;= $length">
+	<call-template name="sep-line-entry">
+	  <with-param name="data" select="$text"/>
+	</call-template>
+      </when>
+      <otherwise>
+	<call-template name="sep-line-entry">
+	  <with-param name="data" select="substring($text, 1, $length)"/>
+	</call-template>
+	<call-template name="chop-text">
+	  <with-param name="length" select="$length"/>
+	  <with-param name="data"
+		      select="substring($text, $length+1, $length)"/>
+	</call-template>
+      </otherwise>
+    </choose>
+  </template>
+
   <template name="rdata-field">
     <param name="data" select="."/>
     <param name="quoted" select="false()"/>
@@ -344,6 +366,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <with-param name="text" select="dnsz:ttl"/>
     </call-template>
     <text> </text>
+  </template>
+
+  <template match="dnsz:DNSKEY/dnsz:flags">
+    <value-of select="contains(., 'zone-key') * 256
+		      + contains(., 'secure-entry-point')"/>
   </template>
 
   <template match="dnsz:*">
