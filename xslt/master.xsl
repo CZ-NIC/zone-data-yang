@@ -112,7 +112,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	<call-template name="chop-text">
 	  <with-param name="length" select="$length"/>
 	  <with-param name="data"
-		      select="substring($data, $length+1, $length)"/>
+		      select="substring($data, $length+1)"/>
 	</call-template>
       </otherwise>
     </choose>
