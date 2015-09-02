@@ -133,6 +133,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </call-template>
   </template>
 
+  <template name="open-block">
+    <text> (</text>
+  </template>
+
   <template name="close-block">
     <value-of select="concat(' )', $NL)"/>
   </template>
@@ -266,8 +270,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <with-param name="node" select="../dnsz:class"/>
       <with-param name="dflt">IN</with-param>
     </call-template>
-    <text> SOA     ( </text>
-    <call-template name="rdata-field">
+    <text> SOA    </text>
+    <call-template name="open-block"/>
+    <call-template name="inline-entry">
       <with-param name="data" select="concat(dnsz:mname, '.')"/>
     </call-template>
     <call-template name="sep-line-entry">
