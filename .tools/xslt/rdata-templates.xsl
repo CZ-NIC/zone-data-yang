@@ -79,11 +79,8 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
   </xsl:template>
 
   <xsl:template match="yin:leaf">
-    <xsl:element name="xsl:text">
-      <xsl:text> </xsl:text>
-    </xsl:element>
     <xsl:element name="xsl:call-template">
-      <xsl:attribute name="name">rdata-field</xsl:attribute>
+      <xsl:attribute name="name">inline-entry</xsl:attribute>
       <xsl:if test="yin:type/@name = 'ascii-string'">
 	<xsl:element name="xsl:with-param">
 	  <xsl:attribute name="name">quoted</xsl:attribute>
