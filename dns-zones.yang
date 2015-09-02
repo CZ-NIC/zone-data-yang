@@ -317,6 +317,7 @@ module dns-zones {
             }
             container MD {
               must "../../type = 'ianadns:MD'";
+              status "obsolete";
               description
                 "RDATA content for 'MD' Resource Record (obsolete,
                  use MX).";
@@ -333,6 +334,7 @@ module dns-zones {
             }
             container MF {
               must "../../type = 'ianadns:MF'";
+              status "obsolete";
               description
                 "RDATA content for 'MF' Resource Record (obsolete,
                  use MX).";

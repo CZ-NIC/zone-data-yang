@@ -37,10 +37,10 @@ module: dns-zones
                   |  +--rw MB
                   |     +--rw madname    domain-name
                   +--:(MD)
-                  |  +--rw MD
+                  |  o--rw MD
                   |     +--rw madname    domain-name
                   +--:(MF)
-                  |  +--rw MF
+                  |  o--rw MF
                   |     +--rw madname    domain-name
                   +--:(MG)
                   |  +--rw MG

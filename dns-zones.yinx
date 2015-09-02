@@ -452,6 +452,7 @@
 
 	    <container name="MD">
 	      <must condition="../../type = 'ianadns:MD'"/>
+	      <status value="obsolete"/>
 	      <description>
 		<text>
 		  RDATA content for 'MD' Resource Record (obsolete,
@@ -478,6 +479,7 @@
 
 	    <container name="MF">
 	      <must condition="../../type = 'ianadns:MF'"/>
+	      <status value="obsolete"/>
 	      <description>
 		<text>
 		  RDATA content for 'MF' Resource Record (obsolete,
