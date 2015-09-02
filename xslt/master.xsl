@@ -68,33 +68,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 		$spaces, 1, $width - string-length($text)), $text)"/>
   </template>
 
-  <template name="process-dname">
-    <param name="dn"/>
-    <choose>
-      <when test="$absolute-only = 1">
-	<value-of select="concat($dn, '.')"/>
-      </when>
-      <otherwise>
-	<variable name="origin" select="ancestor::dnsz:zone/dnsz:name"/>
-	<variable name="tail"
-		  select="substring($dn, string-length($dn) -
-			  string-length($origin))"/>
-	<choose>
-	  <when test="$dn = $origin">@</when> <!-- apex -->
-	  <when test="starts-with($tail, '.') and
-		      substring($tail, 2) = $origin">
-	    <value-of
-		select="substring($dn, 1,
-			string-length($dn) - string-length($tail))"/>
-	  </when>
-	  <otherwise>
-	    <value-of select="concat($dn, '.')"/>
-	  </otherwise>
-	</choose>
-      </otherwise>
-    </choose>
-  </template>
-
   <template name="value-or-default">
     <param name="node"/>
     <param name="dflt"/>
@@ -152,6 +125,79 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
   <template name="close-block">
     <value-of select="concat(' )', $NL)"/>
+  </template>
+
+  <template name="process-dname">
+    <param name="dn"/>
+    <choose>
+      <when test="$absolute-only = 1">
+	<value-of select="concat($dn, '.')"/>
+      </when>
+      <otherwise>
+	<variable name="origin" select="ancestor::dnsz:zone/dnsz:name"/>
+	<variable name="tail"
+		  select="substring($dn, string-length($dn) -
+			  string-length($origin))"/>
+	<choose>
+	  <when test="$dn = $origin">@</when> <!-- apex -->
+	  <when test="starts-with($tail, '.') and
+		      substring($tail, 2) = $origin">
+	    <value-of
+		select="substring($dn, 1,
+			string-length($dn) - string-length($tail))"/>
+	  </when>
+	  <otherwise>
+	    <value-of select="concat($dn, '.')"/>
+	  </otherwise>
+	</choose>
+      </otherwise>
+    </choose>
+  </template>
+
+  <template name="dnssec-algorithm">
+    <param name="enum"/>
+    <choose>
+      <when test="$enum = 'RSAMD5'">1</when>
+      <when test="$enum = 'DH'">2</when>
+      <when test="$enum = 'DSA'">3</when>
+      <when test="$enum = 'RSASHA1'">5</when>
+      <when test="$enum = 'DSA-NSEC3-SHA1'">6</when>
+      <when test="$enum = 'RSASHA1-NSEC3-SHA1'">7</when>
+      <when test="$enum = 'RSASHA256'">8</when>
+      <when test="$enum = 'RSASHA512'">10</when>
+      <when test="$enum = 'ECC-GOST'">12</when>
+      <when test="$enum = 'ECDSAP256SHA256'">13</when>
+      <when test="$enum = 'ECDSAP384SHA384'">14</when>
+    </choose>
+  </template>
+
+  <template name="digest-algorithm">
+    <param name="enum"/>
+    <choose>
+      <when test="$enum = 'SHA-1'">1</when>
+      <when test="$enum = 'SHA-256'">2</when>
+      <when test="$enum = 'GOST-R-34.11-94'">3</when>
+      <when test="$enum = 'SHA-384'">4</when>
+    </choose>
+  </template>
+
+  <template name="data-rrtype">
+    <param name="identity"/>
+    <value-of select="substring-after($identity, 'ianadns:')"/>
+  </template>
+
+  <template name="utc-date-time">
+    <param name="iso"/>
+    <variable name="time" select="substring($iso, 12)"/>
+    <variable name="len" select="string-length($iso)"/>
+    <variable name="zero" select="substring($iso, $len , 1) = 'Z'"/>
+    <value-of select="substring($iso,1,4)"/>
+    <value-of select="substring($iso,6,2)"/>
+    <value-of select="substring($iso,9,2)"/>
+    <value-of select="substring($iso,12,2)"/>
+    <value-of select="substring($iso,15,2)"/>
+    <value-of select="format-number(substring-before(
+			  substring($iso,18), 'Z'), '00')"/>
   </template>
 
   <!-- Root template -->
