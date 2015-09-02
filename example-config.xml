@@ -31,9 +31,7 @@
 	    <signature-inception>2014-09-08T11:59:12Z</signature-inception>
 	    <key-tag>35721</key-tag>
 	    <signer-name>example</signer-name>
-	    <signature>eUi219ENFoSmkCstQZ0D/eYNg3amKIdX8HvW1q
-HwM2rSv9Q7XaCI2NBy ki0poLwEuabZf8SHm2Kqh7EA35UFKYkEhEwtN/292ROuHVkZRCUzM3lD 9PT1
-NPkleqT3JcjiBRy3BCTirnGX5qQXK9qKW08fIawvNhwexI3e5hjS QUU=</signature>
+	    <signature>eUi219ENFoSmkCstQZ0D/eYNg3amKIdX8HvW1qHwM2rSv9Q7XaCI2NByki0poLwEuabZf8SHm2Kqh7EA35UFKYkEhEwtN/292ROuHVkZRCUzM3lD9PT1NPkleqT3JcjiBRy3BCTirnGX5qQXK9qKW08fIawvNhwexI3e5hjSQUU=</signature>
 	  </RRSIG>
 	</rdata>
 	<rdata>
@@ -45,9 +43,7 @@ NPkleqT3JcjiBRy3BCTirnGX5qQXK9qKW08fIawvNhwexI3e5hjS QUU=</signature>
 	    <signature-expiration>2050-01-01T00:00:00Z</signature-expiration>
 	    <signature-inception>2014-09-08T11:59:12Z</signature-inception>
 	    <key-tag>35721</key-tag>
-	    <signature>XRYbz0NL/bcF4uOH+puXe5hSJgmG9wX+sWz7ksi
-3Vl4HO5InUkyltxkn CdWw0M8cfpM8FM30inACCOOfBUEbyFL7TWUjfTwk3jKDX+7gm5FkItNE 2ZMLK
-0QnyjWQOiE5G15+cvV31eQHBRFpYLrQBIeGiL+V9aDYafTLV+Yt 0e0=</signature>
+	    <signature>XRYbz0NL/bcF4uOH+puXe5hSJgmG9wX+sWz7ksi3Vl4HO5InUkyltxknCdWw0M8cfpM8FM30inACCOOfBUEbyFL7TWUjfTwk3jKDX+7gm5FkItNE2ZMLK0QnyjWQOiE5G15+cvV31eQHBRFpYLrQBIeGiL+V9aDYafTLV+Yt0e0=</signature>
 	  </RRSIG>
 	</rdata>
 	<rdata>
@@ -59,7 +55,7 @@ NPkleqT3JcjiBRy3BCTirnGX5qQXK9qKW08fIawvNhwexI3e5hjS QUU=</signature>
 	    <signature-expiration>2050-01-01T00:00:00Z</signature-expiration>
 	    <signature-inception>2014-09-08T11:59:12Z</signature-inception>
 	    <key-tag>35721</key-tag>
-	    <signature>ejvossk9ErTnwuBQ0bcfwRXOvXeIJ419x/AphtwAJMtsj01kASdszAi1 Rzlo1CSca18Z6nq0XZQ1KeDjLg07WEWS1WU8l30RAKgWawlCjjJeeOTy r0GJ2IYhtbFDm9BB3u6EUmrD5/1/1NBchvWATMCo4FfspGNwZ7BgiUB3 ne4=</signature>
+	    <signature>ejvossk9ErTnwuBQ0bcfwRXOvXeIJ419x/AphtwAJMtsj01kASdszAi1Rzlo1CSca18Z6nq0XZQ1KeDjLg07WEWS1WU8l30RAKgWawlCjjJeeOTyr0GJ2IYhtbFDm9BB3u6EUmrD5/1/1NBchvWATMCo4FfspGNwZ7BgiUB3ne4=</signature>
 	  </RRSIG>
 	</rdata>
 	<rdata>
@@ -71,9 +67,7 @@ NPkleqT3JcjiBRy3BCTirnGX5qQXK9qKW08fIawvNhwexI3e5hjS QUU=</signature>
 	    <signature-expiration>2050-01-01T00:00:00Z</signature-expiration>
 	    <signature-inception>2014-09-08T11:59:12Z</signature-inception>
 	    <key-tag>35721</key-tag>
-	    <signature>X20KQj2os3I3fMWGXLoNccWhbP53v95PwHrKZ
-JPCf0KawwAMsGNXfKfT 9mDLGi4AJMImmJJfufSI/Za1clHQ5n5t2Ru5w0W4QAPkpBaWuQSU/5WU IV5
-4lCVtBBgTMuf3zpMnRgda2Q/o1XoFvN3+5eFvk0Qgs3m4OxBIfeJu Z7c=</signature>
+	    <signature>X20KQj2os3I3fMWGXLoNccWhbP53v95PwHrKZJPCf0KawwAMsGNXfKfT9mDLGi4AJMImmJJfufSI/Za1clHQ5n5t2Ru5w0W4QAPkpBaWuQSU/5WUIV54lCVtBBgTMuf3zpMnRgda2Q/o1XoFvN3+5eFvk0Qgs3m4OxBIfeJuZ7c=</signature>
 	  </RRSIG>
 	</rdata>
 	<rdata>
@@ -85,9 +79,7 @@ JPCf0KawwAMsGNXfKfT 9mDLGi4AJMImmJJfufSI/Za1clHQ5n5t2Ru5w0W4QAPkpBaWuQSU/5WU IV5
 	    <signature-expiration>2050-01-01T00:00:00Z</signature-expiration>
 	    <signature-inception>2014-09-08T11:59:12Z</signature-inception>
 	    <key-tag>35721</key-tag>
-	    <signature>zft/jYjZDK2eq6twehtmp6W3UgZQBVhDjDa
-uBwGG6jimkZ00PwAL4Eh5 1ZM/nGnw8CPt6YxXK32FGoLy9VQTOgFUfp0myZiRggH1At7RSBusDyOA I
-/BaZhJ+X1hCG2wfvPfiD9irPHB11az+isrms4FmQrWsPkyF/A3ZJqcl DpM=</signature>
+	    <signature>zft/jYjZDK2eq6twehtmp6W3UgZQBVhDjDauBwGG6jimkZ00PwAL4Eh51ZM/nGnw8CPt6YxXK32FGoLy9VQTOgFUfp0myZiRggH1At7RSBusDyOAI/BaZhJ+X1hCG2wfvPfiD9irPHB11az+isrms4FmQrWsPkyF/A3ZJqclDpM=</signature>
 	  </RRSIG>
 	</rdata>
 	<rdata>
@@ -99,7 +91,7 @@ uBwGG6jimkZ00PwAL4Eh5 1ZM/nGnw8CPt6YxXK32FGoLy9VQTOgFUfp0myZiRggH1At7RSBusDyOA I
 	    <signature-expiration>2050-01-01T00:00:00Z</signature-expiration>
 	    <signature-inception>2014-09-08T11:59:12Z</signature-inception>
 	    <key-tag>65014</key-tag>
-	    <signature>Sso2em1SJhXTZTVEnnfEZaK7VdSSbw7Ytd3cJuDEi7qVgbMJpNCZg1Of S2VIMlmf3sdzMrMOFbbXzdyAATHCmqBTqcMYEzSAH+mzc3hletbLM683 ChR3c8PJL1hUbHAGl3va8hK5jRsXaNlDjnOuyFQsiEBZU0lXFHyqvENR OBg7CJlDZeC8mdzaoTOLvklJFk6b8ktROYfjyaACVwFhQENIs1mxI12N YrjwDZV3ZHweDVfbh5qIjj855NwsDqJWahg0fBdbQA9B667KCIesuxp/ HstbKk7Ild193Ye5Rcqvtg5vesoOeQZducYtLLztr/hDLAWn9tEa0R2N /HzGSA==</signature>
+	    <signature>Sso2em1SJhXTZTVEnnfEZaK7VdSSbw7Ytd3cJuDEi7qVgbMJpNCZg1OfS2VIMlmf3sdzMrMOFbbXzdyAATHCmqBTqcMYEzSAH+mzc3hletbLM683ChR3c8PJL1hUbHAGl3va8hK5jRsXaNlDjnOuyFQsiEBZU0lXFHyqvENROBg7CJlDZeC8mdzaoTOLvklJFk6b8ktROYfjyaACVwFhQENIs1mxI12NYrjwDZV3ZHweDVfbh5qIjj855NwsDqJWahg0fBdbQA9B667KCIesuxp/HstbKk7Ild193Ye5Rcqvtg5vesoOeQZducYtLLztr/hDLAWn9tEa0R2N/HzGSA==</signature>
 	  </RRSIG>
 	</rdata>
       </rrset>
@@ -154,10 +146,7 @@ uBwGG6jimkZ00PwAL4Eh5 1ZM/nGnw8CPt6YxXK32FGoLy9VQTOgFUfp0myZiRggH1At7RSBusDyOA I
 	  <DNSKEY>
 	    <flags>zone-key</flags>
 	    <algorithm>RSASHA1</algorithm>
-	    <public-key>AwEAAdcU
-RIq28DnbSgdwnQjjX/9ihQAgPylq7HHnMjQOm59fGPMnsjy/ AkpcNxadAVGRycM7jZHloPyp7Tty/11
-J9wKDsLR86YChcYk9KXFKakdr EE1jchkL7KYL7g0bUTAIJSDLhsn6TyLILzgTX6Ru4mCceS4wLJ30LS
-i+ DR4cockH</public-key>
+	    <public-key>AwEAAdcURIq28DnbSgdwnQjjX/9ihQAgPylq7HHnMjQOm59fGPMnsjy/AkpcNxadAVGRycM7jZHloPyp7Tty/11J9wKDsLR86YChcYk9KXFKakdrEE1jchkL7KYL7g0bUTAIJSDLhsn6TyLILzgTX6Ru4mCceS4wLJ30LSi+DR4cockH</public-key>
 	  </DNSKEY>
 	</rdata>
 	<rdata>
@@ -165,12 +154,7 @@ i+ DR4cockH</public-key>
 	  <DNSKEY>
 	    <flags>zone-key secure-entry-point</flags>
 	    <algorithm>RSASHA1</algorithm>
-	    <public-key>AwEAAeMN
-mQ/1/6yfFfp7jOqy2M7AGBtuSzZJFpnUqrcAmTTI+RxX9vN0 1Z5CpAs9nhYTVyLEQLaGQBwkrF+QBIP
-J6DQ0SvHJEWEAN25tyvWmDdUj eDnevEpbQbkdaV+XQJ3SMWGf7OtzGo0BC4vO5ecw+zGteWT/UUbX9X
-kK 3vWOirLAF1s5kNEEnUt+kIbr50vz+qOfvWa+ldWHSt2T2Ds6fMVkdE84 gyb3mE0syQbEuSdgOO6V
-ko4qn9FtJ2Uz0L2i8vKb1chT+f7RISQhicTL X/RQgH0kV80UCBtn4CEgE6Cx5Yv+z50li0I4bNRI1BL
-BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
+	    <public-key>AwEAAeMNmQ/1/6yfFfp7jOqy2M7AGBtuSzZJFpnUqrcAmTTI+RxX9vN01Z5CpAs9nhYTVyLEQLaGQBwkrF+QBIPJ6DQ0SvHJEWEAN25tyvWmDdUjeDnevEpbQbkdaV+XQJ3SMWGf7OtzGo0BC4vO5ecw+zGteWT/UUbX9XkK3vWOirLAF1s5kNEEnUt+kIbr50vz+qOfvWa+ldWHSt2T2Ds6fMVkdE84gyb3mE0syQbEuSdgOO6Vko4qn9FtJ2Uz0L2i8vKb1chT+f7RISQhicTLX/RQgH0kV80UCBtn4CEgE6Cx5Yv+z50li0I4bNRI1BLBqJneCeN/eqQs/pYNJhZg4d8=</public-key>
 	  </DNSKEY>
 	</rdata>
       </rrset>
@@ -265,7 +249,7 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
 	    <signature-expiration>2050-01-01T00:00:00Z</signature-expiration>
 	    <signature-inception>2014-09-08T11:59:12Z</signature-inception>
 	    <key-tag>35721</key-tag>
-	    <signature>gXx+XR8khxgHGl4Zc5H2Fk+ekZQMFyb8qVGGztE+sGh6YD8ERZyBi6J/ GaL+PF7iDO9qJvrOHmULssCgiiTooWhnG8ezXt429ADB+8bsd9qjoyU1 cAcYL6zXHpYdf8LOTSetEaaoZISF0buD3UMOmErSZ+z5liN09V+woZqu 2K0=</signature>
+	    <signature>gXx+XR8khxgHGl4Zc5H2Fk+ekZQMFyb8qVGGztE+sGh6YD8ERZyBi6J/GaL+PF7iDO9qJvrOHmULssCgiiTooWhnG8ezXt429ADB+8bsd9qjoyU1cAcYL6zXHpYdf8LOTSetEaaoZISF0buD3UMOmErSZ+z5liN09V+woZqu2K0=</signature>
 	  </RRSIG>
 	</rdata>
       </rrset>
@@ -310,7 +294,7 @@ BqJneCeN/eqQs /pYNJhZg4d8=</public-key>
 	    <signature-expiration>2050-01-01T00:00:00Z</signature-expiration>
 	    <signature-inception>2014-09-08T11:59:12Z</signature-inception>
 	    <key-tag>35721</key-tag>
-	    <signature>X5GpSOMM71nyseLAMDsZ0ClXiQknr4KNhnde+WYsSeQwSmHjxE7cyhrt KBrhRpaCTwjGn2ydmYteRWkeCGhatr19zqdHVbu0KCbX2RQ+dv2FUu2o aw4yzIGGPsw38BxwCECauLiPIAN9cx57QIIGNRxMsestpQf1xgdNrBPS p/s=</signature>
+	    <signature>X5GpSOMM71nyseLAMDsZ0ClXiQknr4KNhnde+WYsSeQwSmHjxE7cyhrtKBrhRpaCTwjGn2ydmYteRWkeCGhatr19zqdHVbu0KCbX2RQ+dv2FUu2oaw4yzIGGPsw38BxwCECauLiPIAN9cx57QIIGNRxMsestpQf1xgdNrBPSp/s=</signature>
 	  </RRSIG>
 	</rdata>
       </rrset>
