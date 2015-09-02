@@ -152,7 +152,9 @@
   <xsl:template match="dnsz:DNSKEY">
     <xsl:call-template name="open-block"/>
     <xsl:call-template name="inline-entry">
-      <xsl:with-param name="data" select="dnsz:flags"/>
+      <xsl:with-param name="data">
+	<xsl:apply-templates select="dnsz:flags"/>
+      </xsl:with-param>
     </xsl:call-template>
     <xsl:call-template name="inline-entry">
       <xsl:with-param name="data" select="dnsz:protocol"/>
@@ -170,6 +172,7 @@
     <xsl:call-template name="close-block"/>
   </xsl:template>
   <xsl:template match="dnsz:RRSIG">
+    <xsl:call-template name="open-block"/>
     <xsl:call-template name="inline-entry">
       <xsl:with-param name="data">
         <xsl:call-template name="data-rrtype">
@@ -190,30 +193,31 @@
     <xsl:call-template name="inline-entry">
       <xsl:with-param name="data" select="dnsz:original-ttl"/>
     </xsl:call-template>
-    <xsl:call-template name="inline-entry">
+    <xsl:call-template name="sep-line-entry">
       <xsl:with-param name="data">
         <xsl:call-template name="utc-date-time">
           <xsl:with-param name="iso" select="dnsz:signature-expiration"/>
         </xsl:call-template>
       </xsl:with-param>
     </xsl:call-template>
-    <xsl:call-template name="sep-line-entry">
+    <xsl:call-template name="inline-entry">
       <xsl:with-param name="data">
         <xsl:call-template name="utc-date-time">
           <xsl:with-param name="iso" select="dnsz:signature-inception"/>
         </xsl:call-template>
       </xsl:with-param>
     </xsl:call-template>
-    <xsl:call-template name="inline-entry">
+    <xsl:call-template name="sep-line-entry">
       <xsl:with-param name="data">
         <xsl:call-template name="process-dname">
           <xsl:with-param name="dn" select="dnsz:signer-name"/>
         </xsl:call-template>
       </xsl:with-param>
     </xsl:call-template>
-    <xsl:call-template name="inline-entry">
+    <xsl:call-template name="chop-text">
       <xsl:with-param name="data" select="dnsz:signature"/>
     </xsl:call-template>
+    <xsl:call-template name="close-block"/>
   </xsl:template>
   <xsl:template match="dnsz:NSEC">
     <xsl:call-template name="inline-entry">
