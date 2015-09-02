@@ -100,19 +100,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <param name="length" select="30"/>
     <param name="data"/>
     <choose>
-      <when test="string-length($text) &lt;= $length">
+      <when test="string-length($data) &lt;= $length">
 	<call-template name="sep-line-entry">
-	  <with-param name="data" select="$text"/>
+	  <with-param name="data" select="$data"/>
 	</call-template>
       </when>
       <otherwise>
 	<call-template name="sep-line-entry">
-	  <with-param name="data" select="substring($text, 1, $length)"/>
+	  <with-param name="data" select="substring($data, 1, $length)"/>
 	</call-template>
 	<call-template name="chop-text">
 	  <with-param name="length" select="$length"/>
 	  <with-param name="data"
-		      select="substring($text, $length+1, $length)"/>
+		      select="substring($data, $length+1, $length)"/>
 	</call-template>
       </otherwise>
     </choose>
