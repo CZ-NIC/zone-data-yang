@@ -113,6 +113,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </choose>
   </template>
 
+  <template name="inline-entry">
+    <param name="data" select="."/>
+    <param name="quoted" select="false()"/>
+    <text> </text>
+    <call-template name="rdata-field">
+      <with-param name="data" select="$data"/>
+      <with-param name="quoted" select="$quoted"/>
+    </call-template>
+  </template>
+
   <template name="sep-line-entry">
     <param name="data" select="."/>
     <param name="quoted" select="false()"/>
