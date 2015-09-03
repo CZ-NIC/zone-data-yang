@@ -74,11 +74,22 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
       <xsl:attribute name="match">
 	<xsl:value-of select="concat('dnsz:', @name)"/>
       </xsl:attribute>
-      <xsl:apply-templates select="yin:leaf"/>
+      <xsl:apply-templates select="yin:leaf|yin:leaf-list|yin:uses"/>
     </xsl:element>
   </xsl:template>
 
-  <xsl:template match="yin:leaf">
+  <xsl:template match="yin:uses">
+    <xsl:apply-templates select="//yin:grouping[@name=current()/@name]"/>
+    <xsl:if test="position() != last()">
+      <xsl:text> </xsl:text>
+    </xsl:if>
+  </xsl:template>
+
+  <xsl:template match="yin:grouping">
+    <xsl:apply-templates select="yin:leaf|yin:leaf-list|yin:uses"/>
+  </xsl:template>
+
+  <xsl:template match="yin:leaf|yin:leaf-list">
     <xsl:element name="xsl:call-template">
       <xsl:attribute name="name">inline-entry</xsl:attribute>
       <xsl:if test="yin:type/@name = 'ascii-string'">
