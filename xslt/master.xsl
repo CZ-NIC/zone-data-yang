@@ -218,7 +218,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   </template>
 
   <template name="data-rrtype">
-    <param name="identity"/>
+    <param name="identity" select="."/>
     <value-of select="substring-after($identity, 'ianadns:')"/>
   </template>
 

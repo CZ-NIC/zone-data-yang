@@ -225,10 +225,10 @@
         </xsl:call-template>
       </xsl:with-param>
     </xsl:call-template>
-    <xsl:call-template name="inline-entry">
+    <xsl:call-template name="sep-line-entry">
       <xsl:with-param name="data" select="dnsz:key-tag"/>
     </xsl:call-template>
-    <xsl:call-template name="sep-line-entry">
+    <xsl:call-template name="inline-entry">
       <xsl:with-param name="data"
 		      select="concat(ancestor::dnsz:zone/dnsz:name, '.')"/>
     </xsl:call-template>
@@ -247,9 +247,12 @@
     </xsl:call-template>
     <xsl:call-template name="inline-entry">
       <xsl:with-param name="data">
-        <xsl:call-template name="data-rrtype">
-          <xsl:with-param name="identity" select="dnsz:rrset-type"/>
-        </xsl:call-template>
+	<xsl:for-each select="dnsz:rrset-type">
+          <xsl:call-template name="data-rrtype"/>
+	  <xsl:if test="position() != last()">
+	    <xsl:value-of select="$SP"/>
+	  </xsl:if>
+	</xsl:for-each>
       </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
