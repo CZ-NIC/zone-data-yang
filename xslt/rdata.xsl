@@ -226,11 +226,8 @@
       </xsl:with-param>
     </xsl:call-template>
     <xsl:call-template name="sep-line-entry">
-      <xsl:with-param name="data">
-        <xsl:call-template name="process-dname">
-          <xsl:with-param name="dn" select="dnsz:signer-name"/>
-        </xsl:call-template>
-      </xsl:with-param>
+      <xsl:with-param name="data"
+		      select="concat(ancestor::dnsz:zone/dnsz:name, '.')"/>
     </xsl:call-template>
     <xsl:call-template name="chop-text">
       <xsl:with-param name="data" select="dnsz:signature"/>
