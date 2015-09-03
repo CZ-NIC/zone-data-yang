@@ -10,6 +10,7 @@
       </description>
       <default-ttl>3600</default-ttl>
       <SOA>
+	<ttl>3599</ttl>
 	<mname>ns1.example</mname>
 	<rname>bugs.x.w.example</rname>
 	<serial>1081539377</serial>
@@ -98,6 +99,7 @@
       <rrset>
 	<owner>example</owner>
 	<type>ianadns:NS</type>
+        <ttl>3601</ttl>
 	<rdata>
 	  <id>1</id>
 	  <NS>
