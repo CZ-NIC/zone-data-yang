@@ -244,6 +244,7 @@
     </xsl:call-template>
   </xsl:template>
   <xsl:template match="dnsz:DS">
+    <xsl:call-template name="open-block"/>
     <xsl:call-template name="inline-entry">
       <xsl:with-param name="data">
         <xsl:call-template name="dnssec-algorithm">
@@ -258,8 +259,9 @@
         </xsl:call-template>
       </xsl:with-param>
     </xsl:call-template>
-    <xsl:call-template name="inline-entry">
+    <xsl:call-template name="chop-text">
       <xsl:with-param name="data" select="dnsz:digest"/>
     </xsl:call-template>
+    <xsl:call-template name="close-block"/>
   </xsl:template>
 </xsl:stylesheet>
