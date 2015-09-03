@@ -236,6 +236,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 			  substring($iso,18), 'Z'), '00')"/>
   </template>
 
+  <template name="ttl">
+    <param name="rrset"/>
+    <choose>
+      <when test="$rrset/dnsz:ttl">
+	<value-of select="$rrset/dnsz:ttl"/>
+      </when>
+      <otherwise>
+	<value-of select="$rrset/../dnsz:default-ttl"/>
+      </otherwise>
+    </choose>
+  </template>
+
   <!-- Root template -->
 
   <template match="/">

@@ -191,7 +191,25 @@
       <xsl:with-param name="data" select="dnsz:labels"/>
     </xsl:call-template>
     <xsl:call-template name="inline-entry">
-      <xsl:with-param name="data" select="dnsz:original-ttl"/>
+      <xsl:with-param name="data">
+	<xsl:choose>
+	  <xsl:when test="dnsz:type-covered = 'ianadns:SOA'">
+	    <xsl:call-template name="ttl">
+	      <xsl:with-param name="rrset"
+			      select="ancestor::dnsz:zone/dnsz:SOA"/>
+	    </xsl:call-template>
+	  </xsl:when>
+	  <xsl:otherwise>
+	    <xsl:call-template name="ttl">
+	      <xsl:with-param
+		  name="rrset"
+		  select="ancestor::dnsz:zone/dnsz:rrset[
+		  dnsz:owner=current()/ancestor::dnsz:rrset/dnsz:owner
+		  and dnsz:type = current()/dnsz:type-covered]"/>
+	    </xsl:call-template>
+	  </xsl:otherwise>
+	</xsl:choose>
+      </xsl:with-param>
     </xsl:call-template>
     <xsl:call-template name="sep-line-entry">
       <xsl:with-param name="data">
