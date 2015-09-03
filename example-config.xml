@@ -98,6 +98,36 @@
       </rrset>
       <rrset>
 	<owner>example</owner>
+	<type>ianadns:NSEC3PARAM</type>
+	<rdata>
+	  <id>1</id>
+	  <NSEC3PARAM>
+	    <iterations>12</iterations>
+	    <salt>aabbccdd</salt>
+	  </NSEC3PARAM>
+	</rdata>
+      </rrset>
+      <rrset>
+	<owner>0p9mhaveqvm6t7vbl5lop2u3t2rp3tom.example</owner>
+	<type>ianadns:NSEC3</type>
+	<rdata>
+	  <id>1</id>
+	  <NSEC3>
+	    <flags>Opt-Out</flags>
+	    <iterations>12</iterations>
+	    <salt>aabbccdd</salt>
+	    <next-hashed-owner-name>2t7b4g4vsa5smi47k61mv5bv1a22bojr</next-hashed-owner-name>
+	    <rrset-type>ianadns:MX</rrset-type>
+	    <rrset-type>ianadns:DNSKEY</rrset-type>
+	    <rrset-type>ianadns:NS</rrset-type>
+	    <rrset-type>ianadns:SOA</rrset-type>
+	    <rrset-type>ianadns:NSEC3PARAM</rrset-type>
+	    <rrset-type>ianadns:RRSIG</rrset-type>
+	  </NSEC3>
+	</rdata>
+      </rrset>
+      <rrset>
+	<owner>example</owner>
 	<type>ianadns:NS</type>
         <ttl>3601</ttl>
 	<rdata>

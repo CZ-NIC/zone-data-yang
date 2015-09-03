@@ -33,6 +33,10 @@
 	<h:li>IANA: Delegation Signer (DS) Resource Record (RR) Type
 	Digest Algorithms<h:br/>
 	http://www.iana.org/assignments/ds-rr-types/ds-rr-types.xhtml#ds-rr-types-1</h:li>
+	<h:li>Domain Name System Security (DNSSEC) NextSECure3 (NSEC3)
+	Parameters<h:br/>
+	https://www.iana.org/assignments/dnssec-nsec3-parameters/dnssec-nsec3-parameters.xhtml
+	</h:li>
       </h:ul>
     </text>
   </reference>
@@ -46,7 +50,7 @@
   
   <typedef name="class">
     <description>
-      <text>DNS RR classes.</text>
+      <text>DNS resource record classes.</text>
     </description>
     <type name="enumeration">
       <enum name="IN">
@@ -236,6 +240,56 @@
 	    for DNSSEC
 	  </text>
 	</reference>
+      </enum>
+    </type>
+  </typedef>
+
+  <typedef name="dnssec-nsec3-flags">
+    <description>
+      <text>
+	Flags defined for NSEC3 resource record.
+      </text>
+    </description>
+    <reference>
+      <text>
+	RFC 5155: DNS Security (DNSSEC) Hashed Authenticated Denial of
+	Existence
+      </text>
+    </reference>
+    <type name="bits">
+      <bit name="Opt-Out">
+	<position value="7"/>
+	<description>
+	  <text>
+	    The Opt-Out Flag indicates whether this NSEC3 resource
+	    record may cover unsigned delegations.
+	  </text>
+	</description>
+      </bit>
+    </type>
+  </typedef>
+
+  <typedef name="dnssec-nsec3-hash-algorithm">
+    <description>
+      <text>
+	Cryptographic hash algorithm used to construct the hash value
+	in NSEC3 resource record.
+      </text>
+    </description>
+    <reference>
+      <text>
+	RFC 5155: DNS Security (DNSSEC) Hashed Authenticated Denial of
+	Existence
+      </text>
+    </reference>
+    <type name="enumeration">
+      <enum name="SHA-1">
+	<value value="1"/>
+	<description>
+	  <text>
+	    SHA-1 hash algorithm.
+	  </text>
+	</description>
       </enum>
     </type>
   </typedef>

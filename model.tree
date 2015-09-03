@@ -98,8 +98,21 @@ module: dns-zones
                   |     +--rw next-domain-name    domain-name
                   |     +--rw rrset-type*         identityref
                   +--:(DS)
-                     +--rw DS
-                        +--rw key-tag        uint16
-                        +--rw algorithm      ianadns:dnssec-algorithm
-                        +--rw digest-type    ianadns:digest-algorithm
-                        +--rw digest         hex-digits
+                  |  +--rw DS
+                  |     +--rw key-tag        uint16
+                  |     +--rw algorithm      ianadns:dnssec-algorithm
+                  |     +--rw digest-type    ianadns:digest-algorithm
+                  |     +--rw digest         hex-digits
+                  +--:(NSEC3)
+                  |  +--rw NSEC3
+                  |     +--rw hash-algorithm?           ianadns:dnssec-nsec3-hash-algorithm
+                  |     +--rw iterations                uint16
+                  |     +--rw salt                      hex-digits
+                  |     +--rw flags                     ianadns:dnssec-nsec3-flags
+                  |     +--rw next-hashed-owner-name    base32hex
+                  |     +--rw rrset-type*               identityref
+                  +--:(NSEC3PARAM)
+                     +--rw NSEC3PARAM
+                        +--rw hash-algorithm?   ianadns:dnssec-nsec3-hash-algorithm
+                        +--rw iterations        uint16
+                        +--rw salt              hex-digits

@@ -24,7 +24,11 @@ module iana-dns-parameters {
 
      - IANA: Delegation Signer (DS) Resource Record (RR) Type Digest
        Algorithms
-       http://www.iana.org/assignments/ds-rr-types/ds-rr-types.xhtml#ds-rr-types-1";
+       http://www.iana.org/assignments/ds-rr-types/ds-rr-types.xhtml#ds-rr-types-1
+
+     - Domain Name System Security (DNSSEC) NextSECure3 (NSEC3)
+       Parameters
+       https://www.iana.org/assignments/dnssec-nsec3-parameters/dnssec-nsec3-parameters.xhtml";
 
   revision 2015-08-11 {
     description
@@ -68,7 +72,7 @@ module iana-dns-parameters {
       }
     }
     description
-      "DNS RR classes.";
+      "DNS resource record classes.";
   }
 
   typedef dnssec-algorithm {
@@ -179,6 +183,38 @@ module iana-dns-parameters {
     }
     description
       "Delegation Signer (DS) RR type digest algorithms.";
+  }
+
+  typedef dnssec-nsec3-flags {
+    type bits {
+      bit Opt-Out {
+        position "7";
+        description
+          "The Opt-Out Flag indicates whether this NSEC3 resource
+           record may cover unsigned delegations.";
+      }
+    }
+    description
+      "Flags defined for NSEC3 resource record.";
+    reference
+      "RFC 5155: DNS Security (DNSSEC) Hashed Authenticated Denial of
+       Existence";
+  }
+
+  typedef dnssec-nsec3-hash-algorithm {
+    type enumeration {
+      enum SHA-1 {
+        value "1";
+        description
+          "SHA-1 hash algorithm.";
+      }
+    }
+    description
+      "Cryptographic hash algorithm used to construct the hash value
+       in NSEC3 resource record.";
+    reference
+      "RFC 5155: DNS Security (DNSSEC) Hashed Authenticated Denial of
+       Existence";
   }
 
   /* Identities */

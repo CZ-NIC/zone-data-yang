@@ -57,9 +57,25 @@ module dns-zones {
       "A string consisting of ASCII characters (U+0000 to U+007F).";
   }
 
+  typedef base32hex {
+    type string {
+      pattern "([0-9A-Va-v]{8})*([0-9A-Va-v]{2}={6}||"
+            + "[0-9A-Va-v]{4}={4}|[0-9A-Va-v]{5}===|"
+            + "[0-9A-Va-v]{7}=)?";
+    }
+    description
+      "This typedef represents binary data in Base 32 encoding with
+       extended hex alphabet.
+
+       This type differs from base32hex spec in that letters can be
+       upper- or lower-case.";
+    reference
+      "RFC 4648: The Base16, Base32, and Base64 Data Encodings";
+  }
+
   typedef hex-digits {
     type string {
-      pattern "[0-9A-Fa-f]+";
+      pattern "[0-9A-Fa-f]*";
     }
   }
 
@@ -130,6 +146,52 @@ module dns-zones {
       description
         "The Key Tag field contains the key tag value of the DNSKEY
          RR that validates this signature, in network byte order.";
+    }
+  }
+
+  grouping rrset-types {
+    description
+      "This grouping defines a sequence of RR types, It is used in
+       NSEC and NSEC3 resource records.";
+    leaf-list rrset-type {
+      type identityref {
+        base ianadns:data-rrtype;
+      }
+      min-elements "1";
+      description
+        "This leaf-list represents the Type Bit Maps field. Its
+         entries identify the RRset types that exist at the NSEC RR's
+         owner name.";
+    }
+  }
+
+  grouping nsec-common {
+    description
+      "This grouping defines common field of NSEC3 and NSEC3PARAM
+       resource records.";
+    leaf hash-algorithm {
+      type ianadns:dnssec-nsec3-hash-algorithm;
+      default "SHA-1";
+      description
+        "This field identifies the cryptographic hash algorithm used
+         to construct the hash-value.";
+    }
+    leaf iterations {
+      type uint16;
+      mandatory "true";
+      description
+        "This field defines the number of additional times the hash
+         function has been performed.";
+    }
+    leaf salt {
+      type hex-digits {
+        length "0..510";
+      }
+      mandatory "true";
+      description
+        "This field is appended to the original owner name before
+         hashing in order to defend against pre-calculated dictionary
+         attacks.";
     }
   }
 
@@ -717,16 +779,7 @@ module dns-zones {
                    authoritative data or contains a delegation point
                    NS RRset.";
               }
-              leaf-list rrset-type {
-                type identityref {
-                  base ianadns:data-rrtype;
-                }
-                min-elements "1";
-                description
-                  "This leaf-list represents the Type Bit Maps field.
-                   Its entries identify the RRset types that exist at
-                   the NSEC RR's owner name.";
-              }
+              uses rrset-types;
             }
             container DS {
               must "../../type = 'ianadns:DS'";
@@ -751,12 +804,50 @@ module dns-zones {
                    construct the digest of the DNSKEY RR.";
               }
               leaf digest {
-                type hex-digits;
+                type hex-digits {
+                  length "1..max";
+                }
                 mandatory "true";
                 description
                   "This field contains a digest of the DNSKEY RR to
                    which the DS RR refers.";
               }
+            }
+            /* RFC 5155 */
+            container NSEC3 {
+              must "../../type = 'ianadns:NSEC3'";
+              description
+                "RDATA content for 'NSEC3' Resource Record.";
+              reference
+                "RFC 5155: DNS Security (DNSSEC) Hashed Authenticated
+                 Denial of Existence";
+              uses nsec-common;
+              leaf flags {
+                type ianadns:dnssec-nsec3-flags;
+                mandatory "true";
+                description
+                  "This field contains flags that indicate different
+                   processing of the NSEC3 RR data.";
+              }
+              leaf next-hashed-owner-name {
+                type base32hex {
+                  length "8..408";
+                }
+                mandatory "true";
+                description
+                  "This field contains the next hashed owner name in
+                   hash order.";
+              }
+              uses rrset-types;
+            }
+            container NSEC3PARAM {
+              must "../../type = 'ianadns:NSEC3PARAM'";
+              description
+                "RDATA content for 'NSEC3PARAM' Resource Record.";
+              reference
+                "RFC 5155: DNS Security (DNSSEC) Hashed Authenticated
+                 Denial of Existence";
+              uses nsec-common;
             }
           }
         }

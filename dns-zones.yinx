@@ -69,9 +69,28 @@
     </type>
   </typedef>
 
+  <typedef name="base32hex">
+    <description>
+      <text>
+	<h:p>This typedef represents binary data in Base 32 encoding with
+	extended hex alphabet.</h:p>
+	<h:p>This type differs from base32hex spec in that letters can
+	be upper- or lower-case.</h:p>
+      </text>
+    </description>
+    <reference>
+      <text>
+	RFC 4648: The Base16, Base32, and Base64 Data Encodings
+      </text>
+    </reference>
+    <type name="string">
+      <pattern
+	  value="([0-9A-Va-v]{8})*([0-9A-Va-v]{2}={6}||[0-9A-Va-v]{4}={4}|[0-9A-Va-v]{5}===|[0-9A-Va-v]{7}=)?"/>
+    </type>
+  </typedef>
   <typedef name="hex-digits">
     <type name="string">
-      <pattern value="[0-9A-Fa-f]+"/>
+      <pattern value="[0-9A-Fa-f]*"/>
     </type>
   </typedef>
 
@@ -177,7 +196,71 @@
       </description>
     </leaf>
   </grouping>
-  
+
+  <grouping name="rrset-types">
+    <description>
+      <text>
+	This grouping defines a sequence of RR types, It is used in
+	NSEC and NSEC3 resource records.
+      </text>
+    </description>
+    <leaf-list name="rrset-type">
+      <type name="identityref">
+	<base name="ianadns:data-rrtype"/>
+      </type>
+      <min-elements value="1"/>
+      <description>
+	<text>
+	  This leaf-list represents the Type Bit Maps field. Its
+	  entries identify the RRset types that exist at the NSEC RR's
+	  owner name.
+	</text>
+      </description>
+    </leaf-list>
+  </grouping>
+
+  <grouping name="nsec-common">
+    <description>
+      <text>
+	This grouping defines common field of NSEC3 and NSEC3PARAM
+	resource records.
+      </text>
+    </description>
+    <leaf name="hash-algorithm">
+      <type name="ianadns:dnssec-nsec3-hash-algorithm"/>
+      <default value="SHA-1"/>
+      <description>
+	<text>
+	  This field identifies the cryptographic hash algorithm used
+	  to construct the hash-value.
+	</text>
+      </description>
+    </leaf>
+    <leaf name="iterations">
+      <type name="uint16"/>
+      <mandatory value="true"/>
+      <description>
+	<text>
+	  This field defines the number of additional times the hash
+	  function has been performed.
+	</text>
+      </description>
+    </leaf>
+    <leaf name="salt">
+      <type name="hex-digits">
+	<length value="0..510"/>
+      </type>
+      <mandatory value="true"/>
+      <description>
+	<text>
+	  This field is appended to the original owner name before
+	  hashing in order to defend against pre-calculated dictionary
+	  attacks.
+	</text>
+      </description>
+    </leaf>
+  </grouping>
+
   <!-- Configuration data -->
 
   <container name="zones">
@@ -1069,19 +1152,7 @@
 		  </text>
 		</description>
 	      </leaf>
-	      <leaf-list name="rrset-type">
-		<type name="identityref">
-		  <base name="ianadns:data-rrtype"/>
-		</type>
-		<min-elements value="1"/>
-		<description>
-		  <text>
-		    This leaf-list represents the Type Bit Maps
-		    field. Its entries identify the RRset types that
-		    exist at the NSEC RR's owner name.
-		  </text>
-		</description>
-	      </leaf-list>
+	      <uses name="rrset-types"/>
 	    </container>
 
 	    <container name="DS">
@@ -1119,7 +1190,9 @@
 		</description>
 	      </leaf>
 	      <leaf name="digest">
-		<type name="hex-digits"/>
+		<type name="hex-digits">
+		  <length value="1..max"/>
+		</type>
 		<mandatory value="true"/>
 		<description>
 		  <text>
@@ -1129,6 +1202,64 @@
 		</description>
 	      </leaf>
 	    </container>
+
+	    <!-- RFC 5155 -->
+
+	    <container name="NSEC3">
+	      <must condition="../../type = 'ianadns:NSEC3'"/>
+	      <description>
+		<text>
+		  RDATA content for 'NSEC3' Resource Record.
+		</text>
+	      </description>
+	      <reference>
+		<text>
+		  RFC 5155: DNS Security (DNSSEC) Hashed Authenticated
+		  Denial of Existence
+		</text>
+	      </reference>
+	      <uses name="nsec-common"/>
+	      <leaf name="flags">
+		<type name="ianadns:dnssec-nsec3-flags"/>
+		<mandatory value="true"/>
+		<description>
+		  <text>
+		    This field contains flags that indicate different
+		    processing of the NSEC3 RR data.
+		  </text>
+		</description>
+	      </leaf>
+	      <leaf name="next-hashed-owner-name">
+		<type name="base32hex">
+		  <length value="8..408"/>
+		</type>
+		<mandatory value="true"/>
+		<description>
+		  <text>
+		    This field contains the next hashed owner name in
+		    hash order.
+		  </text>
+		</description>
+	      </leaf>
+	      <uses name="rrset-types"/>
+	    </container>
+
+	    <container name="NSEC3PARAM">
+	      <must condition="../../type = 'ianadns:NSEC3PARAM'"/>
+	      <description>
+		<text>
+		  RDATA content for 'NSEC3PARAM' Resource Record.
+		</text>
+	      </description>
+	      <reference>
+		<text>
+		  RFC 5155: DNS Security (DNSSEC) Hashed Authenticated
+		  Denial of Existence
+		</text>
+	      </reference>
+	      <uses name="nsec-common"/>
+	    </container>
+
 	  </choice>
 	</list>
       </list>
