@@ -302,7 +302,11 @@
       <xsl:with-param name="data" select="dnsz:iterations"/>
     </xsl:call-template>
     <xsl:call-template name="inline-entry">
-      <xsl:with-param name="data" select="dnsz:salt"/>
+      <xsl:with-param name="data">
+	<xsl:call-template name="nsec3-salt">
+	  <xsl:with-param name="salt" select="dnsz:salt"/>
+	</xsl:call-template>
+      </xsl:with-param>
     </xsl:call-template>
     <xsl:call-template name="chop-text">
       <xsl:with-param name="data" select="dnsz:next-hashed-owner-name"/>
@@ -331,7 +335,11 @@
       <xsl:with-param name="data" select="dnsz:iterations"/>
     </xsl:call-template>
     <xsl:call-template name="inline-entry">
-      <xsl:with-param name="data" select="dnsz:salt"/>
+      <xsl:with-param name="data">
+	<xsl:call-template name="nsec3-salt">
+	  <xsl:with-param name="salt" select="dnsz:salt"/>
+	</xsl:call-template>
+      </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
 </xsl:stylesheet>

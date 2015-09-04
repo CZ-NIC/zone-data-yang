@@ -236,6 +236,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </choose>
   </template>
 
+  <template name="nsec3-salt">
+    <param name="salt"/>
+    <choose>
+      <when test="string-length($salt) = 0">-</when>
+      <otherwise>
+	<value-of select="$salt"/>
+      </otherwise>
+    </choose>
+  </template>
+
   <template name="data-rrtype">
     <param name="identity" select="."/>
     <value-of select="substring-after($identity, 'ianadns:')"/>
