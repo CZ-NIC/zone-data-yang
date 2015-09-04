@@ -207,6 +207,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </choose>
   </template>
 
+  <template name="dnskey-flags">
+    <param name="bits"/>
+    <value-of select="contains($bits, 'ZONE') * 256
+		      + contains($bits, 'REVOKE') * 128
+		      + contains($bits, 'SEP')"/>
+  </template>
+
   <template name="digest-algorithm">
     <param name="enum"/>
     <choose>
@@ -214,6 +221,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <when test="$enum = 'SHA-256'">2</when>
       <when test="$enum = 'GOST-R-34.11-94'">3</when>
       <when test="$enum = 'SHA-384'">4</when>
+    </choose>
+  </template>
+
+  <template name="nsec3-flags">
+    <param name="bits"/>
+    <value-of select="number(contains($bits, 'Opt-Out'))"/>
+  </template>
+
+  <template name="nsec3-hash-algorithm">
+    <param name="enum"/>
+    <choose>
+      <when test="$enum = 'SHA-1'">1</when>
     </choose>
   </template>
 
@@ -378,11 +397,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <with-param name="text" select="dnsz:ttl"/>
     </call-template>
     <text> </text>
-  </template>
-
-  <template match="dnsz:DNSKEY/dnsz:flags">
-    <value-of select="contains(., 'zone-key') * 256
-		      + contains(., 'secure-entry-point')"/>
   </template>
 
   <template match="dnsz:*">
