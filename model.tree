@@ -78,7 +78,7 @@ module: dns-zones
                   |     +--rw address    inet:ipv6-address-no-zone
                   +--:(DNSKEY)
                   |  +--rw DNSKEY
-                  |     +--rw flags         bits
+                  |     +--rw flags?        ianadns:dnskey-flags
                   |     +--rw protocol?     uint8
                   |     +--rw algorithm     ianadns:dnssec-algorithm
                   |     +--rw public-key    binary

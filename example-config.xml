@@ -175,7 +175,7 @@
 	<rdata>
 	  <id>1</id>
 	  <DNSKEY>
-	    <flags>zone-key</flags>
+	    <flags>ZONE</flags>
 	    <algorithm>RSASHA1</algorithm>
 	    <public-key>AwEAAdcURIq28DnbSgdwnQjjX/9ihQAgPylq7HHnMjQOm59fGPMnsjy/AkpcNxadAVGRycM7jZHloPyp7Tty/11J9wKDsLR86YChcYk9KXFKakdrEE1jchkL7KYL7g0bUTAIJSDLhsn6TyLILzgTX6Ru4mCceS4wLJ30LSi+DR4cockH</public-key>
 	  </DNSKEY>
@@ -183,7 +183,7 @@
 	<rdata>
 	  <id>2</id>
 	  <DNSKEY>
-	    <flags>zone-key secure-entry-point</flags>
+	    <flags>ZONE SEP</flags>
 	    <algorithm>RSASHA1</algorithm>
 	    <public-key>AwEAAeMNmQ/1/6yfFfp7jOqy2M7AGBtuSzZJFpnUqrcAmTTI+RxX9vN01Z5CpAs9nhYTVyLEQLaGQBwkrF+QBIPJ6DQ0SvHJEWEAN25tyvWmDdUjeDnevEpbQbkdaV+XQJ3SMWGf7OtzGo0BC4vO5ecw+zGteWT/UUbX9XkK3vWOirLAF1s5kNEEnUt+kIbr50vz+qOfvWa+ldWHSt2T2Ds6fMVkdE84gyb3mE0syQbEuSdgOO6Vko4qn9FtJ2Uz0L2i8vKb1chT+f7RISQhicTLX/RQgH0kV80UCBtn4CEgE6Cx5Yv+z50li0I4bNRI1BLBqJneCeN/eqQs/pYNJhZg4d8=</public-key>
 	  </DNSKEY>

@@ -31,12 +31,13 @@
 	Numbers.<h:br/>
 	http://www.iana.org/assignments/dns-sec-alg-numbers/dns-sec-alg-numbers.xhtml</h:li>
 	<h:li>IANA: Delegation Signer (DS) Resource Record (RR) Type
-	Digest Algorithms<h:br/>
+	Digest Algorithms.<h:br/>
 	http://www.iana.org/assignments/ds-rr-types/ds-rr-types.xhtml#ds-rr-types-1</h:li>
-	<h:li>Domain Name System Security (DNSSEC) NextSECure3 (NSEC3)
-	Parameters<h:br/>
-	https://www.iana.org/assignments/dnssec-nsec3-parameters/dnssec-nsec3-parameters.xhtml
-	</h:li>
+	<h:li>IANA: Domain Name System Security (DNSSEC) NextSECure3
+	(NSEC3) Parameters.<h:br/>
+	https://www.iana.org/assignments/dnssec-nsec3-parameters/dnssec-nsec3-parameters.xhtml</h:li>
+	<h:li>IANA: DNSKEY Flags.<h:br/>
+	https://www.iana.org/assignments/dnskey-flags/dnskey-flags.xhtml</h:li>
       </h:ul>
     </text>
   </reference>
@@ -52,6 +53,15 @@
     <description>
       <text>DNS resource record classes.</text>
     </description>
+    <reference>
+      <text>
+	<h:ul>
+	  <h:li>RFC 1035: Domain Names - Implementation and Specification</h:li>
+	  <h:li>RFC 2136: Dynamic Updates in the Domain Name System
+	  (DNS UPDATE)</h:li>
+	</h:ul>
+      </text>
+    </reference>
     <type name="enumeration">
       <enum name="IN">
 	<value value="1"/>
@@ -76,23 +86,12 @@
 	<description>
 	  <text>QCLASS NONE - only meaningful in queries</text>
 	</description>
-	<reference>
-	  <text>
-	    RFC 2136: Dynamic Updates in the Domain Name System (DNS
-	    UPDATE)
-	  </text>
-	</reference>
       </enum>
       <enum name="ANY">
 	<value value="255"/>
 	<description>
 	  <text>QCLASS * (ANY) - only meaningful in queries</text>
 	</description>
-	<reference>
-	  <text>
-	    RFC 1035: Domain Names - Implementation and Specification
-	  </text>
-	</reference>
       </enum>
     </type>
   </typedef>
@@ -108,6 +107,11 @@
 	<h:p>Value 0, 4, 9 and 11 are reserved.</h:p>
       </text>
     </description>
+    <reference>
+      <text>
+	RFC 4034: Resource Records for the DNS Security Extensions
+      </text>
+    </reference>
     <type name="enumeration">
       <enum name="RSAMD5">
 	<description>
@@ -241,6 +245,67 @@
 	  </text>
 	</reference>
       </enum>
+    </type>
+  </typedef>
+
+  <typedef name="dnskey-flags">
+    <description>
+      <text>
+	Flags defined for DNSKEY resource record.
+      </text>
+    </description>
+    <reference>
+      <text>
+	RFC 4034: Resource Records for the DNS Security Extensions
+      </text>
+    </reference>
+    <type name="bits">
+      <bit name="ZONE">
+	<position value="7"/>
+	<description>
+	  <text>
+	    <h:p>Zone Key flag.</h:p>
+	    <h:p>If this bit has value 1, then the DNSKEY record holds
+	    a DNS zone key. If bit 7 has value 0, then the DNSKEY
+	    record holds some other type of DNS public key and MUST
+	    NOT be used to verify RRSIGs that cover RRsets.</h:p>
+	  </text>
+	</description>
+      </bit>
+      <bit name="REVOKE">
+	<position value="8"/>
+	<description>
+	  <text>
+	    <h:p>Revoke flag.</h:p>
+	    <h:p>If this bit has value 1, and the resolver sees an
+	    RRSIG(DNSKEY) signed by the associated key, then the
+	    resolver MUST consider this key permanently invalid for
+	    all purposes except for validating the revocation.</h:p>
+	  </text>
+	</description>
+	<reference>
+	  <text>
+	    RFC 5011: Automated Updates of DNS Security (DNSSEC) Trust
+	    Anchors
+	  </text>
+	</reference>
+      </bit>
+      <bit name="SEP">
+	<position value="15"/>
+	<description>
+	  <text>
+	    <h:p>Secure Entry Point flag.</h:p>
+	    <h:p>If this bit has value 1, then the DNSKEY record holds
+	    a key intended for use as a secure entry point.</h:p>
+	  </text>
+	</description>
+	<reference>
+	  <text>
+	    RFC 3757: Domain Name System KEY (DNSKEY) Resource Record
+	    (RR) Secure Entry Point (SEP) Flag
+	  </text>
+	</reference>
+      </bit>
     </type>
   </typedef>
 

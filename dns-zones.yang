@@ -597,48 +597,22 @@ module dns-zones {
                 "RFC 4034: Resource Records for the DNS Security
                  Extensions";
               leaf flags {
-                type bits {
-                  bit zone-key {
-                    position "7";
-                    description
-                      "Zone Key flag.
-
-                       If this flag has value 1, then the DNSKEY
-                       record holds a DNS zone key. If bit 7 has
-                       value 0, then the DNSKEY record holds some
-                       other type of DNS public key and MUST NOT be
-                       used to verify RRSIGs that cover RRsets.";
-                  }
-                  bit secure-entry-point {
-                    position "15";
-                    description
-                      "Secure Entry Point flag.
-
-                       If bit 15 has value 1, then the DNSKEY record
-                       holds a key intended for use as a secure entry
-                       point.";
-                    reference
-                      "RFC 3757: Domain Name System KEY (DNSKEY)
-                       Resource Record (RR) Secure Entry Point (SEP)
-                       Flag";
-                  }
-                }
-                must "not(contains(., 'zone-key')) or "
-                   + "../../../owner = ../../../../name" {
+                type ianadns:dnskey-flags;
+                must "not(contains(., 'ZONE')) or ../../../owner = "
+                   + "../../../../name" {
                   error-message "For a Zone Key, owner name must be "
                               + "the zone name.";
                   description
                     "For a Zone Key, the DNSKEY RR's owner name MUST
                      be the name of a zone.";
                 }
-                must "contains(., 'zone-key') or not(contains(., "
-                   + "'secure-entry-point'))" {
+                must
+                  "contains(., 'ZONE') or not(contains(., 'SEP'))" {
                   error-message "'secure-entry-point' is set but "
                               + "'zone-key' isn't";
                   description
                     "Secure Entry Point flag needs Zone Key flag.";
                 }
-                mandatory "true";
                 description
                   "DNSKEY RR flags.";
               }

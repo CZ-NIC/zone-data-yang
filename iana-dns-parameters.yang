@@ -23,12 +23,15 @@ module iana-dns-parameters {
        http://www.iana.org/assignments/dns-sec-alg-numbers/dns-sec-alg-numbers.xhtml
 
      - IANA: Delegation Signer (DS) Resource Record (RR) Type Digest
-       Algorithms
+       Algorithms.
        http://www.iana.org/assignments/ds-rr-types/ds-rr-types.xhtml#ds-rr-types-1
 
-     - Domain Name System Security (DNSSEC) NextSECure3 (NSEC3)
-       Parameters
-       https://www.iana.org/assignments/dnssec-nsec3-parameters/dnssec-nsec3-parameters.xhtml";
+     - IANA: Domain Name System Security (DNSSEC) NextSECure3 (NSEC3)
+       Parameters.
+       https://www.iana.org/assignments/dnssec-nsec3-parameters/dnssec-nsec3-parameters.xhtml
+
+     - IANA: DNSKEY Flags.
+       https://www.iana.org/assignments/dnskey-flags/dnskey-flags.xhtml";
 
   revision 2015-08-11 {
     description
@@ -58,21 +61,20 @@ module iana-dns-parameters {
         value "254";
         description
           "QCLASS NONE - only meaningful in queries";
-        reference
-          "RFC 2136: Dynamic Updates in the Domain Name System (DNS
-           UPDATE)";
       }
       enum ANY {
         value "255";
         description
           "QCLASS * (ANY) - only meaningful in queries";
-        reference
-          "RFC 1035: Domain Names - Implementation and
-           Specification";
       }
     }
     description
       "DNS resource record classes.";
+    reference
+      "- RFC 1035: Domain Names - Implementation and Specification
+
+       - RFC 2136: Dynamic Updates in the Domain Name System (DNS
+         UPDATE)";
   }
 
   typedef dnssec-algorithm {
@@ -143,6 +145,8 @@ module iana-dns-parameters {
        the security algorithm.
 
        Value 0, 4, 9 and 11 are reserved.";
+    reference
+      "RFC 4034: Resource Records for the DNS Security Extensions";
   }
 
   typedef digest-algorithm {
@@ -183,6 +187,49 @@ module iana-dns-parameters {
     }
     description
       "Delegation Signer (DS) RR type digest algorithms.";
+  }
+
+  typedef dnskey-flags {
+    type bits {
+      bit ZONE {
+        position "7";
+        description
+          "Zone Key flag.
+
+           If this bit has value 1, then the DNSKEY record holds a
+           DNS zone key. If bit 7 has value 0, then the DNSKEY record
+           holds some other type of DNS public key and MUST NOT be
+           used to verify RRSIGs that cover RRsets.";
+      }
+      bit REVOKE {
+        position "8";
+        description
+          "Revoke flag.
+
+           If this bit has value 1, and the resolver sees an
+           RRSIG(DNSKEY) signed by the associated key, then the
+           resolver MUST consider this key permanently invalid for
+           all purposes except for validating the revocation.";
+        reference
+          "RFC 5011: Automated Updates of DNS Security (DNSSEC) Trust
+           Anchors";
+      }
+      bit SEP {
+        position "15";
+        description
+          "Secure Entry Point flag.
+
+           If this bit has value 1, then the DNSKEY record holds a
+           key intended for use as a secure entry point.";
+        reference
+          "RFC 3757: Domain Name System KEY (DNSKEY) Resource Record
+           (RR) Secure Entry Point (SEP) Flag";
+      }
+    }
+    description
+      "Flags defined for DNSKEY resource record.";
+    reference
+      "RFC 4034: Resource Records for the DNS Security Extensions";
   }
 
   typedef dnssec-nsec3-flags {
