@@ -130,6 +130,13 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 	      <xsl:with-param name="qname" select="$qn"/>
 	    </xsl:call-template>
 	  </xsl:when>
+	  <xsl:when test="yin:type/@name = 'ianadns:digest-algorithm'">
+	    <xsl:call-template name="call-templ">
+	      <xsl:with-param name="tname">digest-algorithm</xsl:with-param>
+	      <xsl:with-param name="pname">enum</xsl:with-param>
+	      <xsl:with-param name="qname" select="$qn"/>
+	    </xsl:call-template>
+	  </xsl:when>
 	  <xsl:when test="yin:type/@name = 'ianadns:dnssec-nsec3-flags'">
 	    <xsl:call-template name="call-templ">
 	      <xsl:with-param name="tname">nsec3-flags</xsl:with-param>
@@ -137,9 +144,9 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 	      <xsl:with-param name="qname" select="$qn"/>
 	    </xsl:call-template>
 	  </xsl:when>
-	  <xsl:when test="yin:type/@name = 'ianadns:digest-algorithm'">
+	  <xsl:when test="yin:type/@name = 'ianadns:dnssec-nsec3-hash-algorithm'">
 	    <xsl:call-template name="call-templ">
-	      <xsl:with-param name="tname">digest-algorithm</xsl:with-param>
+	      <xsl:with-param name="tname">nsec3-hash-algorithm</xsl:with-param>
 	      <xsl:with-param name="pname">enum</xsl:with-param>
 	      <xsl:with-param name="qname" select="$qn"/>
 	    </xsl:call-template>

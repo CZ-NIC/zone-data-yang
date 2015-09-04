@@ -283,14 +283,13 @@
     <xsl:call-template name="close-block"/>
   </xsl:template>
   <xsl:template match="dnsz:NSEC3">
+    <xsl:call-template name="open-block"/>
     <xsl:call-template name="inline-entry">
-      <xsl:with-param name="data" select="dnsz:hash-algorithm"/>
-    </xsl:call-template>
-    <xsl:call-template name="inline-entry">
-      <xsl:with-param name="data" select="dnsz:iterations"/>
-    </xsl:call-template>
-    <xsl:call-template name="inline-entry">
-      <xsl:with-param name="data" select="dnsz:salt"/>
+      <xsl:with-param name="data">
+        <xsl:call-template name="nsec3-hash-algorithm">
+          <xsl:with-param name="enum" select="dnsz:hash-algorithm"/>
+        </xsl:call-template>
+      </xsl:with-param>
     </xsl:call-template>
     <xsl:call-template name="inline-entry">
       <xsl:with-param name="data">
@@ -300,19 +299,33 @@
       </xsl:with-param>
     </xsl:call-template>
     <xsl:call-template name="inline-entry">
-      <xsl:with-param name="data" select="dnsz:next-hashed-owner-name"/>
+      <xsl:with-param name="data" select="dnsz:iterations"/>
     </xsl:call-template>
     <xsl:call-template name="inline-entry">
+      <xsl:with-param name="data" select="dnsz:salt"/>
+    </xsl:call-template>
+    <xsl:call-template name="chop-text">
+      <xsl:with-param name="data" select="dnsz:next-hashed-owner-name"/>
+    </xsl:call-template>
+    <xsl:call-template name="sep-line-entry">
       <xsl:with-param name="data">
-        <xsl:call-template name="data-rrtype">
-          <xsl:with-param name="identity" select="dnsz:rrset-type"/>
-        </xsl:call-template>
+	<xsl:for-each select="dnsz:rrset-type">
+          <xsl:call-template name="data-rrtype"/>
+	  <xsl:if test="position() != last()">
+	    <xsl:value-of select="$SP"/>
+	  </xsl:if>
+	</xsl:for-each>
       </xsl:with-param>
     </xsl:call-template>
+    <xsl:call-template name="close-block"/>
   </xsl:template>
   <xsl:template match="dnsz:NSEC3PARAM">
     <xsl:call-template name="inline-entry">
-      <xsl:with-param name="data" select="dnsz:hash-algorithm"/>
+      <xsl:with-param name="data">
+        <xsl:call-template name="nsec3-hash-algorithm">
+          <xsl:with-param name="enum" select="dnsz:hash-algorithm"/>
+        </xsl:call-template>
+      </xsl:with-param>
     </xsl:call-template>
     <xsl:call-template name="inline-entry">
       <xsl:with-param name="data" select="dnsz:iterations"/>
