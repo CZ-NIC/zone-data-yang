@@ -280,4 +280,39 @@
     </xsl:call-template>
     <xsl:call-template name="close-block"/>
   </xsl:template>
+  <xsl:template match="dnsz:NSEC3">
+    <xsl:call-template name="inline-entry">
+      <xsl:with-param name="data" select="dnsz:hash-algorithm"/>
+    </xsl:call-template>
+    <xsl:call-template name="inline-entry">
+      <xsl:with-param name="data" select="dnsz:iterations"/>
+    </xsl:call-template>
+    <xsl:call-template name="inline-entry">
+      <xsl:with-param name="data" select="dnsz:salt"/>
+    </xsl:call-template>
+    <xsl:call-template name="inline-entry">
+      <xsl:with-param name="data" select="dnsz:flags"/>
+    </xsl:call-template>
+    <xsl:call-template name="inline-entry">
+      <xsl:with-param name="data" select="dnsz:next-hashed-owner-name"/>
+    </xsl:call-template>
+    <xsl:call-template name="inline-entry">
+      <xsl:with-param name="data">
+        <xsl:call-template name="data-rrtype">
+          <xsl:with-param name="identity" select="dnsz:rrset-type"/>
+        </xsl:call-template>
+      </xsl:with-param>
+    </xsl:call-template>
+  </xsl:template>
+  <xsl:template match="dnsz:NSEC3PARAM">
+    <xsl:call-template name="inline-entry">
+      <xsl:with-param name="data" select="dnsz:hash-algorithm"/>
+    </xsl:call-template>
+    <xsl:call-template name="inline-entry">
+      <xsl:with-param name="data" select="dnsz:iterations"/>
+    </xsl:call-template>
+    <xsl:call-template name="inline-entry">
+      <xsl:with-param name="data" select="dnsz:salt"/>
+    </xsl:call-template>
+  </xsl:template>
 </xsl:stylesheet>
