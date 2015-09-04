@@ -4,7 +4,6 @@
   <zones xmlns="http://www.nic.cz/ns/yang/dns-zones">
     <zone>
       <name>example</name>
-      <class>IN</class>
       <description>
 	This zone comes from RFC 4035.
       </description>

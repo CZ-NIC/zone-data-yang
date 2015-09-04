@@ -1,5 +1,6 @@
 yang.ent
 hello.xml
+defaults.xsl
 example.zone
 model.*
 !model.tree

@@ -8,6 +8,7 @@ PYANG_OPTS =
 yams = $(addsuffix .yang, $(MODULES))
 xsldir = .tools/xslt
 xslpars =
+dsrl2xslt = $(PYANG_XSLT_DIR)/dsrl2xslt.xsl
 schemas = $(baty).rng $(baty).sch $(baty).dsrl
 y2dopts = -t $(EXAMPLE_TYPE) -b $(EXAMPLE_BASE)
 
@@ -57,8 +58,11 @@ model.xsl: hello.xml
 model.tree: hello.xml
 	@pyang $(PYANG_OPTS) -f tree -o $@ -L $<
 
-example.zone: xslt/master.xsl $(EXAMPLE_INST)
-	@xsltproc --output $@ $^
+defaults.xsl: $(baty).dsrl
+	@xsltproc --output $@ $(dsrl2xslt) $<
+
+example.zone: defaults.xsl $(EXAMPLE_INST)
+	@xsltproc $^ | xsltproc --output $@ xslt/master.xsl -
 
 commit:	model.tree
 	@git add model.tree $(yams)
