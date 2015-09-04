@@ -61,15 +61,6 @@ model.tree: hello.xml
 defaults.xsl: $(baty).dsrl
 	@xsltproc --output $@ $(dsrl2xslt) $<
 
-xslt/rdata.xsl: $(xsldir)/rdata-templates.xsl dns-zones.yinx
-	git checkout rawxslt
-	git cherry-pick master
-	xsltproc $^ | xmllint --output $@ --format -
-	git add $@
-	git commit -m 'Generate new RDATA stylesheet.'
-	git checkout master
-	git cherry-pick rawxslt
-
 example.zone: $(EXAMPLE_INST) defaults.xsl xslt/rdata.xsl
 	@xsltproc defaults.xsl $< | xsltproc --output $@ xslt/master.xsl -
 
