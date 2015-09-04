@@ -153,7 +153,9 @@
     <xsl:call-template name="open-block"/>
     <xsl:call-template name="inline-entry">
       <xsl:with-param name="data">
-	<xsl:apply-templates select="dnsz:flags"/>
+        <xsl:call-template name="dnskey-flags">
+          <xsl:with-param name="bits" select="dnsz:flags"/>
+        </xsl:call-template>
       </xsl:with-param>
     </xsl:call-template>
     <xsl:call-template name="inline-entry">
@@ -291,7 +293,11 @@
       <xsl:with-param name="data" select="dnsz:salt"/>
     </xsl:call-template>
     <xsl:call-template name="inline-entry">
-      <xsl:with-param name="data" select="dnsz:flags"/>
+      <xsl:with-param name="data">
+        <xsl:call-template name="nsec3-flags">
+          <xsl:with-param name="bits" select="dnsz:flags"/>
+        </xsl:call-template>
+      </xsl:with-param>
     </xsl:call-template>
     <xsl:call-template name="inline-entry">
       <xsl:with-param name="data" select="dnsz:next-hashed-owner-name"/>
