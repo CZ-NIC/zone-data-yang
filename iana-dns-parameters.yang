@@ -31,7 +31,11 @@ module iana-dns-parameters {
        https://www.iana.org/assignments/dnssec-nsec3-parameters/dnssec-nsec3-parameters.xhtml
 
      - IANA: DNSKEY Flags.
-       https://www.iana.org/assignments/dnskey-flags/dnskey-flags.xhtml";
+       https://www.iana.org/assignments/dnskey-flags/dnskey-flags.xhtml
+
+     - IANA: DNS-Based Authentication of Named Entities (DANE)
+       Parameters.
+       http://www.iana.org/assignments/dane-parameters/dane-parameters.xhtml";
 
   revision 2015-08-11 {
     description
@@ -262,6 +266,107 @@ module iana-dns-parameters {
     reference
       "RFC 5155: DNS Security (DNSSEC) Hashed Authenticated Denial of
        Existence";
+  }
+
+  typedef tlsa-certificate-usages {
+    type enumeration {
+      enum PKIX-TA {
+        value "0";
+        description
+          "CA constraint.";
+      }
+      enum PKIX-EE {
+        value "1";
+        description
+          "Service certificate constraint.";
+      }
+      enum DANE-TA {
+        value "2";
+        description
+          "Trust anchor assertion.";
+      }
+      enum DANE-EE {
+        value "3";
+        description
+          "Domain-issued certificate.";
+      }
+      enum PrivCert {
+        value "255";
+        description
+          "Reserved for Private Use.";
+      }
+    }
+    description
+      "This value specifies the provided association that will be
+       used to match the certificate presented in the TLS
+       handshake.";
+    reference
+      "RFC 6698: The DNS-Based Authentication of Named Entities
+       (DANE) Transport Layer Security (TLS) Protocol: TLSA";
+  }
+
+  typedef tlsa-selectors {
+    type enumeration {
+      enum Cert {
+        value "0";
+        description
+          "Full certificate.";
+      }
+      enum SPKI {
+        value "1";
+        description
+          "SubjectPublicKeyInfo.";
+      }
+      enum PrivSel {
+        value "255";
+        description
+          "Reserved for Private Use.";
+      }
+    }
+    description
+      "This value specifies which part of the TLS certificate
+       presented by the server will be matched against the
+       association data.";
+    reference
+      "RFC 6698: The DNS-Based Authentication of Named Entities
+       (DANE) Transport Layer Security (TLS) Protocol: TLSA";
+  }
+
+  typedef tlsa-matching-types {
+    type enumeration {
+      enum Full {
+        value "0";
+        description
+          "No hash used.";
+      }
+      enum SHA2-256 {
+        value "1";
+        description
+          "256-bit hash by SHA2.";
+        reference
+          "RFC 6234: US Secure Hash Algorithms (SHA and SHA-based
+           HMAC and HKDF)";
+      }
+      enum SHA2-512 {
+        value "2";
+        description
+          "512-bit hash by SHA2.";
+        reference
+          "RFC 6234: US Secure Hash Algorithms (SHA and SHA-based
+           HMAC and HKDF)";
+      }
+      enum PrivMatch {
+        value "255";
+        description
+          "Reserved for Private Use.";
+      }
+    }
+    description
+      "This value specifies how the certificate association is
+       presented.";
+    reference
+      "RFC 6698: The DNS-Based Authentication of Named Entities
+       (DANE) Transport Layer Security (TLS) Protocol: TLSA";
   }
 
   /* Identities */

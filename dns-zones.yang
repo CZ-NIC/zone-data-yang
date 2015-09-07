@@ -77,6 +77,9 @@ module dns-zones {
     type string {
       pattern "[0-9A-Fa-f]*";
     }
+    description
+      "A string of case-insensitive hexadecimal digits, possibly
+       empty.";
   }
 
   typedef time-interval {
@@ -822,6 +825,57 @@ module dns-zones {
                 "RFC 5155: DNS Security (DNSSEC) Hashed Authenticated
                  Denial of Existence";
               uses nsec-common;
+            }
+            /* RFC 6698 */
+            container TLSA {
+              must "../../type = 'ianadns:NSEC3PARAM'";
+              description
+                "RDATA content for 'TLSA' Resource Record.";
+              reference
+                "RFC 6698: The DNS-Based Authentication of Named
+                 Entities (DANE) Transport Layer Security (TLS)
+                 Protocol: TLSA";
+              leaf certificate-usage {
+                type ianadns:tlsa-certificate-usages;
+                mandatory "true";
+                description
+                  "This field specifies the provided association that
+                   will be used to match the certificate presented in
+                   the TLS handshake.";
+              }
+              leaf selector {
+                type ianadns:tlsa-selectors;
+                mandatory "true";
+                description
+                  "This field specifies which part of the TLS
+                   certificate presented by the server will be
+                   matched against the association data.";
+              }
+              leaf matching-type {
+                type ianadns:tlsa-matching-types;
+                mandatory "true";
+                description
+                  "This field specifies how the certificate
+                   association is presented.";
+              }
+              leaf certificate-association-data {
+                type hex-digits {
+                  length "1..max";
+                }
+                mandatory "true";
+                description
+                  "This field specifies the \"certificate association
+                   data\" to be matched.
+
+                   These bytes are either raw data (that is, the full
+                   certificate or its SubjectPublicKeyInfo, depending
+                   on 'selector') for 'matching-type' 0, or the hash
+                   of the raw data for 'matching-type' 1 and 2.
+
+                   The data refers to the certificate in the
+                   association, not to the TLS ASN.1 Certificate
+                   object.";
+              }
             }
           }
         }

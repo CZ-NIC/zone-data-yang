@@ -112,7 +112,13 @@ module: dns-zones
                   |     +--rw next-hashed-owner-name    base32hex
                   |     +--rw rrset-type*               identityref
                   +--:(NSEC3PARAM)
-                     +--rw NSEC3PARAM
-                        +--rw hash-algorithm?   ianadns:dnssec-nsec3-hash-algorithm
-                        +--rw iterations        uint16
-                        +--rw salt              hex-digits
+                  |  +--rw NSEC3PARAM
+                  |     +--rw hash-algorithm?   ianadns:dnssec-nsec3-hash-algorithm
+                  |     +--rw iterations        uint16
+                  |     +--rw salt              hex-digits
+                  +--:(TLSA)
+                     +--rw TLSA
+                        +--rw certificate-usage               ianadns:tlsa-certificate-usages
+                        +--rw selector                        ianadns:tlsa-selectors
+                        +--rw matching-type                   ianadns:tlsa-matching-types
+                        +--rw certificate-association-data    hex-digits

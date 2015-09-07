@@ -38,6 +38,9 @@
 	https://www.iana.org/assignments/dnssec-nsec3-parameters/dnssec-nsec3-parameters.xhtml</h:li>
 	<h:li>IANA: DNSKEY Flags.<h:br/>
 	https://www.iana.org/assignments/dnskey-flags/dnskey-flags.xhtml</h:li>
+	<h:li>IANA: DNS-Based Authentication of Named Entities (DANE)
+	Parameters.<h:br/>
+	http://www.iana.org/assignments/dane-parameters/dane-parameters.xhtml</h:li>
       </h:ul>
     </text>
   </reference>
@@ -353,6 +356,166 @@
 	<description>
 	  <text>
 	    SHA-1 hash algorithm.
+	  </text>
+	</description>
+      </enum>
+    </type>
+  </typedef>
+
+  <typedef name="tlsa-certificate-usages">
+    <description>
+      <text>
+	This value specifies the provided association that will be
+	used to match the certificate presented in the TLS handshake.
+      </text>
+    </description>
+    <reference>
+      <text>
+	RFC 6698: The DNS-Based Authentication of Named Entities
+	(DANE) Transport Layer Security (TLS) Protocol: TLSA
+      </text>
+    </reference>
+    <type name="enumeration">
+      <enum name="PKIX-TA">
+	<value value="0"/>
+	<description>
+	  <text>
+	    CA constraint.
+	  </text>
+	</description>
+      </enum>
+      <enum name="PKIX-EE">
+	<value value="1"/>
+	<description>
+	  <text>
+	    Service certificate constraint.
+	  </text>
+	</description>
+      </enum>
+      <enum name="DANE-TA">
+	<value value="2"/>
+	<description>
+	  <text>
+	    Trust anchor assertion.
+	  </text>
+	</description>
+      </enum>
+      <enum name="DANE-EE">
+	<value value="3"/>
+	<description>
+	  <text>
+	    Domain-issued certificate.
+	  </text>
+	</description>
+      </enum>
+      <enum name="PrivCert">
+	<value value="255"/>
+	<description>
+	  <text>
+	    Reserved for Private Use.
+	  </text>
+	</description>
+      </enum>
+    </type>
+  </typedef>
+
+  <typedef name="tlsa-selectors">
+    <description>
+      <text>
+	This value specifies which part of the TLS certificate
+	presented by the server will be matched against the
+	association data.
+      </text>
+    </description>
+    <reference>
+      <text>
+	RFC 6698: The DNS-Based Authentication of Named Entities
+	(DANE) Transport Layer Security (TLS) Protocol: TLSA
+      </text>
+    </reference>
+    <type name="enumeration">
+      <enum name="Cert">
+	<value value="0"/>
+	<description>
+	  <text>
+	    Full certificate.
+	  </text>
+	</description>
+      </enum>
+      <enum name="SPKI">
+	<value value="1"/>
+	<description>
+	  <text>
+	    SubjectPublicKeyInfo.
+	  </text>
+	</description>
+      </enum>
+      <enum name="PrivSel">
+	<value value="255"/>
+	<description>
+	  <text>
+	    Reserved for Private Use.
+	  </text>
+	</description>
+      </enum>
+    </type>
+  </typedef>
+
+  <typedef name="tlsa-matching-types">
+    <description>
+      <text>
+	This value specifies how the certificate association is
+	presented.
+      </text>
+    </description>
+    <reference>
+      <text>
+	RFC 6698: The DNS-Based Authentication of Named Entities
+	(DANE) Transport Layer Security (TLS) Protocol: TLSA
+      </text>
+    </reference>
+    <type name="enumeration">
+      <enum name="Full">
+	<value value="0"/>
+	<description>
+	  <text>
+	    No hash used.
+	  </text>
+	</description>
+      </enum>
+      <enum name="SHA2-256">
+	<value value="1"/>
+	<description>
+	  <text>
+	    256-bit hash by SHA2.
+	  </text>
+	</description>
+	<reference>
+	  <text>
+	    RFC 6234: US Secure Hash Algorithms (SHA and SHA-based
+	    HMAC and HKDF)
+	  </text>
+	</reference>
+      </enum>
+      <enum name="SHA2-512">
+	<value value="2"/>
+	<description>
+	  <text>
+	    512-bit hash by SHA2.
+	  </text>
+	</description>
+	<reference>
+	  <text>
+	    RFC 6234: US Secure Hash Algorithms (SHA and SHA-based
+	    HMAC and HKDF)
+	  </text>
+	</reference>
+      </enum>
+      <enum name="PrivMatch">
+	<value value="255"/>
+	<description>
+	  <text>
+	    Reserved for Private Use.
 	  </text>
 	</description>
       </enum>

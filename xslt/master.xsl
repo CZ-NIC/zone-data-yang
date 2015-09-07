@@ -246,6 +246,36 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </choose>
   </template>
 
+  <template name="tlsa-certificate-usages">
+    <param name="enum"/>
+    <choose>
+      <when test="$enum = 'PKIX-TA'">0</when>
+      <when test="$enum = 'PKIX-EE'">1</when>
+      <when test="$enum = 'DANE-TA'">2</when>
+      <when test="$enum = 'DANE-EE'">3</when>
+      <when test="$enum = 'PrivCert'">255</when>
+    </choose>
+  </template>
+
+  <template name="tlsa-selectors">
+    <param name="enum"/>
+    <choose>
+      <when test="$enum = 'Cert'">0</when>
+      <when test="$enum = 'SPKI'">1</when>
+      <when test="$enum = 'PrivSel'">255</when>
+    </choose>
+  </template>
+
+  <template name="tlsa-matching-types">
+    <param name="enum"/>
+    <choose>
+      <when test="$enum = 'Full'">0</when>
+      <when test="$enum = 'SHA2-256'">1</when>
+      <when test="$enum = 'SHA2-512'">2</when>
+      <when test="$enum = 'PrivMatch'">255</when>
+    </choose>
+  </template>
+
   <template name="data-rrtype">
     <param name="identity" select="."/>
     <value-of select="substring-after($identity, 'ianadns:')"/>
