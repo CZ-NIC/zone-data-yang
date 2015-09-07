@@ -170,6 +170,19 @@
 	</rdata>
       </rrset>
       <rrset>
+	<owner>_443._tcp.www.example.com</owner>
+	<type>ianadns:TLSA</type>
+	<rdata>
+	  <id>1</id>
+	  <TLSA>
+	    <certificate-usage>PKIX-TA</certificate-usage>
+	    <selector>Cert</selector>
+	    <matching-type>SHA2-256</matching-type>
+	    <certificate-association-data>d2abde240d7cd3ee6b4b28c54df034b97983a1d16e8a410e4561cb106618e971</certificate-association-data>
+	  </TLSA>
+	</rdata>
+      </rrset>
+      <rrset>
 	<owner>example</owner>
 	<type>ianadns:DNSKEY</type>
 	<rdata>

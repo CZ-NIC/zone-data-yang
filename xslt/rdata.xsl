@@ -342,4 +342,32 @@
       </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
+  <xsl:template match="dnsz:TLSA">
+    <xsl:call-template name="open-block"/>
+    <xsl:call-template name="inline-entry">
+      <xsl:with-param name="data">
+        <xsl:call-template name="tlsa-certificate-usages">
+          <xsl:with-param name="enum" select="dnsz:certificate-usage"/>
+        </xsl:call-template>
+      </xsl:with-param>
+    </xsl:call-template>
+    <xsl:call-template name="inline-entry">
+      <xsl:with-param name="data">
+        <xsl:call-template name="tlsa-selectors">
+          <xsl:with-param name="enum" select="dnsz:selector"/>
+        </xsl:call-template>
+      </xsl:with-param>
+    </xsl:call-template>
+    <xsl:call-template name="inline-entry">
+      <xsl:with-param name="data">
+        <xsl:call-template name="tlsa-matching-types">
+          <xsl:with-param name="enum" select="dnsz:matching-type"/>
+        </xsl:call-template>
+      </xsl:with-param>
+    </xsl:call-template>
+    <xsl:call-template name="chop-text">
+      <xsl:with-param name="data" select="dnsz:certificate-association-data"/>
+    </xsl:call-template>
+    <xsl:call-template name="close-block"/>
+  </xsl:template>
 </xsl:stylesheet>

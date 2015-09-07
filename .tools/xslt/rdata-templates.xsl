@@ -151,6 +151,27 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 	      <xsl:with-param name="qname" select="$qn"/>
 	    </xsl:call-template>
 	  </xsl:when>
+	  <xsl:when test="yin:type/@name = 'ianadns:tlsa-certificate-usages'">
+	    <xsl:call-template name="call-templ">
+	      <xsl:with-param name="tname">tlsa-certificate-usages</xsl:with-param>
+	      <xsl:with-param name="pname">enum</xsl:with-param>
+	      <xsl:with-param name="qname" select="$qn"/>
+	    </xsl:call-template>
+	  </xsl:when>
+	  <xsl:when test="yin:type/@name = 'ianadns:tlsa-selectors'">
+	    <xsl:call-template name="call-templ">
+	      <xsl:with-param name="tname">tlsa-selectors</xsl:with-param>
+	      <xsl:with-param name="pname">enum</xsl:with-param>
+	      <xsl:with-param name="qname" select="$qn"/>
+	    </xsl:call-template>
+	  </xsl:when>
+	  <xsl:when test="yin:type/@name = 'ianadns:tlsa-matching-types'">
+	    <xsl:call-template name="call-templ">
+	      <xsl:with-param name="tname">tlsa-matching-types</xsl:with-param>
+	      <xsl:with-param name="pname">enum</xsl:with-param>
+	      <xsl:with-param name="qname" select="$qn"/>
+	    </xsl:call-template>
+	  </xsl:when>
 	  <xsl:when test="yin:type[@name='identityref']
 			  /yin:base/@name = 'ianadns:data-rrtype'">
 	    <xsl:call-template name="call-templ">

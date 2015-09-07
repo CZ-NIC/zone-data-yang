@@ -88,7 +88,14 @@
 	  value="([0-9A-Va-v]{8})*([0-9A-Va-v]{2}={6}||[0-9A-Va-v]{4}={4}|[0-9A-Va-v]{5}===|[0-9A-Va-v]{7}=)?"/>
     </type>
   </typedef>
+
   <typedef name="hex-digits">
+    <description>
+      <text>
+	A string of case-insensitive hexadecimal digits, possibly
+	empty.
+      </text>
+    </description>
     <type name="string">
       <pattern value="[0-9A-Fa-f]*"/>
     </type>
@@ -1224,6 +1231,76 @@
 		</text>
 	      </reference>
 	      <uses name="nsec-common"/>
+	    </container>
+
+	    <!-- RFC 6698 -->
+
+	    <container name="TLSA">
+	      <must condition="../../type = 'ianadns:NSEC3PARAM'"/>
+	      <description>
+		<text>
+		  RDATA content for 'TLSA' Resource Record.
+		</text>
+	      </description>
+	      <reference>
+		<text>
+		  RFC 6698: The DNS-Based Authentication of Named
+		  Entities (DANE) Transport Layer Security (TLS)
+		  Protocol: TLSA
+		</text>
+	      </reference>
+	      <leaf name="certificate-usage">
+		<type name="ianadns:tlsa-certificate-usages"/>
+		<mandatory value="true"/>
+		<description>
+		  <text>
+		    This field specifies the provided association that
+		    will be used to match the certificate presented in
+		    the TLS handshake.
+		  </text>
+		</description>
+	      </leaf>
+	      <leaf name="selector">
+		<type name="ianadns:tlsa-selectors"/>
+		<mandatory value="true"/>
+		<description>
+		  <text>
+		    This field specifies which part of the TLS
+		    certificate presented by the server will be
+		    matched against the association data.
+		  </text>
+		</description>
+	      </leaf>
+	      <leaf name="matching-type">
+		<type name="ianadns:tlsa-matching-types"/>
+		<mandatory value="true"/>
+		<description>
+		  <text>
+		    This field specifies how the certificate
+		    association is presented.
+		  </text>
+		</description>
+	      </leaf>
+	      <leaf name="certificate-association-data">
+		<type name="hex-digits">
+		  <length value="1..max"/>
+		</type>
+		<mandatory value="true"/>
+		<description>
+		  <text>
+		    <h:p>This field specifies the "certificate association
+		    data" to be matched.</h:p>
+		    <h:p>These bytes are either raw data (that is, the
+		    full certificate or its SubjectPublicKeyInfo,
+		    depending on 'selector') for 'matching-type' 0, or
+		    the hash of the raw data for 'matching-type' 1 and
+		    2.</h:p>
+		    <h:p>The data refers to the certificate in the
+		    association, not to the TLS ASN.1 Certificate
+		    object.</h:p>
+		  </text>
+		</description>
+	      </leaf>
 	    </container>
 
 	  </choice>
