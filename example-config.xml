@@ -458,6 +458,29 @@
 	</rdata>
       </rrset>
       <rrset>
+	<owner>38.2.0.192.in-addr.arpa</owner>
+	<type>ianadns:IPSECKEY</type>
+	<rdata>
+	  <id>1</id>
+	  <IPSECKEY>
+	    <precedence>10</precedence>
+	    <gateway-type>IPv4-address</gateway-type>
+	    <algorithm>RSA</algorithm>
+	    <gateway>192.0.2.38</gateway>
+	    <public-key>AQNRU3mG7TVTO2BkR47usntb102uFJtugbo6BSGvgqt4AQ==</public-key>
+	  </IPSECKEY>
+	</rdata>
+	<rdata>
+	  <id>2</id>
+	  <IPSECKEY>
+	    <precedence>10</precedence>
+	    <gateway-type>no-gateway</gateway-type>
+	    <algorithm>RSA</algorithm>
+	    <public-key>AQNRU3mG7TVTO2BkR47usntb102uFJtugbo6BSGvgqt4AQ==</public-key>
+	  </IPSECKEY>
+	</rdata>
+      </rrset>
+      <rrset>
 	<owner>*.to-apex.example</owner>
 	<type>ianadns:CNAME</type>
 	<rdata>
