@@ -877,6 +877,70 @@ module dns-zones {
                    object.";
               }
             }
+            /* RFC 4025 */
+            container IPSECKEY {
+              must "../../type = 'ianadns:IPSECKEY'";
+              description
+                "RDATA content for 'IPSECKEY' Resource Record.";
+              reference
+                "RFC 4025: A Method for Storing IPsec Keying Material
+                 in DNS";
+              leaf precedence {
+                type uint8;
+                mandatory "true";
+                description
+                  "Precedence of the resource record.
+
+                   Gateways listed in IPSECKEY records with lower
+                   precedence are to be attempted first. Where there
+                   is a tie in precedence, the order should be
+                   non-deterministic.";
+              }
+              leaf gateway-type {
+                type ianadns:ipseckey-gateway-type;
+                mandatory "true";
+                description
+                  "This field indicates the format of the information
+                   that is stored in the gateway field.";
+              }
+              leaf algorithm {
+                type ianadns:ipseckey-algorithm-type;
+                mandatory "true";
+                description
+                  "This field identifies the public key's
+                   cryptographic algorithm and determines the format
+                   of the 'public-key' field.";
+              }
+              leaf gateway {
+                when "../gateway-type != 'no-gateway'" {
+                  description
+                    "This field cannot be present if the value of
+                     'gateway-type' is 'no-gateway'.";
+                }
+                type inet:host;
+                mandatory "true";
+                description
+                  "This field indicates a gateway to which an IPsec
+                   tunnel may be created in order to reach the entity
+                   named by this resource record.
+
+                   The format of this field MUST correspond to the
+                   value set in 'gateway-type'.";
+              }
+              leaf public-key {
+                when "../algorithm != 'no-key'" {
+                  description
+                    "This field cannot be present if the value of
+                     'algorithm' is 'no-key'.";
+                }
+                type binary;
+                mandatory "true";
+                description
+                  "This field contains the IPSec public key in a
+                   format corresponding to the value of
+                   'algorithm'.";
+              }
+            }
           }
         }
       }

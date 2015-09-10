@@ -117,8 +117,15 @@ module: dns-zones
                   |     +--rw iterations        uint16
                   |     +--rw salt              hex-digits
                   +--:(TLSA)
-                     +--rw TLSA
-                        +--rw certificate-usage               ianadns:tlsa-certificate-usages
-                        +--rw selector                        ianadns:tlsa-selectors
-                        +--rw matching-type                   ianadns:tlsa-matching-types
-                        +--rw certificate-association-data    hex-digits
+                  |  +--rw TLSA
+                  |     +--rw certificate-usage               ianadns:tlsa-certificate-usages
+                  |     +--rw selector                        ianadns:tlsa-selectors
+                  |     +--rw matching-type                   ianadns:tlsa-matching-types
+                  |     +--rw certificate-association-data    hex-digits
+                  +--:(IPSECKEY)
+                     +--rw IPSECKEY
+                        +--rw precedence      uint8
+                        +--rw gateway-type    ianadns:ipseckey-gateway-type
+                        +--rw algorithm       ianadns:ipseckey-algorithm-type
+                        +--rw gateway         inet:host
+                        +--rw public-key      binary

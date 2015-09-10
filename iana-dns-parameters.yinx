@@ -41,6 +41,8 @@
 	<h:li>IANA: DNS-Based Authentication of Named Entities (DANE)
 	Parameters.<h:br/>
 	http://www.iana.org/assignments/dane-parameters/dane-parameters.xhtml</h:li>
+	<h:li>IANA: IPSECKEY Resource Record Parameters.<h:br/>
+	https://www.iana.org/assignments/ipseckey-rr-parameters/ipseckey-rr-parameters.xhtml</h:li>
       </h:ul>
     </text>
   </reference>
@@ -54,7 +56,8 @@
   
   <typedef name="class">
     <description>
-      <text>DNS resource record classes.</text>
+      <text>This enumeration type defines DNS resource record
+      classes.</text>
     </description>
     <reference>
       <text>
@@ -102,8 +105,8 @@
   <typedef name="dnssec-algorithm">
     <description>
       <text>
-	<h:p>This typedef defines an enumeration of algorithms for
-	DNSSEC signing as defined by IANA.</h:p>
+	<h:p>This enumeration type defines algorithms for DNSSEC
+	signing as defined by IANA.</h:p>
 	<h:p>The numbers defined by the 'value' statements are used in
 	KEY, SIG, DNSKEY, RRSIG and CERT resource records for
 	identifying the security algorithm.</h:p>
@@ -189,7 +192,8 @@
   <typedef name="digest-algorithm">
     <description>
       <text>
-	Delegation Signer (DS) RR type digest algorithms.
+	This enumeration type defines types of digest algorithms for
+	Delegation Signer (DS) RR type.
       </text>
     </description>
     <type name="enumeration">
@@ -254,7 +258,7 @@
   <typedef name="dnskey-flags">
     <description>
       <text>
-	Flags defined for DNSKEY resource record.
+	This enumeration type defines flags for DNSKEY RR.
       </text>
     </description>
     <reference>
@@ -315,7 +319,7 @@
   <typedef name="dnssec-nsec3-flags">
     <description>
       <text>
-	Flags defined for NSEC3 resource record.
+	This enumeration type defines flags for NSEC3 RR.
       </text>
     </description>
     <reference>
@@ -340,8 +344,8 @@
   <typedef name="dnssec-nsec3-hash-algorithm">
     <description>
       <text>
-	Cryptographic hash algorithm used to construct the hash value
-	in NSEC3 resource record.
+	This enumeration type defines cryptographic hash algorithms
+	used to construct the hash value in NSEC3 RR.
       </text>
     </description>
     <reference>
@@ -365,8 +369,9 @@
   <typedef name="tlsa-certificate-usages">
     <description>
       <text>
-	This value specifies the provided association that will be
-	used to match the certificate presented in the TLS handshake.
+	This enumeration type defines the provided association that
+	will be used to match the certificate presented in the TLS
+	handshake.
       </text>
     </description>
     <reference>
@@ -422,9 +427,9 @@
   <typedef name="tlsa-selectors">
     <description>
       <text>
-	This value specifies which part of the TLS certificate
-	presented by the server will be matched against the
-	association data.
+	This enumeration type specifies which part of the TLS
+	certificate presented by the server will be matched against
+	the association data.
       </text>
     </description>
     <reference>
@@ -464,8 +469,8 @@
   <typedef name="tlsa-matching-types">
     <description>
       <text>
-	This value specifies how the certificate association is
-	presented.
+	This enumeration type specifies how the certificate
+	association is presented.
       </text>
     </description>
     <reference>
@@ -516,6 +521,106 @@
 	<description>
 	  <text>
 	    Reserved for Private Use.
+	  </text>
+	</description>
+      </enum>
+    </type>
+  </typedef>
+
+  <typedef name="ipseckey-algorithm-type">
+    <description>
+      <text>
+	This enumeration type specifies the IPSec public key's
+	cryptographic algorithm.
+      </text>
+    </description>
+    <reference>
+      <text>
+	RFC 4025: A Method for Storing IPsec Keying Material in DNS
+      </text>
+    </reference>
+    <type name="enumeration">
+      <enum name="no-key">
+	<value value="0"/>
+	<description>
+	  <text>
+	    No key is present.
+	  </text>
+	</description>
+      </enum>
+      <enum name="DSA">
+	<value value="1"/>
+	<description>
+	  <text>
+	    A DSA key is present, in the format defined in RFC 2536.
+	  </text>
+	</description>
+	<reference>
+	  <text>
+	    RFC 2536: DSA KEYs and SIGs in the Domain Name System
+	    (DNS)
+	  </text>
+	</reference>
+      </enum>
+      <enum name="RSA">
+	<value value="2"/>
+	<description>
+	  <text>
+	    A RSA key is present, in the format defined in RFC 3110.
+	  </text>
+	</description>
+	<reference>
+	  <text>
+	    RFC 3110: RSA/SHA-1 SIGs and RSA KEYs in the Domain Name
+	    System (DNS)
+	  </text>
+	</reference>
+      </enum>
+    </type>
+  </typedef>
+
+  <typedef name="ipseckey-gateway-type">
+    <description>
+      <text>
+	This enumeration type specifies the type of the gateway to
+	which an IPsec tunnel may be created.
+      </text>
+    </description>
+    <reference>
+      <text>
+	RFC 4025: A Method for Storing IPsec Keying Material in DNS
+      </text>
+    </reference>
+    <type name="enumeration">
+      <enum name="no-gateway">
+	<value value="0"/>
+	<description>
+	  <text>
+	    No gateway is present.
+	  </text>
+	</description>
+      </enum>
+      <enum name="IPv4-address">
+	<value value="1"/>
+	<description>
+	  <text>
+	    A 4-byte IPv4 address is present.
+	  </text>
+	</description>
+      </enum>
+      <enum name="IPv6-address">
+	<value value="2"/>
+	<description>
+	  <text>
+	    A 16-byte IPv6 address is present.
+	  </text>
+	</description>
+      </enum>
+      <enum name="domain-name">
+	<value value="3"/>
+	<description>
+	  <text>
+	    A wire-encoded domain name is present.
 	  </text>
 	</description>
       </enum>

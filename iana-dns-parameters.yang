@@ -35,7 +35,10 @@ module iana-dns-parameters {
 
      - IANA: DNS-Based Authentication of Named Entities (DANE)
        Parameters.
-       http://www.iana.org/assignments/dane-parameters/dane-parameters.xhtml";
+       http://www.iana.org/assignments/dane-parameters/dane-parameters.xhtml
+
+     - IANA: IPSECKEY Resource Record Parameters.
+       https://www.iana.org/assignments/ipseckey-rr-parameters/ipseckey-rr-parameters.xhtml";
 
   revision 2015-08-11 {
     description
@@ -73,7 +76,7 @@ module iana-dns-parameters {
       }
     }
     description
-      "DNS resource record classes.";
+      "This enumeration type defines DNS resource record classes.";
     reference
       "- RFC 1035: Domain Names - Implementation and Specification
 
@@ -141,8 +144,8 @@ module iana-dns-parameters {
       }
     }
     description
-      "This typedef defines an enumeration of algorithms for DNSSEC
-       signing as defined by IANA.
+      "This enumeration type defines algorithms for DNSSEC signing as
+       defined by IANA.
 
        The numbers defined by the 'value' statements are used in KEY,
        SIG, DNSKEY, RRSIG and CERT resource records for identifying
@@ -190,7 +193,8 @@ module iana-dns-parameters {
       }
     }
     description
-      "Delegation Signer (DS) RR type digest algorithms.";
+      "This enumeration type defines types of digest algorithms for
+       Delegation Signer (DS) RR type.";
   }
 
   typedef dnskey-flags {
@@ -231,7 +235,7 @@ module iana-dns-parameters {
       }
     }
     description
-      "Flags defined for DNSKEY resource record.";
+      "This enumeration type defines flags for DNSKEY RR.";
     reference
       "RFC 4034: Resource Records for the DNS Security Extensions";
   }
@@ -246,7 +250,7 @@ module iana-dns-parameters {
       }
     }
     description
-      "Flags defined for NSEC3 resource record.";
+      "This enumeration type defines flags for NSEC3 RR.";
     reference
       "RFC 5155: DNS Security (DNSSEC) Hashed Authenticated Denial of
        Existence";
@@ -261,8 +265,8 @@ module iana-dns-parameters {
       }
     }
     description
-      "Cryptographic hash algorithm used to construct the hash value
-       in NSEC3 resource record.";
+      "This enumeration type defines cryptographic hash algorithms
+       used to construct the hash value in NSEC3 RR.";
     reference
       "RFC 5155: DNS Security (DNSSEC) Hashed Authenticated Denial of
        Existence";
@@ -297,8 +301,8 @@ module iana-dns-parameters {
       }
     }
     description
-      "This value specifies the provided association that will be
-       used to match the certificate presented in the TLS
+      "This enumeration type defines the provided association that
+       will be used to match the certificate presented in the TLS
        handshake.";
     reference
       "RFC 6698: The DNS-Based Authentication of Named Entities
@@ -324,9 +328,9 @@ module iana-dns-parameters {
       }
     }
     description
-      "This value specifies which part of the TLS certificate
-       presented by the server will be matched against the
-       association data.";
+      "This enumeration type specifies which part of the TLS
+       certificate presented by the server will be matched against
+       the association data.";
     reference
       "RFC 6698: The DNS-Based Authentication of Named Entities
        (DANE) Transport Layer Security (TLS) Protocol: TLSA";
@@ -362,11 +366,74 @@ module iana-dns-parameters {
       }
     }
     description
-      "This value specifies how the certificate association is
-       presented.";
+      "This enumeration type specifies how the certificate
+       association is presented.";
     reference
       "RFC 6698: The DNS-Based Authentication of Named Entities
        (DANE) Transport Layer Security (TLS) Protocol: TLSA";
+  }
+
+  typedef ipseckey-algorithm-type {
+    type enumeration {
+      enum no-key {
+        value "0";
+        description
+          "No key is present.";
+      }
+      enum DSA {
+        value "1";
+        description
+          "A DSA key is present, in the format defined in RFC
+           2536.";
+        reference
+          "RFC 2536: DSA KEYs and SIGs in the Domain Name System
+           (DNS)";
+      }
+      enum RSA {
+        value "2";
+        description
+          "A RSA key is present, in the format defined in RFC
+           3110.";
+        reference
+          "RFC 3110: RSA/SHA-1 SIGs and RSA KEYs in the Domain Name
+           System (DNS)";
+      }
+    }
+    description
+      "This enumeration type specifies the IPSec public key's
+       cryptographic algorithm.";
+    reference
+      "RFC 4025: A Method for Storing IPsec Keying Material in DNS";
+  }
+
+  typedef ipseckey-gateway-type {
+    type enumeration {
+      enum no-gateway {
+        value "0";
+        description
+          "No gateway is present.";
+      }
+      enum IPv4-address {
+        value "1";
+        description
+          "A 4-byte IPv4 address is present.";
+      }
+      enum IPv6-address {
+        value "2";
+        description
+          "A 16-byte IPv6 address is present.";
+      }
+      enum domain-name {
+        value "3";
+        description
+          "A wire-encoded domain name is present.";
+      }
+    }
+    description
+      "This enumeration type specifies the type of the gateway to
+       which an IPsec tunnel may be created.";
+    reference
+      "RFC 4025: A Method for Storing IPsec Keying Material in DNS";
   }
 
   /* Identities */
