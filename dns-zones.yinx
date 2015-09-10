@@ -1236,7 +1236,7 @@
 	    <!-- RFC 6698 -->
 
 	    <container name="TLSA">
-	      <must condition="../../type = 'ianadns:NSEC3PARAM'"/>
+	      <must condition="../../type = 'ianadns:TLSA'"/>
 	      <description>
 		<text>
 		  RDATA content for 'TLSA' Resource Record.

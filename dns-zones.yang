@@ -828,7 +828,7 @@ module dns-zones {
             }
             /* RFC 6698 */
             container TLSA {
-              must "../../type = 'ianadns:NSEC3PARAM'";
+              must "../../type = 'ianadns:TLSA'";
               description
                 "RDATA content for 'TLSA' Resource Record.";
               reference
