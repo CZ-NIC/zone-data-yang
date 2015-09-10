@@ -172,6 +172,20 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 	      <xsl:with-param name="qname" select="$qn"/>
 	    </xsl:call-template>
 	  </xsl:when>
+	  <xsl:when test="yin:type/@name = 'ianadns:ipseckey-algorithm-type'">
+	    <xsl:call-template name="call-templ">
+	      <xsl:with-param name="tname">ipseckey-algorithm-type</xsl:with-param>
+	      <xsl:with-param name="pname">enum</xsl:with-param>
+	      <xsl:with-param name="qname" select="$qn"/>
+	    </xsl:call-template>
+	  </xsl:when>
+	  <xsl:when test="yin:type/@name = 'ianadns:ipseckey-gateway-type'">
+	    <xsl:call-template name="call-templ">
+	      <xsl:with-param name="tname">ipseckey-gateway-type</xsl:with-param>
+	      <xsl:with-param name="pname">enum</xsl:with-param>
+	      <xsl:with-param name="qname" select="$qn"/>
+	    </xsl:call-template>
+	  </xsl:when>
 	  <xsl:when test="yin:type[@name='identityref']
 			  /yin:base/@name = 'ianadns:data-rrtype'">
 	    <xsl:call-template name="call-templ">

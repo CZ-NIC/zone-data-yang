@@ -1303,6 +1303,96 @@
 	      </leaf>
 	    </container>
 
+	    <!-- RFC 4025 -->
+
+	    <container name="IPSECKEY">
+	      <must condition="../../type = 'ianadns:IPSECKEY'"/>
+	      <description>
+		<text>
+		  RDATA content for 'IPSECKEY' Resource Record.
+		</text>
+	      </description>
+	      <reference>
+		<text>
+		  RFC 4025: A Method for Storing IPsec Keying Material
+		  in DNS
+		</text>
+	      </reference>
+	      <leaf name="precedence">
+		<type name="uint8"/>
+		<mandatory value="true"/>
+		<description>
+		  <text>
+		    <h:p>Precedence of the resource record.</h:p>
+		    <h:p>Gateways listed in IPSECKEY records with
+		    lower precedence are to be attempted first.  Where
+		    there is a tie in precedence, the order should be
+		    non-deterministic.</h:p>
+		  </text>
+		</description>
+	      </leaf>
+	      <leaf name="gateway-type">
+		<type name="ianadns:ipseckey-gateway-type"/>
+		<mandatory value="true"/>
+		<description>
+		  <text>
+		    This field indicates the format of the information
+		    that is stored in the gateway field.
+		  </text>
+		</description>
+	      </leaf>
+	      <leaf name="algorithm">
+		<type name="ianadns:ipseckey-algorithm-type"/>
+		<mandatory value="true"/>
+		<description>
+		  <text>
+		    This field identifies the public key's
+		    cryptographic algorithm and determines the format
+		    of the 'public-key' field.
+		  </text>
+		</description>
+	      </leaf>
+	      <leaf name="gateway">
+		<when condition="../gateway-type != 'no-gateway'">
+		  <description>
+		    <text>
+		      This field cannot be present if the value of
+		      'gateway-type' is 'no-gateway'.
+		    </text>
+		  </description>
+		</when>
+		<type name="inet:host"/>
+		<mandatory value="true"/>
+		<description>
+		  <text>
+		    <h:p>This field indicates a gateway to which an IPsec
+		    tunnel may be created in order to reach the entity
+		    named by this resource record.</h:p>
+		    <h:p>The format of this field MUST correspond to
+		    the value set in 'gateway-type'.</h:p>
+		  </text>
+		</description>
+	      </leaf>
+	      <leaf name="public-key">
+		<when condition="../algorithm != 'no-key'">
+		  <description>
+		    <text>
+		      This field cannot be present if the value of
+		      'algorithm' is 'no-key'.
+		    </text>
+		  </description>
+		</when>
+		<type name="binary"/>
+		<mandatory value="true"/>
+		<description>
+		  <text>
+		    This field contains the IPSec public key in a
+		    format corresponding to the value of 'algorithm'.
+		  </text>
+		</description>
+	      </leaf>
+	    </container>
+
 	  </choice>
 	</list>
       </list>

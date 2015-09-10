@@ -276,6 +276,25 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </choose>
   </template>
 
+  <template name="ipseckey-algorithm-type">
+    <param name="enum"/>
+    <choose>
+      <when test="$enum = 'no-key'">0</when>
+      <when test="$enum = 'DSA'">1</when>
+      <when test="$enum = 'RSA'">2</when>
+    </choose>
+  </template>
+
+  <template name="ipseckey-gateway-type">
+    <param name="enum"/>
+    <choose>
+      <when test="$enum = 'no-gateway'">0</when>
+      <when test="$enum = 'IPv4-address'">1</when>
+      <when test="$enum = 'IPv6-address'">2</when>
+      <when test="$enum = 'domain-name'">3</when>
+    </choose>
+  </template>
+
   <template name="data-rrtype">
     <param name="identity" select="."/>
     <value-of select="substring-after($identity, 'ianadns:')"/>

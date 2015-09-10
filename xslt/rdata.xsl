@@ -370,4 +370,38 @@
     </xsl:call-template>
     <xsl:call-template name="close-block"/>
   </xsl:template>
+  <xsl:template match="dnsz:IPSECKEY">
+    <xsl:call-template name="open-block"/>
+    <xsl:call-template name="inline-entry">
+      <xsl:with-param name="data" select="dnsz:precedence"/>
+    </xsl:call-template>
+    <xsl:call-template name="inline-entry">
+      <xsl:with-param name="data">
+        <xsl:call-template name="ipseckey-gateway-type">
+          <xsl:with-param name="enum" select="dnsz:gateway-type"/>
+        </xsl:call-template>
+      </xsl:with-param>
+    </xsl:call-template>
+    <xsl:call-template name="inline-entry">
+      <xsl:with-param name="data">
+        <xsl:call-template name="ipseckey-algorithm-type">
+          <xsl:with-param name="enum" select="dnsz:algorithm"/>
+        </xsl:call-template>
+      </xsl:with-param>
+    </xsl:call-template>
+    <xsl:call-template name="inline-entry">
+      <xsl:with-param name="data">
+	<xsl:choose>
+	  <xsl:when test="dnsz:gateway-type = 'no-gateway'">.</xsl:when>
+	  <xsl:otherwise>
+	    <xsl:value-of select="dnsz:gateway"/>
+	  </xsl:otherwise>
+	</xsl:choose>
+      </xsl:with-param>
+    </xsl:call-template>
+    <xsl:call-template name="chop-text">
+      <xsl:with-param name="data" select="dnsz:public-key"/>
+    </xsl:call-template>
+    <xsl:call-template name="close-block"/>
+  </xsl:template>
 </xsl:stylesheet>
