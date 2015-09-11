@@ -97,7 +97,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   </template>
 
   <template name="chop-text">
-    <param name="length" select="30"/>
+    <param name="length" select="44"/>
     <param name="data"/>
     <choose>
       <when test="string-length($data) &lt;= $length">
