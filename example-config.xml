@@ -96,6 +96,16 @@
 	</rdata>
       </rrset>
       <rrset>
+	<owner>frobozz.example</owner>
+	<type>ianadns:DNAME</type>
+	<rdata>
+	  <id>1</id>
+	  <DNAME>
+	    <target>frobozz-division.acme.example</target>
+	  </DNAME>
+	</rdata>
+      </rrset>
+      <rrset>
 	<owner>example</owner>
 	<type>ianadns:NSEC3PARAM</type>
 	<rdata>

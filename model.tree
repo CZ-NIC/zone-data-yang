@@ -123,9 +123,12 @@ module: dns-zones
                   |     +--rw matching-type                   ianadns:tlsa-matching-types
                   |     +--rw certificate-association-data    hex-digits
                   +--:(IPSECKEY)
-                     +--rw IPSECKEY
-                        +--rw precedence      uint8
-                        +--rw gateway-type    ianadns:ipseckey-gateway-type
-                        +--rw algorithm       ianadns:ipseckey-algorithm-type
-                        +--rw gateway         inet:host
-                        +--rw public-key      binary
+                  |  +--rw IPSECKEY
+                  |     +--rw precedence      uint8
+                  |     +--rw gateway-type    ianadns:ipseckey-gateway-type
+                  |     +--rw algorithm       ianadns:ipseckey-algorithm-type
+                  |     +--rw gateway         inet:host
+                  |     +--rw public-key      binary
+                  +--:(DNAME)
+                     +--rw DNAME
+                        +--rw target    domain-name

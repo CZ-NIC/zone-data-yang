@@ -1393,6 +1393,32 @@
 	      </leaf>
 	    </container>
 
+	    <!-- RFC 2672 -->
+
+	    <container name="DNAME">
+	      <must condition="../../type = 'ianadns:DNAME'"/>
+	      <description>
+		<text>
+		  RDATA content for 'DNAME' Resource Record.
+		</text>
+	      </description>
+	      <reference>
+		<text>
+		  RFC 2672: Non-Terminal DNS Name Redirection
+		</text>
+	      </reference>
+	      <leaf name="target">
+		<type name="domain-name"/>
+		<mandatory value="true"/>
+		<description>
+		  <text>
+		    Target domain name that is substituted for 'owner'
+		    as a suffix of a domain name.
+		  </text>
+		</description>
+	      </leaf>
+	    </container>
+
 	  </choice>
 	</list>
       </list>

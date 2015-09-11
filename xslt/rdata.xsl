@@ -404,4 +404,13 @@
     </xsl:call-template>
     <xsl:call-template name="close-block"/>
   </xsl:template>
+  <xsl:template match="dnsz:DNAME">
+    <xsl:call-template name="inline-entry">
+      <xsl:with-param name="data">
+        <xsl:call-template name="process-dname">
+          <xsl:with-param name="dn" select="dnsz:target"/>
+        </xsl:call-template>
+      </xsl:with-param>
+    </xsl:call-template>
+  </xsl:template>
 </xsl:stylesheet>
