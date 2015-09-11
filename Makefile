@@ -69,5 +69,5 @@ commit:	model.tree
 	@git commit
 
 clean:
-	@rm -rf *.rng *.rnc *.sch *.dsrl hello.xml model.tree \
-	example.zone defaults.xsl $(yams)
+	@rm -rf *.rng *.rnc *.sch *.dsrl hello.xml model.xsl \
+	$(baty).json example.zone defaults.xsl
