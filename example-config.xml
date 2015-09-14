@@ -491,6 +491,18 @@
 	</rdata>
       </rrset>
       <rrset>
+	<owner>host.example</owner>
+	<type>ianadns:SSHFP</type>
+	<rdata>
+	  <id>1</id>
+	  <SSHFP>
+	    <algorithm>DSA</algorithm>
+	    <fingerprint-type>SHA-1</fingerprint-type>
+	    <fingerprint>123456789abcdef67890123456789abcdef67890</fingerprint>
+	  </SSHFP>
+	</rdata>
+      </rrset>
+      <rrset>
 	<owner>*.to-apex.example</owner>
 	<type>ianadns:CNAME</type>
 	<rdata>
