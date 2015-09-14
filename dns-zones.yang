@@ -852,7 +852,7 @@ module dns-zones {
                    matched against the association data.";
               }
               leaf matching-type {
-                type ianadns:tlsa-matching-types;
+                type ianadns:tlsa-matching-type;
                 mandatory "true";
                 description
                   "This field specifies how the certificate
@@ -954,6 +954,36 @@ module dns-zones {
                 description
                   "Target domain name that is substituted for 'owner'
                    as a suffix of a domain name.";
+              }
+            }
+            /* RFC 4255 */
+            container SSHFP {
+              must "../../type = 'ianadns:SSHFP'";
+              description
+                "RDATA content for 'SSHFP' Resource Record.";
+              reference
+                "RFC 4255: Using DNS to Securely Publish Secure Shell
+                 (SSH) Key Fingerprints";
+              leaf algorithm {
+                type ianadns:sshfp-algorithm-type;
+                mandatory "true";
+                description
+                  "This field specifies the algorithm of the public
+                   key.";
+              }
+              leaf fingerprint-type {
+                type ianadns:sshfp-fingerprint-type;
+                mandatory "true";
+                description
+                  "This field specifies the message-digest algorithm
+                   used to calculate teh fingerprint of the public
+                   key.";
+              }
+              leaf fingerprint {
+                type hex-digits;
+                mandatory "true";
+                description
+                  "Fingerprint of the public key.";
               }
             }
           }

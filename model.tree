@@ -120,7 +120,7 @@ module: dns-zones
                   |  +--rw TLSA
                   |     +--rw certificate-usage               ianadns:tlsa-certificate-usages
                   |     +--rw selector                        ianadns:tlsa-selectors
-                  |     +--rw matching-type                   ianadns:tlsa-matching-types
+                  |     +--rw matching-type                   ianadns:tlsa-matching-type
                   |     +--rw certificate-association-data    hex-digits
                   +--:(IPSECKEY)
                   |  +--rw IPSECKEY
@@ -130,5 +130,10 @@ module: dns-zones
                   |     +--rw gateway         inet:host
                   |     +--rw public-key      binary
                   +--:(DNAME)
-                     +--rw DNAME
-                        +--rw target    domain-name
+                  |  +--rw DNAME
+                  |     +--rw target    domain-name
+                  +--:(SSHFP)
+                     +--rw SSHFP
+                        +--rw algorithm           ianadns:sshfp-algorithm-type
+                        +--rw fingerprint-type    ianadns:sshfp-fingerprint-type
+                        +--rw fingerprint         hex-digits

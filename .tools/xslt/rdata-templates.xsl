@@ -165,9 +165,9 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 	      <xsl:with-param name="qname" select="$qn"/>
 	    </xsl:call-template>
 	  </xsl:when>
-	  <xsl:when test="yin:type/@name = 'ianadns:tlsa-matching-types'">
+	  <xsl:when test="yin:type/@name = 'ianadns:tlsa-matching-type'">
 	    <xsl:call-template name="call-templ">
-	      <xsl:with-param name="tname">tlsa-matching-types</xsl:with-param>
+	      <xsl:with-param name="tname">tlsa-matching-type</xsl:with-param>
 	      <xsl:with-param name="pname">enum</xsl:with-param>
 	      <xsl:with-param name="qname" select="$qn"/>
 	    </xsl:call-template>
@@ -182,6 +182,20 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 	  <xsl:when test="yin:type/@name = 'ianadns:ipseckey-gateway-type'">
 	    <xsl:call-template name="call-templ">
 	      <xsl:with-param name="tname">ipseckey-gateway-type</xsl:with-param>
+	      <xsl:with-param name="pname">enum</xsl:with-param>
+	      <xsl:with-param name="qname" select="$qn"/>
+	    </xsl:call-template>
+	  </xsl:when>
+	  <xsl:when test="yin:type/@name = 'ianadns:sshfp-algorithm-type'">
+	    <xsl:call-template name="call-templ">
+	      <xsl:with-param name="tname">sshfp-algorithm-type</xsl:with-param>
+	      <xsl:with-param name="pname">enum</xsl:with-param>
+	      <xsl:with-param name="qname" select="$qn"/>
+	    </xsl:call-template>
+	  </xsl:when>
+	  <xsl:when test="yin:type/@name = 'ianadns:sshfp-fingerprint-type'">
+	    <xsl:call-template name="call-templ">
+	      <xsl:with-param name="tname">sshfp-fingerprint-type</xsl:with-param>
 	      <xsl:with-param name="pname">enum</xsl:with-param>
 	      <xsl:with-param name="qname" select="$qn"/>
 	    </xsl:call-template>

@@ -365,7 +365,7 @@
     </xsl:call-template>
     <xsl:call-template name="inline-entry">
       <xsl:with-param name="data">
-        <xsl:call-template name="tlsa-matching-types">
+        <xsl:call-template name="tlsa-matching-type">
           <xsl:with-param name="enum" select="dnsz:matching-type"/>
         </xsl:call-template>
       </xsl:with-param>
@@ -417,5 +417,26 @@
         </xsl:call-template>
       </xsl:with-param>
     </xsl:call-template>
+  </xsl:template>
+  <xsl:template match="dnsz:SSHFP">
+    <xsl:call-template name="open-block"/>
+    <xsl:call-template name="inline-entry">
+      <xsl:with-param name="data">
+        <xsl:call-template name="sshfp-algorithm-type">
+          <xsl:with-param name="enum" select="dnsz:algorithm"/>
+        </xsl:call-template>
+      </xsl:with-param>
+    </xsl:call-template>
+    <xsl:call-template name="inline-entry">
+      <xsl:with-param name="data">
+        <xsl:call-template name="sshfp-fingerprint-type">
+          <xsl:with-param name="enum" select="dnsz:fingerprint-type"/>
+        </xsl:call-template>
+      </xsl:with-param>
+    </xsl:call-template>
+    <xsl:call-template name="sep-line-entry">
+      <xsl:with-param name="data" select="dnsz:fingerprint"/>
+    </xsl:call-template>
+    <xsl:call-template name="close-block"/>
   </xsl:template>
 </xsl:stylesheet>

@@ -1272,7 +1272,7 @@
 		</description>
 	      </leaf>
 	      <leaf name="matching-type">
-		<type name="ianadns:tlsa-matching-types"/>
+		<type name="ianadns:tlsa-matching-type"/>
 		<mandatory value="true"/>
 		<description>
 		  <text>
@@ -1414,6 +1414,53 @@
 		  <text>
 		    Target domain name that is substituted for 'owner'
 		    as a suffix of a domain name.
+		  </text>
+		</description>
+	      </leaf>
+	    </container>
+
+	    <!-- RFC 4255 -->
+
+	    <container name="SSHFP">
+	      <must condition="../../type = 'ianadns:SSHFP'"/>
+	      <description>
+		<text>
+		  RDATA content for 'SSHFP' Resource Record.
+		</text>
+	      </description>
+	      <reference>
+		<text>
+		  RFC 4255: Using DNS to Securely Publish Secure Shell
+		  (SSH) Key Fingerprints
+		</text>
+	      </reference>
+	      <leaf name="algorithm">
+		<type name="ianadns:sshfp-algorithm-type"/>
+		<mandatory value="true"/>
+		<description>
+		  <text>
+		    This field specifies the algorithm of the public
+		    key.
+		  </text>
+		</description>
+	      </leaf>
+	      <leaf name="fingerprint-type">
+		<type name="ianadns:sshfp-fingerprint-type"/>
+		<mandatory value="true"/>
+		<description>
+		  <text>
+		    This field specifies the message-digest algorithm
+		    used to calculate teh fingerprint of the public
+		    key.
+		  </text>
+		</description>
+	      </leaf>
+	      <leaf name="fingerprint">
+		<type name="hex-digits"/>
+		<mandatory value="true"/>
+		<description>
+		  <text>
+		    Fingerprint of the public key.
 		  </text>
 		</description>
 	      </leaf>

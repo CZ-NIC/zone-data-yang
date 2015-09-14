@@ -12,8 +12,8 @@ module iana-dns-parameters {
                <mailto:lhotka@nic.cz>";
 
   description
-    "This module provides several data types that are used in DNS
-     zones.";
+    "This module provides several data types that are maintained in
+     IANA registries related to DNS resource records.";
 
   reference
     "- IANA: Domain Name System (DNS) Parameters.
@@ -38,7 +38,10 @@ module iana-dns-parameters {
        http://www.iana.org/assignments/dane-parameters/dane-parameters.xhtml
 
      - IANA: IPSECKEY Resource Record Parameters.
-       https://www.iana.org/assignments/ipseckey-rr-parameters/ipseckey-rr-parameters.xhtml";
+       https://www.iana.org/assignments/ipseckey-rr-parameters/ipseckey-rr-parameters.xhtml
+
+     - IANA: DNS SSHFP Resource Record Parameters.
+       https://www.iana.org/assignments/dns-sshfp-rr-parameters/dns-sshfp-rr-parameters.xhtml";
 
   revision 2015-08-11 {
     description
@@ -336,7 +339,7 @@ module iana-dns-parameters {
        (DANE) Transport Layer Security (TLS) Protocol: TLSA";
   }
 
-  typedef tlsa-matching-types {
+  typedef tlsa-matching-type {
     type enumeration {
       enum Full {
         value "0";
@@ -434,6 +437,67 @@ module iana-dns-parameters {
        which an IPsec tunnel may be created.";
     reference
       "RFC 4025: A Method for Storing IPsec Keying Material in DNS";
+  }
+
+  typedef sshfp-algorithm-type {
+    type enumeration {
+      enum RSA {
+        value "1";
+        description
+          "RSA algorithm.";
+      }
+      enum DSA {
+        value "2";
+        description
+          "DSA algorithm.";
+      }
+      enum ECDSA {
+        value "3";
+        description
+          "ECDSA algorithm.";
+        reference
+          "RFC 6594: Use of the SHA-256 Algorithm with RSA, Digital
+           Signature Algorithm (DSA), and Elliptic Curve DSA (ECDSA)
+           in SSHFP Resource Records";
+      }
+      enum Ed25519 {
+        value "4";
+        description
+          "Ed25519 algorithm.";
+        reference
+          "RFC 7479: Using Ed25519 in SSHFP Resource Records";
+      }
+    }
+    description
+      "This enumeration specifies the algorithm of the public key.";
+    reference
+      "RFC 4255: Using DNS to Securely Publish Secure Shell (SSH) Key
+       Fingerprints";
+  }
+
+  typedef sshfp-fingerprint-type {
+    type enumeration {
+      enum SHA-1 {
+        value "1";
+        description
+          "SHA-1 message-digest algorithm.";
+      }
+      enum SHA-256 {
+        value "2";
+        description
+          "SHA-256 message-digest algorithm.";
+        reference
+          "RFC 6594: Use of the SHA-256 Algorithm with RSA, Digital
+           Signature Algorithm (DSA), and Elliptic Curve DSA (ECDSA)
+           in SSHFP Resource Records";
+      }
+    }
+    description
+      "This enumeration specifies the message-digest algorithm used
+       to calculate the fingerprint of the public key.";
+    reference
+      "RFC 4255: Using DNS to Securely Publish Secure Shell (SSH) Key
+       Fingerprints";
   }
 
   /* Identities */

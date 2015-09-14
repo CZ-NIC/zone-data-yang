@@ -266,7 +266,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </choose>
   </template>
 
-  <template name="tlsa-matching-types">
+  <template name="tlsa-matching-type">
     <param name="enum"/>
     <choose>
       <when test="$enum = 'Full'">0</when>
@@ -292,6 +292,24 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <when test="$enum = 'IPv4-address'">1</when>
       <when test="$enum = 'IPv6-address'">2</when>
       <when test="$enum = 'domain-name'">3</when>
+    </choose>
+  </template>
+
+  <template name="sshfp-algorithm-type">
+    <param name="enum"/>
+    <choose>
+      <when test="$enum = 'RSA'">1</when>
+      <when test="$enum = 'DSA'">2</when>
+      <when test="$enum = 'ECDSA'">3</when>
+      <when test="$enum = 'Ed25519'">4</when>
+    </choose>
+  </template>
+
+  <template name="sshfp-fingerprint-type">
+    <param name="enum"/>
+    <choose>
+      <when test="$enum = 'SHA-1'">1</when>
+      <when test="$enum = 'SHA-256'">2</when>
     </choose>
   </template>
 

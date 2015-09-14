@@ -18,8 +18,8 @@
   </contact>
   <description>
     <text>
-      <h:p>This module provides several data types that are used in
-      DNS zones.</h:p>
+      <h:p>This module provides several data types that are maintained
+      in IANA registries related to DNS resource records.</h:p>
     </text>
   </description>
   <reference>
@@ -43,6 +43,8 @@
 	http://www.iana.org/assignments/dane-parameters/dane-parameters.xhtml</h:li>
 	<h:li>IANA: IPSECKEY Resource Record Parameters.<h:br/>
 	https://www.iana.org/assignments/ipseckey-rr-parameters/ipseckey-rr-parameters.xhtml</h:li>
+	<h:li>IANA: DNS SSHFP Resource Record Parameters.<h:br/>
+	https://www.iana.org/assignments/dns-sshfp-rr-parameters/dns-sshfp-rr-parameters.xhtml</h:li>
       </h:ul>
     </text>
   </reference>
@@ -466,7 +468,7 @@
     </type>
   </typedef>
 
-  <typedef name="tlsa-matching-types">
+  <typedef name="tlsa-matching-type">
     <description>
       <text>
 	This enumeration type specifies how the certificate
@@ -623,6 +625,98 @@
 	    A wire-encoded domain name is present.
 	  </text>
 	</description>
+      </enum>
+    </type>
+  </typedef>
+
+  <typedef name="sshfp-algorithm-type">
+    <description>
+      <text>
+	This enumeration specifies the algorithm of the public key.
+      </text>
+    </description>
+    <reference>
+      <text>
+	RFC 4255: Using DNS to Securely Publish Secure Shell (SSH) Key
+	Fingerprints
+      </text>
+    </reference>
+    <type name="enumeration">
+      <enum name="RSA">
+	<value value="1"/>
+	<description>
+	  <text>RSA algorithm.</text>
+	</description>
+      </enum>
+      <enum name="DSA">
+	<value value="2"/>
+	<description>
+	  <text>DSA algorithm.</text>
+	</description>
+      </enum>
+      <enum name="ECDSA">
+	<value value="3"/>
+	<description>
+	  <text>ECDSA algorithm.</text>
+	</description>
+	<reference>
+	  <text>
+	    RFC 6594: Use of the SHA-256 Algorithm with RSA, Digital
+	    Signature Algorithm (DSA), and Elliptic Curve DSA (ECDSA)
+	    in SSHFP Resource Records
+	  </text>
+	</reference>
+      </enum>
+      <enum name="Ed25519">
+	<value value="4"/>
+	<description>
+	  <text>Ed25519 algorithm.</text>
+	</description>
+	<reference>
+	  <text>
+	    RFC 7479: Using Ed25519 in SSHFP Resource Records
+	  </text>
+	</reference>
+      </enum>
+    </type>
+  </typedef>
+
+  <typedef name="sshfp-fingerprint-type">
+    <description>
+      <text>
+	This enumeration specifies the message-digest algorithm used
+	to calculate the fingerprint of the public key.
+      </text>
+    </description>
+    <reference>
+      <text>
+	RFC 4255: Using DNS to Securely Publish Secure Shell (SSH) Key
+	Fingerprints
+      </text>
+    </reference>
+    <type name="enumeration">
+      <enum name="SHA-1">
+	<value value="1"/>
+	<description>
+	  <text>
+	    SHA-1 message-digest algorithm.
+	  </text>
+	</description>
+      </enum>
+      <enum name="SHA-256">
+	<value value="2"/>
+	<description>
+	  <text>
+	    SHA-256 message-digest algorithm.
+	  </text>
+	</description>
+	<reference>
+	  <text>
+	    RFC 6594: Use of the SHA-256 Algorithm with RSA, Digital
+	    Signature Algorithm (DSA), and Elliptic Curve DSA (ECDSA)
+	    in SSHFP Resource Records
+	  </text>
+	</reference>
       </enum>
     </type>
   </typedef>
@@ -1687,6 +1781,4 @@
     </reference>
   </identity>
 
-  <!-- TODO: remaining IANA parameters -->
-  
 </module>
