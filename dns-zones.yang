@@ -168,7 +168,7 @@ module dns-zones {
     }
   }
 
-  grouping nsec-common {
+  grouping nsec3-common {
     description
       "This grouping defines common field of NSEC3 and NSEC3PARAM
        resource records.";
@@ -798,7 +798,7 @@ module dns-zones {
               reference
                 "RFC 5155: DNS Security (DNSSEC) Hashed Authenticated
                  Denial of Existence";
-              uses nsec-common;
+              uses nsec3-common;
               leaf flags {
                 type ianadns:dnssec-nsec3-flags;
                 mandatory "true";
@@ -824,7 +824,7 @@ module dns-zones {
               reference
                 "RFC 5155: DNS Security (DNSSEC) Hashed Authenticated
                  Denial of Existence";
-              uses nsec-common;
+              uses nsec3-common;
             }
             /* RFC 6698 */
             container TLSA {

@@ -226,7 +226,7 @@
     </leaf-list>
   </grouping>
 
-  <grouping name="nsec-common">
+  <grouping name="nsec3-common">
     <description>
       <text>
 	This grouping defines common field of NSEC3 and NSEC3PARAM
@@ -1191,7 +1191,7 @@
 		  Denial of Existence
 		</text>
 	      </reference>
-	      <uses name="nsec-common"/>
+	      <uses name="nsec3-common"/>
 	      <leaf name="flags">
 		<type name="ianadns:dnssec-nsec3-flags"/>
 		<mandatory value="true"/>
@@ -1230,7 +1230,7 @@
 		  Denial of Existence
 		</text>
 	      </reference>
-	      <uses name="nsec-common"/>
+	      <uses name="nsec3-common"/>
 	    </container>
 
 	    <!-- RFC 6698 -->
