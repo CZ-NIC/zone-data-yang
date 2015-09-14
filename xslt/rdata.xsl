@@ -301,14 +301,14 @@
     <xsl:call-template name="inline-entry">
       <xsl:with-param name="data" select="dnsz:iterations"/>
     </xsl:call-template>
-    <xsl:call-template name="inline-entry">
+    <xsl:call-template name="sep-line-entry">
       <xsl:with-param name="data">
 	<xsl:call-template name="nsec3-salt">
 	  <xsl:with-param name="salt" select="dnsz:salt"/>
 	</xsl:call-template>
       </xsl:with-param>
     </xsl:call-template>
-    <xsl:call-template name="chop-text">
+    <xsl:call-template name="sep-line-entry">
       <xsl:with-param name="data" select="dnsz:next-hashed-owner-name"/>
     </xsl:call-template>
     <xsl:call-template name="sep-line-entry">
@@ -324,6 +324,7 @@
     <xsl:call-template name="close-block"/>
   </xsl:template>
   <xsl:template match="dnsz:NSEC3PARAM">
+    <xsl:call-template name="open-block"/>
     <xsl:call-template name="inline-entry">
       <xsl:with-param name="data">
         <xsl:call-template name="nsec3-hash-algorithm">
@@ -332,15 +333,19 @@
       </xsl:with-param>
     </xsl:call-template>
     <xsl:call-template name="inline-entry">
-      <xsl:with-param name="data" select="dnsz:iterations"/>
+      <xsl:with-param name="data" select="0"/>
     </xsl:call-template>
     <xsl:call-template name="inline-entry">
+      <xsl:with-param name="data" select="dnsz:iterations"/>
+    </xsl:call-template>
+    <xsl:call-template name="sep-line-entry">
       <xsl:with-param name="data">
 	<xsl:call-template name="nsec3-salt">
 	  <xsl:with-param name="salt" select="dnsz:salt"/>
 	</xsl:call-template>
       </xsl:with-param>
     </xsl:call-template>
+    <xsl:call-template name="close-block"/>
   </xsl:template>
   <xsl:template match="dnsz:TLSA">
     <xsl:call-template name="open-block"/>
