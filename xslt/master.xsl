@@ -458,8 +458,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <with-param name="width" select="$owner-width"/>
       <with-param name="text">
 	<choose>
-	  <when test="position()=1 and dnsz:owner=../dnsz:name or
-		      dnsz:owner = preceding-sibling::dnsz:rrset[1]/dnsz:owner"/>
+	  <when test="not(preceding-sibling::dnsz:rrset) and
+		      dnsz:owner=../dnsz:name or dnsz:owner =
+		      preceding-sibling::dnsz:rrset[1]/dnsz:owner"/>
 	  <otherwise>
 	    <call-template name="process-dname">
 	      <with-param name="dn" select="dnsz:owner"/>
