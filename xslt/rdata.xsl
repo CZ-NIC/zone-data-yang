@@ -439,4 +439,10 @@
     </xsl:call-template>
     <xsl:call-template name="close-block"/>
   </xsl:template>
+  <xsl:template match="dnsz:SPF">
+    <xsl:call-template name="inline-entry">
+      <xsl:with-param name="quoted" select="true()"/>
+      <xsl:with-param name="data" select="dnsz:spf-data"/>
+    </xsl:call-template>
+  </xsl:template>
 </xsl:stylesheet>

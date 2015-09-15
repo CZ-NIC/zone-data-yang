@@ -986,6 +986,22 @@ module dns-zones {
                   "Fingerprint of the public key.";
               }
             }
+            /* RFC 4408 */
+            container SPF {
+              must "../../type = 'ianadns:SPF'";
+              description
+                "RDATA content for 'SPF' Resource Record.";
+              reference
+                "RFC 4408: Sender Policy Framework (SPF) for
+                 Authorizing Use of Domains in E-Mail, Version 1";
+              leaf spf-data {
+                type ascii-string;
+                mandatory "true";
+                description
+                  "Descriptive text whose semantics depends on the
+                   domain where it is found.";
+              }
+            }
           }
         }
       }

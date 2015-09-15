@@ -1466,6 +1466,33 @@
 	      </leaf>
 	    </container>
 
+	    <!-- RFC 4408 -->
+
+	    <container name="SPF">
+	      <must condition="../../type = 'ianadns:SPF'"/>
+	      <description>
+		<text>
+		  RDATA content for 'SPF' Resource Record.
+		</text>
+	      </description>
+	      <reference>
+		<text>
+		  RFC 4408: Sender Policy Framework (SPF) for
+		  Authorizing Use of Domains in E-Mail, Version 1
+		</text>
+	      </reference>
+	      <leaf name="spf-data">
+		<type name="ascii-string"/>
+		<mandatory value="true"/>
+		<description>
+		  <text>
+		    Descriptive text whose semantics depends on the
+		    domain where it is found.
+		  </text>
+		</description>
+	      </leaf>
+	    </container>
+
 	  </choice>
 	</list>
       </list>
