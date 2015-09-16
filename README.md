@@ -35,7 +35,3 @@ so as to be able to treat them as normal configuration.
 - [x] [RFC 5155](https://tools.ietf.org/html/rfc5155): NSEC3, NSEC3PARAM
 - [x] [RFC 6698](https://tools.ietf.org/html/rfc6698): TLSA
 
-
-## Resources:
-
-- [draft-daley-dnsxml-00](https://www.ietf.org/archive/id/draft-daley-dnsxml-00.txt)
