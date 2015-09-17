@@ -204,7 +204,7 @@ module dns-zones {
     description
       "Container for DNS zones.";
     list zone {
-      key "name";
+      key "name class";
       description
         "Data for a DNS zone.";
       leaf name {
@@ -212,13 +212,12 @@ module dns-zones {
         description
           "Zone name.";
       }
-      uses description;
       leaf class {
         type ianadns:class;
-        default "IN";
         description
           "RR Class";
       }
+      uses description;
       leaf default-ttl {
         type time-interval;
         mandatory "true";

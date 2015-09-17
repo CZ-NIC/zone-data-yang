@@ -1,9 +1,9 @@
 module: dns-zones
    +--rw zones
-      +--rw zone* [name]
+      +--rw zone* [name class]
          +--rw name           domain-name
+         +--rw class          ianadns:class
          +--rw description?   string
-         +--rw class?         ianadns:class
          +--rw default-ttl    time-interval
          +--rw SOA
          |  +--rw ttl?       time-interval

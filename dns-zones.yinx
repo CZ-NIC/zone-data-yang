@@ -277,7 +277,7 @@
       </text>
     </description>
     <list name="zone">
-      <key value="name"/>
+      <key value="name class"/>
       <description>
 	<text>
 	  Data for a DNS zone.
@@ -291,14 +291,13 @@
 	</description>
 	<type name="domain-name"/>
       </leaf>
-      <uses name="description"/>
       <leaf name="class">
 	<type name="ianadns:class"/>
-	<default value="IN"/>
 	<description>
 	  <text>RR Class</text>
 	</description>
       </leaf>
+      <uses name="description"/>
       <leaf name="default-ttl">
 	<type name="time-interval"/>
 	<mandatory value="true"/>
