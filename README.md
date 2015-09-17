@@ -29,7 +29,7 @@ so as to be able to treat them as normal configuration.
 - [x] [RFC 4025](https://tools.ietf.org/html/rfc4025): IPSECKEY
 - [x] [RFC 4034](https://tools.ietf.org/html/rfc4034): DNSKEY, DS, NSEC, RRSIG
 - [x] [RFC 4255](https://tools.ietf.org/html/rfc4255): SSHFP
-- [x] [RFC 7208](https://tools.ietf.org/html/rfc7208): SPF
+- [ ] [RFC 4408](https://tools.ietf.org/html/rfc4408): SPF
 - [ ] [RFC 4431](https://tools.ietf.org/html/rfc4431): DLV
 - [ ] [RFC 4701](https://tools.ietf.org/html/rfc4701): DHCID
 - [x] [RFC 5155](https://tools.ietf.org/html/rfc5155): NSEC3, NSEC3PARAM
