@@ -1,9 +1,38 @@
-# Zone-data-yang
+# zone-data-yang
 
 The aim of this project is to create a YANG data model for DNS zone data
 so as to be able to treat them as normal configuration.
 
 [Current data tree](https://gitlab.labs.nic.cz/llhotka/zone-data-yang/raw/master/model.tree)
+
+## Prerequisites
+
+- [pyang](https://github.com/mbj4668/pyang)
+- [xsltproc](http://xmlsoft.org/XSLT/xsltproc2.html)
+- [jing, trang](https://github.com/relaxng/jing-trang)
+
+## Makefile Targets
+
+Below is a description of interesting Makefile targets. GNU make is
+needed.
+
+- **all** (default): generate YANG files from
+  [YINX](https://gitlab.labs.nic.cz/labs/yang-tools/wikis/editing_yang#yin-schema-extensions)
+  sources;
+
+- **json**: generate example configuration in JSON format;
+
+- **master**: generate master file from example configuration;
+
+- **rnc**: generate RELAX NG schema in compact syntax (in fact, all
+  [DSDL](http://dsdl.org) schemas are generated);
+
+- **validate**: validate example configuration against DSDL schemas;
+
+- **model.tree**: generate ascii art depicting the data model schema
+  as a tree (run `pyang --tree-help` for an explanation of symbols);
+
+- **clean**: remove all generated files.
 
 ## RR Implementation Status
 
@@ -34,4 +63,8 @@ so as to be able to treat them as normal configuration.
 - [ ] [RFC 4701](https://tools.ietf.org/html/rfc4701): DHCID
 - [x] [RFC 5155](https://tools.ietf.org/html/rfc5155): NSEC3, NSEC3PARAM
 - [x] [RFC 6698](https://tools.ietf.org/html/rfc6698): TLSA
+
+## Additional Information
+
+[Project wiki](https://gitlab.labs.nic.cz/llhotka/zone-data-yang/wikis/home)
 
