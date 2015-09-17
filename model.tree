@@ -133,10 +133,7 @@ module: dns-zones
                   |  +--rw DNAME
                   |     +--rw target    domain-name
                   +--:(SSHFP)
-                  |  +--rw SSHFP
-                  |     +--rw algorithm           ianadns:sshfp-algorithm-type
-                  |     +--rw fingerprint-type    ianadns:sshfp-fingerprint-type
-                  |     +--rw fingerprint         hex-digits
-                  +--:(SPF)
-                     +--rw SPF
-                        +--rw spf-data    ascii-string
+                     +--rw SSHFP
+                        +--rw algorithm           ianadns:sshfp-algorithm-type
+                        +--rw fingerprint-type    ianadns:sshfp-fingerprint-type
+                        +--rw fingerprint         hex-digits
