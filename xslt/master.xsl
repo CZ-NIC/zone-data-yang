@@ -33,8 +33,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
   <!-- Parameters & variables -->
 
-  <!-- Select zone by name (if empty, first zone is used) -->
-  <param name="select-zone"/>
+  <!-- Name of the zone to process (if empty, first zone entry is used) -->
+  <param name="zone-name"/>
+
+  <!-- Class of the zone to process (default: IN) -->
+  <param name="class">IN</param>
 
   <!-- Use only absolute domain names. -->
   <param name="absolute-only" select="0"/>
@@ -352,13 +355,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
   <template match="dnsz:zones">
    <choose>
-     <when test="$select-zone">
-       <if test="not(dnsz:zone[dnsz:name=$select-zone])">
+     <when test="$zone-name">
+       <if test="not(dnsz:zone[dnsz:name=$zone-name and dnsz:class=$class])">
 	 <message terminate="yes">
-	   <value-of select="concat('Zone ', $select-zone, ' not found.')"/>
+	   <value-of
+	       select="concat('Data for zone &quot;', $zone-name,
+		       '&quot; and class ', $class, ' not found.')"/>
 	 </message>
        </if>
-       <apply-templates select="dnsz:zone[dnsz:name=$select-zone]"/>
+       <apply-templates
+	   select="dnsz:zone[dnsz:name=$zone-name and dnsz:class=$class]"/>
      </when>
      <otherwise>
        <apply-templates select="dnsz:zone[1]"/>
