@@ -7,7 +7,8 @@ PYANG_OPTS =
 
 yams = $(addsuffix .yang, $(MODULES))
 xsldir = .tools/xslt
-xslpars =
+yypars =
+expars = --stringparam zone-name "example" --stringparam class IN
 dsrl2xslt = $(PYANG_XSLT_DIR)/dsrl2xslt.xsl
 schemas = $(baty).rng $(baty).sch $(baty).dsrl
 y2dopts = -t $(EXAMPLE_TYPE) -b $(EXAMPLE_BASE)
@@ -36,7 +37,7 @@ hello.xml: $(yams) hello-external.ent
 
 %.yang: %.yinx
 	@xsltproc --xinclude $(xsldir)/canonicalize.xsl $< | \
-	  xsltproc --output $@ $(xslpars) $(xsldir)/yin2yang.xsl -
+	  xsltproc --output $@ $(yypars) $(xsldir)/yin2yang.xsl -
 
 $(schemas): hello.xml
 	@yang2dsdl $(y2dopts) -L $<
@@ -62,7 +63,8 @@ defaults.xsl: $(baty).dsrl
 	@xsltproc --output $@ $(dsrl2xslt) $<
 
 example.zone: $(EXAMPLE_INST) defaults.xsl xslt/rdata.xsl
-	@xsltproc defaults.xsl $< | xsltproc --output $@ xslt/master.xsl -
+	@xsltproc defaults.xsl $< | \
+	  xsltproc $(expars) --output $@ xslt/master.xsl -
 
 commit:	model.tree
 	@git add model.tree $(yams)
