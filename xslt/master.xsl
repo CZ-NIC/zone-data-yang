@@ -367,7 +367,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	   select="dnsz:zone[dnsz:name=$zone-name and dnsz:class=$class]"/>
      </when>
      <otherwise>
-       <apply-templates select="dnsz:zone[1]"/>
+       <apply-templates select="dnsz:zone[dnsz:class=$class][1]"/>
      </otherwise>
    </choose>
   </template>
