@@ -536,5 +536,51 @@
 	</rdata>
       </rrset>
     </zone>
+    <zone>
+      <name>bind</name>
+      <class>CH</class>
+      <description>Parameters for BIND</description>
+      <default-ttl>3600</default-ttl>
+      <SOA>
+	<ttl>86400</ttl>
+	<mname>localhost</mname>
+	<rname>root.localhost</rname>
+	<serial>2015050801</serial>
+	<refresh>3600</refresh>
+	<retry>3600</retry>
+	<expire>604800</expire>
+	<minimum>86400</minimum>
+      </SOA>
+      <rrset>
+	<owner>bind</owner>
+	<type>ianadns:NS</type>
+	<rdata>
+	  <id>1</id>
+	  <NS>
+	    <nsdname>localhost</nsdname>
+	  </NS>
+	</rdata>
+      </rrset>
+      <rrset>
+	<owner>version.bind</owner>
+	<type>ianadns:TXT</type>
+	<rdata>
+	  <id>1</id>
+	  <TXT>
+	    <txt-data>Knot DNS version 2.0.1</txt-data>
+	  </TXT>
+	</rdata>
+      </rrset>
+      <rrset>
+	<owner>authors.bind</owner>
+	<type>ianadns:TXT</type>
+	<rdata>
+	  <id>1</id>
+	  <TXT>
+	    <txt-data>Example.org</txt-data>
+	  </TXT>
+	</rdata>
+      </rrset>
+    </zone>
   </zones>
 </config>
