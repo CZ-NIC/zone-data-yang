@@ -18,84 +18,14 @@
 	<retry>300</retry>
 	<expire>3600000</expire>
 	<minimum>3600</minimum>
+	<RRSIG>
+	  <algorithm>RSASHA1</algorithm>
+	  <signature-expiration>2050-01-01T00:00:00Z</signature-expiration>
+	  <signature-inception>2014-09-08T11:59:12Z</signature-inception>
+	  <key-tag>35721</key-tag>
+	  <signature>eUi219ENFoSmkCstQZ0D/eYNg3amKIdX8HvW1qHwM2rSv9Q7XaCI2NByki0poLwEuabZf8SHm2Kqh7EA35UFKYkEhEwtN/292ROuHVkZRCUzM3lD9PT1NPkleqT3JcjiBRy3BCTirnGX5qQXK9qKW08fIawvNhwexI3e5hjSQUU=</signature>
+	</RRSIG>
       </SOA>
-      <rrset>
-	<owner>example</owner>
-	<type>ianadns:RRSIG</type>
-	<rdata>
-	  <id>1</id>
-	  <RRSIG>
-	    <type-covered>ianadns:SOA</type-covered>
-	    <algorithm>RSASHA1</algorithm>
-	    <labels>1</labels>
-	    <signature-expiration>2050-01-01T00:00:00Z</signature-expiration>
-	    <signature-inception>2014-09-08T11:59:12Z</signature-inception>
-	    <key-tag>35721</key-tag>
-	    <signer-name>example</signer-name>
-	    <signature>eUi219ENFoSmkCstQZ0D/eYNg3amKIdX8HvW1qHwM2rSv9Q7XaCI2NByki0poLwEuabZf8SHm2Kqh7EA35UFKYkEhEwtN/292ROuHVkZRCUzM3lD9PT1NPkleqT3JcjiBRy3BCTirnGX5qQXK9qKW08fIawvNhwexI3e5hjSQUU=</signature>
-	  </RRSIG>
-	</rdata>
-	<rdata>
-	  <id>2</id>
-	  <RRSIG>
-	    <type-covered>ianadns:NS</type-covered>
-	    <algorithm>RSASHA1</algorithm>
-	    <labels>1</labels>
-	    <signature-expiration>2050-01-01T00:00:00Z</signature-expiration>
-	    <signature-inception>2014-09-08T11:59:12Z</signature-inception>
-	    <key-tag>35721</key-tag>
-	    <signature>XRYbz0NL/bcF4uOH+puXe5hSJgmG9wX+sWz7ksi3Vl4HO5InUkyltxknCdWw0M8cfpM8FM30inACCOOfBUEbyFL7TWUjfTwk3jKDX+7gm5FkItNE2ZMLK0QnyjWQOiE5G15+cvV31eQHBRFpYLrQBIeGiL+V9aDYafTLV+Yt0e0=</signature>
-	  </RRSIG>
-	</rdata>
-	<rdata>
-	  <id>3</id>
-	  <RRSIG>
-	    <type-covered>ianadns:MX</type-covered>
-	    <algorithm>RSASHA1</algorithm>
-	    <labels>1</labels>
-	    <signature-expiration>2050-01-01T00:00:00Z</signature-expiration>
-	    <signature-inception>2014-09-08T11:59:12Z</signature-inception>
-	    <key-tag>35721</key-tag>
-	    <signature>ejvossk9ErTnwuBQ0bcfwRXOvXeIJ419x/AphtwAJMtsj01kASdszAi1Rzlo1CSca18Z6nq0XZQ1KeDjLg07WEWS1WU8l30RAKgWawlCjjJeeOTyr0GJ2IYhtbFDm9BB3u6EUmrD5/1/1NBchvWATMCo4FfspGNwZ7BgiUB3ne4=</signature>
-	  </RRSIG>
-	</rdata>
-	<rdata>
-	  <id>4</id>
-	  <RRSIG>
-	    <type-covered>ianadns:NSEC</type-covered>
-	    <algorithm>RSASHA1</algorithm>
-	    <labels>1</labels>
-	    <signature-expiration>2050-01-01T00:00:00Z</signature-expiration>
-	    <signature-inception>2014-09-08T11:59:12Z</signature-inception>
-	    <key-tag>35721</key-tag>
-	    <signature>X20KQj2os3I3fMWGXLoNccWhbP53v95PwHrKZJPCf0KawwAMsGNXfKfT9mDLGi4AJMImmJJfufSI/Za1clHQ5n5t2Ru5w0W4QAPkpBaWuQSU/5WUIV54lCVtBBgTMuf3zpMnRgda2Q/o1XoFvN3+5eFvk0Qgs3m4OxBIfeJuZ7c=</signature>
-	  </RRSIG>
-	</rdata>
-	<rdata>
-	  <id>5</id>
-	  <RRSIG>
-	    <type-covered>ianadns:DNSKEY</type-covered>
-	    <algorithm>RSASHA1</algorithm>
-	    <labels>1</labels>
-	    <signature-expiration>2050-01-01T00:00:00Z</signature-expiration>
-	    <signature-inception>2014-09-08T11:59:12Z</signature-inception>
-	    <key-tag>35721</key-tag>
-	    <signature>zft/jYjZDK2eq6twehtmp6W3UgZQBVhDjDauBwGG6jimkZ00PwAL4Eh51ZM/nGnw8CPt6YxXK32FGoLy9VQTOgFUfp0myZiRggH1At7RSBusDyOAI/BaZhJ+X1hCG2wfvPfiD9irPHB11az+isrms4FmQrWsPkyF/A3ZJqclDpM=</signature>
-	  </RRSIG>
-	</rdata>
-	<rdata>
-	  <id>6</id>
-	  <RRSIG>
-	    <type-covered>ianadns:DNSKEY</type-covered>
-	    <algorithm>RSASHA1</algorithm>
-	    <labels>1</labels>
-	    <signature-expiration>2050-01-01T00:00:00Z</signature-expiration>
-	    <signature-inception>2014-09-08T11:59:12Z</signature-inception>
-	    <key-tag>65014</key-tag>
-	    <signature>Sso2em1SJhXTZTVEnnfEZaK7VdSSbw7Ytd3cJuDEi7qVgbMJpNCZg1OfS2VIMlmf3sdzMrMOFbbXzdyAATHCmqBTqcMYEzSAH+mzc3hletbLM683ChR3c8PJL1hUbHAGl3va8hK5jRsXaNlDjnOuyFQsiEBZU0lXFHyqvENROBg7CJlDZeC8mdzaoTOLvklJFk6b8ktROYfjyaACVwFhQENIs1mxI12NYrjwDZV3ZHweDVfbh5qIjj855NwsDqJWahg0fBdbQA9B667KCIesuxp/HstbKk7Ild193Ye5Rcqvtg5vesoOeQZducYtLLztr/hDLAWn9tEa0R2N/HzGSA==</signature>
-	  </RRSIG>
-	</rdata>
-      </rrset>
       <rrset>
 	<owner>frobozz.example</owner>
 	<type>ianadns:DNAME</type>
@@ -140,6 +70,13 @@
 	<owner>example</owner>
 	<type>ianadns:NS</type>
         <ttl>3601</ttl>
+	<RRSIG>
+	  <algorithm>RSASHA1</algorithm>
+	  <signature-expiration>2050-01-01T00:00:00Z</signature-expiration>
+	  <signature-inception>2014-09-08T11:59:12Z</signature-inception>
+	  <key-tag>35721</key-tag>
+	  <signature>XRYbz0NL/bcF4uOH+puXe5hSJgmG9wX+sWz7ksi3Vl4HO5InUkyltxknCdWw0M8cfpM8FM30inACCOOfBUEbyFL7TWUjfTwk3jKDX+7gm5FkItNE2ZMLK0QnyjWQOiE5G15+cvV31eQHBRFpYLrQBIeGiL+V9aDYafTLV+Yt0e0=</signature>
+	</RRSIG>
 	<rdata>
 	  <id>1</id>
 	  <NS>
@@ -156,6 +93,13 @@
       <rrset>
 	<owner>example</owner>
 	<type>ianadns:MX</type>
+	<RRSIG>
+	  <algorithm>RSASHA1</algorithm>
+	  <signature-expiration>2050-01-01T00:00:00Z</signature-expiration>
+	  <signature-inception>2014-09-08T11:59:12Z</signature-inception>
+	  <key-tag>35721</key-tag>
+	  <signature>ejvossk9ErTnwuBQ0bcfwRXOvXeIJ419x/AphtwAJMtsj01kASdszAi1Rzlo1CSca18Z6nq0XZQ1KeDjLg07WEWS1WU8l30RAKgWawlCjjJeeOTyr0GJ2IYhtbFDm9BB3u6EUmrD5/1/1NBchvWATMCo4FfspGNwZ7BgiUB3ne4=</signature>
+	</RRSIG>
 	<rdata>
 	  <id>1</id>
 	  <MX>
@@ -167,6 +111,13 @@
       <rrset>
 	<owner>example</owner>
 	<type>ianadns:NSEC</type>
+	<RRSIG>
+	  <algorithm>RSASHA1</algorithm>
+	  <signature-expiration>2050-01-01T00:00:00Z</signature-expiration>
+	  <signature-inception>2014-09-08T11:59:12Z</signature-inception>
+	  <key-tag>35721</key-tag>
+	  <signature>X20KQj2os3I3fMWGXLoNccWhbP53v95PwHrKZJPCf0KawwAMsGNXfKfT9mDLGi4AJMImmJJfufSI/Za1clHQ5n5t2Ru5w0W4QAPkpBaWuQSU/5WUIV54lCVtBBgTMuf3zpMnRgda2Q/o1XoFvN3+5eFvk0Qgs3m4OxBIfeJuZ7c=</signature>
+	</RRSIG>
 	<rdata>
 	  <id>1</id>
 	  <NSEC>
@@ -196,6 +147,13 @@
       <rrset>
 	<owner>example</owner>
 	<type>ianadns:DNSKEY</type>
+	<RRSIG>
+	  <algorithm>RSASHA1</algorithm>
+	  <signature-expiration>2050-01-01T00:00:00Z</signature-expiration>
+	  <signature-inception>2014-09-08T11:59:12Z</signature-inception>
+	  <key-tag>35721</key-tag>
+	  <signature>zft/jYjZDK2eq6twehtmp6W3UgZQBVhDjDauBwGG6jimkZ00PwAL4Eh51ZM/nGnw8CPt6YxXK32FGoLy9VQTOgFUfp0myZiRggH1At7RSBusDyOAI/BaZhJ+X1hCG2wfvPfiD9irPHB11az+isrms4FmQrWsPkyF/A3ZJqclDpM=</signature>
+	</RRSIG>
 	<rdata>
 	  <id>1</id>
 	  <DNSKEY>
@@ -282,6 +240,13 @@
       <rrset>
 	<owner>b.example</owner>
 	<type>ianadns:NSEC</type>
+	<RRSIG>
+	  <algorithm>RSASHA1</algorithm>
+	  <signature-expiration>2050-01-01T00:00:00Z</signature-expiration>
+	  <signature-inception>2014-09-08T11:59:12Z</signature-inception>
+	  <key-tag>35721</key-tag>
+	  <signature>gXx+XR8khxgHGl4Zc5H2Fk+ekZQMFyb8qVGGztE+sGh6YD8ERZyBi6J/GaL+PF7iDO9qJvrOHmULssCgiiTooWhnG8ezXt429ADB+8bsd9qjoyU1cAcYL6zXHpYdf8LOTSetEaaoZISF0buD3UMOmErSZ+z5liN09V+woZqu2K0=</signature>
+	</RRSIG>
 	<rdata>
 	  <id>1</id>
 	  <NSEC>
@@ -290,22 +255,6 @@
 	    <rrset-type>ianadns:RRSIG</rrset-type>
 	    <rrset-type>ianadns:NSEC</rrset-type>
 	  </NSEC>
-	</rdata>
-      </rrset>
-      <rrset>
-	<owner>b.example</owner>
-	<type>ianadns:RRSIG</type>
-	<rdata>
-	  <id>1</id>
-	  <RRSIG>
-	    <type-covered>ianadns:NSEC</type-covered>
-	    <algorithm>RSASHA1</algorithm>
-	    <labels>2</labels>
-	    <signature-expiration>2050-01-01T00:00:00Z</signature-expiration>
-	    <signature-inception>2014-09-08T11:59:12Z</signature-inception>
-	    <key-tag>35721</key-tag>
-	    <signature>gXx+XR8khxgHGl4Zc5H2Fk+ekZQMFyb8qVGGztE+sGh6YD8ERZyBi6J/GaL+PF7iDO9qJvrOHmULssCgiiTooWhnG8ezXt429ADB+8bsd9qjoyU1cAcYL6zXHpYdf8LOTSetEaaoZISF0buD3UMOmErSZ+z5liN09V+woZqu2K0=</signature>
-	  </RRSIG>
 	</rdata>
       </rrset>
       <rrset>
@@ -327,6 +276,13 @@
       <rrset>
 	<owner>a.example</owner>
 	<type>ianadns:DS</type>
+	<RRSIG>
+	  <algorithm>RSASHA1</algorithm>
+	  <signature-expiration>2050-01-01T00:00:00Z</signature-expiration>
+	  <signature-inception>2014-09-08T11:59:12Z</signature-inception>
+	  <key-tag>35721</key-tag>
+	  <signature>X5GpSOMM71nyseLAMDsZ0ClXiQknr4KNhnde+WYsSeQwSmHjxE7cyhrtKBrhRpaCTwjGn2ydmYteRWkeCGhatr19zqdHVbu0KCbX2RQ+dv2FUu2oaw4yzIGGPsw38BxwCECauLiPIAN9cx57QIIGNRxMsestpQf1xgdNrBPSp/s=</signature>
+	</RRSIG>
 	<rdata>
 	  <id>1</id>
 	  <DS>
@@ -335,22 +291,6 @@
 	    <digest-type>SHA-1</digest-type>
 	    <digest>B6DCD485719ADCA18E5F3D48A2331627FDD3636B</digest>
 	  </DS>
-	</rdata>
-      </rrset>
-      <rrset>
-	<owner>a.example</owner>
-	<type>ianadns:RRSIG</type>
-	<rdata>
-	  <id>1</id>
-	  <RRSIG>
-	    <type-covered>ianadns:DS</type-covered>
-	    <algorithm>RSASHA1</algorithm>
-	    <labels>2</labels>
-	    <signature-expiration>2050-01-01T00:00:00Z</signature-expiration>
-	    <signature-inception>2014-09-08T11:59:12Z</signature-inception>
-	    <key-tag>35721</key-tag>
-	    <signature>X5GpSOMM71nyseLAMDsZ0ClXiQknr4KNhnde+WYsSeQwSmHjxE7cyhrtKBrhRpaCTwjGn2ydmYteRWkeCGhatr19zqdHVbu0KCbX2RQ+dv2FUu2oaw4yzIGGPsw38BxwCECauLiPIAN9cx57QIIGNRxMsestpQf1xgdNrBPSp/s=</signature>
-	  </RRSIG>
 	</rdata>
       </rrset>
       <rrset>
