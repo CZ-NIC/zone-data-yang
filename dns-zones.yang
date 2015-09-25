@@ -111,6 +111,62 @@ module dns-zones {
     }
   }
 
+  grouping rrsig-data {
+    description
+      "This grouping defines DNSSEC signature and its parameters.";
+    container RRSIG {
+      presence "DNSSEC signature";
+      description
+        "DNSSEC signature information for the parent RRSet.";
+      reference
+        "RFC 4034: Resource Records for the DNS Security
+         Extensions";
+      leaf algorithm {
+        type ianadns:dnssec-algorithm;
+        mandatory "true";
+        description
+          "This field identifies the cryptographic algorithm used to
+           create the signature.";
+      }
+      leaf signature-expiration {
+        type utc-date-time;
+        mandatory "true";
+        description
+          "This field specifies the end of a validity period for the
+           signature as UTC date and time. The RRSIG record MUST NOT
+           be used for authentication after the expiration date and
+           time.";
+      }
+      leaf signature-inception {
+        type utc-date-time;
+        mandatory "true";
+        description
+          "This field specifies the start of a validity period for
+           the signature as UTC date and time. The RRSIG record MUST
+           NOT be used for authentication prior the inception date
+           and time.
+
+           This date MUST precede the date specified in
+           'signature-expiration'.";
+      }
+      uses key-tag-field;
+      leaf signature {
+        type binary {
+          length "1..max";
+        }
+        mandatory "true";
+        description
+          "This field contains the cryptographic signature that
+           covers the RRSIG RDATA (excluding the Signature field) and
+           the RRset specified by the RRSIG owner name, RRSIG class,
+           and RRSIG Type Covered field.
+
+           The format of this field depends on the algorithm in
+           use.";
+      }
+    }
+  }
+
   grouping entry-id {
     description
       "This grouping defines a leaf that is intended for use as a
@@ -275,6 +331,7 @@ module dns-zones {
             "Minimum TTL that should be exported with any RR from
              this zone.";
         }
+        uses rrsig-data;
       }
       list rrset {
         key "owner type";
@@ -300,57 +357,7 @@ module dns-zones {
             "TTL of all resource records in the RRSet.";
         }
         uses description;
-        container RRSIG {
-          presence "DNSSEC signature";
-          description
-            "DNSSEC signature information for the parent RRSet.";
-          reference
-            "RFC 4034: Resource Records for the DNS Security
-             Extensions";
-          leaf algorithm {
-            type ianadns:dnssec-algorithm;
-            mandatory "true";
-            description
-              "This field identifies the cryptographic algorithm used
-               to create the signature.";
-          }
-          leaf signature-expiration {
-            type utc-date-time;
-            mandatory "true";
-            description
-              "This field specifies the end of a validity period for
-               the signature as UTC date and time. The RRSIG record
-               MUST NOT be used for authentication after the
-               expiration date and time.";
-          }
-          leaf signature-inception {
-            type utc-date-time;
-            mandatory "true";
-            description
-              "This field specifies the start of a validity period
-               for the signature as UTC date and time. The RRSIG
-               record MUST NOT be used for authentication prior the
-               inception date and time.
-
-               This date MUST precede the date specified in
-               'signature-expiration'.";
-          }
-          uses key-tag-field;
-          leaf signature {
-            type binary {
-              length "1..max";
-            }
-            mandatory "true";
-            description
-              "This field contains the cryptographic signature that
-               covers the RRSIG RDATA (excluding the Signature field)
-               and the RRset specified by the RRSIG owner name, RRSIG
-               class, and RRSIG Type Covered field.
-
-               The format of this field depends on the algorithm in
-               use.";
-          }
-        }
+        uses rrsig-data;
         list rdata {
           key "id";
           min-elements "1";

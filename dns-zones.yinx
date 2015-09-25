@@ -141,7 +141,83 @@
       </description>
     </leaf>
   </grouping>
-  
+
+  <grouping name="rrsig-data">
+    <description>
+      <text>
+	This grouping defines DNSSEC signature and its parameters.
+      </text>
+    </description>
+    <container name="RRSIG">
+      <presence value="DNSSEC signature"/>
+      <description>
+	<text>
+	  DNSSEC signature information for the parent RRSet.
+	</text>
+      </description>
+      <reference>
+	<text>
+	  RFC 4034: Resource Records for the DNS Security
+	  Extensions
+	</text>
+      </reference>
+      <leaf name="algorithm">
+	<type name="ianadns:dnssec-algorithm"/>
+	<mandatory value="true"/>
+	<description>
+	  <text>
+	    This field identifies the cryptographic algorithm
+	    used to create the signature.
+	  </text>
+	</description>
+      </leaf>
+      <leaf name="signature-expiration">
+	<type name="utc-date-time"/>
+	<mandatory value="true"/>
+	<description>
+	  <text>
+	    This field specifies the end of a validity period
+	    for the signature as UTC date and time. The RRSIG
+	    record MUST NOT be used for authentication after
+	    the expiration date and time.
+	  </text>
+	</description>
+      </leaf>
+      <leaf name="signature-inception">
+	<type name="utc-date-time"/>
+	<mandatory value="true"/>
+	<description>
+	  <text>
+	    <h:p>This field specifies the start of a validity
+	    period for the signature as UTC date and time. The
+	    RRSIG record MUST NOT be used for authentication
+	    prior the inception date and time.</h:p>
+	    <h:p>This date MUST precede the date specified in
+	    'signature-expiration'.</h:p>
+	  </text>
+	</description>
+      </leaf>
+      <uses name="key-tag-field"/>
+      <leaf name="signature">
+	<type name="binary">
+	  <length value="1..max"/>
+	</type>
+	<mandatory value="true"/>
+	<description>
+	  <text>
+	    <h:p>This field contains the cryptographic
+	    signature that covers the RRSIG RDATA (excluding
+	    the Signature field) and the RRset specified by
+	    the RRSIG owner name, RRSIG class, and RRSIG Type
+	    Covered field.</h:p>
+	    <h:p>The format of this field depends on the algorithm in
+	    use.</h:p>
+	  </text>
+	</description>
+      </leaf>
+    </container>
+  </grouping>
+
   <grouping name="entry-id">
     <description>
       <text>
@@ -382,6 +458,7 @@
 	    </text>
 	  </description>
 	</leaf>
+	<uses name="rrsig-data"/>
       </container>
       <list name="rrset">
 	<key value="owner type"/>
@@ -414,74 +491,7 @@
 	  </description>
 	</uses>
 	<uses name="description"/>
-	<container name="RRSIG">
-	  <presence value="DNSSEC signature"/>
-	  <description>
-	    <text>
-	      DNSSEC signature information for the parent RRSet.
-	    </text>
-	  </description>
-	  <reference>
-	    <text>
-	      RFC 4034: Resource Records for the DNS Security
-	      Extensions
-	    </text>
-	  </reference>
-	  <leaf name="algorithm">
-	    <type name="ianadns:dnssec-algorithm"/>
-	    <mandatory value="true"/>
-	    <description>
-	      <text>
-		This field identifies the cryptographic algorithm
-		used to create the signature.
-	      </text>
-	    </description>
-	  </leaf>
-	  <leaf name="signature-expiration">
-	    <type name="utc-date-time"/>
-	    <mandatory value="true"/>
-	    <description>
-	      <text>
-		This field specifies the end of a validity period
-		for the signature as UTC date and time. The RRSIG
-		record MUST NOT be used for authentication after
-		the expiration date and time.
-	      </text>
-	    </description>
-	  </leaf>
-	  <leaf name="signature-inception">
-	    <type name="utc-date-time"/>
-	    <mandatory value="true"/>
-	    <description>
-	      <text>
-		<h:p>This field specifies the start of a validity
-		period for the signature as UTC date and time. The
-		RRSIG record MUST NOT be used for authentication
-		prior the inception date and time.</h:p>
-		<h:p>This date MUST precede the date specified in
-		'signature-expiration'.</h:p>
-	      </text>
-	    </description>
-	  </leaf>
-	  <uses name="key-tag-field"/>
-	  <leaf name="signature">
-	    <type name="binary">
-	      <length value="1..max"/>
-	    </type>
-	    <mandatory value="true"/>
-	    <description>
-	      <text>
-		<h:p>This field contains the cryptographic
-		signature that covers the RRSIG RDATA (excluding
-		the Signature field) and the RRset specified by
-		the RRSIG owner name, RRSIG class, and RRSIG Type
-		Covered field.</h:p>
-		<h:p>The format of this field depends on the algorithm in
-		use.</h:p>
-	      </text>
-	    </description>
-	  </leaf>
-	</container>
+	<uses name="rrsig-data"/>
 	<list name="rdata">
 	  <key value="id"/>
 	  <min-elements value="1"/>

@@ -14,6 +14,12 @@ module: dns-zones
          |  +--rw retry      time-interval
          |  +--rw expire     time-interval
          |  +--rw minimum    time-interval
+         |  +--rw RRSIG!
+         |     +--rw algorithm               ianadns:dnssec-algorithm
+         |     +--rw signature-expiration    utc-date-time
+         |     +--rw signature-inception     utc-date-time
+         |     +--rw key-tag                 uint16
+         |     +--rw signature               binary
          +--rw rrset* [owner type]
             +--rw owner          domain-name
             +--rw type           identityref
