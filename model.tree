@@ -19,6 +19,12 @@ module: dns-zones
             +--rw type           identityref
             +--rw ttl?           time-interval
             +--rw description?   string
+            +--rw RRSIG!
+            |  +--rw algorithm               ianadns:dnssec-algorithm
+            |  +--rw signature-expiration    utc-date-time
+            |  +--rw signature-inception     utc-date-time
+            |  +--rw key-tag                 uint16
+            |  +--rw signature               binary
             +--rw rdata* [id]
                +--rw id             string
                +--rw description?   string
@@ -82,17 +88,6 @@ module: dns-zones
                   |     +--rw protocol?     uint8
                   |     +--rw algorithm     ianadns:dnssec-algorithm
                   |     +--rw public-key    binary
-                  +--:(RRSIG)
-                  |  +--rw RRSIG
-                  |     +--rw type-covered            identityref
-                  |     +--rw algorithm               ianadns:dnssec-algorithm
-                  |     +--rw labels                  uint8
-                  |     +--rw original-ttl?           -> ../../../../rrset[owner=current()/../../../owner][type=current()/../type-covered]/ttl
-                  |     +--rw signature-expiration    utc-date-time
-                  |     +--rw signature-inception     utc-date-time
-                  |     +--rw key-tag                 uint16
-                  |     +--rw signer-name?            domain-name
-                  |     +--rw signature               binary
                   +--:(NSEC)
                   |  +--rw NSEC
                   |     +--rw next-domain-name    domain-name
