@@ -42,8 +42,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   <!-- Use only absolute domain names. -->
   <param name="absolute-only" select="0"/>
 
-  <!-- Width of the owner field -->
+  <!-- Field widths -->
   <param name="owner-width" select="21"/>
+  <param name="rrtype-width" select="10"/>
+  <param name="ttl-width" select="7"/>
 
   <!-- 41 spaces (used in alignment) -->
   <variable name="spaces"
@@ -189,6 +191,30 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	    <value-of select="concat($dn, '.')"/>
 	  </otherwise>
 	</choose>
+      </otherwise>
+    </choose>
+  </template>
+
+  <template name="label-count">
+    <param name="dname"/>
+    <param name="accum" select="1"/>
+    <choose>
+      <when test="starts-with($dname, '*')">
+	<call-template name="label-count">
+	  <with-param name="dname"
+		      select="substring-after($dname, '.')"/>
+	  <with-param name="accum" select="$accum"/>
+	</call-template>
+      </when>
+      <when test="contains($dname, '.')">
+	<call-template name="label-count">
+	  <with-param name="dname"
+		      select="substring-after($dname, '.')"/>
+	  <with-param name="accum" select="$accum + 1"/>
+	</call-template>
+      </when>
+      <otherwise>
+	<value-of select="$accum"/>
       </otherwise>
     </choose>
   </template>
@@ -398,15 +424,24 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </call-template>
     <text> </text>
     <call-template name="right-aligned">
-      <with-param name="width" select="7"/>
-      <with-param name="text" select="dnsz:ttl"/>
+      <with-param name="width" select="$ttl-width"/>
+      <with-param name="text">
+	<call-template name="ttl">
+	  <with-param name="rrset" select="."/>
+	</call-template>
+      </with-param>
     </call-template>
     <text> </text>
-    <call-template name="value-or-default">
-      <with-param name="node" select="../dnsz:class"/>
-      <with-param name="dflt">IN</with-param>
+    <call-template name="left-aligned">
+      <with-param name="width" select="$rrtype-width"/>
+      <with-param name="text">
+	<call-template name="value-or-default">
+	  <with-param name="node" select="../dnsz:class"/>
+	  <with-param name="dflt">IN</with-param>
+	</call-template>
+	<text> SOA</text>
+      </with-param>
     </call-template>
-    <text> SOA    </text>
     <call-template name="open-block"/>
     <call-template name="inline-entry">
       <with-param name="data" select="concat(dnsz:mname, '.')"/>
@@ -430,11 +465,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <with-param name="data" select="dnsz:minimum"/>
     </call-template>
     <call-template name="close-block"/>
+    <apply-templates select="dnsz:RRSIG"/>
   </template>
 
   <template match="dnsz:rrset">
     <apply-templates select="dnsz:description"/>
     <apply-templates select="dnsz:rdata"/>
+    <apply-templates select="dnsz:RRSIG"/>
   </template>
   
   <template match="dnsz:rdata">
@@ -446,13 +483,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	<value-of select="substring($spaces, 1, 30)"/>
       </otherwise>
     </choose>
+    <variable name="typ">
+      <call-template name="data-rrtype">
+	<with-param name="identity" select="../dnsz:type"/>
+      </call-template>
+    </variable>
     <call-template name="left-aligned">
-      <with-param name="width" select="10"/>
-      <with-param
-	  name="text" select="substring-after(../dnsz:type, ':')"/>
+      <with-param name="width" select="$rrtype-width"/>
+      <with-param name="text" select="$typ"/>
     </call-template>
-    <apply-templates select="*[local-name() =
-			     substring-after(../../dnsz:type, ':')]"/>
+    <apply-templates select="*[local-name() = $typ]"/>
     <apply-templates select="dnsz:description">
       <with-param name="offset" select="$SP"/>
     </apply-templates>
@@ -477,10 +517,91 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </call-template>
     <text> </text>
     <call-template name="right-aligned">
-      <with-param name="width" select="7"/>
-      <with-param name="text" select="dnsz:ttl"/>
+      <with-param name="width" select="$ttl-width"/>
+      <with-param name="text">
+	<call-template name="ttl">
+	  <with-param name="rrset" select="."/>
+	</call-template>
+      </with-param>
     </call-template>
     <text> </text>
+  </template>
+
+  <template match="dnsz:RRSIG">
+    <value-of
+	select="substring($spaces, 1, 2 + $owner-width + $ttl-width)"/>
+    <call-template name="left-aligned">
+      <with-param name="width" select="$rrtype-width"/>
+      <with-param name="text">RRSIG</with-param>
+    </call-template>
+    <call-template name="open-block"/>
+    <call-template name="inline-entry">
+      <with-param name="data">
+	<choose>
+	  <when test="local-name(..) = 'SOA'">SOA</when>
+	  <otherwise>
+            <call-template name="data-rrtype">
+              <with-param name="identity" select="../dnsz:type"/>
+            </call-template>
+	  </otherwise>
+	</choose>
+      </with-param>
+    </call-template>
+    <call-template name="inline-entry">
+      <with-param name="data">
+        <call-template name="dnssec-algorithm">
+          <with-param name="enum" select="dnsz:algorithm"/>
+        </call-template>
+      </with-param>
+    </call-template>
+    <call-template name="inline-entry">
+      <with-param name="data">
+	<call-template name="label-count">
+	  <with-param name="dname">
+	    <choose>
+	      <when test="local-name(..) = 'SOA'">
+		<value-of select="../../dnsz:name"/>
+	      </when>
+	      <otherwise>
+		<value-of select="../dnsz:owner"/>
+	      </otherwise>
+	    </choose>
+	  </with-param>
+	</call-template>
+      </with-param>
+    </call-template>
+    <call-template name="inline-entry">
+      <with-param name="data">
+	<call-template name="ttl">
+	  <with-param name="rrset" select=".."/>
+	</call-template>
+      </with-param>
+    </call-template>
+    <call-template name="sep-line-entry">
+      <with-param name="data">
+        <call-template name="utc-date-time">
+          <with-param name="iso" select="dnsz:signature-expiration"/>
+        </call-template>
+      </with-param>
+    </call-template>
+    <call-template name="inline-entry">
+      <with-param name="data">
+        <call-template name="utc-date-time">
+          <with-param name="iso" select="dnsz:signature-inception"/>
+        </call-template>
+      </with-param>
+    </call-template>
+    <call-template name="sep-line-entry">
+      <with-param name="data" select="dnsz:key-tag"/>
+    </call-template>
+    <call-template name="inline-entry">
+      <with-param name="data"
+		      select="concat(ancestor::dnsz:zone/dnsz:name, '.')"/>
+    </call-template>
+    <call-template name="chop-text">
+      <with-param name="data" select="dnsz:signature"/>
+    </call-template>
+    <call-template name="close-block"/>
   </template>
 
   <template match="dnsz:*">
