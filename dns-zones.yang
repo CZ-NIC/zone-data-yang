@@ -368,7 +368,7 @@ module dns-zones {
             description
               "Each (shorthand) case of this choice defines the
                content of a single RR type wrapped in a container
-               whose name is the RR type (in lowercase).
+               whose name is the RR type.
 
                The SOA RR for the zone and RRSIG for the RRSet are
                specified separately.

@@ -503,7 +503,10 @@
 	      <text>
 		<h:p>Each (shorthand) case of this choice defines the
 		content of a single RR type wrapped in a container
-		whose name is the RR type (in lowercase).</h:p>
+		whose name is the RR type.</h:p>
+		<!-- The extra container is needed because different
+		     RR types may contain items with the same name.
+		-->
 		<h:p>The SOA RR for the zone and RRSIG for the RRSet
 		are specified separately.</h:p>
 		<h:p>New RR types defined in other modules shall
