@@ -35,7 +35,7 @@ module dns-zones {
   reference
     "RFC 1035: Domain Names - Implementation and Specification.";
 
-  revision 2015-08-11 {
+  revision 2016-08-03 {
     description
       "Initial revision.";
   }
