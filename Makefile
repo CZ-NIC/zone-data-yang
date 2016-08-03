@@ -1,4 +1,5 @@
 MODULES = iana-dns-parameters dns-zones
+DATE ?= $(shell date +%F)
 EXAMPLE_BASE = example
 EXAMPLE_TYPE = config
 baty = $(EXAMPLE_BASE)-$(EXAMPLE_TYPE)
@@ -7,7 +8,7 @@ PYANG_OPTS =
 
 yams = $(addsuffix .yang, $(MODULES))
 xsldir = .tools/xslt
-yypars =
+yypars = --stringparam date $(DATE)
 expars = --stringparam zone-name "example" --stringparam class IN
 dsrl2xslt = $(PYANG_XSLT_DIR)/dsrl2xslt.xsl
 schemas = $(baty).rng $(baty).sch $(baty).dsrl
