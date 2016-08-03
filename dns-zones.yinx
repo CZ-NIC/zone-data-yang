@@ -518,7 +518,7 @@
 	    <!-- RFC 1035 -->
 
 	    <container name="A">
-	      <must condition="../../type = 'ianadns:A'"/>
+	      <when condition="derived-from-or-self(../../type, 'ianadns:A')"/>
 	      <description>
 		<text>
 		  RDATA content for 'A' Resource Record.
@@ -542,7 +542,7 @@
 	    </container>
 
 	    <container name="CNAME">
-	      <must condition="../../type = 'ianadns:CNAME'"/>
+	      <when condition="derived-from-or-self(../../type, 'ianadns:CNAME')"/>
 	      <description>
 		<text>
 		  RDATA content for 'CNAME' Resource Record.
@@ -566,7 +566,7 @@
 	    </container>
 
 	    <container name="HINFO">
-	      <must condition="../../type = 'ianadns:HINFO'"/>
+	      <when condition="derived-from-or-self(../../type, 'ianadns:HINFO')"/>
 	      <description>
 		<text>
 		  RDATA content for 'HINFO' Resource Record.
@@ -599,7 +599,7 @@
 	    </container>
 
 	    <container name="MB">
-	      <must condition="../../type = 'ianadns:MB'"/>
+	      <when condition="derived-from-or-self(../../type, 'ianadns:MB')"/>
 	      <description>
 		<text>
 		  RDATA content for 'MB' Resource Record.
@@ -623,7 +623,7 @@
 	    </container>
 
 	    <container name="MD">
-	      <must condition="../../type = 'ianadns:MD'"/>
+	      <when condition="derived-from-or-self(../../type, 'ianadns:MD')"/>
 	      <status value="obsolete"/>
 	      <description>
 		<text>
@@ -650,7 +650,7 @@
 	    </container>
 
 	    <container name="MF">
-	      <must condition="../../type = 'ianadns:MF'"/>
+	      <when condition="derived-from-or-self(../../type, 'ianadns:MF')"/>
 	      <status value="obsolete"/>
 	      <description>
 		<text>
@@ -677,7 +677,7 @@
 	    </container>
 
 	    <container name="MG">
-	      <must condition="../../type = 'ianadns:MG'"/>
+	      <when condition="derived-from-or-self(../../type, 'ianadns:MG')"/>
 	      <description>
 		<text>
 		  RDATA content for 'MG' Resource Record.
@@ -702,7 +702,7 @@
 	    </container>
 
 	    <container name="MINFO">
-	      <must condition="../../type = 'ianadns:MINFO'"/>
+	      <when condition="derived-from-or-self(../../type, 'ianadns:MINFO')"/>
 	      <description>
 		<text>
 		  RDATA content for 'MINFO' Resource Record.
@@ -738,7 +738,7 @@
 	    </container>
 
 	    <container name="MR">
-	      <must condition="../../type = 'ianadns:MR'"/>
+	      <when condition="derived-from-or-self(../../type, 'ianadns:MR')"/>
 	      <description>
 		<text>
 		  RDATA content for 'MR' Resource Record.
@@ -763,7 +763,7 @@
 	    </container>
 
 	    <container name="MX">
-	      <must condition="../../type = 'ianadns:MX'"/>
+	      <when condition="derived-from-or-self(../../type, 'ianadns:MX')"/>
 	      <description>
 		<text>
 		  RDATA content for 'MX' Resource Record.
@@ -798,7 +798,7 @@
 	    </container>
 
 	    <container name="NS">
-	      <must condition="../../type = 'ianadns:NS'"/>
+	      <when condition="derived-from-or-self(../../type, 'ianadns:NS')"/>
 	      <description>
 		<text>
 		  RDATA content for 'NS' Resource Record.
@@ -823,7 +823,7 @@
 	    </container>
 
 	    <container name="NULL">
-	      <must condition="../../type = 'ianadns:NULL'"/>
+	      <when condition="derived-from-or-self(../../type, 'ianadns:NULL')"/>
 	      <description>
 		<text>
 		  RDATA content for 'NULL' Resource Record.
@@ -849,7 +849,7 @@
 	    </container>
 
 	    <container name="PTR">
-	      <must condition="../../type = 'ianadns:PTR'"/>
+	      <when condition="derived-from-or-self(../../type, 'ianadns:PTR')"/>
 	      <description>
 		<text>
 		  RDATA content for 'PTR' Resource Record.
@@ -874,7 +874,7 @@
 	    </container>
 
 	    <container name="TXT">
-	      <must condition="../../type = 'ianadns:TXT'"/>
+	      <when condition="derived-from-or-self(../../type, 'ianadns:TXT')"/>
 	      <description>
 		<text>
 		  RDATA content for 'TXT' Resource Record.
@@ -899,7 +899,7 @@
 	    </container>
 
 	    <container name="WKS">
-	      <must condition="../../type = 'ianadns:WKS'"/>
+	      <when condition="derived-from-or-self(../../type, 'ianadns:WKS')"/>
 	      <description>
 		<text>
 		  RDATA content for 'WKS' Resource Record.
@@ -944,7 +944,7 @@
 	    <!-- RFC 3596 -->
 
 	    <container name="AAAA">
-	      <must condition="../../type = 'ianadns:AAAA'"/>
+	      <when condition="derived-from-or-self(../../type, 'ianadns:AAAA')"/>
 	      <description>
 		<text>
 		  RDATA content for 'AAAA' Resource Record.
@@ -969,7 +969,7 @@
 	    <!-- RFC 4034 -->
 
 	    <container name="DNSKEY">
-	      <must condition="../../type = 'ianadns:DNSKEY'"/>
+	      <when condition="derived-from-or-self(../../type, 'ianadns:DNSKEY')"/>
 	      <description>
 		<text>
 		  RDATA content for 'DNSKEY' Resource Record.
@@ -1051,7 +1051,7 @@
 	    </container>
 
 	    <container name="NSEC">
-	      <must condition="../../type = 'ianadns:NSEC'"/>
+	      <when condition="derived-from-or-self(../../type, 'ianadns:NSEC')"/>
 	      <description>
 		<text>
 		  RDATA content for 'NSEC' Resource Record.
@@ -1079,7 +1079,7 @@
 	    </container>
 
 	    <container name="DS">
-	      <must condition="../../type = 'ianadns:DS'"/>
+	      <when condition="derived-from-or-self(../../type, 'ianadns:DS')"/>
 	      <description>
 		<text>
 		  RDATA content for 'DS' Resource Record.
@@ -1129,7 +1129,7 @@
 	    <!-- RFC 5155 -->
 
 	    <container name="NSEC3">
-	      <must condition="../../type = 'ianadns:NSEC3'"/>
+	      <when condition="derived-from-or-self(../../type, 'ianadns:NSEC3')"/>
 	      <description>
 		<text>
 		  RDATA content for 'NSEC3' Resource Record.
@@ -1168,7 +1168,7 @@
 	    </container>
 
 	    <container name="NSEC3PARAM">
-	      <must condition="../../type = 'ianadns:NSEC3PARAM'"/>
+	      <when condition="derived-from-or-self(../../type, 'ianadns:NSEC3PARAM')"/>
 	      <description>
 		<text>
 		  RDATA content for 'NSEC3PARAM' Resource Record.
@@ -1186,7 +1186,7 @@
 	    <!-- RFC 6698 -->
 
 	    <container name="TLSA">
-	      <must condition="../../type = 'ianadns:TLSA'"/>
+	      <when condition="derived-from-or-self(../../type, 'ianadns:TLSA')"/>
 	      <description>
 		<text>
 		  RDATA content for 'TLSA' Resource Record.
@@ -1256,7 +1256,7 @@
 	    <!-- RFC 4025 -->
 
 	    <container name="IPSECKEY">
-	      <must condition="../../type = 'ianadns:IPSECKEY'"/>
+	      <when condition="derived-from-or-self(../../type, 'ianadns:IPSECKEY')"/>
 	      <description>
 		<text>
 		  RDATA content for 'IPSECKEY' Resource Record.
@@ -1346,7 +1346,7 @@
 	    <!-- RFC 2672 -->
 
 	    <container name="DNAME">
-	      <must condition="../../type = 'ianadns:DNAME'"/>
+	      <when condition="derived-from-or-self(../../type, 'ianadns:DNAME')"/>
 	      <description>
 		<text>
 		  RDATA content for 'DNAME' Resource Record.
@@ -1372,7 +1372,7 @@
 	    <!-- RFC 4255 -->
 
 	    <container name="SSHFP">
-	      <must condition="../../type = 'ianadns:SSHFP'"/>
+	      <when condition="derived-from-or-self(../../type, 'ianadns:SSHFP')"/>
 	      <description>
 		<text>
 		  RDATA content for 'SSHFP' Resource Record.
