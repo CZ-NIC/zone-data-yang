@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config xmlns="urn:ietf:params:xml:ns:netconf:base:1.0"
 	xmlns:ianadns="http://www.nic.cz/ns/yang/iana-dns-parameters">
-  <zones xmlns="http://www.nic.cz/ns/yang/dns-zones">
+  <zone-data xmlns="http://www.nic.cz/ns/yang/dns-zones">
     <zone>
       <name>example</name>
       <class>IN</class>
@@ -522,5 +522,5 @@
 	</rdata>
       </rrset>
     </zone>
-  </zones>
+  </zone-data>
 </config>

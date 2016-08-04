@@ -347,10 +347,10 @@
 
   <!-- Configuration data -->
 
-  <container name="zones">
+  <container name="zone-data">
     <description>
       <text>
-	Container for DNS zones.
+	Container for DNS zone data.
       </text>
     </description>
     <list name="zone">

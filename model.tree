@@ -1,5 +1,5 @@
 module: dns-zones
-   +--rw zones
+   +--rw zone-data
       +--rw zone* [name class]
          +--rw name           domain-name
          +--rw class          ianadns:class
