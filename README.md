@@ -25,7 +25,7 @@ needed.
 - **master**: generate master file from example configuration;
 
 - **rnc**: generate RELAX NG schema in compact syntax (in fact, all
-  [DSDL](http://dsdl.org) schemas are generated);
+  [DSDL](https://en.wikipedia.org/wiki/Document_Schema_Definition_Languages) schemas are generated);
 
 - **validate**: validate example configuration against DSDL schemas;
 
