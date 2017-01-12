@@ -1,140 +1,385 @@
-module: dns-zones
-    +--rw zone-data
-       +--rw zone* [name class]
-          +--rw name           domain-name
-          +--rw class          ianadns:class
-          +--rw description?   string
-          +--rw default-ttl    time-interval
-          +--rw SOA
-          |  +--rw ttl?       time-interval
-          |  +--rw mname      domain-name
-          |  +--rw rname      domain-name
-          |  +--rw serial     yang:counter32
-          |  +--rw refresh    time-interval
-          |  +--rw retry      time-interval
-          |  +--rw expire     time-interval
-          |  +--rw minimum    time-interval
-          |  +--rw RRSIG!
-          |     +--rw algorithm               ianadns:dnssec-algorithm
-          |     +--rw signature-expiration    utc-date-time
-          |     +--rw signature-inception     utc-date-time
-          |     +--rw key-tag                 uint16
-          |     +--rw signature               binary
-          +--rw rrset* [owner type]
-             +--rw owner          domain-name
-             +--rw type           identityref
-             +--rw ttl?           time-interval
-             +--rw description?   string
-             +--rw RRSIG!
-             |  +--rw algorithm               ianadns:dnssec-algorithm
-             |  +--rw signature-expiration    utc-date-time
-             |  +--rw signature-inception     utc-date-time
-             |  +--rw key-tag                 uint16
-             |  +--rw signature               binary
-             +--rw rdata* [id]
-                +--rw id             string
-                +--rw description?   string
-                +--rw (rdata-content)
-                   +--:(A)
-                   |  +--rw A
-                   |     +--rw address    inet:ipv4-address-no-zone
-                   +--:(CNAME)
-                   |  +--rw CNAME
-                   |     +--rw cname    domain-name
-                   +--:(HINFO)
-                   |  +--rw HINFO
-                   |     +--rw cpu    ascii-string
-                   |     +--rw os     ascii-string
-                   +--:(MB)
-                   |  +--rw MB
-                   |     +--rw madname    domain-name
-                   +--:(MD)
-                   |  o--rw MD
-                   |     +--rw madname    domain-name
-                   +--:(MF)
-                   |  o--rw MF
-                   |     +--rw madname    domain-name
-                   +--:(MG)
-                   |  +--rw MG
-                   |     +--rw mgmname    domain-name
-                   +--:(MINFO)
-                   |  +--rw MINFO
-                   |     +--rw rmailbx    domain-name
-                   |     +--rw emailbx    domain-name
-                   +--:(MR)
-                   |  +--rw MR
-                   |     +--rw newname    domain-name
-                   +--:(MX)
-                   |  +--rw MX
-                   |     +--rw preference    uint16
-                   |     +--rw exchange      domain-name
-                   +--:(NS)
-                   |  +--rw NS
-                   |     +--rw nsdname    domain-name
-                   +--:(NULL)
-                   |  +--rw NULL
-                   |     +--rw data    binary
-                   +--:(PTR)
-                   |  +--rw PTR
-                   |     +--rw ptrdname    domain-name
-                   +--:(TXT)
-                   |  +--rw TXT
-                   |     +--rw txt-data    ascii-string
-                   +--:(WKS)
-                   |  +--rw WKS
-                   |     +--rw address     inet:ipv4-address-no-zone
-                   |     +--rw protocol    uint8
-                   |     +--rw bitmap      binary
-                   +--:(AAAA)
-                   |  +--rw AAAA
-                   |     +--rw address    inet:ipv6-address-no-zone
-                   +--:(DNSKEY)
-                   |  +--rw DNSKEY
-                   |     +--rw flags?        ianadns:dnskey-flags
-                   |     +--rw protocol?     uint8
-                   |     +--rw algorithm     ianadns:dnssec-algorithm
-                   |     +--rw public-key    binary
-                   +--:(NSEC)
-                   |  +--rw NSEC
-                   |     +--rw next-domain-name    domain-name
-                   |     +--rw rrset-type*         identityref
-                   +--:(DS)
-                   |  +--rw DS
-                   |     +--rw key-tag        uint16
-                   |     +--rw algorithm      ianadns:dnssec-algorithm
-                   |     +--rw digest-type    ianadns:digest-algorithm
-                   |     +--rw digest         hex-digits
-                   +--:(NSEC3)
-                   |  +--rw NSEC3
-                   |     +--rw hash-algorithm?           ianadns:dnssec-nsec3-hash-algorithm
-                   |     +--rw iterations                uint16
-                   |     +--rw salt                      hex-digits
-                   |     +--rw flags                     ianadns:dnssec-nsec3-flags
-                   |     +--rw next-hashed-owner-name    base32hex
-                   |     +--rw rrset-type*               identityref
-                   +--:(NSEC3PARAM)
-                   |  +--rw NSEC3PARAM
-                   |     +--rw hash-algorithm?   ianadns:dnssec-nsec3-hash-algorithm
-                   |     +--rw iterations        uint16
-                   |     +--rw salt              hex-digits
-                   +--:(TLSA)
-                   |  +--rw TLSA
-                   |     +--rw certificate-usage               ianadns:tlsa-certificate-usages
-                   |     +--rw selector                        ianadns:tlsa-selectors
-                   |     +--rw matching-type                   ianadns:tlsa-matching-type
-                   |     +--rw certificate-association-data    hex-digits
-                   +--:(IPSECKEY)
-                   |  +--rw IPSECKEY
-                   |     +--rw precedence      uint8
-                   |     +--rw gateway-type    ianadns:ipseckey-gateway-type
-                   |     +--rw algorithm       ianadns:ipseckey-algorithm-type
-                   |     +--rw gateway         inet:host
-                   |     +--rw public-key      binary
-                   +--:(DNAME)
-                   |  +--rw DNAME
-                   |     +--rw target    domain-name
-                   +--:(SSHFP)
-                      +--rw SSHFP
-                         +--rw algorithm           ianadns:sshfp-algorithm-type
-                         +--rw fingerprint-type    ianadns:sshfp-fingerprint-type
-                         +--rw fingerprint         hex-digits
+module: dns-zone-rpcs
+
+  rpcs:
+    +---x begin-transaction
+    +---x commit-transaction
+    +---x abort-transaction
+    +---x zone-set
+    |  +---w input
+    |     +---w zone          inet:domain-name
+    |     +---w owner         domain-name
+    |     +---w type?         identityref
+    |     +---w ttl?          time-interval
+    |     +---w (rdata-content)
+    |        +--:(SOA)
+    |        |  +---w SOA
+    |        |     +---w mname      domain-name
+    |        |     +---w rname      domain-name
+    |        |     +---w serial     yang:counter32
+    |        |     +---w refresh    time-interval
+    |        |     +---w retry      time-interval
+    |        |     +---w expire     time-interval
+    |        |     +---w minimum    time-interval
+    |        +--:(A)
+    |        |  +---w A
+    |        |     +---w address    inet:ipv4-address-no-zone
+    |        +--:(CNAME)
+    |        |  +---w CNAME
+    |        |     +---w cname    domain-name
+    |        +--:(HINFO)
+    |        |  +---w HINFO
+    |        |     +---w cpu    ascii-string
+    |        |     +---w os     ascii-string
+    |        +--:(MB)
+    |        |  +---w MB
+    |        |     +---w madname    domain-name
+    |        +--:(MD)
+    |        |  o---w MD
+    |        |     +---w madname    domain-name
+    |        +--:(MF)
+    |        |  o---w MF
+    |        |     +---w madname    domain-name
+    |        +--:(MG)
+    |        |  +---w MG
+    |        |     +---w mgmname    domain-name
+    |        +--:(MINFO)
+    |        |  +---w MINFO
+    |        |     +---w rmailbx    domain-name
+    |        |     +---w emailbx    domain-name
+    |        +--:(MR)
+    |        |  +---w MR
+    |        |     +---w newname    domain-name
+    |        +--:(MX)
+    |        |  +---w MX
+    |        |     +---w preference    uint16
+    |        |     +---w exchange      domain-name
+    |        +--:(NS)
+    |        |  +---w NS
+    |        |     +---w nsdname    domain-name
+    |        +--:(NULL)
+    |        |  +---w NULL
+    |        |     +---w data    binary
+    |        +--:(PTR)
+    |        |  +---w PTR
+    |        |     +---w ptrdname    domain-name
+    |        +--:(TXT)
+    |        |  +---w TXT
+    |        |     +---w txt-data    ascii-string
+    |        +--:(WKS)
+    |        |  +---w WKS
+    |        |     +---w address     inet:ipv4-address-no-zone
+    |        |     +---w protocol    uint8
+    |        |     +---w bitmap      binary
+    |        +--:(AAAA)
+    |        |  +---w AAAA
+    |        |     +---w address    inet:ipv6-address-no-zone
+    |        +--:(DNSKEY)
+    |        |  +---w DNSKEY
+    |        |     +---w flags?        ianadns:dnskey-flags
+    |        |     +---w protocol?     uint8
+    |        |     +---w algorithm     ianadns:dnssec-algorithm
+    |        |     +---w public-key    binary
+    |        +--:(NSEC)
+    |        |  +---w NSEC
+    |        |     +---w next-domain-name    domain-name
+    |        |     +---w rrset-type*         identityref
+    |        +--:(DS)
+    |        |  +---w DS
+    |        |     +---w key-tag        uint16
+    |        |     +---w algorithm      ianadns:dnssec-algorithm
+    |        |     +---w digest-type    ianadns:digest-algorithm
+    |        |     +---w digest         hex-digits
+    |        +--:(NSEC3)
+    |        |  +---w NSEC3
+    |        |     +---w hash-algorithm?           ianadns:dnssec-nsec3-hash-algorithm
+    |        |     +---w iterations                uint16
+    |        |     +---w salt                      hex-digits
+    |        |     +---w flags                     ianadns:dnssec-nsec3-flags
+    |        |     +---w next-hashed-owner-name    base32hex
+    |        |     +---w rrset-type*               identityref
+    |        +--:(NSEC3PARAM)
+    |        |  +---w NSEC3PARAM
+    |        |     +---w hash-algorithm?   ianadns:dnssec-nsec3-hash-algorithm
+    |        |     +---w iterations        uint16
+    |        |     +---w salt              hex-digits
+    |        +--:(TLSA)
+    |        |  +---w TLSA
+    |        |     +---w certificate-usage               ianadns:tlsa-certificate-usages
+    |        |     +---w selector                        ianadns:tlsa-selectors
+    |        |     +---w matching-type                   ianadns:tlsa-matching-type
+    |        |     +---w certificate-association-data    hex-digits
+    |        +--:(IPSECKEY)
+    |        |  +---w IPSECKEY
+    |        |     +---w precedence      uint8
+    |        |     +---w gateway-type    ianadns:ipseckey-gateway-type
+    |        |     +---w algorithm       ianadns:ipseckey-algorithm-type
+    |        |     +---w gateway         inet:host
+    |        |     +---w public-key      binary
+    |        +--:(DNAME)
+    |        |  +---w DNAME
+    |        |     +---w target    domain-name
+    |        +--:(SSHFP)
+    |        |  +---w SSHFP
+    |        |     +---w algorithm           ianadns:sshfp-algorithm-type
+    |        |     +---w fingerprint-type    ianadns:sshfp-fingerprint-type
+    |        |     +---w fingerprint         hex-digits
+    |        +--:(RRSIG)
+    |           +---w RRSIG
+    |              +---w algorithm               ianadns:dnssec-algorithm
+    |              +---w signature-expiration    utc-date-time
+    |              +---w signature-inception     utc-date-time
+    |              +---w key-tag                 uint16
+    |              +---w signature               binary
+    +---x zone-unset
+       +---w input
+          +---w zone          inet:domain-name
+          +---w owner         domain-name
+          +---w type?         identityref
+          +---w (rdata-content)
+             +--:(SOA)
+             |  +---w SOA
+             |     +---w mname      domain-name
+             |     +---w rname      domain-name
+             |     +---w serial     yang:counter32
+             |     +---w refresh    time-interval
+             |     +---w retry      time-interval
+             |     +---w expire     time-interval
+             |     +---w minimum    time-interval
+             +--:(A)
+             |  +---w A
+             |     +---w address    inet:ipv4-address-no-zone
+             +--:(CNAME)
+             |  +---w CNAME
+             |     +---w cname    domain-name
+             +--:(HINFO)
+             |  +---w HINFO
+             |     +---w cpu    ascii-string
+             |     +---w os     ascii-string
+             +--:(MB)
+             |  +---w MB
+             |     +---w madname    domain-name
+             +--:(MD)
+             |  o---w MD
+             |     +---w madname    domain-name
+             +--:(MF)
+             |  o---w MF
+             |     +---w madname    domain-name
+             +--:(MG)
+             |  +---w MG
+             |     +---w mgmname    domain-name
+             +--:(MINFO)
+             |  +---w MINFO
+             |     +---w rmailbx    domain-name
+             |     +---w emailbx    domain-name
+             +--:(MR)
+             |  +---w MR
+             |     +---w newname    domain-name
+             +--:(MX)
+             |  +---w MX
+             |     +---w preference    uint16
+             |     +---w exchange      domain-name
+             +--:(NS)
+             |  +---w NS
+             |     +---w nsdname    domain-name
+             +--:(NULL)
+             |  +---w NULL
+             |     +---w data    binary
+             +--:(PTR)
+             |  +---w PTR
+             |     +---w ptrdname    domain-name
+             +--:(TXT)
+             |  +---w TXT
+             |     +---w txt-data    ascii-string
+             +--:(WKS)
+             |  +---w WKS
+             |     +---w address     inet:ipv4-address-no-zone
+             |     +---w protocol    uint8
+             |     +---w bitmap      binary
+             +--:(AAAA)
+             |  +---w AAAA
+             |     +---w address    inet:ipv6-address-no-zone
+             +--:(DNSKEY)
+             |  +---w DNSKEY
+             |     +---w flags?        ianadns:dnskey-flags
+             |     +---w protocol?     uint8
+             |     +---w algorithm     ianadns:dnssec-algorithm
+             |     +---w public-key    binary
+             +--:(NSEC)
+             |  +---w NSEC
+             |     +---w next-domain-name    domain-name
+             |     +---w rrset-type*         identityref
+             +--:(DS)
+             |  +---w DS
+             |     +---w key-tag        uint16
+             |     +---w algorithm      ianadns:dnssec-algorithm
+             |     +---w digest-type    ianadns:digest-algorithm
+             |     +---w digest         hex-digits
+             +--:(NSEC3)
+             |  +---w NSEC3
+             |     +---w hash-algorithm?           ianadns:dnssec-nsec3-hash-algorithm
+             |     +---w iterations                uint16
+             |     +---w salt                      hex-digits
+             |     +---w flags                     ianadns:dnssec-nsec3-flags
+             |     +---w next-hashed-owner-name    base32hex
+             |     +---w rrset-type*               identityref
+             +--:(NSEC3PARAM)
+             |  +---w NSEC3PARAM
+             |     +---w hash-algorithm?   ianadns:dnssec-nsec3-hash-algorithm
+             |     +---w iterations        uint16
+             |     +---w salt              hex-digits
+             +--:(TLSA)
+             |  +---w TLSA
+             |     +---w certificate-usage               ianadns:tlsa-certificate-usages
+             |     +---w selector                        ianadns:tlsa-selectors
+             |     +---w matching-type                   ianadns:tlsa-matching-type
+             |     +---w certificate-association-data    hex-digits
+             +--:(IPSECKEY)
+             |  +---w IPSECKEY
+             |     +---w precedence      uint8
+             |     +---w gateway-type    ianadns:ipseckey-gateway-type
+             |     +---w algorithm       ianadns:ipseckey-algorithm-type
+             |     +---w gateway         inet:host
+             |     +---w public-key      binary
+             +--:(DNAME)
+             |  +---w DNAME
+             |     +---w target    domain-name
+             +--:(SSHFP)
+             |  +---w SSHFP
+             |     +---w algorithm           ianadns:sshfp-algorithm-type
+             |     +---w fingerprint-type    ianadns:sshfp-fingerprint-type
+             |     +---w fingerprint         hex-digits
+             +--:(RRSIG)
+                +---w RRSIG
+                   +---w algorithm               ianadns:dnssec-algorithm
+                   +---w signature-expiration    utc-date-time
+                   +---w signature-inception     utc-date-time
+                   +---w key-tag                 uint16
+                   +---w signature               binary
+module: dns-zones-state
+    +--ro zone* [name class]
+       +--ro name     inet:domain-name
+       +--ro class    ianadns:class
+       +--ro rrset* [owner type]
+          +--ro owner    domain-name
+          +--ro type     identityref
+          +--ro ttl?     time-interval
+          +--ro RRSIG!
+          |  +--ro algorithm               ianadns:dnssec-algorithm
+          |  +--ro signature-expiration    utc-date-time
+          |  +--ro signature-inception     utc-date-time
+          |  +--ro key-tag                 uint16
+          |  +--ro signature               binary
+          +--ro rdata*
+             +--ro (rdata-content)
+                +--:(SOA)
+                |  +--ro SOA
+                |     +--ro mname      domain-name
+                |     +--ro rname      domain-name
+                |     +--ro serial     yang:counter32
+                |     +--ro refresh    time-interval
+                |     +--ro retry      time-interval
+                |     +--ro expire     time-interval
+                |     +--ro minimum    time-interval
+                +--:(A)
+                |  +--ro A
+                |     +--ro address    inet:ipv4-address-no-zone
+                +--:(CNAME)
+                |  +--ro CNAME
+                |     +--ro cname    domain-name
+                +--:(HINFO)
+                |  +--ro HINFO
+                |     +--ro cpu    ascii-string
+                |     +--ro os     ascii-string
+                +--:(MB)
+                |  +--ro MB
+                |     +--ro madname    domain-name
+                +--:(MD)
+                |  o--ro MD
+                |     +--ro madname    domain-name
+                +--:(MF)
+                |  o--ro MF
+                |     +--ro madname    domain-name
+                +--:(MG)
+                |  +--ro MG
+                |     +--ro mgmname    domain-name
+                +--:(MINFO)
+                |  +--ro MINFO
+                |     +--ro rmailbx    domain-name
+                |     +--ro emailbx    domain-name
+                +--:(MR)
+                |  +--ro MR
+                |     +--ro newname    domain-name
+                +--:(MX)
+                |  +--ro MX
+                |     +--ro preference    uint16
+                |     +--ro exchange      domain-name
+                +--:(NS)
+                |  +--ro NS
+                |     +--ro nsdname    domain-name
+                +--:(NULL)
+                |  +--ro NULL
+                |     +--ro data    binary
+                +--:(PTR)
+                |  +--ro PTR
+                |     +--ro ptrdname    domain-name
+                +--:(TXT)
+                |  +--ro TXT
+                |     +--ro txt-data    ascii-string
+                +--:(WKS)
+                |  +--ro WKS
+                |     +--ro address     inet:ipv4-address-no-zone
+                |     +--ro protocol    uint8
+                |     +--ro bitmap      binary
+                +--:(AAAA)
+                |  +--ro AAAA
+                |     +--ro address    inet:ipv6-address-no-zone
+                +--:(DNSKEY)
+                |  +--ro DNSKEY
+                |     +--ro flags?        ianadns:dnskey-flags
+                |     +--ro protocol?     uint8
+                |     +--ro algorithm     ianadns:dnssec-algorithm
+                |     +--ro public-key    binary
+                +--:(NSEC)
+                |  +--ro NSEC
+                |     +--ro next-domain-name    domain-name
+                |     +--ro rrset-type*         identityref
+                +--:(DS)
+                |  +--ro DS
+                |     +--ro key-tag        uint16
+                |     +--ro algorithm      ianadns:dnssec-algorithm
+                |     +--ro digest-type    ianadns:digest-algorithm
+                |     +--ro digest         hex-digits
+                +--:(NSEC3)
+                |  +--ro NSEC3
+                |     +--ro hash-algorithm?           ianadns:dnssec-nsec3-hash-algorithm
+                |     +--ro iterations                uint16
+                |     +--ro salt                      hex-digits
+                |     +--ro flags                     ianadns:dnssec-nsec3-flags
+                |     +--ro next-hashed-owner-name    base32hex
+                |     +--ro rrset-type*               identityref
+                +--:(NSEC3PARAM)
+                |  +--ro NSEC3PARAM
+                |     +--ro hash-algorithm?   ianadns:dnssec-nsec3-hash-algorithm
+                |     +--ro iterations        uint16
+                |     +--ro salt              hex-digits
+                +--:(TLSA)
+                |  +--ro TLSA
+                |     +--ro certificate-usage               ianadns:tlsa-certificate-usages
+                |     +--ro selector                        ianadns:tlsa-selectors
+                |     +--ro matching-type                   ianadns:tlsa-matching-type
+                |     +--ro certificate-association-data    hex-digits
+                +--:(IPSECKEY)
+                |  +--ro IPSECKEY
+                |     +--ro precedence      uint8
+                |     +--ro gateway-type    ianadns:ipseckey-gateway-type
+                |     +--ro algorithm       ianadns:ipseckey-algorithm-type
+                |     +--ro gateway         inet:host
+                |     +--ro public-key      binary
+                +--:(DNAME)
+                |  +--ro DNAME
+                |     +--ro target    domain-name
+                +--:(SSHFP)
+                   +--ro SSHFP
+                      +--ro algorithm           ianadns:sshfp-algorithm-type
+                      +--ro fingerprint-type    ianadns:sshfp-fingerprint-type
+                      +--ro fingerprint         hex-digits

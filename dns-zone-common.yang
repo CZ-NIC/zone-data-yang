@@ -218,17 +218,23 @@ module dns-zone-common {
     }
   }
 
-  grouping common-rr-data {
+  grouping owner-field {
     description
-      "This grouping defines fields common to all RR types.";
+      "This grouping defines the RR owner field.";
     leaf owner {
       type domain-name;
+      mandatory "true";
       description
         "Owner of the RR.
 
          It is an absolute domain name without the trailing
          period.";
     }
+  }
+
+  grouping type-field {
+    description
+      "This grouping defines the RR type field.";
     leaf type {
       type identityref {
         base ianadns:data-rrtype;
@@ -236,6 +242,13 @@ module dns-zone-common {
       description
         "RR type";
     }
+  }
+
+  grouping common-rr-data {
+    description
+      "This grouping defines fields common to all RR types.";
+    uses owner-field;
+    uses type-field;
     leaf ttl {
       type time-interval;
       description
@@ -243,10 +256,10 @@ module dns-zone-common {
     }
   }
 
-  grouping resource-record {
+  grouping rdata-fields {
     description
-      "This grouping defines the content of DNS resource records.";
-    uses common-rr-data;
+      "This grouping defines RDATA fields for all types of DNS
+       resource records.";
     choice rdata-content {
       mandatory "true";
       description
@@ -261,7 +274,6 @@ module dns-zone-common {
          'rdata-content' choice.";
       /* RFC 1035 */
       container SOA {
-        when "derived-from-or-self(../type, 'ianadns:SOA')";
         description
           "RDATA content for 'SOA' Resource Record.";
         leaf mname {
@@ -313,7 +325,6 @@ module dns-zone-common {
         }
       }
       container A {
-        when "derived-from-or-self(../type, 'ianadns:A')";
         description
           "RDATA content for 'A' Resource Record.";
         reference
@@ -327,7 +338,6 @@ module dns-zone-common {
         }
       }
       container CNAME {
-        when "derived-from-or-self(../type, 'ianadns:CNAME')";
         description
           "RDATA content for 'CNAME' Resource Record.";
         reference
@@ -341,7 +351,6 @@ module dns-zone-common {
         }
       }
       container HINFO {
-        when "derived-from-or-self(../type, 'ianadns:HINFO')";
         description
           "RDATA content for 'HINFO' Resource Record.";
         reference
@@ -361,7 +370,6 @@ module dns-zone-common {
         }
       }
       container MB {
-        when "derived-from-or-self(../type, 'ianadns:MB')";
         description
           "RDATA content for 'MB' Resource Record.";
         reference
@@ -375,7 +383,6 @@ module dns-zone-common {
         }
       }
       container MD {
-        when "derived-from-or-self(../type, 'ianadns:MD')";
         status "obsolete";
         description
           "RDATA content for 'MD' Resource Record (obsolete, use
@@ -392,7 +399,6 @@ module dns-zone-common {
         }
       }
       container MF {
-        when "derived-from-or-self(../type, 'ianadns:MF')";
         status "obsolete";
         description
           "RDATA content for 'MF' Resource Record (obsolete, use
@@ -409,7 +415,6 @@ module dns-zone-common {
         }
       }
       container MG {
-        when "derived-from-or-self(../type, 'ianadns:MG')";
         description
           "RDATA content for 'MG' Resource Record.";
         reference
@@ -424,7 +429,6 @@ module dns-zone-common {
         }
       }
       container MINFO {
-        when "derived-from-or-self(../type, 'ianadns:MINFO')";
         description
           "RDATA content for 'MINFO' Resource Record.";
         reference
@@ -447,7 +451,6 @@ module dns-zone-common {
         }
       }
       container MR {
-        when "derived-from-or-self(../type, 'ianadns:MR')";
         description
           "RDATA content for 'MR' Resource Record.";
         reference
@@ -462,7 +465,6 @@ module dns-zone-common {
         }
       }
       container MX {
-        when "derived-from-or-self(../type, 'ianadns:MX')";
         description
           "RDATA content for 'MX' Resource Record.";
         reference
@@ -484,7 +486,6 @@ module dns-zone-common {
         }
       }
       container NS {
-        when "derived-from-or-self(../type, 'ianadns:NS')";
         description
           "RDATA content for 'NS' Resource Record.";
         reference
@@ -499,7 +500,6 @@ module dns-zone-common {
         }
       }
       container NULL {
-        when "derived-from-or-self(../type, 'ianadns:NULL')";
         description
           "RDATA content for 'NULL' Resource Record.";
         reference
@@ -515,7 +515,6 @@ module dns-zone-common {
         }
       }
       container PTR {
-        when "derived-from-or-self(../type, 'ianadns:PTR')";
         description
           "RDATA content for 'PTR' Resource Record.";
         reference
@@ -529,7 +528,6 @@ module dns-zone-common {
         }
       }
       container TXT {
-        when "derived-from-or-self(../type, 'ianadns:TXT')";
         description
           "RDATA content for 'TXT' Resource Record.";
         reference
@@ -544,7 +542,6 @@ module dns-zone-common {
         }
       }
       container WKS {
-        when "derived-from-or-self(../type, 'ianadns:WKS')";
         description
           "RDATA content for 'WKS' Resource Record.";
         reference
@@ -572,7 +569,6 @@ module dns-zone-common {
       }
       /* RFC 3596 */
       container AAAA {
-        when "derived-from-or-self(../type, 'ianadns:AAAA')";
         description
           "RDATA content for 'AAAA' Resource Record.";
         reference
@@ -584,8 +580,8 @@ module dns-zone-common {
             "IPv6 address.";
         }
       }
+      /* RFC 4034 */
       container DNSKEY {
-        when "derived-from-or-self(../type, 'ianadns:DNSKEY')";
         description
           "RDATA content for 'DNSKEY' Resource Record.";
         reference
@@ -637,7 +633,6 @@ module dns-zone-common {
         }
       }
       container NSEC {
-        when "derived-from-or-self(../type, 'ianadns:NSEC')";
         description
           "RDATA content for 'NSEC' Resource Record.";
         reference
@@ -654,7 +649,6 @@ module dns-zone-common {
         uses rrset-types;
       }
       container DS {
-        when "derived-from-or-self(../type, 'ianadns:DS')";
         description
           "RDATA content for 'DS' Resource Record.";
         reference
@@ -687,7 +681,6 @@ module dns-zone-common {
       }
       /* RFC 5155 */
       container NSEC3 {
-        when "derived-from-or-self(../type, 'ianadns:NSEC3')";
         description
           "RDATA content for 'NSEC3' Resource Record.";
         reference
@@ -713,7 +706,6 @@ module dns-zone-common {
         uses rrset-types;
       }
       container NSEC3PARAM {
-        when "derived-from-or-self(../type, 'ianadns:NSEC3PARAM')";
         description
           "RDATA content for 'NSEC3PARAM' Resource Record.";
         reference
@@ -723,7 +715,6 @@ module dns-zone-common {
       }
       /* RFC 6698 */
       container TLSA {
-        when "derived-from-or-self(../type, 'ianadns:TLSA')";
         description
           "RDATA content for 'TLSA' Resource Record.";
         reference
@@ -772,7 +763,6 @@ module dns-zone-common {
       }
       /* RFC 4025 */
       container IPSECKEY {
-        when "derived-from-or-self(../type, 'ianadns:IPSECKEY')";
         description
           "RDATA content for 'IPSECKEY' Resource Record.";
         reference
@@ -835,7 +825,6 @@ module dns-zone-common {
       }
       /* RFC 2672 */
       container DNAME {
-        when "derived-from-or-self(../type, 'ianadns:DNAME')";
         description
           "RDATA content for 'DNAME' Resource Record.";
         reference
@@ -850,7 +839,6 @@ module dns-zone-common {
       }
       /* RFC 4255 */
       container SSHFP {
-        when "derived-from-or-self(../type, 'ianadns:SSHFP')";
         description
           "RDATA content for 'SSHFP' Resource Record.";
         reference
@@ -875,11 +863,6 @@ module dns-zone-common {
           description
             "Fingerprint of the public key.";
         }
-      }
-      /* RFC 4034 */
-      case RRSIG {
-        when "derived-from-or-self(type, 'ianadns:RRSIG')";
-        uses rrsig-data;
       }
     }
   }

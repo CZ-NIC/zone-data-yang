@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<module name="dns-zone-rpcs"
+        xmlns="urn:ietf:params:xml:ns:yang:yin:1"
+        xmlns:dnszr="http://www.nic.cz/ns/yang/dns-zone-rpcs"
+        xmlns:h="http://www.w3.org/1999/xhtml">
+  <namespace uri="http://www.nic.cz/ns/yang/dns-zone-rpcs"/>
+  <prefix value="dnszr"/>
+  <yang-version value="1.1"/>
+
+  <!-- Imports -->
+
+  <import module="ietf-inet-types">
+    <prefix value="inet"/>
+  </import>
+  <import module="iana-dns-parameters">
+    <prefix value="ianadns"/>
+  </import>
+  <import module="dns-zone-common">
+    <prefix value="dnszc"/>
+  </import>
+
+  <!-- Metadata -->
+
+  <organization>
+    <text>CZ.NIC, z. s. p. o.</text>
+  </organization>
+  <contact>
+    <text>
+      <h:p>
+        Editor:   Ladislav Lhotka<h:br/>
+                  &lt;mailto:lhotka@nic.cz&gt;
+      </h:p>
+    </text>
+  </contact>
+  <description>
+    <text>
+      <h:p>This module defines RPC operations for editing DNS
+      zones.</h:p>
+    </text>
+  </description>
+  <reference>
+    <text>
+      <h:ul>
+	<h:li>RFC 1035: Domain Names - Implementation and
+	Specification.</h:li>
+	<h:li>Knot DNS documentation, Reading and Editing
+	Zones,<h:br/>
+	https://www.knot-dns.cz/docs/2.x/html/operation.html#reading-and-editing-zones</h:li>
+      </h:ul>
+    </text>
+  </reference>
+  <revision date="2017-01-12">
+    <description>
+      <text>Initial revision.</text>
+    </description>
+  </revision>
+
+  <!-- Groupings -->
+
+  <grouping name="zone-name">
+    <leaf name="zone">
+      <mandatory value="true"/>
+      <description>
+	<text>Name of a DNS zone.</text>
+      </description>
+      <type name="inet:domain-name"/>
+    </leaf>
+  </grouping>
+
+  <grouping name="rdata-fields">
+    <uses name="dnszc:rdata-fields">
+      <augment target-node="rdata-content">
+	<uses name="dnszc:rrsig-data">
+	  <refine target-node="RRSIG">
+	    <must condition="derived-from-or-self(../type, 'ianadns:RRSIG')"/>
+	  </refine>
+	</uses>
+      </augment>
+      <refine target-node="rdata-content/SOA/SOA">
+	<must condition="derived-from-or-self(../type, 'ianadns:SOA')"/>
+      </refine>
+      <refine target-node="rdata-content/A/A">
+	<must condition="derived-from-or-self(../type, 'ianadns:A')"/>
+      </refine>
+      <refine target-node="rdata-content/CNAME/CNAME">
+	<must condition="derived-from-or-self(../type, 'ianadns:CNAME')"/>
+      </refine>
+      <refine target-node="rdata-content/HINFO/HINFO">
+	<must condition="derived-from-or-self(../type, 'ianadns:HINFO')"/>
+      </refine>
+      <refine target-node="rdata-content/MB/MB">
+	<must condition="derived-from-or-self(../type, 'ianadns:MB')"/>
+      </refine>
+      <refine target-node="rdata-content/MD/MD">
+	<must condition="derived-from-or-self(../type, 'ianadns:MD')"/>
+      </refine>
+      <refine target-node="rdata-content/MF/MF">
+	<must condition="derived-from-or-self(../type, 'ianadns:MF')"/>
+      </refine>
+      <refine target-node="rdata-content/MG/MG">
+	<must condition="derived-from-or-self(../type, 'ianadns:MG')"/>
+      </refine>
+      <refine target-node="rdata-content/MINFO/MINFO">
+	<must condition="derived-from-or-self(../type, 'ianadns:MINFO')"/>
+      </refine>
+      <refine target-node="rdata-content/MR/MR">
+	<must condition="derived-from-or-self(../type, 'ianadns:MR')"/>
+      </refine>
+      <refine target-node="rdata-content/MX/MX">
+	<must condition="derived-from-or-self(../type, 'ianadns:MX')"/>
+      </refine>
+      <refine target-node="rdata-content/NS/NS">
+	<must condition="derived-from-or-self(../type, 'ianadns:NS')"/>
+      </refine>
+      <refine target-node="rdata-content/NULL/NULL">
+	<must condition="derived-from-or-self(../type, 'ianadns:NULL')"/>
+      </refine>
+      <refine target-node="rdata-content/PTR/PTR">
+	<must condition="derived-from-or-self(../type, 'ianadns:PTR')"/>
+      </refine>
+      <refine target-node="rdata-content/TXT/TXT">
+	<must condition="derived-from-or-self(../type, 'ianadns:TXT')"/>
+      </refine>
+      <refine target-node="rdata-content/WKS/WKS">
+	<must condition="derived-from-or-self(../type, 'ianadns:WKS')"/>
+      </refine>
+      <refine target-node="rdata-content/AAAA/AAAA">
+	<must condition="derived-from-or-self(../type, 'ianadns:AAAA')"/>
+      </refine>
+      <refine target-node="rdata-content/DNSKEY/DNSKEY">
+	<must condition="derived-from-or-self(../type, 'ianadns:DNSKEY')"/>
+      </refine>
+      <refine target-node="rdata-content/NSEC/NSEC">
+	<must condition="derived-from-or-self(../type, 'ianadns:NSEC')"/>
+      </refine>
+      <refine target-node="rdata-content/DS/DS">
+	<must condition="derived-from-or-self(../type, 'ianadns:DS')"/>
+      </refine>
+      <refine target-node="rdata-content/NSEC3/NSEC3">
+	<must condition="derived-from-or-self(../type, 'ianadns:NSEC3')"/>
+      </refine>
+      <refine target-node="rdata-content/NSEC3PARAM/NSEC3PARAM">
+	<must condition="derived-from-or-self(../type, 'ianadns:NSEC3PARAM')"/>
+      </refine>
+      <refine target-node="rdata-content/TLSA/TLSA">
+	<must condition="derived-from-or-self(../type, 'ianadns:TLSA')"/>
+      </refine>
+      <refine target-node="rdata-content/IPSECKEY/IPSECKEY">
+	<must condition="derived-from-or-self(../type, 'ianadns:IPSECKEY')"/>
+      </refine>
+      <refine target-node="rdata-content/DNAME/DNAME">
+	<must condition="derived-from-or-self(../type, 'ianadns:DNAME')"/>
+      </refine>
+      <refine target-node="rdata-content/SSHFP/SSHFP">
+	<must condition="derived-from-or-self(../type, 'ianadns:SSHFP')"/>
+      </refine>
+    </uses>
+  </grouping>
+
+  <!-- RPC operations -->
+
+  <rpc name="begin-transaction">
+    <description>
+      <text>Begin a zone-editing transaction.</text>
+    </description>
+  </rpc>
+
+  <rpc name="commit-transaction">
+    <description>
+      <text>Commit the open zone-editing transaction.</text>
+    </description>
+  </rpc>
+
+  <rpc name="abort-transaction">
+    <description>
+      <text>Abort the open zone-editing transaction.</text>
+    </description>
+  </rpc>
+
+  <rpc name="zone-set">
+    <description>
+      <text>Add a specific resource record to a zone.</text>
+    </description>
+    <input>
+      <uses name="zone-name"/>
+      <uses name="dnszc:common-rr-data"/>
+      <uses name="rdata-fields"/>
+    </input>
+  </rpc>
+
+  <rpc name="zone-unset">
+    <description>
+      <text>Remove all resource records with a specific owner, RRSet
+      or data.</text>
+    </description>
+    <input>
+      <uses name="zone-name"/>
+      <uses name="dnszc:owner-field"/>
+      <uses name="dnszc:type-field"/>
+      <uses name="rdata-fields"/>
+    </input>
+  </rpc>
+
+</module>

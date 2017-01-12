@@ -1,4 +1,4 @@
-MODULES = iana-dns-parameters dns-zones-state dns-zone-common
+MODULES = iana-dns-parameters dns-zones-state dns-zone-common dns-zone-rpcs
 DATE ?= $(shell date +%F)
 EXAMPLE_BASE = example
 EXAMPLE_TYPE = config
