@@ -184,7 +184,11 @@
     <input>
       <uses name="zone-name"/>
       <uses name="dnszc:common-rr-data"/>
-      <uses name="rdata-fields"/>
+      <uses name="rdata-fields">
+	<refine target-node="rdata-content">
+	  <mandatory value="true"/>
+	</refine>
+      </uses>
     </input>
   </rpc>
 

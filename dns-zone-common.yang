@@ -248,9 +248,14 @@ module dns-zone-common {
     description
       "This grouping defines fields common to all RR types.";
     uses owner-field;
-    uses type-field;
+    uses type-field {
+      refine "type" {
+        mandatory "true";
+      }
+    }
     leaf ttl {
       type time-interval;
+      mandatory "true";
       description
         "Time-To-Live of the RR.";
     }
@@ -261,7 +266,6 @@ module dns-zone-common {
       "This grouping defines RDATA fields for all types of DNS
        resource records.";
     choice rdata-content {
-      mandatory "true";
       description
         "Each (shorthand) case of this choice defines the content of
          a single RR type wrapped in a container whose name is the RR

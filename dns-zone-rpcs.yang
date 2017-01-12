@@ -167,7 +167,11 @@ module dns-zone-rpcs {
     input {
       uses zone-name;
       uses dnszc:common-rr-data;
-      uses rdata-fields;
+      uses rdata-fields {
+        refine "rdata-content" {
+          mandatory "true";
+        }
+      }
     }
   }
 

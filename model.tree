@@ -8,8 +8,8 @@ module: dns-zone-rpcs
     |  +---w input
     |     +---w zone          inet:domain-name
     |     +---w owner         domain-name
-    |     +---w type?         identityref
-    |     +---w ttl?          time-interval
+    |     +---w type          identityref
+    |     +---w ttl           time-interval
     |     +---w (rdata-content)
     |        +--:(SOA)
     |        |  +---w SOA
@@ -135,7 +135,7 @@ module: dns-zone-rpcs
           +---w zone          inet:domain-name
           +---w owner         domain-name
           +---w type?         identityref
-          +---w (rdata-content)
+          +---w (rdata-content)?
              +--:(SOA)
              |  +---w SOA
              |     +---w mname      domain-name
@@ -262,7 +262,7 @@ module: dns-zones-state
        +--ro rrset* [owner type]
           +--ro owner    domain-name
           +--ro type     identityref
-          +--ro ttl?     time-interval
+          +--ro ttl      time-interval
           +--ro RRSIG!
           |  +--ro algorithm               ianadns:dnssec-algorithm
           |  +--ro signature-expiration    utc-date-time

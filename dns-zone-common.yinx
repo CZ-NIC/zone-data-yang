@@ -322,8 +322,13 @@
       types.</text>
     </description>
     <uses name="owner-field"/>
-    <uses name="type-field"/>
+    <uses name="type-field">
+      <refine target-node="type">
+	<mandatory value="true"/>
+      </refine>
+    </uses>
     <leaf name="ttl">
+      <mandatory value="true"/>
       <type name="time-interval"/>
       <description>
 	<text>
@@ -339,7 +344,6 @@
       resource records.</text>
     </description>
     <choice name="rdata-content">
-      <mandatory value="true"/>
       <description>
 	<text>
 	  <h:p>Each (shorthand) case of this choice defines the

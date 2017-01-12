@@ -85,6 +85,9 @@
       </uses>
       <list name="rdata">
 	<uses name="dnszc:rdata-fields">
+	  <refine target-node="rdata-content">
+	    <mandatory value="true"/>
+	  </refine>
 	  <refine target-node="rdata-content/SOA/SOA">
 	    <must condition="derived-from-or-self(../../type, 'ianadns:SOA')"/>
 	  </refine>
